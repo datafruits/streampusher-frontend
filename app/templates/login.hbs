@@ -1,0 +1,24 @@
+<section class="signin">
+  <h2>Sign in</h2>
+
+  <form {{action "signIn" on="submit"}}>
+    <div>
+      <label>Login</label><br>
+      {{input type="text" value=login autofocus=true autocapitalize="off"}}
+    </div>
+
+    <div>
+      <label>Password</label><br>
+      {{input type="password" autocomplete="off"}}
+    </div>
+
+    <div>
+      <label>Remember Me</label>
+      <Input @type="checkbox" @checked={{rememberMe}} />
+    </div>
+
+    <div>{{input type="submit" class="btn btn-success" value="Login"}}</div>
+  </form>
+
+  <!-- render "devise/shared/links" -->
+</section>
