@@ -9,7 +9,7 @@
 
     <div>
       <label>Password</label><br>
-      {{input type="password" autocomplete="off"}}
+      {{input type="password" autocomplete="off" value=password}}
     </div>
 
     <div>
@@ -22,3 +22,7 @@
 
   <!-- render "devise/shared/links" -->
 </section>
+
+{{#if session.isAuthenticated}}
+  authenticated!
+{{/if}}
