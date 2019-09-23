@@ -1,26 +1,38 @@
-<nav class="navbar" role="navigation">
-  <a class="brand" href="/"><img src="assets/images/logo.png">
-    Streampusher
-  </a>
-  <ul class="nav navbar-nav navbar-right">
-    {{#if session.isAuthenticated}}
-      <li class="current-time-navbar">
-        <span class="current-time"></span>
-        <span class="current-timezone"></span>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-          {{current_user.login}}<i class="fa fa-cog"></i>
+<header class="bg-black text-white">
+  <nav class="" role="navigation">
+    <div class="flex items-center justify-between px-4 py-3">
+      <div>
+        <a class="brand" href="/">
+          <img class="h-10" src="/assets/images/logo.png" alt="Streampusher">
         </a>
-        <ul class="dropdown-menu" role="menu">
-          <li class="divider"></li>
-          <li><a href="#" {{action 'logout'}}>Logout</a></li>
-        </ul>
-      </li>
-    {{else}}
-      <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+      </div>
+      <div>
+        <button type="button" class="block text-gray-500 hover:text-white focus:text-white" {{action "toggleMobileMenu"}}>
+          <svg class="h-6 w-6 fill-current" height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+        </button>
+      </div>
+    </div>
+    {{#if isShowingMobileMenu}}
+      <ul class="px-4 pt-2 pb-4">
+        {{#if session.isAuthenticated}}
+          <li class="current-time-navbar">
+            <span class="current-time"></span>
+            <span class="current-timezone"></span>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+              {{current_user.login}}<i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="divider"></li>
+              <li><a href="#" {{action 'logout'}}>Logout</a></li>
+            </ul>
+          </li>
+        {{else}}
+          <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+        {{/if}}
+      </ul>
     {{/if}}
-  </ul>
-
-</nav>
+  </nav>
+</header>
 {{outlet}}
