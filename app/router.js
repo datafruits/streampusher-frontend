@@ -10,6 +10,12 @@ Router.map(function() {
   this.route('login');
   this.route('authenticated', { path: '' }, function() {
     this.route('dashboard');
+    this.route('playlists', function() {
+      this.route('show', {path: '/:id'});
+    });
+    this.route('schedule');
+    this.route('djs');
+    this.route('podcasts');
   });
 });
 

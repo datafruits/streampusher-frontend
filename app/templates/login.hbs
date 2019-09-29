@@ -1,5 +1,5 @@
-<section class="signin">
-  <h1>Sign in</h1>
+<div class="w-1/3">
+  <h1 class="mb6 text-center">Sign in</h1>
 
   <form {{action "signIn" on="submit"}}>
     <div>
@@ -17,12 +17,6 @@
       <Input @type="checkbox" @checked={{rememberMe}} />
     </div>
 
-    <div>{{input type="submit" class="btn btn-success" value="Login"}}</div>
+    <div>{{input type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-2 rounded" value="Login"}}</div>
   </form>
-
-  <!-- render "devise/shared/links" -->
-</section>
-
-{{#if session.isAuthenticated}}
-  authenticated!
-{{/if}}
+</div>
