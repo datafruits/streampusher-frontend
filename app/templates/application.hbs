@@ -18,9 +18,11 @@
         </button>
       </div>
     </div>
-    <TopNavbar @isShowingMobileMenu={{isShowingMobileMenu}} class="sm:flex" />
+    <TopNavbar @isShowingMobileMenu={{isShowingMobileMenu}} class="sm:flex"
+      @toggleUserMenu={{action "toggleUserMenu"}} />
   </nav>
 </header>
+<UserMenu @showing={{isShowingUserMenu}} />
 {{#if session.isAuthenticated}}
   <div class="sm:flex">
     <div class="bg-black text-white">

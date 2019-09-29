@@ -8,6 +8,9 @@ export default Controller.extend({
     toggleMobileMenu(){
       this.toggleProperty('isShowingMobileMenu');
     },
+    toggleUserMenu(){
+      this.toggleProperty('isShowingUserMenu');
+    },
     logout(){
       this.session.invalidate();
     }

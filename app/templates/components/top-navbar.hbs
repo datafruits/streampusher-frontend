@@ -5,13 +5,9 @@
       <span class="current-timezone"></span>
     </li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-        {{currentUser.user.username}}<i class="fa fa-cog"></i>
+      <a href="#" class="" role="button" {{action toggleUserMenu}}>
+        {{currentUser.user.username}}
       </a>
-      <ul role="menu">
-        <li></li>
-        <li><a href="#" {{action 'logout'}}>Logout</a></li>
-      </ul>
     </li>
   {{else}}
     <li>{{#link-to 'login'}}Login{{/link-to}}</li>
