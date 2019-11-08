@@ -3679,7 +3679,7 @@ ember-factory-for-polyfill@^1.3.1:
     node-fetch "^2.6.0"
     whatwg-fetch "^3.0.0"
 
-"ember-getowner-polyfill@^1.1.0 || ^2.0.0":
+"ember-getowner-polyfill@^1.1.0 || ^2.0.0", ember-getowner-polyfill@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-2.2.0.tgz#38e7dccbcac69d5ec694000329ec0b2be651d2b2"
   integrity sha512-rwGMJgbGzxIAiWYjdpAh04Abvt0s3HuS/VjHzUFhVyVg2pzAuz45B9AzOxYXzkp88vFC7FPaiA4kE8NxNk4A4Q==
@@ -3756,6 +3756,14 @@ ember-rfc176-data@^0.3.9:
   resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.9.tgz#44b6e051ead6c044ea87bd551f402e2cf89a7e3d"
   integrity sha512-EiTo5YQS0Duy0xp9gCP8ekzv9vxirNi7MnIB4zWs+thtWp/mEKgf5mkiiLU2+oo8C5DuavVHhoPQDmyxh8Io1Q==
 
+ember-route-action-helper@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/ember-route-action-helper/-/ember-route-action-helper-2.0.7.tgz#3b946a613c88bb82a039c974f64f5b6f56d5e0bf"
+  integrity sha512-8GEnB9hfPdh5U19ubmojVZQBu6aUIfQuiv6xnsdss7V3TMspjI1Ak8lqoqEzww8Dv+sxv8YWma0IhKPFxrVJag==
+  dependencies:
+    ember-cli-babel "^6.8.1"
+    ember-getowner-polyfill "^2.0.0"
+
 ember-router-generator@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/ember-router-generator/-/ember-router-generator-1.2.3.tgz#8ed2ca86ff323363120fc14278191e9e8f1315ee"
@@ -3824,6 +3832,13 @@ ember-test-waiters@^1.0.0:
   integrity sha512-0VP7oTTur/wm2///9EuMwg1/6KP6yRAamyP7DaiYfrY1js1vHtZU2fDPgjwuL0QL4FG1chyUiL/Gi3+dIaqQmA==
   dependencies:
     ember-cli-babel "^7.1.2"
+
+ember-uploader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-uploader/-/ember-uploader-2.0.0.tgz#a8272af1c55e0f51a707364364085995a533c3ee"
+  integrity sha512-TGj2BCUtbp+JvUG2mwMMi3uoDc951rc+JkLUak6QCMCkJ+t0x1rz05qBFaenpvd01N63IRSOH+X9X+MxXpVdIg==
+  dependencies:
+    ember-cli-babel "^6.6.0"
 
 ember-validators@^2.0.0:
   version "2.0.0"

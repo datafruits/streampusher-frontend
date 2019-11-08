@@ -22,7 +22,9 @@
       @toggleUserMenu={{action "toggleUserMenu"}} />
   </nav>
 </header>
-<UserMenu @showing={{isShowingUserMenu}} />
+<UserMenu @showing={{isShowingUserMenu}}
+  @isShowingMobileMenu={{isShowingMobileMenu}}
+  class="flex" />
 {{#if session.isAuthenticated}}
   <div class="sm:flex">
     <div class="bg-black text-white">
