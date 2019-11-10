@@ -5,28 +5,26 @@
   <div class="col-md-5">
     <div class="wrapper">
       <i class="fa fa-search"></i>
-      {{input class="search-tracks" autofocus="autofocus" value=filterText escape-press='clearSearch' placeholder="Search media"}}
+      <Input class="search-tracks" @autofocus="autofocus" @value={{filterText}} @escape-press={{action "clearSearch"}} placeholder="Search media" />
     </div>
   </div>
   <div class="col-md-7">
     <div class="fileUpload btn btn-default">
       <i class="fa fa-plus"></i>Add
-      {{track-uploader}}
+      <TrackUploader />
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-8">
-    {{#power-select-multiple
-        placeholder="Search by tag..."
-        options=labels
-        selected=selectedLabels
-        renderInPlace=true
-        onchange=(action (mut selectedLabels))
-        as |label|
-    }}
+    <PowerSelectMultiple
+      @placeholder="Search by tag..."
+      @options={{@labels}}
+      @selected={{this.selectedLabels}}
+      @renderInPlace={{true}}
+      @onChange={{action (mut this.selectedLabels)}} as |label|>
       {{label.name}}
-    {{/power-select-multiple}}
+    </PowerSelectMultiple>
   </div>
 </div>
 <div class="tracks-list">
@@ -34,11 +32,11 @@
     <tbody>
       {{#if isSearching}}
         {{#each filteredResults as |track|}}
-          {{track-li track=track playlist=playlist labels=labels setIsSyncingPlaylist=setIsSyncingPlaylist}}
+          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}} @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
         {{/each}}
       {{else}}
         {{#each sortedTracks as |track|}}
-          {{track-li track=track playlist=playlist labels=labels setIsSyncingPlaylist=setIsSyncingPlaylist}}
+          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}} @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
         {{/each}}
       {{/if}}
     </tbody>

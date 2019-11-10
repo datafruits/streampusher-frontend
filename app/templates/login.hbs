@@ -4,12 +4,12 @@
   <form {{action "signIn" on="submit"}}>
     <div>
       <label>Login</label><br>
-      {{input type="text" value=login autofocus=true autocapitalize="off"}}
+      <Input @type="text" @value={{login}} @autofocus={{true}} @autocapitalize="off" />
     </div>
 
     <div>
       <label>Password</label><br>
-      {{input type="password" autocomplete="off" value=password}}
+      <Input @type="password" @autocomplete="off" @value={{password}} />
     </div>
 
     <div>
@@ -17,6 +17,6 @@
       <Input @type="checkbox" @checked={{rememberMe}} />
     </div>
 
-    <div>{{input type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-2 rounded" value="Login"}}</div>
+    <div><Input @type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-2 rounded" @value="Login" /></div>
   </form>
 </div>

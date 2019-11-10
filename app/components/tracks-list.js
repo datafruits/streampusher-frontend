@@ -7,7 +7,10 @@ import { set, computed } from '@ember/object';
 export default Component.extend({
   store: service(),
   filterText: '',
-  selectedLabels: [],
+  init() {
+    this._super(...arguments);
+    this.set('selectedLabels', []);
+  },
   isSearching: computed('filterText', 'selectedLabels', function() {
     return this.get('filterText') !== "" || this.get('selectedLabels').length !== 0;
   }),

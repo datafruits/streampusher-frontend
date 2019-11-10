@@ -16,7 +16,7 @@
       <button {{action 'addToPlaylist'}} disabled={{isAddingNewPlaylist}} class="add-track-to-playlist btn btn-success"> <i class="fa fa-plus-circle"></i></button>
     </div>
     {{#if isEditing}}
-      {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="editTrack"}}
+      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="editTrack">
         <div class="modal-header">
           <button {{action "editTrack"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Edit Track - {{track.title}}</h4>
@@ -29,12 +29,12 @@
             <div class="control-group">
               <label class="control-label" for="title">Title</label>
               <div class="controls">
-                {{input value=track.title class="track-title"}}
+                <Input @value={{track.title}} class="track-title" />
               </div>
             </div>
             <div class="control-group">
               <img width="300" height="300" src={{file-url track.artwork 'thumb'}} />
-              {{artwork-file-upload file=track.artwork filename=track.artworkFilename}}
+              <ArtworkFileUpload @file={{track.artwork}} @filename={{track.artworkFilename}} />
             </div>
             <br/>
             <div class="control-group">
@@ -43,7 +43,7 @@
               Last updated at: {{track.updatedAt}}
             </div>
             <div class="control-group">
-              {{track-labels-select labels=labels track=track}}
+              <TrackLabelsSelect @labels={{labels}} @track={{track}} />
             </div>
             {{#if isSaving}}
               <div class="spinner">
@@ -59,9 +59,9 @@
             <button {{action 'embed'}} disabled={{isSaving}} class="btn btn-default">Embed</button>
           </form>
         </div>
-      {{/modal-dialog}}
+      </ModalDialog>
     {{else if mixcloudDialog}}
-      {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="mixcloud"}}
+      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="mixcloud">
         <div class="modal-header">
           <button {{action "mixcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Upload to Mixcloud - {{track.title}}</h4>
@@ -84,9 +84,9 @@
             You haven't connected your mixcloud account yet. You can do so <a href="/social_identities">here</a>.
           {{/if}}
         </div>
-      {{/modal-dialog}}
+      </ModalDialog>
     {{else if soundcloudDialog}}
-      {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true close="soundcloud"}}
+      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="soundcloud">
         <div class="modal-header">
           <button {{action "soundcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Upload to Soundcloud - {{track.title}}</h4>
@@ -109,9 +109,9 @@
             You haven't connected your soundcloud account yet. You can do so <a href="/social_identities">here</a>.
           {{/if}}
         </div>
-      {{/modal-dialog}}
+      </ModalDialog>
     {{else if embedDialog}}
-      {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="embed"}}
+      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="embed">
         <div class="modal-header">
           <button {{action "embed"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Embed - {{track.title}}</h4>
@@ -119,11 +119,11 @@
         <div class="modal-body">
           Embed code and preview:
           <div>
-            {{input focus-in="focusEmbedCode" id="embed-player-html" type="text" readonly="readonly" value=track.embedCode}}
+            <Input @focus-in="focusEmbedCode" @id="embed-player-html" @type="text" @readonly="readonly" @value={{track.embedCode}} />
           </div>
           {{{track.embedCode}}}
         </div>
-      {{/modal-dialog}}
+      </ModalDialog>
     {{/if}}
   {{/if}}
 </td>

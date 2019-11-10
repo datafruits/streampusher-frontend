@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6">
     {{#if isEditing}}
-      <span class="playlist-title">{{input value=playlist.name enter='save'}}</span>
+      <span class="playlist-title"><Input @value={{playlist.name}} @enter="save" /></span>
       <button disabled={{v-get playlist 'isInvalid'}} id="save-playlist" class="btn btn-primary" {{action 'save'}}>Save</button>
       <button class="btn" {{action 'cancelEditing'}}>Cancel</button>
       {{#if (v-get playlist 'name' 'isInvalid')}}
@@ -21,7 +21,7 @@
         {{#if isSelectingPlaylist}}
           <div class="playlists-menu" {{action "selectPlaylist"}}>
             {{#each playlists as |selectablePlaylist|}}
-              <span class="playlist-title">{{#link-to "playlists.show" selectablePlaylist.id}}{{selectablePlaylist.name}}{{/link-to}}</span>
+              <span class="playlist-title"><LinkTo @route="playlists.show" @model={{selectablePlaylist.id}}>{{selectablePlaylist.name}}</LinkTo></span>
               <br/>
             {{/each}}
           </div>
@@ -44,17 +44,17 @@
   <table class="playlist-tracks table table-bordered">
     <thead>
     </thead>
-    {{#sortable-group tagName="tbody" model=playlist onChange="reorderItems" as |group|}}
+    <SortableGroup @tagName="tbody" @model={{playlist}} @onChange="reorderItems" as |group|>
       {{#each playlist.sortedPlaylistTracks as |playlistTrack|}}
-        {{#sortable-item tagName="tr" model=playlistTrack group=group handle=".playlist-track"}}
-          {{playlist-track-li playlistTrack=playlistTrack}}
-        {{/sortable-item}}
+        <SortableItem @tagName="tr" @model={{playlistTrack}} @group={{group}} @handle=".playlist-track">
+          <PlaylistTrackLi @playlistTrack={{playlistTrack}} />
+        </SortableItem>
       {{/each}}
-    {{/sortable-group}}
+    </SortableGroup>
   </table>
 </div>
 {{#if isEditingSettings}}
-  {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true close="editPlaylistSettings"}}
+  <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="editPlaylistSettings">
     <div class="modal-header">
       <button {{action "editPlaylistSettings"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h4 class="modal-title" id="myModalLabel">Playlist Settings</h4>
@@ -64,13 +64,13 @@
       <span>Created by: </span><b>{{playlist.createdBy}}</b>
       <br />
       <h4>Interpolate another playlist with this one (e.g. for jingles)</h4>
-      <label>Enabled {{input type="checkbox" id="interpolated-playlist-enabled" name="interpolatedPlaylistEnabled" checked=playlist.interpolatedPlaylistEnabled}}</label>
+      <label>Enabled <Input @type="checkbox" @id="interpolated-playlist-enabled" @name="interpolatedPlaylistEnabled" @checked={{playlist.interpolatedPlaylistEnabled}} /></label>
       <br />
       <label>
-        Every {{input type="number" name="interpolatedPlaylistTrackIntervalCount" value=playlist.interpolatedPlaylistTrackIntervalCount step="1"}}
+        Every <Input @type="number" @name="interpolatedPlaylistTrackIntervalCount" @value={{playlist.interpolatedPlaylistTrackIntervalCount}} @step="1" />
       </label>
       <label>
-        tracks, play {{input type="number" name="interpolatedPlaylistTrackPlayCount" value=playlist.interpolatedPlaylistTrackPlayCount step="1" }}
+        tracks, play <Input @type="number" @name="interpolatedPlaylistTrackPlayCount" @value={{playlist.interpolatedPlaylistTrackPlayCount}} @step="1" />
       </label>
       <label>tracks from the
         <select id="interpolated-playlist-select" onchange={{action "selectInterpolatedPlaylistId" value="target.value"}}>
@@ -86,13 +86,13 @@
       playlist.
       <br />
       <h4>Shuffle</h4>
-      <label>On {{input type="checkbox" id="shuffle" name="shuffle" checked=playlist.shuffle}}</label>
+      <label>On <Input @type="checkbox" @id="shuffle" @name="shuffle" @checked={{playlist.shuffle}} /></label>
       <h4>Don't cut off tracks early for next show</h4>
-      <label>Enabled {{input type="checkbox" id="no-cue-out" name="noCueOut" checked=playlist.noCueOut}}</label>
+      <label>Enabled <Input @type="checkbox" @id="no-cue-out" @name="noCueOut" @checked={{playlist.noCueOut}} /></label>
     </div>
     <div class="modal-footer">
       <button {{action "deletePlaylist"}} class="btn btn-danger">Delete playlist</button>
       <button {{action "saveSettings"}} class="btn btn-primary">Save changes</button>
     </div>
-  {{/modal-dialog}}
+  </ModalDialog>
 {{/if}}
