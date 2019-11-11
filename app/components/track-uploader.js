@@ -15,7 +15,7 @@ export default FileField.extend({
 
   init() {
     this._super(...arguments);
-    this.get('droppedFile').on('fileWasDropped', e => {
+    this.droppedFile.on('fileWasDropped', e => {
       this.filesDidChange(e);
     });
   },
@@ -28,14 +28,14 @@ export default FileField.extend({
 
   filesDidChange: function(files) {
 
-    const store = this.get('store');
+    const store = this.store;
     const _this = this;
     if (!isEmpty(files)) {
       for(let i = 0; i< files.length; i++){
         console.log(files[i].type);
         if(!this.validMimeTypes.includes(files[i].type)){
           console.log("invalid mime type: " + files[i].type);
-          get(this, 'flashMessages').danger("Sorry, there was an error uploading this file. This doesn't appear to be a valid audio file.");
+          this.flashMessages.danger("Sorry, there was an error uploading this file. This doesn't appear to be a valid audio file.");
           continue;
         }
 
@@ -49,7 +49,7 @@ export default FileField.extend({
         console.log(mimeType);
 
         let uploader = S3Uploader.create({
-          signingUrl: this.get('signingUrl'),
+          signingUrl: this.signingUrl,
           method: "PUT",
           ajaxSettings: {
             headers: {

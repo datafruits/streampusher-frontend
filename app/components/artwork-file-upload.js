@@ -5,7 +5,7 @@ export default TextField.extend({
   file: null,
 
   change(e) {
-    this.get('file').update(e.target.files[0]);
+    this.file.update(e.target.files[0]);
     this.set('filename', e.target.files[0].name)
   }
 });

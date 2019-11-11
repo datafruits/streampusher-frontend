@@ -7,7 +7,7 @@ export default Component.extend({
   store: service(),
   actions: {
     hideCreateOptionOnSameName(term) {
-      let existingOption = this.get('labels').findBy('name', term);
+      let existingOption = this.labels.findBy('name', term);
       return !existingOption;
     },
     setSelectedLabels(labels){
@@ -15,10 +15,10 @@ export default Component.extend({
       let labelIds = labels.map((label) => {
         return label.get('id');
       });
-      this.get('track').set('labelIds', labelIds)
+      this.track.set('labelIds', labelIds)
     },
     createTag(name){
-      let store = this.get('store');
+      let store = this.store;
       let label = store.createRecord('label', { name: name });
       let onSuccess = (label) =>{
         console.log("label saved!");
@@ -27,7 +27,7 @@ export default Component.extend({
       };
       let onFail = (response) => {
         this.set('error', "Failed to save tag: " + response.errors[0].detail)
-        get(this, 'flashMessages').danger("Sorry, something went wrong!");
+        this.flashMessages.danger("Sorry, something went wrong!");
         console.log("label save failed");
       };
       label.save().then(onSuccess, onFail);

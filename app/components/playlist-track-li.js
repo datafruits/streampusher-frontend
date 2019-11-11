@@ -7,18 +7,18 @@ export default Component.extend({
   isEditing: false,
   actions: {
     deleteFromPlaylist(){
-      let playlistTrack = this.get('playlistTrack');
+      let playlistTrack = this.playlistTrack;
       playlistTrack.destroyRecord();
     },
     editPlaylistTrack(){
       this.set('isEditing', true);
     },
     save(){
-      let playlistTrack = this.get('playlistTrack');
+      let playlistTrack = this.playlistTrack;
       let onSuccess = () =>{
       };
       let onFail = () =>{
-        get(this, 'flashMessages').danger('Something went wrong!');
+        this.flashMessages.danger('Something went wrong!');
       };
       playlistTrack.save().then(onSuccess, onFail);
       this.set('isEditing', false);

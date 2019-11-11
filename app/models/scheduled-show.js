@@ -15,7 +15,7 @@ export default DS.Model.extend({
   recurringInterval: DS.attr(),
 
   formattedDate: computed('start', function(){
-    return moment(this.get('start')).format()
+    return moment(this.start).format();
   }),
   displayTitle: computed('title', 'formattedDate', function(){
     return `${this.title} - ${this.formattedDate}`;

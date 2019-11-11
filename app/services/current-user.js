@@ -8,7 +8,7 @@ export default Service.extend({
 
   load() {
     if (this.get('session.isAuthenticated')) {
-      return this.get('store').queryRecord('user', { me: true }).then((user) => {
+      return this.store.queryRecord('user', { me: true }).then((user) => {
         this.set('user', user);
       });
     } else {

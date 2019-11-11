@@ -27,7 +27,7 @@ export default DS.Model.extend({
   uploadProgress: 0,
 
   roundedUploadProgress: computed('uploadProgress', function(){
-    return Math.round(this.get('uploadProgress'));
+    return Math.round(this.uploadProgress);
   }),
   mixcloudNotUploaded: equal('mixcloudUploadStatus', 'mixcloud_not_uploaded'),
   mixcloudUploading: equal('mixcloudUploadStatus', 'mixcloud_uploading'),
@@ -42,10 +42,10 @@ export default DS.Model.extend({
   soundcloudNotUploadedOrUploadFailed: or('soundcloudNotUploaded', 'soundcloudUploadFailed'),
 
   embedCode: computed('embedLink', function(){
-    return `<iframe width="100%" height="100" frameborder="no" scrolling="no" src="${this.get('embedLink')}"></iframe>`;
+    return `<iframe width="100%" height="100" frameborder="no" scrolling="no" src="${this.embedLink}"></iframe>`;
   }),
 
   embedCodeSafe: computed('embedLink', function(){
-    return htmlSafe(`<iframe width="100%" height="100%" frameborder="no" scrolling="no" src="${this.get('embedLink')}"></iframe>`);
+    return htmlSafe(`<iframe width="100%" height="100%" frameborder="no" scrolling="no" src="${this.embedLink}"></iframe>`);
   })
 });

@@ -12,14 +12,14 @@ export default Component.extend({
     this.set('selectedLabels', []);
   },
   isSearching: computed('filterText', 'selectedLabels', function() {
-    return this.get('filterText') !== "" || this.get('selectedLabels').length !== 0;
+    return this.filterText !== "" || this.selectedLabels.length !== 0;
   }),
   filteredResults: computed('filterText', 'selectedLabels', function() {
-    let filter = this.get('filterText');
-    let labelIds = this.get('selectedLabels').map(function(label){
+    let filter = this.filterText;
+    let labelIds = this.selectedLabels.map(function(label){
       return parseInt(label.get('id'));
     });
-    return this.get('tracks').filter(function(item) {
+    return this.tracks.filter(function(item) {
       if(item.get('isUploading')){
         return false;
       }
@@ -49,7 +49,7 @@ export default Component.extend({
   },
 
   drop(event) {
-    this.get('droppedFile').sendDroppedFile(event.dataTransfer.files);
+    this.droppedFile.sendDroppedFile(event.dataTransfer.files);
     //event.dataTransfer.files[0]
     //var data = event.dataTransfer.getData('text/data');
     //this.sendAction('dropped', data);

@@ -7,7 +7,7 @@ export default Controller.extend({
     signIn(){
       let login = this.login;
       let password = this.password;
-      this.get('session').authenticate('authenticator:devise', login, password).catch((reason) => {
+      this.session.authenticate('authenticator:devise', login, password).catch((reason) => {
         console.log(reason);
       });
     }

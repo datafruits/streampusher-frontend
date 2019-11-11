@@ -16,7 +16,7 @@ export default Component.extend({
   soundcloudDialog: false,
   embedDialog: false,
   isAddingNewPlaylist: computed('playlist.id', function(){
-    let playlist = this.get('playlist');
+    let playlist = this.playlist;
     return playlist.get('isNew');
   }),
   didInsertElement(){
@@ -30,10 +30,10 @@ export default Component.extend({
   }),
   actions: {
     addToPlaylist(){
-      this.get('setIsSyncingPlaylist')(true);
-      let store = this.get('store');
-      let playlist = this.get('playlist');
-      let track = this.get('track');
+      this.setIsSyncingPlaylist(true);
+      let store = this.store;
+      let playlist = this.playlist;
+      let track = this.track;
       playlist.get('playlistTracks').map(function(playlistTrack){
         let position = playlistTrack.get('position');
         playlistTrack.set('position', position+1);
@@ -43,12 +43,12 @@ export default Component.extend({
       playlistTrack.save().then(() => {
         playlist.save().then(() => {
           console.log("addToPlaylist success");
-          this.get('setIsSyncingPlaylist')(false);
+          this.setIsSyncingPlaylist(false);
         });
       }).catch((error) => {
         console.log("error");
         console.log(error);
-        this.get('setIsSyncingPlaylist')(false);
+        this.setIsSyncingPlaylist(false);
         get(this, 'flashMessages').danger('Something went wrong!');
       });
     },
@@ -67,14 +67,14 @@ export default Component.extend({
       this.toggleProperty('embedDialog');
     },
     uploadToMixcloud(){
-      let trackId = this.get('track').get('id');
+      let trackId = this.track.get('id');
       let url = `/tracks/${trackId}/mixcloud_uploads`;
-      return this.get('ajax').request(url, {
+      return this.ajax.request(url, {
         method: 'POST'
       }).then(response => {
         console.log(response);
         if(response.status === 200){
-          this.get('track').set('mixcloudUploadStatus', 'mixcloud_uploading');
+          this.track.set('mixcloudUploadStatus', 'mixcloud_uploading');
         }else{
           get(this, 'flashMessages').danger('Something went wrong!');
         }
@@ -82,14 +82,14 @@ export default Component.extend({
 
     },
     uploadToSoundcloud(){
-      let trackId = this.get('track').get('id');
+      let trackId = this.track.get('id');
       let url = `/tracks/${trackId}/soundcloud_uploads`;
-      return this.get('ajax').request(url, {
+      return this.ajax.request(url, {
         method: 'POST'
       }).then(response => {
         console.log(response);
         if(response.status === 200){
-          this.get('track').set('soundcloudUploadStatus', 'soundcloud_uploading');
+          this.track.set('soundcloudUploadStatus', 'soundcloud_uploading');
         }else{
           get(this, 'flashMessages').danger('Something went wrong!');
         }
@@ -98,7 +98,7 @@ export default Component.extend({
     },
     save(){
       this.set('isSaving', true);
-      var track = this.get('track');
+      var track = this.track;
       var onSuccess = () =>{
         this.set('isEditing', false);
         this.set('isSaving', false);
@@ -115,7 +115,7 @@ export default Component.extend({
     },
     destroy(){
       if(confirm("Are you sure you want to delete this track?")){
-        var track = this.get('track');
+        var track = this.track;
         // FIXME does this get removed from the playlist as well?
         track.destroyRecord();
       }
