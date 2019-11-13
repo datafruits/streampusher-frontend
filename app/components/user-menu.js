@@ -5,11 +5,11 @@ import { computed } from '@ember/object';
 export default Component.extend({
   classNameBindings: ['showingClass'],
   session: service(),
-  showingClass: computed('showing', 'isShowingMobileMenu', function(){
+  showingClass: computed('showing', function(){
     if(this.showing){
-      return "sm:block";
+      return "block";
     }else{
-      return "sm:hidden";
+      return "hidden";
     }
   }),
   actions: {
