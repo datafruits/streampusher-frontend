@@ -4,7 +4,7 @@
       <LinkTo @route="authenticated.dashboard">Dashboard</LinkTo>
     </li>
     <li class="mt-1 hover:bg-gray-800 rounded px-2 py-1">
-      <LinkTo @route="authenticated.playlists">Media</LinkTo>
+      <LinkTo @route="authenticated.playlists.show" @model={{currentRadio.radio.defaultPlaylistId}}>Media</LinkTo>
     </li>
   </ul>
 </nav>
