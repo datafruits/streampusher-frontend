@@ -1,5 +1,5 @@
 import { htmlSafe } from '@ember/template';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import Component from '@ember/component';
@@ -17,7 +17,7 @@ export default Component.extend({
   embedDialog: false,
   isAddingNewPlaylist: computed('playlist.id', function(){
     let playlist = this.playlist;
-    return playlist.get('isNew');
+    return playlist.isNew;
   }),
   didInsertElement(){
     if(!isEmpty($("#app-data").data('connected-accounts'))){
@@ -26,7 +26,7 @@ export default Component.extend({
     }
   },
   uploadProgressStyle: computed('track.roundedUploadProgress', function(){
-    return htmlSafe(`width: ${this.get('track.roundedUploadProgress')}%;`);
+    return htmlSafe(`width: ${this.track.roundedUploadProgress}%;`);
   }),
   actions: {
     addToPlaylist(){
@@ -35,7 +35,7 @@ export default Component.extend({
       let playlist = this.playlist;
       let track = this.track;
       playlist.get('playlistTracks').map(function(playlistTrack){
-        let position = playlistTrack.get('position');
+        let position = playlistTrack.position;
         playlistTrack.set('position', position+1);
       });
       let playlistTrack = store.createRecord('playlist_track', { track: track, playlist: playlist, position: 0, displayName: track.get('displayName') });
@@ -49,7 +49,7 @@ export default Component.extend({
         console.log("error");
         console.log(error);
         this.setIsSyncingPlaylist(false);
-        get(this, 'flashMessages').danger('Something went wrong!');
+        this.flashMessages.danger('Something went wrong!');
       });
     },
     editTrack(){
@@ -76,7 +76,7 @@ export default Component.extend({
         if(response.status === 200){
           this.track.set('mixcloudUploadStatus', 'mixcloud_uploading');
         }else{
-          get(this, 'flashMessages').danger('Something went wrong!');
+          this.flashMessages.danger('Something went wrong!');
         }
       });
 
@@ -98,17 +98,17 @@ export default Component.extend({
     },
     save(){
       this.set('isSaving', true);
-      var track = this.track;
-      var onSuccess = () =>{
+      let track = this.track;
+      const onSuccess = () => {
         this.set('isEditing', false);
         this.set('isSaving', false);
       };
-      var onFail = () =>{
-        console.log("track save failed");
-        get(this, 'flashMessages').danger('Something went wrong!');
+      const onFail = (reason) => {
+        console.log(`track save failed: ${reason}`);
+        this.flashMessages.danger('Something went wrong!');
         this.set('isSaving', false);
       };
-      track.save().then(onSuccess, onFail);
+      track.save().then(onSuccess).catch(onFail);
     },
     cancel(){
       this.set('isEditing', false);

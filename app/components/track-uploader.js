@@ -3,6 +3,7 @@ import S3Uploader from 'ember-uploader/uploaders/s3';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { get } from '@ember/object';
+import ENV from "streampusher-frontend/config/environment";
 
 export default FileField.extend({
   classNames: ['upload'],
@@ -10,14 +11,14 @@ export default FileField.extend({
   flashMessages: service(),
   droppedFile: service(),
   multiple: true,
-  signingUrl: '/uploader_signature',
-  validMimeTypes: ["audio/mp3", "audio/mpeg"],
+  signingUrl: `${ENV.API_HOST}/uploader_signature`,
 
   init() {
     this._super(...arguments);
     this.droppedFile.on('fileWasDropped', e => {
       this.filesDidChange(e);
     });
+    this.set('validMimeTypes', ["audio/mp3", "audio/mpeg"]);
   },
 
   findBaseName: function(url) {
@@ -77,11 +78,11 @@ export default FileField.extend({
             console.log("track saved!");
             get(_this, 'flashMessages').success("Track uploaded!");
           };
-          let onFail = () => {
-            console.log("track save failed");
+          let onFail = (reason) => {
+            console.log(`track save failed: ${reason}`);
             get(_this, 'flashMessages').danger("Sorry, something went wrong uploading this file!");
           };
-          this.track.save().then(onSuccess, onFail);
+          this.track.save().then(onSuccess).catch(onFail);
         });
 
         uploader.on('progress', function(e){

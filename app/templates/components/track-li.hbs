@@ -1,4 +1,4 @@
-<td colspan="3">
+<td colspan="3" class="border-2 border-gray-300">
   {{#if track.isUploading}}
     uploading {{track.audioFileName}}...
     <div class="meter">
@@ -6,14 +6,20 @@
     </div>
 
   {{else}}
-    <div class="flexcontainer">
+    <div class="flex">
       <span class="left uploaded-track-name truncate">{{track.displayName}}</span>
       {{#if track.artwork}}
         <img width="50" height="50" src={{file-url track.artwork 'thumb'}} />
       {{/if}}
-      <a href="{{track.audioFileName}}" class="btn download"><i class="fa fa-download"></i></a>
-      <button {{action 'editTrack'}} class="edit-track btn btn-primary"> <i class="fa fa-pencil"></i></button>
-      <button {{action 'addToPlaylist'}} disabled={{isAddingNewPlaylist}} class="add-track-to-playlist btn btn-success"> <i class="fa fa-plus-circle"></i></button>
+      <button class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded">
+        <a href="{{track.audioFileName}}"><FaIcon @icon="download" /></a>
+      </button>
+      <button {{action 'editTrack'}} class="bg-blue-700 hover:bg-blue-900 text-white px-2 py-2 rounded">
+        <FaIcon @icon="edit" />
+      </button>
+      <button {{action 'addToPlaylist'}} disabled={{isAddingNewPlaylist}} class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded">
+        <FaIcon @icon="plus-circle" />
+      </button>
     </div>
     {{#if isEditing}}
       <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="editTrack">

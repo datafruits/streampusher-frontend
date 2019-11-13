@@ -1,9 +1,13 @@
-<div class>
-  <div class>
-    <TracksList @tracks={{model.tracks}} @playlist={{model.playlist}} @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}} @labels={{model.labels}} />
-    <img class="uploader-icon" src="/assets/uploadericon.png">
-  </div>
-  <div class>
-    <PlaylistTracksList @playlist={{model.playlist}} @playlists={{model.playlists}} @isSyncingPlaylist={{isSyncingPlaylist}} @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}} @transitionAfterDelete={{route-action "transitionAfterDelete"}} />
-  </div>
+<div>
+  <TracksList @tracks={{model.tracks}}
+    @playlist={{model.playlist}}
+    @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
+    @labels={{model.labels}} />
+  <img class="uploader-icon" alt="Upload files" src="/assets/images/uploadericon.png">
 </div>
+<PlaylistTracksList
+  @playlist={{model.playlist}}
+  @playlists={{model.playlists}}
+  @isSyncingPlaylist={{isSyncingPlaylist}}
+  @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
+  @transitionAfterDelete={{route-action "transitionAfterDelete"}} />
