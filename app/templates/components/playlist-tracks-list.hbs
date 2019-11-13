@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6">
     {{#if isEditing}}
-      <span class="playlist-title"><Input @value={{playlist.name}} @enter="save" /></span>
+    <span class="playlist-title"><Input @value={{playlist.name}} @enter={{action "save"}} /></span>
       <button disabled={{v-get playlist 'isInvalid'}} id="save-playlist" class="btn btn-primary" {{action 'save'}}>Save</button>
       <button class="btn" {{action 'cancelEditing'}}>Cancel</button>
       {{#if (v-get playlist 'name' 'isInvalid')}}
