@@ -1,10 +1,10 @@
-<div class="row">
-  <h1 class="tracks-title">Playlists</h1>
+<div class="">
+  <h1 class="text-xl">Playlists</h1>
 </div>
-<div class="row">
-  <div class="col-md-6">
+<div class="flex">
+  <div class="">
     {{#if isEditing}}
-      <span class="playlist-title">
+      <span class="">
         <Input @value={{playlist.name}} @enter={{action "save"}} />
       </span>
       <button disabled={{v-get playlist 'isInvalid'}} id="save-playlist" class="btn btn-primary" {{action 'save'}}>Save</button>
@@ -38,20 +38,20 @@
       Playlist Settings
     </button>
   </div>
-  <div class="col-md-3">
+  <div class="">
     <button {{action 'newPlaylist'}} class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded">
       <FaIcon @icon="plus" />New Playlist
     </button>
   </div>
 </div>
-<div class="playlist-tracks-list">
-  <table class="playlist-tracks table table-bordered">
+<div class="">
+  <table class="">
     <thead>
     </thead>
     <SortableGroup @tagName="tbody" @model={{playlist}} @onChange="reorderItems" as |group|>
       {{#each playlist.sortedPlaylistTracks as |playlistTrack|}}
         <SortableItem @tagName="tr" @model={{playlistTrack}} @group={{group}} @handle=".playlist-track">
-          <PlaylistTrackLi @playlistTrack={{playlistTrack}} />
+          <PlaylistTrackLi @playlistTrack={{playlistTrack}} class="border-2 border-gray-300" />
         </SortableItem>
       {{/each}}
     </SortableGroup>
