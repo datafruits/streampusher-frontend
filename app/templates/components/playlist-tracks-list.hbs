@@ -51,7 +51,8 @@
     <SortableGroup @tagName="tbody" @model={{playlist}} @onChange="reorderItems" as |group|>
       {{#each playlist.sortedPlaylistTracks as |playlistTrack|}}
         <SortableItem @tagName="tr" @model={{playlistTrack}} @group={{group}} @handle=".playlist-track">
-          <PlaylistTrackLi @playlistTrack={{playlistTrack}} class="border-2 border-gray-300" />
+          <PlaylistTrackLi @playlistTrack={{playlistTrack}}
+            class="border-2 border-gray-300 px-2 py-2" />
         </SortableItem>
       {{/each}}
     </SortableGroup>

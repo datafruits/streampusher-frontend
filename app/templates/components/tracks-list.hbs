@@ -32,11 +32,14 @@
     <tbody>
       {{#if isSearching}}
         {{#each filteredResults as |track|}}
-          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}} @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
+          <TrackLi
+          @track={{track}} @playlist={{playlist}} @labels={{labels}}
+          @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
         {{/each}}
       {{else}}
         {{#each sortedTracks as |track|}}
-          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}} @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
+          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}}
+          @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
         {{/each}}
       {{/if}}
     </tbody>
