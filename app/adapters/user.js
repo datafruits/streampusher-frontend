@@ -1,6 +1,9 @@
 import ApplicationAdapter from './application';
 
 export default ApplicationAdapter.extend({
+  urlForFindAll() {
+    return `${this.urlPrefix()}/djs`;
+  },
   urlForQueryRecord(query) {
     if (query.me) {
       delete query.me;
