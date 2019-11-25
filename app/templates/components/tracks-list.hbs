@@ -8,12 +8,6 @@
       <Input class="search-tracks" @autofocus="autofocus" @value={{filterText}} @escape-press={{action "clearSearch"}} placeholder="Search media" />
     </div>
   </div>
-  <div class="col-md-7">
-    <div class="fileUpload btn btn-default">
-      <i class="fa fa-plus"></i>Add
-      <TrackUploader />
-    </div>
-  </div>
 </div>
 <div class="row">
   <div class="col-md-8">
@@ -27,21 +21,23 @@
     </PowerSelectMultiple>
   </div>
 </div>
-<div class="tracks-list">
-  <table class="table table-bordered">
-    <tbody>
-      {{#if isSearching}}
-        {{#each filteredResults as |track|}}
-          <TrackLi
-          @track={{track}} @playlist={{playlist}} @labels={{labels}}
-          @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
-        {{/each}}
-      {{else}}
-        {{#each sortedTracks as |track|}}
-          <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}}
-          @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
-        {{/each}}
-      {{/if}}
-    </tbody>
-  </table>
-</div>
+<TrackUploader>
+  <div class="">
+    <table class="">
+      <tbody>
+        {{#if isSearching}}
+          {{#each filteredResults as |track|}}
+            <TrackLi
+            @track={{track}} @playlist={{playlist}} @labels={{labels}}
+            @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
+          {{/each}}
+        {{else}}
+          {{#each sortedTracks as |track|}}
+            <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}}
+            @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
+          {{/each}}
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</TrackUploader>

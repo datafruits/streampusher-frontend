@@ -1,33 +1,34 @@
-import FileField from 'ember-uploader/components/file-field';
-import S3Uploader from 'ember-uploader/uploaders/s3';
+import Component from '@ember/component';
+//import S3Uploader from 'ember-uploader/uploaders/s3';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { get } from '@ember/object';
 import ENV from "streampusher-frontend/config/environment";
+import fetch from 'fetch';
 
-export default FileField.extend({
-  classNames: ['upload'],
+export default Component.extend({
+  //classNames: ['upload'],
   store: service(),
   flashMessages: service(),
-  droppedFile: service(),
-  multiple: true,
+  //droppedFile: service(),
+  //multiple: true,
   signingUrl: `${ENV.API_HOST}/uploader_signature`,
 
   init() {
     this._super(...arguments);
-    this.droppedFile.on('fileWasDropped', e => {
-      this.filesDidChange(e);
-    });
+    // this.droppedFile.on('fileWasDropped', e => {
+    //   this.filesDidChange(e);
+    // });
     this.set('validMimeTypes', ["audio/mp3", "audio/mpeg"]);
   },
 
-  findBaseName: function(url) {
+  findBaseName(url) {
     var fileName = url.substring(url.lastIndexOf('/') + 1);
     var dot = fileName.lastIndexOf('.');
     return dot === -1 ? fileName : fileName.substring(0, dot);
   },
 
-  filesDidChange: function(files) {
+  filesDidChange(files) {
 
     const store = this.store;
     const _this = this;
@@ -98,6 +99,40 @@ export default FileField.extend({
 
         uploader.upload(files[i]);
       }
+    }
+  },
+  actions: {
+    uploadTrack(file){
+      let track = this.store.createRecord('track', { isUploading: true, audioFileName: file.name, filesize: file.size });
+      let mimeType;
+      if(file.type == "audio/mp3"){
+        mimeType = "audio/mpeg";
+      }else{
+        mimeType = file.type;
+      }
+
+      const headers = {
+        'Content-Type': mimeType,
+        'x-amz-acl': 'public-read'
+      }
+      const params = { name: file.name, size: file.size, type: file.type };
+      const searchParams = new URLSearchParams(Object.entries(params)).toString();
+      fetch(`${this.signingUrl}?${searchParams}`).then(response => response.json()).then((data) => {
+        return file.upload(data.endpoint, { method: 'PUT', headers: headers } );
+      }).then((response) => {
+        console.log(`uploaded: ${response}`);
+        //track.set('audioFileName', this.finalFileName);
+        track.set('isUploading', false);
+        track.save().then(() => {
+          console.log("track saved!");
+          this.flashMessages.success("Track uploaded!");
+        }).catch((reason) => {
+          console.log(`track save failed: ${reason}`);
+          this.flashMessages.danger("Sorry, something went wrong uploading this file!");
+        });
+      }).catch((error) => {
+        console.log(`error: ${error}`);
+      });
     }
   }
 });
