@@ -1,5 +1,14 @@
 <ul role="menu">
-  <li></li>
+  <li class="hover:bg-gray-800 rounded px-2 py-1">
+    <LinkTo @route="authenticated.profile">Your Profile</LinkTo>
+  </li>
+  <li class="hover:bg-gray-800 rounded px-2 py-1">
+    <LinkTo @route="authenticated.settings">Settings</LinkTo>
+  </li>
+  <li class="hover:bg-gray-800 rounded px-2 py-1">
+    <LinkTo @route="authenticated.radio-settings">Radio Settings</LinkTo>
+  </li>
+  <li class="h-1 bg-gray-300"></li>
   <li class="hover:bg-gray-800 rounded px-2 py-1">
     <a href="#" {{action 'logout'}}>Logout</a>
   </li>

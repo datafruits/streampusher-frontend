@@ -16,6 +16,13 @@ Router.map(function() {
     this.route('schedule');
     this.route('djs');
     this.route('podcasts');
+    this.route('vj');
+    this.route('host-applications');
+    this.route('recordings');
+
+    this.route('profile');
+    this.route('settings');
+    this.route('radio-settings');
   });
 });
 
