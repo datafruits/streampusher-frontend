@@ -2,21 +2,41 @@
   <h1 class="mb6 text-center text-xl">Sign in</h1>
 
   <form {{action "signIn" on="submit"}}>
-    <div>
-      <label>Login</label><br>
-      <Input @type="text" @value={{login}} @autofocus={{true}} @autocapitalize="off" />
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="login">
+        Login
+      </label>
+      <Input id="login"
+        placeholder="username or email"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @type="text"
+        @value={{login}}
+        @autofocus={{true}}
+        @autocapitalize="off" />
     </div>
 
-    <div>
-      <label>Password</label><br>
-      <Input @type="password" @autocomplete="off" @value={{password}} />
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="login">
+        Password
+      </label>
+      <Input id="password"
+        placeholder=""
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @type="password"
+        @autocomplete="off"
+        @value={{password}} />
     </div>
 
-    <div>
+    <div class="mb-4">
       <label>Remember Me</label>
       <Input @type="checkbox" @checked={{rememberMe}} />
     </div>
 
-    <div><Input @type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-2 rounded" @value="Login" /></div>
+    <div class="flex items-center justify-between">
+      <Input
+        @type="submit"
+        class="btn cursor-pointer"
+        @value="Login" />
+    </div>
   </form>
 </section>
