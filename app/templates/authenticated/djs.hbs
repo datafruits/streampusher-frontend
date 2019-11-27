@@ -1,0 +1,22 @@
+<table class="">
+  <thead>
+    <th>username</th>
+  </thead>
+  <tbody>
+    {{#each model as |dj|}}
+      <tr>
+        <td>{{ dj.username }}</td>
+        <td>{{ dj.email  }}</td>
+        <td>{{ dj.time_zone }}</td>
+        <td>{{ dj.role }}</td>
+        {{#if current_user.owner? }}
+          <td><LinkTo @route="authenticated.djs.show" @model={{dj}}>Edit</LinkTo></td>
+        {{/if}}
+        {{#if current_user.admin?}}
+        <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
+        <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->
+        {{/if}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
