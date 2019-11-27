@@ -1,9 +1,10 @@
-import DS from 'ember-data';
+import { ActiveModelSerializer } from 'active-model-adapter';
 
-export default DS.JSONAPISerializer.extend({
+export default ActiveModelSerializer.extend({
   modelNameFromPayloadKey(payloadKey){
+    console.log(payloadKey);
     if(payloadKey === 'djs') {
-      return payloadKey;
+      return 'user';
     } else {
      return this._super(payloadKey);
     }
