@@ -1,3 +1,4 @@
+<DjForm />
 <table class="">
   <thead>
     <th>username</th>
@@ -7,7 +8,7 @@
       <tr>
         <td>{{ dj.username }}</td>
         <td>{{ dj.email  }}</td>
-        <td>{{ dj.time_zone }}</td>
+        <td>{{ dj.timeZone }}</td>
         <td>{{ dj.role }}</td>
         {{#if current_user.owner? }}
           <td><LinkTo @route="authenticated.djs.show" @model={{dj}}>Edit</LinkTo></td>

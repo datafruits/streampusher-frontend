@@ -3,5 +3,7 @@ const { Model } = DS;
 
 export default Model.extend({
   username: DS.attr(),
-  role: DS.attr()
+  email: DS.attr(),
+  role: DS.attr(),
+  timeZone: DS.attr(),
 });
