@@ -23,6 +23,12 @@ Router.map(function() {
     this.route('profile');
     this.route('settings');
     this.route('radio-settings');
+
+    this.route('blog-posts', function() {
+      this.route('show', {path: '/:id'});
+    });
+
+    this.route('blog-posts.new', {path: '/blog-posts/new'});
   });
 });
 

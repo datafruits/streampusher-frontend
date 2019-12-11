@@ -1,0 +1,33 @@
+<section>
+  <h1>New Post</h1>
+
+  <form {{action "save" on="submit"}}>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Title
+      </label>
+      <Input id="title"
+        placeholder="Title"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @value={{title}}
+        @type="text"
+        @autofocus={{true}}
+        />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Body
+      </label>
+      <Textarea @value={{body}}
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @cols="80" @rows="6" />
+    </div>
+
+    <div class="flex items-center justify-between">
+      <Input
+        @type="submit"
+        class="btn cursor-pointer"
+        @value="Save" />
+    </div>
+  </form>
+</section>

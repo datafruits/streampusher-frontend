@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 export default Route.extend({
   model() {
-    return this.store.findAll('recording');
+    return this.store.createRecord('blog-post');
   }
 });

@@ -1,0 +1,18 @@
+<section>
+  <h1>Blog Posts</h1>
+  {{!-- >:3 --}}
+  <LinkTo @route="authenticated.blog-posts.new">New</LinkTo>
+  <table class="">
+    <thead>
+      <th>title</th>
+    </thead>
+    <tbody>
+      {{#each model as |blogPost|}}
+      <tr>
+        <td>{{blogPost.title}}</td>
+        <td><LinkTo @route="authenticated.blog-posts.show" @model={{blogPost}}>Edit</LinkTo></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>
