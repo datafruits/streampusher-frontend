@@ -23,6 +23,7 @@ Router.map(function() {
     this.route('profile');
     this.route('settings');
     this.route('radio-settings');
+    this.route('admin');
 
     this.route('blog-posts', function() {
       this.route('show', {path: '/:id'});
