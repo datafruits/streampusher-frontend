@@ -14,8 +14,12 @@ Router.map(function() {
       this.route('show', {path: '/:id'});
     });
     this.route('schedule');
-    this.route('djs');
-    this.route('podcasts');
+    this.route('djs', function() {
+      this.route('show', {path: '/:id'});
+    });
+    this.route('podcasts', function() {
+      this.route('show', {path: '/:id'});
+    });
     this.route('vj');
     this.route('host-applications');
     this.route('recordings');
@@ -25,10 +29,9 @@ Router.map(function() {
     this.route('radio-settings');
     this.route('admin');
 
-    this.route('blog-posts', function() {
-      this.route('show', {path: '/:id'});
-    });
+    this.route('blog-posts');
 
+    this.route('blog-posts.show', {path: '/blog-posts/:id'});
     this.route('blog-posts.new', {path: '/blog-posts/new'});
   });
 });

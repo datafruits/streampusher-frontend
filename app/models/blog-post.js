@@ -5,6 +5,10 @@ const { Model } = DS;
 export default Model.extend({
   blogPostBodies: DS.hasMany('blog-post-body'),
   title: computed('blogPostBodies.[]', function(){
-    return this.blogPostBodies.firstObject.title;
+    if(this.blogPostBodies.length){
+      return this.blogPostBodies.firstObject.title;
+    }else{
+      return "";
+    }
   })
 });

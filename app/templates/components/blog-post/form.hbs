@@ -1,3 +1,13 @@
+<select onchange={{action "setLocale" value="target.value"}}>
+  {{#each locales as |localeChoice|}}
+    <option
+      value={{localeChoice.value}}
+      selected={{eq currentLocale localeChoice.value}}
+    >
+      {{localeChoice.text}}
+    </option>
+  {{/each}}
+</select>
 <form {{action "save" on="submit"}}>
   <div class="mb-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
@@ -6,7 +16,7 @@
     <Input id="title"
       placeholder="Title"
       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @value={{title}}
+      @value={{currentBody.title}}
       @type="text"
       @autofocus={{true}}
       />
@@ -15,10 +25,15 @@
     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
       Body
     </label>
-    <Textarea @value={{body}}
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @cols="80" @rows="6" />
+    <FileUploader @blogPostBody={{currentBody}} @insertImageMarkdown={{action "insertImageMarkdown"}}>
+      <Textarea @value={{currentBody.body}}
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @cols="80" @rows="6" />
+    </FileUploader>
   </div>
+  <div class="mb-4">
+  </div>
+
 
   <div class="flex items-center justify-between">
     <Input
