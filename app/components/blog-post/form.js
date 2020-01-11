@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   currentLocale: 'en',
   store: service(),
+  flashMessages: service(),
   init(){
     this._super(...arguments);
     this.locales = [
@@ -41,8 +42,10 @@ export default Component.extend({
     save(){
       this.currentBody.save().then(() => {
         console.log('saved blog post body');
+        this.flashMessages.success('Saved blog post!');
       }).catch((error) => {
         console.log(`error: ${error}`);
+        this.flashMessages.danger("Couldn't save blog post!");
       });
     },
     insertImageMarkdown(image){

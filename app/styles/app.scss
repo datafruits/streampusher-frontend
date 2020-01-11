@@ -23,7 +23,7 @@
   &.alert-danger {
     @apply bg-red-600 text-white;
   }
-  &.success {
+  &.alert-success {
     @apply bg-green-600 text-white;
   }
 }
