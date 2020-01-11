@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('setup');
   this.route('authenticated', { path: '' }, function() {
     this.route('dashboard');
     this.route('playlists', function() {
