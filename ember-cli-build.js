@@ -4,6 +4,10 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    // 'ember-font-awesome': {
+    //  useScss: true, // for ember-cli-sass
+    // },
+
     postcssOptions: {
       compile: {
         extension: 'scss',
@@ -15,6 +19,8 @@ module.exports = function(defaults) {
             options: {
               includePaths: [
                 'node_modules/ember-power-select',
+                'node_modules/ember-calendar',
+                'node_modules/font-awesome/scss',
               ],
             },
 
