@@ -1,0 +1,16 @@
+<Podcasts::Form />
+<table class="">
+  <thead>
+    <th>name</th>
+    <th>playlist</th>
+  </thead>
+  <tbody>
+    {{#each model as |podcast|}}
+      <tr>
+        <td>{{podcast.name}}</td>
+        <td>{{podcast.playlist.name}}</td>
+        <td><LinkTo @route="authenticated.podcasts.show" @model={{podcast}}>Edit</LinkTo></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
