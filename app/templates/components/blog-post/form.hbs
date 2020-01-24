@@ -1,51 +1,60 @@
-<select onchange={{action "setLocale" value="target.value"}}>
-  {{#each locales as |localeChoice|}}
-    <option
-      value={{localeChoice.value}}
-      selected={{eq currentLocale localeChoice.value}}
-    >
-      {{localeChoice.text}}
-    </option>
-  {{/each}}
-</select>
-<form {{action "save" on="submit"}}>
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-      Title
-    </label>
-    <Input id="title"
-      placeholder="Title"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @value={{currentBody.title}}
-      @type="text"
-      @autofocus={{true}}
+{{#if bodyChangeset}}
+  <select onchange={{action "setLocale" value="target.value"}}>
+    {{#each locales as |localeChoice|}}
+      <option
+        value={{localeChoice.value}}
+        selected={{eq currentLocale localeChoice.value}}
+      >
+        {{localeChoice.text}}
+      </option>
+    {{/each}}
+  </select>
+  <form {{action "save" on="submit"}}>
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{bodyChangeset}}
+        @property="title"
       />
-  </div>
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-      Body
-    </label>
-    <FileUploader @blogPostBody={{currentBody}} @insertImageMarkdown={{action "insertImageMarkdown"}}>
-      <Textarea @value={{currentBody.body}}
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        @cols="80" @rows="6" />
-    </FileUploader>
-  </div>
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="published">
-      Published
-    </label>
-    <Input id="published"
-      @checked={{currentBody.published}}
-      @type="checkbox"
-      />
-  </div>
+    </div>
+    <div class="mb-4">
+      <FileUploader @blogPostBody={{currentBody}} @insertImageMarkdown={{action "insertImageMarkdown"}}>
+        <ValidatedField
+          @type="textarea"
+          @changeset={{bodyChangeset}}
+          @property="body"
+        />
+      </FileUploader>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="published">
+        Published
+      </label>
+      <Input id="published"
+        @checked={{bodyChangeset.published}}
+        @type="checkbox"
+        />
+    </div>
 
-
-  <div class="flex items-center justify-between">
-    <Input
-      @type="submit"
-      class="btn cursor-pointer"
-      @value="Save" />
-  </div>
-</form>
+    <div class="flex items-center justify-between">
+      {{#if bodyChangeset.isValid}}
+        {{#if isSaving}}
+          <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
+        {{else}}
+          <Input
+            @type="submit"
+            class="btn cursor-pointer"
+            @value="Save"
+          />
+        {{/if}}
+      {{else}}
+        <Input
+          @type="submit"
+          class="btn opacity-50 cursor-not-allowed"
+          disabled
+          @value="Save"
+        />
+      {{/if}}
+    </div>
+  </form>
+{{/if}}
