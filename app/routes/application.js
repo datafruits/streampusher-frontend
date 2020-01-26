@@ -3,6 +3,8 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import { inject as service } from '@ember/service';
 
 export default Route.extend(ApplicationRouteMixin, {
+  routeAfterAuthentication: 'authenticated.dashboard',
+  routeIfAlreadyAuthenticated: 'authenticated.dashboard',
   currentUser: service(),
   currentRadio: service(),
 

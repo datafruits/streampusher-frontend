@@ -4,6 +4,7 @@ import ENV from "streampusher-frontend/config/environment";
 import fetch from 'fetch';
 
 export default Component.extend({
+  session: service(),
   store: service(),
   flashMessages: service(),
   signingUrl: `${ENV.API_HOST}/uploader_signature`,
@@ -34,7 +35,12 @@ export default Component.extend({
       }
       const params = { name: file.name, size: file.size, type: file.type };
       const searchParams = new URLSearchParams(Object.entries(params)).toString();
-      fetch(`${this.signingUrl}?${searchParams}`).then(response => response.json()).then((data) => {
+      fetch(`${this.signingUrl}?${searchParams}`, {
+        headers: {
+          'Authorization': `Bearer ${this.session.data.authenticated.token}`
+        }
+      }
+      ).then(response => response.json()).then((data) => {
         return file.upload(data.endpoint, { method: 'PUT', headers: headers } );
       }).then((response) => {
         console.log(`uploaded: ${response}`);

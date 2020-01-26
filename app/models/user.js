@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Model.extend({
   username: DS.attr(),
+  password: DS.attr(),
   email: DS.attr(),
   role: DS.attr(),
   timeZone: DS.attr(),

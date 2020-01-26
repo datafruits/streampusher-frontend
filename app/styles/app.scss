@@ -10,16 +10,39 @@
   @apply shadow bg-purple-600 text-white font-bold py-2 px-2 rounded;
 }
 
-btn:hover {
+.btn:hover {
   @apply bg-purple-500;
 }
 
-btn:focus {
+.btn:focus {
  @apply shadow-outline outline-none;
 }
 
-btn:active {
+.btn:active {
   @apply bg-purple-800;
+}
+
+.flash-message {
+  @apply p-2;
+  &.alert-danger {
+    @apply bg-red-600 text-white;
+  }
+  &.alert-success {
+    @apply bg-green-600 text-white;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: spin 1.5s infinite linear;
 }
 
 @tailwind utilities;

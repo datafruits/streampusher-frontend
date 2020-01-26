@@ -1,16 +1,29 @@
 <section>
-  <h1 class="mb6 text-center text-xl">Sign in</h1>
+  <h1 class="mb6 text-center text-xl">Setup radio</h1>
 
-  <form {{action "signIn" on="submit"}}>
+  <form {{action "submit" on="submit"}}>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="login">
-        Login
+        Email
       </label>
-      <Input id="login"
-        placeholder="username or email"
+      <Input id="email"
+        placeholder="email"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         @type="text"
-        @value={{login}}
+        @value={{email}}
+        @autofocus={{true}}
+        @autocapitalize="off" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="login">
+        Radio Name
+      </label>
+      <Input id="radio-name"
+        placeholder="datafruits.fm"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @type="text"
+        @value={{radioName}}
         @autofocus={{true}}
         @autocapitalize="off" />
     </div>
@@ -27,17 +40,12 @@
         @value={{password}} />
     </div>
 
-    <div class="mb-4">
-      <label>Remember Me</label>
-      <Input @type="checkbox" @checked={{rememberMe}} />
-    </div>
-
     <div class="flex items-center justify-between">
       <Input
         @type="submit"
         class="btn cursor-pointer"
         data-test-submit-button
-        @value="Login" />
+        @value="Create radio" />
     </div>
   </form>
 </section>

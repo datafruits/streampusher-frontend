@@ -15,6 +15,9 @@
   </nav>
 </header>
 <UserMenu @showing={{isShowingUserMenu}} class="bg-black text-white font-semibold absolute right-0" />
+{{#each flashMessages.queue as |flash|}}
+  {{flash-message flash=flash}}
+{{/each}}
 <section class="container h-screen flex justify-start items-stretch">
   {{#if session.isAuthenticated}}
     <SideNavbar

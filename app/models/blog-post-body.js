@@ -5,5 +5,7 @@ export default Model.extend({
   blogPost: DS.belongsTo('blog-post'),
   title: DS.attr(),
   body: DS.attr(),
-  language: DS.attr()
+  language: DS.attr(),
+  published: DS.attr(),
+  publishedAt: DS.attr()
 });
