@@ -41,4 +41,11 @@
   animation: spin 1.5s infinite linear;
 }
 
+button.loading {
+  &:before {
+  }
+  &:after {
+  }
+}
+
 @tailwind utilities;
