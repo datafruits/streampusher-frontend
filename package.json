@@ -27,6 +27,7 @@
     "babel-eslint": "^8.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",
+    "ember-auto-import": "^1.5.3",
     "ember-changeset": "^3.0.0-beta.4",
     "ember-changeset-validations": "^3.0.0-beta.1",
     "ember-classic-decorator": "^1.0.5",
@@ -41,6 +42,7 @@
     "ember-cli-htmlbars-inline-precompile": "^3.0.0",
     "ember-cli-inject-live-reload": "^2.0.1",
     "ember-cli-mirage": "^1.1.6",
+    "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-postcss": "^5.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-template-lint": "^1.0.0-beta.3",
@@ -48,12 +50,15 @@
     "ember-cp-validations": "^4.0.0-beta.9",
     "ember-data": "~3.13.0",
     "ember-data-paperclip": "https://github.com/mcfiredrill/ember-data-paperclip.git",
+    "ember-data-storefront": "^0.17.2",
     "ember-decorators": "^6.1.1",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.7.0",
     "ember-file-upload": "^2.7.1",
     "ember-load-initializers": "^2.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-moment": "^8.0.0",
+    "ember-parachute": "^1.0.2",
     "ember-power-select-with-create": "^0.7.0",
     "ember-qunit": "^4.5.1",
     "ember-resolver": "^5.3.0",
@@ -72,5 +77,9 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
+  },
+  "dependencies": {
+    "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#develop",
+    "jstimezonedetect": "^1.0.7"
   }
 }
