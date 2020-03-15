@@ -15,6 +15,7 @@ Router.map(function() {
       this.route('show', {path: '/:id'});
     });
     this.route('schedule');
+    this.route('show', { path: '/shows/:id' });
     this.route('djs', function() {
       this.route('show', {path: '/:id'});
     });

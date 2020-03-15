@@ -50,6 +50,7 @@
     "ember-cp-validations": "^4.0.0-beta.9",
     "ember-data": "~3.13.0",
     "ember-data-paperclip": "https://github.com/mcfiredrill/ember-data-paperclip.git",
+    "ember-data-storefront": "^0.17.2",
     "ember-decorators": "^6.1.1",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.7.0",
