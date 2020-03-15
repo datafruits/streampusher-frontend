@@ -1,10 +1,10 @@
 import DS from 'ember-data';
+import moment from 'moment';
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
 export default DS.Model.extend({
   tracks: DS.hasMany('track'),
-  startAt: DS.attr(),
-  endAt: DS.attr(),
   start: DS.attr(),
   end: DS.attr(),
   title: DS.attr(),
@@ -19,5 +19,7 @@ export default DS.Model.extend({
   }),
   displayTitle: computed('title', 'formattedDate', function(){
     return `${this.title} - ${this.formattedDate}`;
-  })
+  }),
+  startsAt: alias('start'),
+  endsAt: alias('end')
 });
