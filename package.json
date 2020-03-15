@@ -41,8 +41,8 @@
     "ember-cli-htmlbars": "^4.0.0",
     "ember-cli-htmlbars-inline-precompile": "^3.0.0",
     "ember-cli-inject-live-reload": "^2.0.1",
-    "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-mirage": "^1.1.6",
+    "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-postcss": "^5.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-template-lint": "^1.0.0-beta.3",
@@ -78,7 +78,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#add-marzubovs-fork",
+    "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#develop",
     "jstimezonedetect": "^1.0.7"
   }
 }
