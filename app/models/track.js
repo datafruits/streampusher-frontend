@@ -23,6 +23,7 @@ export default DS.Model.extend({
   soundcloudUploadStatus: DS.attr(),
   soundcloudKey: DS.attr(),
   embedLink: DS.attr(),
+  formattedDuration: DS.attr(),
   isUploading: false,
   uploadProgress: 0,
 

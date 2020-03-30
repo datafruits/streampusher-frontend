@@ -8,6 +8,7 @@
   {{else}}
     <div class="flex">
       <span class="left uploaded-track-name truncate">{{track.displayName}}</span>
+      <span class="">{{track.formattedDuration}}</span>
       {{#if track.artwork}}
         <img width="50" height="50" src={{file-url track.artwork 'thumb'}} />
       {{/if}}
