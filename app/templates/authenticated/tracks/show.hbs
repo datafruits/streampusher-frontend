@@ -4,7 +4,7 @@
   <br>
   <div class="fileUpload btn btn-default">
     <FaIcon @icon="plus" />Replace track
-    {{track-replacer track=model.track}}
+    <TrackReplacer @track={{model.track}} />
   </div>
   {{#if model.track.isUploading}}
     uploading {{track.audioFileName}}...
@@ -17,14 +17,14 @@
     <div class="">
       <label class="" for="title">Title</label>
       <div class="">
-        {{input value=model.track.title class="track-title"}}
+        <Input @value={{model.track.title}} class="track-title" />
       </div>
     </div>
     <div class="control-group">
       {{#if model.track.artwork}}
         <img alt="artwork" width="300" height="300" src={{file-url model.track.artwork 'thumb'}}>
       {{/if}}
-      {{artwork-file-upload file=model.track.artwork filename=model.track.artworkFilename}}
+      <ArtworkFileUpload @file={{model.track.artwork}} @filename={{model.track.artworkFilename}} />
     </div>
     <br>
     <div class="control-group">
@@ -34,31 +34,29 @@
     </div>
   </form>
   <div class="control-group">
-    {{track-labels-select labels=model.labels track=model.track}}
+    <TrackLabelsSelect @labels={{model.labels}} @track={{model.track}} />
   </div>
   <div class="control-group">
     <h4>Link to Scheduled Show</h4>
-    {{#power-select
-      search=(action "searchShows")
-      renderInPlace=true
-      options=model.scheduledShows
-      selected=model.track.scheduledShow
-      onchange=(action 'selectScheduledShow') as |scheduledShow|
-    }}
+    <PowerSelect
+      @search={{action "searchShows"}}
+      @renderInPlace={{true}}
+      @options={{model.scheduledShows}}
+      @selected={{model.track.scheduledShow}}
+      @onChange={{action "selectScheduledShow"}} as |scheduledShow|>
       {{scheduledShow.displayTitle}}
-    {{/power-select}}
+    </PowerSelect>
   </div>
   {{#if isSaving}}
     <div class="spinner">
     </div>
   {{/if}}
   <br>
-  <button {{action "save"}} disabled={{isSaving}} class="btn btn-primary">Save</button>
-  <button {{action 'destroy'}} disabled={{isSaving}} class="delete-track btn btn-danger"><i class="fa fa-trash-o"></i></button>
-  <button {{action 'mixcloud'}} disabled={{isSaving}} class="btn btn-default"><i class="fa fa-mixcloud" aria-hidden="true"></i></button>
-  <button {{action 'soundcloud'}} disabled={{isSaving}} class="btn btn-default"><i class="fa fa-soundcloud" aria-hidden="true"></i></button>
+  <button {{action "save"}} disabled={{isSaving}} class="btn">Save</button>
+  <button {{action "destroy"}} disabled={{isSaving}} class="btn danger"><FaIcon @icon="trash" /></button>
+  <button {{action "mixcloud"}} disabled={{isSaving}} class="btn"><FaIcon @icon="mixcloud" /></button>
+  <button {{action "soundcloud"}} disabled={{isSaving}} class="btn btn-default"><FaIcon @icon="soundcloud" /></button>
 
-  <button {{action 'embed'}} disabled={{isSaving}} class="btn btn-default">Embed</button>
   {{#if mixcloudDialog}}
     {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="mixcloud"}}
       <div class="modal-header">
@@ -88,7 +86,7 @@
       <div class="modal-body">
         Embed code and preview:
         <div>
-          {{input focus-in="focusEmbedCode" id="embed-player-html" type="text" readonly="readonly" value=model.track.embedCode}}
+          <Input @focus-in="focusEmbedCode" @id="embed-player-html" @type="text" @readonly="readonly" @value={{model.track.embedCode}} />
         </div>
         {{{model.track.embedCode}}}
       </div>

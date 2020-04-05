@@ -14,8 +14,8 @@ export default Route.extend({
       return scheduledShows;
     });
     return hash({
-      track: this.store.peekRecord('track', params.id),
-      labels: this.store.peekAll('label'),
+      track: this.store.loadRecord('track', params.id),
+      labels: this.store.loadRecords('label'),
       scheduledShows: scheduledShowsQuery
     });
   }

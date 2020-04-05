@@ -16,10 +16,10 @@ export default Route.extend({
   },
   model(params) {
     return hash({
-      playlist: this.store.findRecord('playlist', params.id),
-      tracks: this.store.findAll('track'),
-      playlists: this.store.findAll('playlist'),
-      labels: this.store.findAll('label')
+      playlist: this.store.loadRecord('playlist', params.id),
+      tracks: this.store.loadRecords('track'),
+      playlists: this.store.loadRecords('playlist'),
+      labels: this.store.loadRecords('label')
     });
   }
 });

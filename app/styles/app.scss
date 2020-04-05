@@ -8,10 +8,16 @@
 
 .btn {
   @apply shadow bg-purple-600 text-white font-bold py-2 px-2 rounded;
+  &.danger {
+    @apply bg-red-600;
+  }
 }
 
 .btn:hover {
   @apply bg-purple-500;
+  &.danger {
+    @apply bg-red-500;
+  }
 }
 
 .btn:focus {
@@ -20,6 +26,9 @@
 
 .btn:active {
   @apply bg-purple-800;
+  &.danger {
+    @apply bg-red-800;
+  }
 }
 
 .flash-message {
