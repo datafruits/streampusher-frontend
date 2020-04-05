@@ -9,8 +9,8 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-8">
+<div class="">
+  <div class="">
     <PowerSelectMultiple
       @placeholder="Search by tag..."
       @options={{@labels}}
@@ -23,13 +23,14 @@
 </div>
 <TrackUploader>
   <div class="">
-    <table class="">
+    <table class="w-full">
       <tbody>
         {{#if isSearching}}
           {{#each filteredResults as |track|}}
             <TrackLi
             @track={{track}} @playlist={{playlist}} @labels={{labels}}
-            @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
+            @setIsSyncingPlaylist={{setIsSyncingPlaylist}}
+            />
           {{/each}}
         {{else}}
           {{#each sortedTracks as |track|}}

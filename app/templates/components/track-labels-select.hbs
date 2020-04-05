@@ -4,6 +4,13 @@
   {{error}}
 {{/if}}
 </div>
-<PowerSelectMultipleWithCreate @options={{labels}} @selected={{track.labels}} @searchField="name" @renderInPlace={{true}} @onchange={{action "setSelectedLabels"}} @oncreate={{action "createTag"}} @showCreateWhen={{action "hideCreateOptionOnSameName"}} as |label|>
+<PowerSelectMultipleWithCreate
+  @options={{labels}}
+  @selected={{track.labels}}
+  @searchField="name"
+  @renderInPlace={{true}}
+  @onchange={{action "setSelectedLabels"}}
+  @onCreate={{action "createTag"}}
+  @showCreateWhen={{action "hideCreateOptionOnSameName"}} as |label|>
   {{label.name}}
 </PowerSelectMultipleWithCreate>

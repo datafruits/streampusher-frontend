@@ -52,9 +52,6 @@ export default Component.extend({
         this.flashMessages.danger('Something went wrong!');
       });
     },
-    editTrack(){
-      this.toggleProperty('isEditing');
-    },
     focusEmbedCode(){
       this.select();
     },

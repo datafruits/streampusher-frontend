@@ -6,21 +6,28 @@
     </div>
 
   {{else}}
-    <div class="flex">
-      <span class="left uploaded-track-name truncate">{{track.displayName}}</span>
-      <span class="">{{track.formattedDuration}}</span>
-      {{#if track.artwork}}
-        <img width="50" height="50" src={{file-url track.artwork 'thumb'}} />
-      {{/if}}
-      <button class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded">
-        <a href="{{track.audioFileName}}"><FaIcon @icon="download" /></a>
-      </button>
-      <button {{action 'editTrack'}} class="bg-blue-700 hover:bg-blue-900 text-white px-2 py-2 rounded">
-        <FaIcon @icon="edit" />
-      </button>
-      <button {{action 'addToPlaylist'}} disabled={{isAddingNewPlaylist}} class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded">
-        <FaIcon @icon="plus-circle" />
-      </button>
+    <div class="flex justify-between">
+      <div>
+        <span class="left uploaded-track-name truncate">{{track.displayName}}</span>
+        <span class="">{{track.formattedDuration}}</span>
+        {{#if track.artwork}}
+          <img width="50" height="50" src={{file-url track.artwork 'thumb'}} />
+        {{/if}}
+      </div>
+      <div>
+        <a class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded"
+          href="{{track.audioFileName}}">
+          <FaIcon @icon="download" />
+        </a>
+        <LinkTo @route="authenticated.tracks.show" @model={{track.id}}>
+          <button class="bg-blue-700 hover:bg-blue-900 text-white px-2 py-2 rounded">
+            <FaIcon @icon="edit" />
+          </button>
+        </LinkTo>
+        <button {{action 'addToPlaylist'}} disabled={{isAddingNewPlaylist}} class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded">
+          <FaIcon @icon="plus-circle" />
+        </button>
+      </div>
     </div>
     {{#if isEditing}}
       <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="editTrack">

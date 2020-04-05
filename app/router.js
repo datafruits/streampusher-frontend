@@ -14,6 +14,9 @@ Router.map(function() {
     this.route('playlists', function() {
       this.route('show', {path: '/:id'});
     });
+    this.route('tracks', function() {
+      this.route('show', {path: '/:id'});
+    });
     this.route('schedule');
     this.route('show', { path: '/shows/:id' });
     this.route('djs', function() {

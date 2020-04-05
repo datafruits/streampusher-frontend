@@ -18,14 +18,14 @@
 {{#each flashMessages.queue as |flash|}}
   {{flash-message flash=flash}}
 {{/each}}
-<section class="container h-screen flex justify-start items-stretch">
+<section class="h-screen flex justify-start items-stretch">
   {{#if session.isAuthenticated}}
     <SideNavbar
       @isShowingMobileMenu={{isShowingMobileMenu}}
       style="z-index: 99"
       class="sm:flex absolute left-0 sm:static bg-black text-white h-screen" />
   {{/if}}
-  <section class="m-4 flex mx-auto">
+  <section class="m-4 flex justify-around w-full">
     {{outlet}}
   </section>
 </section>
