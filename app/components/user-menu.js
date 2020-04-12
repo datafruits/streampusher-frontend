@@ -1,20 +1,26 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
+import { classNameBindings } from '@ember-decorators/component';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Component.extend({
-  classNameBindings: ['showingClass'],
-  session: service(),
-  showingClass: computed('showing', function(){
+@classic
+@classNameBindings('showingClass')
+export default class UserMenu extends Component {
+  @service
+  session;
+
+  @computed('showing')
+  get showingClass() {
     if(this.showing){
       return "block";
     }else{
       return "hidden";
     }
-  }),
-  actions: {
-    logout(){
-      this.session.invalidate();
-    }
   }
-});
+
+  @action
+  logout() {
+    this.session.invalidate();
+  }
+}

@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import { hash } from 'rsvp';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 
-export default Route.extend({
-  model(params){
+@classic
+export default class ShowRoute extends Route {
+  model(params) {
     let start = moment().startOf('month').startOf('week').format('YYYY-MM-DD');
     let end = moment().endOf('month').add(8, 'days').format('YYYY-MM-DD');
     let scheduledShowsQuery = this.store.query('scheduledShow', {
@@ -19,4 +21,4 @@ export default Route.extend({
       scheduledShows: scheduledShowsQuery
     });
   }
-});
+}

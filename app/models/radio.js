@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import DS from 'ember-data';
 const { Model } = DS;
 
-export default Model.extend({
-  defaultPlaylistId: DS.attr(),
-  name: DS.attr()
-});
+@classic
+export default class Radio extends Model {
+  defaultPlaylistId;
+  name;
+}

@@ -1,15 +1,16 @@
-import DS from 'ember-data';
-const { Model } = DS;
-import { computed } from '@ember/object';
+import Model, { attr } from '@ember-data/model';
+import { tracked } from '@glimmer/tracking';
 
-export default Model.extend({
-  username: DS.attr(),
-  password: DS.attr(),
-  email: DS.attr(),
-  role: DS.attr(),
-  timeZone: DS.attr(),
-  bio: DS.attr(),
-  isAdmin: computed('role', function() {
+export default class User extends Model {
+  @attr username;
+  @attr password;
+  @attr email;
+  @attr role;
+  @attr timeZone;
+  @attr bio;
+
+  @tracked role;
+  get isAdmin() {
     return this.role == 'admin';
-  })
-});
+  }
+}

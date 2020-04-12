@@ -1,11 +1,17 @@
-import Route from '@ember/routing/route';
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 import ENV from "streampusher-frontend/config/environment";
 
-export default Route.extend({
-  flashMessages: service(),
-  session: service(),
-  beforeModel(){
+@classic
+export default class SetupRoute extends Route {
+  @service
+  flashMessages;
+
+  @service
+  session;
+
+  beforeModel() {
     if(this.session.isAuthenticated){
       this.transitionTo('authenticated.dashboard');
     }
@@ -21,4 +27,4 @@ export default Route.extend({
       this.transitionTo('login');
     });
   }
-});
+}

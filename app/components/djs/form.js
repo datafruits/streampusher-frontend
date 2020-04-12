@@ -1,25 +1,36 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  store: service(),
-  flashMessages: service(),
+@classic
+export default class Form extends Component {
+  @service
+  store;
+
+  @service
+  flashMessages;
+
+  @tracked dj;
+
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.dj = this.store.createRecord('user');
-  },
+  }
+
   clearForm() {
     this.dj = this.store.createRecord('user');
-  },
-  actions: {
-    save() {
-      this.dj.save().then(() => {
-        this.flashMessages.success('Saved user!');
-        this.clearForm();
-      }).catch((error) => {
-        this.flashMessages.danger("Couldn't save user!");
-        console.log(error);
-      });
-    }
   }
-});
+
+  @action
+  save() {
+    this.dj.save().then(() => {
+      this.flashMessages.success('Saved user!');
+      this.clearForm();
+    }).catch((error) => {
+      this.flashMessages.danger("Couldn't save user!");
+      console.log(error);
+    });
+  }
+}

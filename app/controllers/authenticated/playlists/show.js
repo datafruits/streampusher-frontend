@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  actions: {
-    setIsSyncingPlaylist(val){
-      this.set('isSyncingPlaylist', val);
-    },
+@classic
+export default class ShowController extends Controller {
+  @action
+  setIsSyncingPlaylist(val) {
+    this.set('isSyncingPlaylist', val);
   }
-});
+}

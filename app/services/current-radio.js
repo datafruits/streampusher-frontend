@@ -1,10 +1,15 @@
+import classic from 'ember-classic-decorator';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { resolve } from 'rsvp';
 
-export default Service.extend({
-  session: service(),
-  store: service(),
+@classic
+export default class CurrentRadioService extends Service {
+  @service
+  session;
+
+  @service
+  store;
 
   load() {
     if (this.get('session.isAuthenticated')) {
@@ -15,4 +20,4 @@ export default Service.extend({
       return resolve();
     }
   }
-});
+}

@@ -1,5 +1,6 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from '../mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
-});
+@classic
+export default class AuthenticatedRoute extends Route.extend(AuthenticatedRouteMixin) {}

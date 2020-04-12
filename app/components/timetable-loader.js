@@ -1,23 +1,28 @@
+import classic from 'ember-classic-decorator';
+import { tagName } from '@ember-decorators/component';
+import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 import { task, timeout } from 'ember-concurrency';
-import { inject as service } from '@ember/service';
 import moment from 'moment';
 import jstz from 'jstimezonedetect';
 
-export default Component.extend({
-  store: service(),
-  tagName: '',
+@classic
+@tagName('')
+export default class TimetableLoader extends Component {
+  @service
+  store;
+
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.data = [];
-  },
+  }
 
   didReceiveAttrs() {
     let query = this.query;
     this.fetchData.perform(query);
-  },
+  }
 
-  fetchData: task(function*(query) {
+  @(task(function*(query) {
     yield timeout(1000);
     query.timezone = jstz.determine().name();
     const start = query.start;
@@ -33,5 +38,6 @@ export default Component.extend({
     });
     let resolvedShows = yield shows;
     return this.set('data', resolvedShows);
-  }).restartable()
-});
+  }).restartable())
+  fetchData;
+}

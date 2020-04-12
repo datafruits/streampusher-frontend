@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 import ScheduledShowValidations from '../../validations/scheduled-show';
 
-export default Controller.extend({
-  ScheduledShowValidations
-});
+@classic
+export default class ShowController extends Controller {
+  ScheduledShowValidations = ScheduledShowValidations;
+}

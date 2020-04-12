@@ -1,29 +1,39 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
+import { classNames, tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 
-export default Component.extend({
-  tagName: 'td',
-  classNames: ['track', 'playlist-track'],
-  isEditing: false,
-  actions: {
-    deleteFromPlaylist(){
-      let playlistTrack = this.playlistTrack;
-      playlistTrack.destroyRecord();
-    },
-    editPlaylistTrack(){
-      this.set('isEditing', true);
-    },
-    save(){
-      let playlistTrack = this.playlistTrack;
-      let onSuccess = () =>{
-      };
-      let onFail = () =>{
-        this.flashMessages.danger('Something went wrong!');
-      };
-      playlistTrack.save().then(onSuccess, onFail);
-      this.set('isEditing', false);
-    },
-    cancel(){
-      this.set('isEditing', false);
-    }
+@classic
+@tagName('td')
+@classNames('track', 'playlist-track')
+export default class PlaylistTrackLi extends Component {
+  isEditing = false;
+
+  @action
+  deleteFromPlaylist() {
+    let playlistTrack = this.playlistTrack;
+    playlistTrack.destroyRecord();
   }
-});
+
+  @action
+  editPlaylistTrack() {
+    this.set('isEditing', true);
+  }
+
+  @action
+  save() {
+    let playlistTrack = this.playlistTrack;
+    let onSuccess = () =>{
+    };
+    let onFail = () =>{
+      this.flashMessages.danger('Something went wrong!');
+    };
+    playlistTrack.save().then(onSuccess, onFail);
+    this.set('isEditing', false);
+  }
+
+  @action
+  cancel() {
+    this.set('isEditing', false);
+  }
+}

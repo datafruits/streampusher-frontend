@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import Devise from 'ember-simple-auth/authenticators/devise';
 import ENV from 'streampusher-frontend/config/environment';
 
-export default Devise.extend({
-  serverTokenEndpoint: `${ENV.API_HOST}/users/sign_in`,
-  identificationAttributeName: 'login'
-});
+@classic
+export default class _Devise extends Devise {
+  serverTokenEndpoint = `${ENV.API_HOST}/users/sign_in`;
+  identificationAttributeName = 'login';
+}

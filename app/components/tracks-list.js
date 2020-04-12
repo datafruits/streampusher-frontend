@@ -1,27 +1,32 @@
-import { sort } from '@ember/object/computed';
-//import $ from 'jquery';
+import classic from 'ember-classic-decorator';
+import { classNames, classNameBindings } from '@ember-decorators/component';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { sort } from '@ember/object/computed';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  store: service(),
-  //droppedFile: service(),
-  classNames        : [ 'draggableDropzone' ],
-  classNameBindings : [ 'dragClass' ],
-  dragClass         : 'deactivated',
-  filterText: '',
+@classic
+@classNames('draggableDropzone')
+@classNameBindings('dragClass')
+export default class TracksList extends Component {
+  @service
+  store;
+
+  dragClass = 'deactivated';
+  filterText = '';
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.set('selectedLabels', []);
-  },
+  }
 
-  isSearching: computed('filterText', 'selectedLabels', function() {
+  @computed('filterText', 'selectedLabels')
+  get isSearching() {
     return this.filterText !== "" || this.selectedLabels.length !== 0;
-  }),
+  }
 
-  filteredResults: computed('filterText', 'selectedLabels', function() {
+  @computed('filterText', 'selectedLabels')
+  get filteredResults() {
     let filter = this.filterText;
     let labelIds = this.selectedLabels.map(function(label){
       return parseInt(label.get('id'));
@@ -37,7 +42,7 @@ export default Component.extend({
       }
       return item.get('displayName').toLowerCase().indexOf(filter) !== -1;
     });
-  }),
+  }
 
   // dragLeave(event) {
   //   event.preventDefault();
@@ -65,7 +70,7 @@ export default Component.extend({
   //   event.preventDefault();
   // },
   //
-  sortedTracks: sort('tracks', function(a, b){
+  @sort('tracks', function(a, b){
     if(a.isUploading || b.isUploading){
       if(a.isUploading && b.isUploading){
         return 0;
@@ -82,10 +87,11 @@ export default Component.extend({
         return 1;
       }
     }
-  }),
-  actions: {
-    clearSearch(){
-      this.set('filterText','');
-    }
+  })
+  sortedTracks;
+
+  @action
+  clearSearch() {
+    this.set('filterText','');
   }
-});
+}
