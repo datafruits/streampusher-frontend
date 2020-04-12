@@ -21,5 +21,5 @@ export default DS.Model.extend({
     return `${this.title} - ${this.formattedDate}`;
   }),
   startsAt: alias('start'),
-  endsAt: alias('end')
+  endsAt: alias('end'),
 });

@@ -1,0 +1,11 @@
+<div>
+  <form {{action "save" on="submit"}}>
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{changeset}}
+        @property="title"
+      />
+    </div>
+  </form>
+</div>
