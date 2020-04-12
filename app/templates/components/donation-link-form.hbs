@@ -1,5 +1,9 @@
 <h3>Donation Link</h3>
 <form>
-  <Input @type="text" @value={{url}} />
-  <Input @type="submit" @value="Update" />
+  <Input
+    class="form-input focus:outline-none focus:shadow-outline"
+    @type="text" @value={{url}} />
+  <Input
+    class="btn cursor-pointer"
+    @type="submit" @value="Update" />
 </form>

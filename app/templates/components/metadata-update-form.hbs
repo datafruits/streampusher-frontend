@@ -1,5 +1,9 @@
 <h3>Stream Title</h3>
 <form>
-  <Input @type="text" @value={{title}} />
-  <Input @type="submit" @value="Update" />
+  <Input
+    class="form-input focus:outline-none focus:shadow-outline"
+    @type="text" @value={{title}} />
+  <Input
+    class="btn cursor-pointer"
+    @type="submit" @value="Update" />
 </form>
