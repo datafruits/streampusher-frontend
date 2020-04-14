@@ -1,25 +1,31 @@
-import DS from 'ember-data';
+import Model, { attr, hasMany } from '@ember-data/model';
 import moment from 'moment';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
+import { tracked } from '@glimmer/tracking';
 
-export default DS.Model.extend({
-  tracks: DS.hasMany('track'),
-  start: DS.attr(),
-  end: DS.attr(),
-  title: DS.attr(),
-  imageFilename: DS.attr(),
-  tweetContent: DS.attr(),
-  description: DS.attr(),
-  timezone: DS.attr(),
-  recurringInterval: DS.attr(),
+export default class ScheduledShow extends Model {
+  @hasMany('track') tracks;
+  @attr start;
+  @attr end;
+  @attr title;
+  @attr imageFilename;
+  @attr tweetContent;
+  @attr description;
+  @attr timezone;
+  @attr recurringInterval;
 
-  formattedDate: computed('start', function(){
+  @tracked start;
+  @tracked title;
+
+  get formattedDate() {
     return moment(this.start).format();
-  }),
-  displayTitle: computed('title', 'formattedDate', function(){
+  };
+
+  get displayTitle() {
     return `${this.title} - ${this.formattedDate}`;
-  }),
-  startsAt: alias('start'),
-  endsAt: alias('end'),
-});
+  };
+
+  @alias('start') startsAt;
+  @alias('end') endsAt;
+};

@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
-@classic
 export default class TimetableCalendar extends Component {
   @service
   store;
@@ -35,9 +33,6 @@ export default class TimetableCalendar extends Component {
 
   @action
   calendarClickOccurrence() {}
-
-  @action
-  onTypeChange() {}
 
   @action
   calendarNavigate(event) {
