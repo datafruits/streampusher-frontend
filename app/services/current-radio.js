@@ -1,9 +1,8 @@
-import classic from 'ember-classic-decorator';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { resolve } from 'rsvp';
+import { tracked } from '@glimmer/tracking';
 
-@classic
 export default class CurrentRadioService extends Service {
   @service
   session;
@@ -11,10 +10,12 @@ export default class CurrentRadioService extends Service {
   @service
   store;
 
+  @tracked radio;
+
   load() {
     if (this.get('session.isAuthenticated')) {
       return this.store.queryRecord('radio', { me: true }).then((radio) => {
-        this.set('radio', radio);
+        this.radio = radio;
       });
     } else {
       return resolve();
