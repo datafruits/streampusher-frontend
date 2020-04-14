@@ -1,13 +1,8 @@
-import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-@classic
 export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin) {
-  routeAfterAuthentication = 'authenticated.dashboard';
-  routeIfAlreadyAuthenticated = 'authenticated.dashboard';
-
   @service
   currentUser;
 
