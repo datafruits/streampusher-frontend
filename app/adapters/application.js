@@ -1,11 +1,10 @@
 import ActiveModelAdapter from 'active-model-adapter';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import ENV from "streampusher-frontend/config/environment";
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 
-export default ActiveModelAdapter.extend(AdapterFetch, DataAdapterMixin, {
+export default ActiveModelAdapter.extend(DataAdapterMixin, {
   session: service(),
   host: ENV.API_HOST,
   headers: computed('session.data.authenticated.token', function() {
