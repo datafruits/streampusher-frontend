@@ -81,6 +81,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
+    "@glimmer/component": "^1.0.0",
     "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#develop",
     "jstimezonedetect": "^1.0.7"
   }
