@@ -19,4 +19,12 @@ export default class User extends ApplicationAdapter {
   urlForCreateRecord() {
     return `${this.urlPrefix()}/djs`;
   }
+
+  urlForUpdateRecord(id, modelName, snapshot) {
+    return `${this.urlPrefix()}/djs/${id}`;
+  }
+
+  urlForFindRecord(id, modelName, snapshot) {
+    return `${this.urlPrefix()}/djs/${id}`;
+  }
 }

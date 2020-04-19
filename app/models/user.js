@@ -9,7 +9,7 @@ export default class User extends Model {
   @attr timeZone;
   @attr bio;
 
-  @tracked role;
+  @attr role;
   get isAdmin() {
     return this.role == 'admin';
   }

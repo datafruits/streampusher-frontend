@@ -1,29 +1,4 @@
 <div>
-  <Djs::Form />
-  <table class="">
-    <thead>
-      <th>username</th>
-      <th>email</th>
-      <th>time zone</th>
-      <th>role</th>
-      <th></th>
-    </thead>
-    <tbody>
-      {{#each model as |dj|}}
-        <tr>
-          <td>{{ dj.username }}</td>
-          <td>{{ dj.email  }}</td>
-          <td>{{ dj.timeZone }}</td>
-          <td>{{ dj.role }}</td>
-          {{#if current_user.owner? }}
-            <td><LinkTo @route="authenticated.djs.show" @model={{dj}}>Edit</LinkTo></td>
-          {{/if}}
-          {{#if current_user.admin?}}
-            <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
-            <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->
-          {{/if}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  <Djs::Form @dj={{model.dj}} @save={{action "save"}} />
+  <Djs::Table @djs={{model.djs}} />
 </div>
