@@ -34,6 +34,7 @@ module('Acceptance | djs', function(hooks) {
     assert.equal(document.querySelector(".flash-message.alert-success").textContent.includes("Saved user!"), true);
 
     await click("[data-test-edit-link]");
+    assert.equal(currentURL(), `/djs/1`);
     await fillIn("input#username", "djnameko2");
     await fillIn("input#email", "dj.nameko33@datafruits.fm");
     await click("[data-test-submit-button]");

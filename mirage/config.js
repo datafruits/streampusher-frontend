@@ -36,8 +36,16 @@ export default function() {
   this.get('/djs.json', () => {
     return {djs:[{id:11,username:"firedrill123",email:"mcfiredrill123@gmail.com",time_zone:"Seoul",role:"dj",social_identities:[]}]};
   });
+
   this.post('/djs.json', () => {
     return {user:{id:2,username:"fruitskiki",email:"fruitskiki@gmail.com",time_zone:"Seoul",role:"admin",social_identities:[]}}
   });
+
+  this.put('/djs/:id.json', ({ djs }, request) => {
+    let { id, email, username }  = request.params;
+
+    return {user:{id: id, username: username, email: email,time_zone:"Seoul",role:"admin",social_identities:[]}}
+  });
+
   this.logging = true;
 }
