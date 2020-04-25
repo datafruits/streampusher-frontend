@@ -50,12 +50,17 @@
   <table class="w-full">
     <thead>
     </thead>
-    <SortableGroup @tagName="tbody" @model={{playlist}} @onChange="reorderItems" as |group|>
-      {{#each playlist.sortedPlaylistTracks as |playlistTrack|}}
-        <SortableItem @tagName="tr" @model={{playlistTrack}} @group={{group}} @handle=".playlist-track">
-          <PlaylistTrackLi @playlistTrack={{playlistTrack}}
-            class="border-2 border-gray-300 px-2 py-2" />
-        </SortableItem>
+    <SortableGroup @tagName="tbody" @model={{playlist.sortedPlaylistTracks}} @onChange={{action "reorderItems"}} as |group|>
+      {{#each group.model as |playlistTrack|}}
+      {{#group.item tagName="tr" model=playlistTrack as |groupItem|}}
+        <PlaylistTrackLi @playlistTrack={{playlistTrack}}
+          class="border-2 border-gray-300 px-2 py-2" />
+        {{#groupItem.handle data-test-vertical-demo-handle class="handle"}}
+          <span data-item={{playlistTrack}}>
+            <span>&vArr;</span>
+          </span>
+        {{/groupItem.handle}}
+      {{/group.item}}
       {{/each}}
     </SortableGroup>
   </table>

@@ -5982,10 +5982,10 @@ ember-simple-auth@3.0.0:
     ember-cookies "^0.5.0"
     silent-error "^1.0.0"
 
-ember-sortable@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/ember-sortable/-/ember-sortable-2.0.3.tgz#d7c352a5f229f259f8635813a5e255e7ed7a853b"
-  integrity sha512-QemnaiJye2HGZXYhNuPaBhMLvL+oStqfefBEGUhylLbl23JmiJA+KjQnbtjdG6NJtzQfTYkEeWBV7qejZSaQZA==
+ember-sortable@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/ember-sortable/-/ember-sortable-2.1.3.tgz#af7834b68d70021af171f7cb97a9449054d2fd84"
+  integrity sha512-6aczdWbtTbloHW/kZr8Rr3AlywMy1GDs8q5A+1ka3RapqSuPDPBNCvXlzBLcPJGbnyR/OxV7w1yZO9gR+fCAhQ==
   dependencies:
     ember-cli-babel "^7.1.2"
     ember-cli-htmlbars "^3.0.0"

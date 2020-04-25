@@ -28,7 +28,7 @@ export default class PlaylistTracksList extends Component {
   }
 
   @action
-  reorderItems(groupModel, itemModels, draggedModel) {
+  reorderItems(itemModels, draggedModel) {
     this.setIsSyncingPlaylist(true);
 
     this.get('playlist.playlistTracks').map(function(playlistTrack){
