@@ -15,9 +15,6 @@ export default class ScheduledShow extends Model {
   @attr timezone;
   @attr recurringInterval;
 
-  @tracked start;
-  @tracked title;
-
   get formattedDate() {
     return moment(this.start).format();
   };
