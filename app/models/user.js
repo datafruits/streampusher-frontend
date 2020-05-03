@@ -8,6 +8,7 @@ export default class User extends Model {
   @attr role;
   @attr timeZone;
   @attr bio;
+  @attr profilePublish;
 
   @attr role;
   get isAdmin() {

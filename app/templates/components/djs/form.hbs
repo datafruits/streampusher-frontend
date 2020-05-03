@@ -34,6 +34,13 @@
       @cols="80" @rows="6" />
   </div>
 
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="bio">
+      Publish Profile
+    </label>
+    <Input @type="checkbox" @checked={{dj.profilePublish}} />
+  </div>
+
   <div class="flex items-center justify-between">
     <Input
       @type="submit"
