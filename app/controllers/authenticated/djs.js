@@ -1,9 +1,7 @@
 import Controller from '@ember/controller';
-import { action, computed } from '@ember/object';
-import { or } from '@ember/object/computed';
+import { action } from '@ember/object';
 import QueryParams from 'ember-parachute';
 import { tracked } from '@glimmer/tracking';
-import classic from 'ember-classic-decorator';
 
 export const DjQueryParams = new QueryParams({
   page: {
@@ -16,12 +14,7 @@ export const DjQueryParams = new QueryParams({
   }
 });
 
-@classic
 export default class DjsController extends Controller.extend(DjQueryParams.Mixin) {
-  // @or('queryParamsState.{page,query}.changed')
-  // queryParamsChanged;
-
-  //@computed('query', 'page')
   @tracked query;
   @tracked page;
   get searchParams() {
