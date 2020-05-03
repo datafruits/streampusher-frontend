@@ -17,6 +17,21 @@ module('Acceptance | djs', function(hooks) {
 
     assert.equal(currentURL(), '/djs');
   });
+  test('search djs by username', async function(assert) {
+    await authenticateSession();
+    await visit('/djs');
+    await fillIn("input#username", "djnameko");
+    await fillIn("input#email", "dj.nameko@datafruits.fm");
+    await click("[data-test-submit-button]");
+    assert.equal(document.querySelector(".flash-message.alert-success").textContent.includes("Saved user!"), true);
+    await fillIn("input#username", "cheese monster");
+    await fillIn("input#email", "cheese@datafruits.fm");
+    await click("[data-test-submit-button]");
+    assert.equal(document.querySelector(".flash-message.alert-success").textContent.includes("Saved user!"), true);
+
+    await fillIn("input#search", "cheese");
+    assert.equal(document.querySelector("[data-test-djs-table] tbody tr td").textContent.includes("cheese monster"), true);
+  });
   test('add new dj', async function(assert) {
     await authenticateSession();
     await visit('/djs');

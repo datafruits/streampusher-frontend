@@ -1281,7 +1281,7 @@
     ember-cli-babel "^6.16.0"
     ember-compatibility-helpers "^1.1.1"
 
-"@ember/render-modifiers@^1.0.0":
+"@ember/render-modifiers@^1.0.0", "@ember/render-modifiers@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@ember/render-modifiers/-/render-modifiers-1.0.2.tgz#2e87c48db49d922ce4850d707215caaac60d8444"
   integrity sha512-6tEnHl5+62NTSAG2mwhGMFPhUrJQjoVqV+slsn+rlTknm2Zik+iwxBQEbwaiQOU1FUYxkS8RWcieovRNMR8inQ==
@@ -5627,6 +5627,15 @@ ember-concurrency@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-1.1.2.tgz#73de1f3e41b983af531a17596853ed9614c24107"
   integrity sha512-GiASMU4GH4yDALR3vbAl6THYXSv+XUzjcF+4uPMgw1VxQmSde/oXTFdz/Z9QMetJ7Hhz7nYQcknWj471Lg9aEg==
+  dependencies:
+    ember-cli-babel "^7.7.3"
+    ember-compatibility-helpers "^1.2.0"
+    ember-maybe-import-regenerator "^0.1.6"
+
+ember-concurrency@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-1.1.7.tgz#b3f0c0478db1096503499d39e1b263c575cd52ef"
+  integrity sha512-PtEJvB4wG8e5CEHRC9ILl2BxF6U/xlMOhfCji/x7FxNFB9M230Du86LAy+4/yOozZHyoARVuazABPUj02P+DmQ==
   dependencies:
     ember-cli-babel "^7.7.3"
     ember-compatibility-helpers "^1.2.0"

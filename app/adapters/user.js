@@ -16,6 +16,10 @@ export default class User extends ApplicationAdapter {
     return super.urlForQueryRecord(...arguments);
   }
 
+  urlForQuery(query){
+    return `${this.urlPrefix()}/djs`;
+  }
+
   urlForCreateRecord() {
     return `${this.urlPrefix()}/djs`;
   }

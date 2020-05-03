@@ -1,4 +1,7 @@
-<table class="">
+<Djs::Search
+  @search={{@updateSearch}}
+  @filterText={{@searchParams.query}} />
+<table class="" data-test-djs-table>
   <thead>
     <th>username</th>
     <th>email</th>
@@ -7,24 +10,32 @@
     <th></th>
   </thead>
   <tbody>
-    {{#each this.savedDjs as |dj|}}
-    <tr>
-      <td>{{ dj.username }}</td>
-      <td>{{ dj.email  }}</td>
-      <td>{{ dj.timeZone }}</td>
-      <td>{{ dj.role }}</td>
-      {{#if currentUser.user.isAdmin}}
-        <td>
-          <LinkTo @route="authenticated.djs.show" @model={{dj}} data-test-edit-link>
-            Edit
-          </LinkTo>
-        </td>
+    <Djs::Loader @query={{@searchParams}} as |loader|>
+      {{#if loader.isRunning}}
+        <p>
+          Loading...
+        </p>
+      {{else}}
+        {{#each loader.data as |dj|}}
+          <tr>
+            <td>{{ dj.username }}</td>
+            <td>{{ dj.email  }}</td>
+            <td>{{ dj.timeZone }}</td>
+            <td>{{ dj.role }}</td>
+            {{#if currentUser.user.isAdmin}}
+              <td>
+                <LinkTo @route="authenticated.djs.show" @model={{dj}} data-test-edit-link>
+                  Edit
+                </LinkTo>
+              </td>
+            {{/if}}
+            {{#if currentUser.user.isAdmin}}
+              <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
+                <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->
+            {{/if}}
+          </tr>
+        {{/each}}
       {{/if}}
-      {{#if currentUser.user.isAdmin}}
-        <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
-          <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->
-      {{/if}}
-    </tr>
-    {{/each}}
+    </Djs::Loader>
   </tbody>
 </table>
