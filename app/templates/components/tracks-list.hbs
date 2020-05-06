@@ -25,19 +25,25 @@
   <div class="">
     <table class="w-full">
       <tbody>
-        {{#if isSearching}}
-          {{#each filteredResults as |track|}}
-            <TrackLi
-            @track={{track}} @playlist={{playlist}} @labels={{labels}}
-            @setIsSyncingPlaylist={{setIsSyncingPlaylist}}
-            />
-          {{/each}}
-        {{else}}
-          {{#each sortedTracks as |track|}}
-            <TrackLi @track={{track}} @playlist={{playlist}} @labels={{labels}}
-            @setIsSyncingPlaylist={{setIsSyncingPlaylist}} />
-          {{/each}}
-        {{/if}}
+        <Tracks::Loader @query={{@searchParams}} as |loader|>
+          {{#if loader.isRunning}}
+            <p>
+              Loading...
+            </p>
+          {{else}}
+            {{#each loader.data as |track|}}
+                <TrackLi
+                  @track={{track}}
+                  @playlist={{playlist}}
+                  @labels={{labels}}
+                  @setIsSyncingPlaylist={{setIsSyncingPlaylist}}
+                />
+            {{else}}
+              No result.
+            {{/each}}
+            <Pagination @meta={{loader.data.meta}} @route="authenticated.playlists.show" />
+          {{/if}}
+        </Tracks::Loader>
       </tbody>
     </table>
   </div>

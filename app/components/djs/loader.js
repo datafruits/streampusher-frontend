@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { task, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object'
-import classic from 'ember-classic-decorator';
 
 export default class DjsLoader extends Component {
   @service
@@ -12,7 +11,6 @@ export default class DjsLoader extends Component {
 
   @action
   performTask(){
-    console.log(`in perform task: ${this.query}`);
     let query = this.query;
     this.fetchData.perform(query);
   }
