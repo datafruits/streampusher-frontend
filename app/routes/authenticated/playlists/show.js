@@ -21,7 +21,7 @@ export default class ShowRoute extends Route {
   model(params) {
     return hash({
       playlist: this.store.loadRecord('playlist', params.id),
-      tracks: this.store.loadRecords('track'),
+      tracks: this.store.findAll('track'),
       playlists: this.store.loadRecords('playlist'),
       labels: this.store.loadRecords('label')
     });

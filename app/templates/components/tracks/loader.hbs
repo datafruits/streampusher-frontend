@@ -1,3 +1,4 @@
 <span {{did-insert this.performTask @query}}></span>
 <span {{did-update this.performTask @query}}></span>
+<span {{did-update this.tracksChanged @tracks}}></span>
 {{yield (hash isRunning=this.fetchData.isRunning data=this.data)}}

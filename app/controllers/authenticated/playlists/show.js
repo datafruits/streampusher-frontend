@@ -27,4 +27,11 @@ export default class ShowController extends Controller.extend(PlaylistQueryParam
   setIsSyncingPlaylist(val) {
     this.isSyncingPlaylist = val;
   }
+
+  @action
+  updateSearch(query) {
+    console.log(`in updateSearch in controller: ${query}`);
+    this.query = query;
+    this.page = 1;
+  }
 }

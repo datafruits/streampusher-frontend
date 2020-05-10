@@ -4,8 +4,9 @@
 <div class="">
   <div class="">
     <div class="">
-      <FaIcon @icon="search" />
-      <Input class="search-tracks" @autofocus="autofocus" @value={{filterText}} @escape-press={{action "clearSearch"}} placeholder="Search media" />
+      <Tracks::Search
+        @search={{@updateSearch}}
+        @filterText={{@searchParams.query}} />
     </div>
   </div>
 </div>
@@ -25,7 +26,7 @@
   <div class="">
     <table class="w-full">
       <tbody>
-        <Tracks::Loader @query={{@searchParams}} as |loader|>
+        <Tracks::Loader @query={{@searchParams}} @tracks={{@tracks}} as |loader|>
           {{#if loader.isRunning}}
             <p>
               Loading...

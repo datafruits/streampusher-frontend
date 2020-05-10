@@ -1,5 +1,6 @@
 <div class="w-1/2 mx-2">
   <TracksList @tracks={{model.tracks}}
+    @updateSearch={{action "updateSearch"}}
     @playlist={{model.playlist}}
     @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
     @labels={{model.labels}}

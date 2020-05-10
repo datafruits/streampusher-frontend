@@ -15,6 +15,12 @@ export default class TracksLoaderComponent extends Component {
     this.fetchData.perform(query);
   }
 
+  @action
+  tracksChanged() {
+    console.log('in tracksChanged');
+    this.set('data', this.tracks);
+  }
+
   @(task(function*(query) {
     yield timeout(1000);
     let tracks = this.store.query('track', {
