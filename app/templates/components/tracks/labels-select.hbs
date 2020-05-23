@@ -9,7 +9,7 @@
   @selected={{track.labels}}
   @searchField="name"
   @renderInPlace={{true}}
-  @onchange={{action "setSelectedLabels"}}
+  @onChange={{action "setSelectedLabels"}}
   @onCreate={{action "createTag"}}
   @showCreateWhen={{action "hideCreateOptionOnSameName"}} as |label|>
   {{label.name}}
