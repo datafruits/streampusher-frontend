@@ -57,7 +57,7 @@
               Last updated at: {{track.updatedAt}}
             </div>
             <div class="control-group">
-              <TrackLabelsSelect @labels={{labels}} @track={{track}} />
+              <Tracks::LabelsSelect @labels={{labels}} @track={{track}} />
             </div>
             {{#if isSaving}}
               <div class="spinner">

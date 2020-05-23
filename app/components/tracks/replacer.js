@@ -1,9 +1,9 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import TrackUploaderComponent from './track-uploader';
+import TracksUploaderComponent from './uploader';
 
 @classic
-export default class TrackReplacer extends TrackUploaderComponent {
+export default class TracksReplacer extends TracksUploaderComponent {
   @action
   uploadTrack(file) {
     window.onbeforeunload = function(e) {

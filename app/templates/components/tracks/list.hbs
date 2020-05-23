@@ -22,7 +22,7 @@
     </PowerSelectMultiple>
   </div>
 </div>
-<TrackUploader>
+<Tracks::Uploader>
   <div class="">
     <table class="w-full">
       <tbody>
@@ -33,7 +33,7 @@
             </p>
           {{else}}
             {{#each loader.data as |track|}}
-                <TrackLi
+                <Tracks::Track
                   @track={{track}}
                   @playlist={{playlist}}
                   @labels={{labels}}
@@ -48,4 +48,4 @@
       </tbody>
     </table>
   </div>
-</TrackUploader>
+</Tracks::Uploader>

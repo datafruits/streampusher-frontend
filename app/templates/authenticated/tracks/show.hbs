@@ -4,7 +4,7 @@
   <br>
   <div class="fileUpload btn btn-default">
     <FaIcon @icon="plus" />Replace track
-    <TrackReplacer @track={{model.track}} />
+    <Tracks::Replacer @track={{model.track}} />
   </div>
   {{#if model.track.isUploading}}
     uploading {{track.audioFileName}}...
@@ -34,7 +34,7 @@
     </div>
   </form>
   <div class="control-group">
-    <TrackLabelsSelect @labels={{model.labels}} @track={{model.track}} />
+    <Tracks::LabelsSelect @labels={{model.labels}} @track={{model.track}} />
   </div>
   <div class="control-group">
     <h4>Link to Scheduled Show</h4>

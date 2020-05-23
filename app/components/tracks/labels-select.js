@@ -4,7 +4,7 @@ import { get, action } from '@ember/object';
 import Component from '@ember/component';
 
 @classic
-export default class TrackLabelsSelect extends Component {
+export default class TracksLabelsSelect extends Component {
   @service
   flashMessages;
 
