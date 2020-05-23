@@ -1,19 +1,20 @@
 <div class="w-1/2 mx-2">
-  <TracksList @tracks={{model.tracks}}
+  <Tracks::List
     @updateSearch={{action "updateSearch"}}
     @playlist={{model.playlist}}
     @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
     @labels={{model.labels}}
-    @searchParams={{this.searchParams}}
+    @searchParams={{this.tracksSearchParams}}
     />
   <img class="uploader-icon hidden absolute top-0 left-0" alt="Upload files" src="/assets/images/uploadericon.png">
 </div>
 <div class="w-1/2 mx-2">
-  <PlaylistTracksList
+  <Playlists::TracksList
     @playlist={{model.playlist}}
     @playlists={{model.playlists}}
     @isSyncingPlaylist={{isSyncingPlaylist}}
     @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
     @transitionAfterDelete={{route-action "transitionAfterDelete"}}
+    @searchParams={{this.playlistsSearchParams}}
     />
 </div>

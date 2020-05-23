@@ -6,7 +6,7 @@ import Component from '@ember/component';
 @classic
 @tagName('td')
 @classNames('track', 'playlist-track')
-export default class PlaylistTrackLi extends Component {
+export default class PlaylistsTrack extends Component {
   isEditing = false;
 
   @action
