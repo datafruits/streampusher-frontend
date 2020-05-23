@@ -4,7 +4,11 @@ import { tracked } from '@glimmer/tracking';
 import QueryParams from 'ember-parachute';
 
 export const PlaylistQueryParams = new QueryParams({
-  page: {
+  tracksPage: {
+    defaultValue: 1,
+    refresh: true
+  },
+  playlistsPage: {
     defaultValue: 1,
     refresh: true
   },
@@ -17,9 +21,14 @@ export const PlaylistQueryParams = new QueryParams({
 
 export default class ShowController extends Controller.extend(PlaylistQueryParams.Mixin) {
   @tracked query;
-  @tracked page;
-  get searchParams() {
-    return { query: this.query, page: this.page };
+  @tracked tracksPage;
+  @tracked playlistsPage;
+  get tracksSearchParams() {
+    return { query: this.query, page: this.tracksPage };
+  }
+
+  get playlistsSearchParams() {
+    return { query: this.query, playlistsPage: this.playlistsPage };
   }
 
   @tracked isSyncingPlaylist = false;
@@ -32,6 +41,7 @@ export default class ShowController extends Controller.extend(PlaylistQueryParam
   updateSearch(query) {
     console.log(`in updateSearch in controller: ${query}`);
     this.query = query;
-    this.page = 1;
+    this.tracksPage = 1;
+    this.playlistsPage = 1;
   }
 }
