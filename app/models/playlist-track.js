@@ -6,6 +6,7 @@ export default DS.Model.extend({
   title: DS.attr(),
   position: DS.attr(),
   playlist: DS.belongsTo('playlist'),
-  track: DS.belongsTo('track'),
-  updatedAt: DS.attr('date')
+  track: DS.belongsTo('track', { async: false }),
+  updatedAt: DS.attr('date'),
+  formattedDuration: DS.attr(),
 });
