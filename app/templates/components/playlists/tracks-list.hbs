@@ -15,15 +15,15 @@
         </div>
       {{/if}}
     {{else}}
-      <span class="playlist-title" {{action 'editPlaylist'}}>{{playlist.name}}</span>
+      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{playlist.name}}</span>
     {{/if}}
     {{#if (not isEditing)}}
-      <span id="playlist-selector" {{action 'selectPlaylist'}}>
+      <span id="playlist-selector" {{on "click" this.selectPlaylist}}>
         <FaIcon @icon="chevron-down" />
       </span>
-      <div class="playlists-selector-container">
+      <div class="">
         {{#if isSelectingPlaylist}}
-          <div class="playlists-menu" {{action "selectPlaylist"}}>
+          <div class="" {{on "click" this.selectPlaylist}}>
             {{#each playlists as |selectablePlaylist|}}
               <span class="playlist-title"><LinkTo @route="authenticated.playlists.show" @model={{selectablePlaylist.id}}>{{selectablePlaylist.name}}</LinkTo></span>
               <br/>
