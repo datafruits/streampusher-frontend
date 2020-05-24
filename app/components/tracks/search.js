@@ -1,11 +1,12 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { debounce } from '@ember/runloop';
 
 export default class TracksSearchComponent extends Component {
   @action
   updateSearch(event){
     const query = event.target.value;
-    this.args.search(query);
+    debounce(this, this.args.search, query, 500);
   }
 
   @action
