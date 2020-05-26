@@ -42,6 +42,7 @@
   <div class="mb-4">
     <h4 class="block text-gray-700 text-sm font-bold mb-2">Link to Scheduled Show</h4>
     <PowerSelect
+      @searchEnabled={{true}}
       @search={{action "searchShows"}}
       @renderInPlace={{true}}
       @options={{model.scheduledShows}}
