@@ -8,10 +8,6 @@
   {{else if queue.files.length}}
     Uploading {{queue.files.length}} files. ({{queue.progress}}%)
   {{else}}
-      {{#if dropzone.supported}}
-        Drag and drop a file onto this area to upload
-      {{/if}}
-      <br/>
       <FileUpload @name="tracks"
                   accept="audio/*"
                   multiple="true"
@@ -19,6 +15,10 @@
                   @onfileadd={{action "uploadTrack"}}>
         <FaIcon @icon="plus" />Replace track
       </FileUpload>
+      <br/>
+      {{#if dropzone.supported}}
+        Drag and drop a file onto this area to upload
+      {{/if}}
   {{/if}}
 
   {{yield}}
