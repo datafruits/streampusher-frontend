@@ -25,23 +25,27 @@
 <Tracks::Uploader>
   <div class="">
     <table class="w-full">
-      <tbody>
+      <tbody class="">
         <Tracks::Loader @query={{@searchParams}} @tracks={{@tracks}} as |loader|>
           {{#if loader.isRunning}}
-            <p>
-              Loading...
-            </p>
+            <div class="h-64 overflow-y-scroll">
+              <p>
+                Loading...
+              </p>
+            </div>
           {{else}}
-            {{#each loader.data as |track|}}
+            <div class="h-64 overflow-y-scroll">
+              {{#each loader.data as |track|}}
                 <Tracks::Track
                   @track={{track}}
                   @playlist={{playlist}}
                   @labels={{labels}}
                   @setIsSyncingPlaylist={{setIsSyncingPlaylist}}
                 />
-            {{else}}
-              No result.
-            {{/each}}
+              {{else}}
+                No result.
+              {{/each}}
+            </div>
             <Pagination @meta={{loader.data.meta}} @route="authenticated.playlists.show" />
           {{/if}}
         </Tracks::Loader>

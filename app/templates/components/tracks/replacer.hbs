@@ -9,13 +9,15 @@
     Uploading {{queue.files.length}} files. ({{queue.progress}}%)
   {{else}}
       {{#if dropzone.supported}}
-        Drag and drop images onto this area to upload them or
+        Drag and drop a file onto this area to upload
       {{/if}}
+      <br/>
       <FileUpload @name="tracks"
                   accept="audio/*"
                   multiple="true"
+                  class="btn btn-default"
                   @onfileadd={{action "uploadTrack"}}>
-        <a class=""><FaIcon @icon="plus" />Add</a>
+        <FaIcon @icon="plus" />Replace track
       </FileUpload>
   {{/if}}
 

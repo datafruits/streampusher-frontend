@@ -2,8 +2,7 @@
   <h4 class="" id="">Edit Track - {{model.track.title}}</h4>
   {{model.track.audioFileName}}
   <br>
-  <div class="fileUpload btn btn-default">
-    <FaIcon @icon="plus" />Replace track
+  <div class="">
     <Tracks::Replacer @track={{model.track}} />
   </div>
   {{#if model.track.isUploading}}
@@ -12,32 +11,36 @@
       <span style="{{uploadProgressStyle}}"></span>
     </div>
   {{/if}}
-  <span>Uploaded by: </span><b>{{model.track.uploadedBy}}</b>
+  <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded by: </span><b>{{model.track.uploadedBy}}</b>
   <form class="">
-    <div class="">
-      <label class="" for="title">Title</label>
-      <div class="">
-        <Input @value={{model.track.title}} class="track-title" />
-      </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Title</label>
+      <Input
+        @value={{model.track.title}}
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
     </div>
-    <div class="control-group">
+    <div class="">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="artwork">
+        Artwork
+      </label>
       {{#if model.track.artwork}}
         <img alt="artwork" width="300" height="300" src={{file-url model.track.artwork 'thumb'}}>
       {{/if}}
       <ArtworkFileUpload @file={{model.track.artwork}} @filename={{model.track.artworkFilename}} />
     </div>
     <br>
-    <div class="control-group">
+    <div class="mb-4">
       Uploaded at: {{model.track.createdAt}}
       <br>
       Last updated at: {{model.track.updatedAt}}
     </div>
   </form>
-  <div class="control-group">
+  <div class="mb-4">
     <Tracks::LabelsSelect @labels={{model.labels}} @track={{model.track}} />
   </div>
-  <div class="control-group">
-    <h4>Link to Scheduled Show</h4>
+  <div class="mb-4">
+    <h4 class="block text-gray-700 text-sm font-bold mb-2">Link to Scheduled Show</h4>
     <PowerSelect
       @search={{action "searchShows"}}
       @renderInPlace={{true}}
