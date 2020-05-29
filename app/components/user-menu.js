@@ -7,8 +7,9 @@ import Component from '@ember/component';
 @classic
 @classNameBindings('showingClass')
 export default class UserMenu extends Component {
-  @service
-  session;
+  @service session;
+
+  @service currentUser;
 
   @computed('showing')
   get showingClass() {

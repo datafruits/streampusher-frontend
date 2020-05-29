@@ -5,10 +5,12 @@
   <li class="hover:bg-gray-800 rounded px-2 py-1">
     <LinkTo @route="authenticated.settings">Settings</LinkTo>
   </li>
-  <li class="hover:bg-gray-800 rounded px-2 py-1">
-    <LinkTo @route="authenticated.radio-settings">Radio Settings</LinkTo>
-  </li>
-  {{#if session.currentUser.isAdmin}}
+  {{#if currentUser.user.isAdmin}}
+    <li class="hover:bg-gray-800 rounded px-2 py-1">
+      <LinkTo @route="authenticated.radio-settings">Radio Settings</LinkTo>
+    </li>
+  {{/if}}
+  {{#if currentUser.user.isAdmin}}
     <li class="hover:bg-gray-800 rounded px-2 py-1">
       <LinkTo @route="authenticated.admin">Admin</LinkTo>
     </li>

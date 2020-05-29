@@ -12,6 +12,6 @@ export default class User extends Model {
 
   @attr role;
   get isAdmin() {
-    return this.role == 'admin';
+    return this.role.includes('admin');
   }
 }
