@@ -38,15 +38,15 @@
               {{#each loader.data as |track|}}
                 <Tracks::Track
                   @track={{track}}
-                  @playlist={{playlist}}
-                  @labels={{labels}}
-                  @setIsSyncingPlaylist={{setIsSyncingPlaylist}}
+                  @playlist={{@playlist}}
+                  @labels={{@labels}}
+                  @setIsSyncingPlaylist={{@setIsSyncingPlaylist}}
                 />
               {{else}}
                 No result.
               {{/each}}
             </div>
-            <Pagination @meta={{loader.data.meta}} @route="authenticated.playlists.show" />
+            <Pagination @meta={{loader.data.meta}} @route="authenticated.playlists.show" @paramName="tracksPage" />
           {{/if}}
         </Tracks::Loader>
       </tbody>

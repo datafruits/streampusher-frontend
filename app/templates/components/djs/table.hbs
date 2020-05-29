@@ -37,7 +37,7 @@
         {{else}}
           No result.
         {{/each}}
-        <Pagination @meta={{loader.data.meta}} @route="authenticated.djs" />
+        <Pagination @meta={{loader.data.meta}} @route="authenticated.djs" @paramName="page"/>
       {{/if}}
     </Djs::Loader>
   </tbody>

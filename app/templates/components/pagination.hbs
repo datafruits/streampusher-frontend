@@ -2,7 +2,7 @@
   <span class="pagination">
     <LinkTo
       @route={{@route}}
-      @query={{hash tracksPage=(dec @meta.page)}}
+      @query={{pagination-query @paramName (dec @meta.page)}}
     >
       Previous
     </LinkTo>
@@ -13,7 +13,7 @@
     {{number}}
   {{else}}
     <span class="pagination">
-      <LinkTo @route={{@route}} @query={{hash tracksPage=number}}>
+      <LinkTo @route={{@route}} @query={{pagination-query @paramName number}}>
         {{number}}
       </LinkTo>
     </span>
@@ -23,7 +23,7 @@
   <span class="pagination">
     <LinkTo
       @route={{@route}}
-      @query={{hash tracksPage=(inc @meta.page)}}
+      @query={{pagination-query @paramName (inc @meta.page)}}
     >
       Next
     </LinkTo>
