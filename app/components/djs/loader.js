@@ -16,7 +16,6 @@ export default class DjsLoader extends Component {
   }
 
   @(task(function*(query) {
-    console.log('in fetchData');
     yield timeout(1000);
     let djs = this.store.query('user', {
         page: query.page,

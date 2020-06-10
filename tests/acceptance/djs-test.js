@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, fillIn, click } from '@ember/test-helpers';
+import { visit, currentURL, fillIn, click, triggerKeyEvent } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -29,7 +29,12 @@ module('Acceptance | djs', function(hooks) {
     await click("[data-test-submit-button]");
     assert.equal(document.querySelector(".flash-message.alert-success").textContent.includes("Saved user!"), true);
 
-    await fillIn("input#search", "cheese");
+    await fillIn("[data-test-djs-search]", "doesnt exist");
+    await triggerKeyEvent("[data-test-djs-search]", "keyup", "Up");
+    assert.equal(document.querySelector("[data-test-djs-table] tbody").textContent.includes("No result"), true);
+
+    await fillIn("[data-test-djs-search]", "cheese");
+    await triggerKeyEvent("[data-test-djs-search]", "keyup", "Up");
     assert.equal(document.querySelector("[data-test-djs-table] tbody tr td").textContent.includes("cheese monster"), true);
   });
   test('add new dj', async function(assert) {

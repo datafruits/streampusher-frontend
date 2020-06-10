@@ -30,15 +30,27 @@ export default function() {
     return {radio:{id:1,default_playlist_id:1}};
   });
   this.get('/users/current_user.json', () => {
-    return {user:{id:1,username:"datafruits",email:"mcfiredrill@gmail.com",time_zone:"Seoul",role:"admin",social_identities:[]}}
+    return {user:{id:11,username:"datafruits",email:"mcfiredrill@gmail.com",time_zone:"Seoul",role:"admin",social_identities:[]}}
   });
 
-  this.get('/djs.json', () => {
-    return {djs:[{id:11,username:"firedrill123",email:"mcfiredrill123@gmail.com",time_zone:"Seoul",role:"dj",social_identities:[]}]};
+  this.get('/djs.json', (schema, request) => {
+    const keyword = request.queryParams["search[keyword]"];
+    let users = schema.users.all().models.map((user) => {
+      return { id:  user.attrs.id, username: user.attrs.username, email: user.attrs.email, time_zone:"Seoul",role:"dj",social_identities:[] };
+    });
+    if(keyword){
+      users = users.filter((user) => {
+        return user.username.includes(keyword);
+      })
+    }
+    return { djs: users };
   });
 
-  this.post('/djs.json', () => {
-    return {user:{id:2,username:"fruitskiki",email:"fruitskiki@gmail.com",time_zone:"Seoul",role:"admin",social_identities:[]}}
+  this.post('/djs.json', (schema, request) => {
+    const attrs = JSON.parse(request.requestBody).user;
+    const user = schema.users.create(attrs);
+    user.save();
+    return {user:{id:user.attrs.id,username:user.attrs.username,email:user.attrs.email,time_zone:"Seoul",role:"admin",social_identities:[]}}
   });
 
   this.put('/djs/:id.json', ({ djs }, request) => {
