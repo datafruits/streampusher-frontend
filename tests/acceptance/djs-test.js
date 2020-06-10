@@ -58,7 +58,7 @@ module('Acceptance | djs', function(hooks) {
     await fillIn("input#username", "djnameko2");
     await fillIn("input#email", "dj.nameko33@datafruits.fm");
     await click("[data-test-submit-button]");
-    assert.equal(document.querySelector(".flash-message.alert-success").textContent.includes("Updated user!"), true);
+    assert.equal(document.querySelectorAll(".flash-message.alert-success")[1].textContent.includes("Updated user!"), true);
 
     assert.equal(currentURL(), '/djs');
   });
