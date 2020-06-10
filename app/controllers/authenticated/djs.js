@@ -16,7 +16,7 @@ export const DjQueryParams = new QueryParams({
 
 export default class DjsController extends Controller.extend(DjQueryParams.Mixin) {
   @tracked query;
-  @tracked page;
+  @tracked page = 1;
   get searchParams() {
     return { query: this.query, page: this.page };
   }

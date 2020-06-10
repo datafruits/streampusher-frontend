@@ -21,8 +21,8 @@ export const PlaylistQueryParams = new QueryParams({
 
 export default class ShowController extends Controller.extend(PlaylistQueryParams.Mixin) {
   @tracked query;
-  @tracked tracksPage;
-  @tracked playlistsPage;
+  @tracked tracksPage = 1;
+  @tracked playlistsPage = 1;
   get tracksSearchParams() {
     return { query: this.query, page: this.tracksPage };
   }
