@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { hash } from 'rsvp';
+import { action } from '@ember/object';
 
 export default class DjsRoute extends Route {
   @service store;
@@ -16,4 +17,18 @@ export default class DjsRoute extends Route {
       dj: this.store.createRecord('user')
     });
   }
+
+  @action
+  save(dj) {
+    dj.save().then(() => {
+      console.log('in save');
+      this.flashMessages.success('Saved user!');
+      //this.clearForm();
+      this.refresh();
+    }).catch((error) => {
+      this.flashMessages.danger("Couldn't save user!");
+      console.log(error);
+    });
+  }
+
 }
