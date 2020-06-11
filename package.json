@@ -15,7 +15,9 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember test",
+    "coverage": "cross-env COVERAGE=true ember test",
+    "lighthouse": "lhci autorun --config=config/lighthouserc.js"
   },
   "devDependencies": {
     "@csstools/postcss-sass": "^4.0.0",
@@ -35,6 +37,7 @@
     "ember-cli": "~3.13.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.11.1",
+    "ember-cli-code-coverage": "^0.4.2",
     "ember-cli-dependency-checker": "^3.1.0",
     "ember-cli-dotenv": "^2.2.3",
     "ember-cli-eslint": "^5.1.0",
@@ -84,6 +87,8 @@
   },
   "dependencies": {
     "@glimmer/component": "^1.0.0",
+    "@lhci/cli": "^0.4.1",
+    "cross-env": "^7.0.2",
     "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#develop",
     "jstimezonedetect": "^1.0.7"
   }
