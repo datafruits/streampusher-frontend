@@ -7,14 +7,16 @@
 
   {{else}}
     <div class="flex justify-between">
-      <div>
-        <span class="left uploaded-track-name truncate inline-block max-w-xs">{{track.displayName}}</span>
-        <span class="">{{track.formattedDuration}}</span>
+      <div class="flex">
         {{#if track.artwork}}
-          <img width="50" height="50" src={{file-url track.artwork 'thumb'}} />
+          <img width="50" height="50" class="inline m-1" src={{file-url track.artwork 'thumb'}} />
         {{/if}}
+        <div class="m-1">
+          <span class="left uploaded-track-name truncate inline-block">{{track.displayName}}</span>
+          <div class="">{{track.formattedDuration}}</div>
+        </div>
       </div>
-      <div>
+      <div class="flex justify-between w-1/6 h-10">
         <a class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded"
           href="{{track.audioFileName}}">
           <FaIcon @icon="download" />

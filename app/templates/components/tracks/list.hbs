@@ -28,13 +28,13 @@
       <tbody class="">
         <Tracks::Loader @query={{@searchParams}} @tracks={{@tracks}} as |loader|>
           {{#if loader.isRunning}}
-            <div class="h-64 overflow-y-scroll">
+            <div class="h-64 overflow-y-scroll w-full">
               <p>
                 Loading...
               </p>
             </div>
           {{else}}
-            <div class="h-64 overflow-y-scroll">
+            <div class="h-64 overflow-y-scroll w-full">
               {{#each loader.data as |track|}}
                 <Tracks::Track
                   @track={{track}}
