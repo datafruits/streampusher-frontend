@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "active-model-adapter": "^2.2.0",
     "babel-eslint": "^8.0.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.5.3",
