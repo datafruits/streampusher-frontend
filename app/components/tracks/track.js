@@ -8,8 +8,6 @@ export default Component.extend({
   store: service(),
   ajax: service(),
   flashMessages: service(),
-  tagName: 'tr',
-  classNames: ['track'],
   isEditing: false,
   isSaving: false,
   mixcloudDialog: false,

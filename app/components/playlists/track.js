@@ -1,11 +1,8 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import { classNames, tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 
 @classic
-@tagName('td')
-@classNames('track', 'playlist-track')
 export default class PlaylistsTrack extends Component {
   isEditing = false;
 
