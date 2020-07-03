@@ -1,3 +1,4 @@
+<div class="">
   <TimetableCalendar
     @onTypeChange={{action "calendarTypeChange"}}
     @reloadCalendar={{action "reloadCalendar"}}
@@ -5,3 +6,5 @@
     @startingDate={{start}}
     @view={{view}}
   />
+</div>
+{{outlet}}

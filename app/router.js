@@ -19,8 +19,9 @@ Router.map(function() {
     this.route('tracks', function() {
       this.route('show', {path: '/:id'});
     });
-    this.route('schedule');
-    this.route('show', { path: '/shows/:id' });
+    this.route('schedule', function() {
+      this.route('show', { path: '/shows/:id' });
+    });
     this.route('djs');
     this.route('djs.show', {path: '/djs/:id'});
     this.route('podcasts', function() {

@@ -1,4 +1,4 @@
-import Model, { attr, hasMany } from '@ember-data/model';
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import moment from 'moment';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
@@ -6,9 +6,12 @@ import { tracked } from '@glimmer/tracking';
 
 export default class ScheduledShow extends Model {
   @hasMany('track') tracks;
+  @belongsTo('playlist') playlist;
+  @belongsTo('user') host;
   @attr start;
   @attr end;
   @attr title;
+  @attr('file') image;
   @attr imageFilename;
   @attr tweetContent;
   @attr description;
