@@ -57,6 +57,10 @@
     </div>
 
     <div class="mb-4">
+      <Tracks::LabelsSelect @labels={{model.labels}} @track={{@changeset}} />
+    </div>
+
+    <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
       <select id="repeat" {{on "change" (fn this.setRecurringInterval)}}>
         {{#each this.recurringIntervals as |interval|}}
@@ -65,9 +69,39 @@
       </select>
     </div>
 
+    <div class="mb-4">
+      <Input
+        @type="button"
+        class="btn"
+        value="Add prerecorded content"
+        {{on "click" this.toggleShowingContentEditor}}
+        />
+      {{#if this.showingContentEditor}}
+        <ScheduledShow::ContentEditor show={{@changeset}} />
+      {{/if}}
+    </div>
+
+    <div class="mb-4">
+      <label for="promote-show">Promote this show</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.promoteShow}}
+        name="promote-show"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="archive-show">Archive this show</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.archiveShow}}
+        name="archive-show"
+      />
+    </div>
+
     <div class="flex items-center justify-between">
       {{#if @changeset.isValid}}
-        {{#if isSaving}}
+        {{#if this.isSaving}}
           <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
         {{else}}
           <Input
