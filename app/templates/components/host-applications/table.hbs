@@ -19,13 +19,22 @@
         <td>{{ hostApplication.homepageUrl }}</td>
         <td>{{ hostApplication.interval }}</td>
         <td>{{ hostApplication.desiredTime }}</td>
-        <HostApplications::Vote
-          @hostApplication={{hostApplication}}
-        />
+        <td>
+          <HostApplications::Vote
+            @hostApplication={{hostApplication}}
+          />
+        </td>
         {{#if hostApplication.approved}}
           <td>Approved</td>
         {{else if this.currentUser.isAdmin}}
-          <td><button>"Approve"</button></td>
+          <td>
+            <button
+              {{on "click" this.approve}}
+              class="btn"
+             >
+              Approve
+            </button>
+          </td>
         {{/if}}
       </tr>
     {{/each}}
