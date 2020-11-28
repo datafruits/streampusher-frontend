@@ -1,1 +1,12 @@
-{{yield}}
+<button
+  {{on "click" this.upVote}}
+  disabled={{this.canUpVote}}
+  >
+  Yep
+</button>
+<button
+  {{on "click" this.downVote}}
+  disabled={{this.canDownVote}}
+  >
+  Nope
+</button>
