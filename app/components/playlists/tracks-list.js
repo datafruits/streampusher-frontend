@@ -10,6 +10,7 @@ export default class PlaylistTracksList extends Component {
   @service
   flashMessages;
 
+  @tracked
   isEditingSettings = false;
   @tracked
   isEditing = false;
@@ -25,7 +26,7 @@ export default class PlaylistTracksList extends Component {
   deletePlaylist() {
     if (confirm("Are you sure you want to delete this playlist?")) {
       var playlist = this.playlist;
-      this.set("isEditingSettings", false);
+      this.isEditingSettings = false;
       playlist.destroyRecord().then(() => {
         this.transitionAfterDelete();
       });
@@ -71,7 +72,7 @@ export default class PlaylistTracksList extends Component {
 
   @action
   cancelEditing() {
-    this.toggleProperty("isEditing");
+    this.isEditing = !this.isEditing;
     if (this.playlist.get("isNew")) {
       this.set("playlist", this.oldPlaylist);
     }
@@ -79,7 +80,7 @@ export default class PlaylistTracksList extends Component {
 
   @action
   editPlaylistSettings() {
-    this.toggleProperty("isEditingSettings");
+    this.isEditingSettings = !this.isEditingSettings;
   }
 
   @action
