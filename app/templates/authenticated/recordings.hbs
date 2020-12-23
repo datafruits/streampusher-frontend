@@ -9,6 +9,17 @@
       {{#each model as |recording|}}
       <tr>
         <td>{{recording.path}}</td>
+        <td>
+          <PowerSelect
+            @searchEnabled={{true}}
+            @search={{action "searchShows"}}
+            @renderInPlace={{true}}
+            @options={{model.scheduledShows}}
+            @selected={{model.track.scheduledShow}}
+            @onChange={{action "selectScheduledShow"}} as |scheduledShow|>
+            {{scheduledShow.displayTitle}}
+          </PowerSelect>
+        </td>
       </tr>
       {{/each}}
     </tbody>

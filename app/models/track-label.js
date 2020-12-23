@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import Model, { belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  track: DS.belongsTo('track'),
-  label: DS.belongsTo('label')
+export default Model.extend({
+  track: belongsTo('track'),
+  label: belongsTo('label')
 });

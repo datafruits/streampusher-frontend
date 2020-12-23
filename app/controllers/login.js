@@ -17,7 +17,7 @@ export default class LoginController extends Controller {
     let login = this.login;
     let password = this.password;
     this.session.authenticate('authenticator:devise', login, password).then(() => {
-      this.get('rememberMe') && this.set('session.store.cookieExpirationTime', 60 * 60 * 24 * 14);
+      this.rememberMe && this.set('session.store.cookieExpirationTime', 60 * 60 * 24 * 14);
       this.flashMessages.success('Logged in!');
       this.transitionToRoute('authenticated.dashboard');
     }).catch((reason) => {

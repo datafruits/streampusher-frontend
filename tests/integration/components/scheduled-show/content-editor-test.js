@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | validated-field', function(hooks) {
+module('Integration | Component | scheduled-show/content-editor', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<ValidatedField />`);
+    await render(hbs`<ScheduledShow::ContentEditor />`);
 
     assert.dom(this.element).hasText('');
 
     // Template block usage:
     await render(hbs`
-      <ValidatedField>
+      <ScheduledShow::ContentEditor>
         template block text
-      </ValidatedField>
+      </ScheduledShow::ContentEditor>
     `);
 
     assert.dom(this.element).hasText('template block text');

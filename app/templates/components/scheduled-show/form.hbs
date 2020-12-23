@@ -25,7 +25,7 @@
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
       <PowerSelect
         @renderInPlace={{true}}
-        @options={{djs}}
+        @options={{@djs}}
         @selected={{@changeset.host}}
         @onChange={{fn (mut @changeset.host)}} as |dj|>
         {{dj.username}}
@@ -57,7 +57,7 @@
     </div>
 
     <div class="mb-4">
-      <Tracks::LabelsSelect @labels={{model.labels}} @track={{@changeset}} />
+      <Tracks::LabelsSelect @labels={{@labels}} @track={{@changeset}} />
     </div>
 
     <div class="mb-4">
