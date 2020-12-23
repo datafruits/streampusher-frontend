@@ -1,6 +1,8 @@
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import RSVP from "rsvp";
+import { debounce } from "@ember/runloop";
 
 export default class PlaylistsSettingsComponent extends Component {
   @service store;
@@ -8,10 +10,23 @@ export default class PlaylistsSettingsComponent extends Component {
   fetchPlaylists() {
     return this.store.loadRecords("playlist");
   }
+
+  _performSearch(term, resolve, reject) {
+    this.store.query("playlist", { term: term }).then((playlists) => {
+      return resolve(playlists);
+    }, reject);
+  }
+
+  @action searchPlaylists(term) {
+    return new RSVP.Promise((resolve, reject) => {
+      debounce(this, this._performSearch, term, resolve, reject, 600);
+    });
+  }
+
   @action
   selectInterpolatedPlaylistId(playlistId) {
-    var playlist = this.playlist;
-    playlist.set("interpolatedPlaylistId", playlistId);
+    let playlist = this.args.playlist;
+    playlist.interpolatedPlaylistId = playlistId;
   }
 
   @action

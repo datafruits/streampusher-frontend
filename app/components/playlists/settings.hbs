@@ -11,35 +11,44 @@
       <label>Enabled <Input @type="checkbox" @id="interpolated-playlist-enabled" @name="interpolatedPlaylistEnabled" @checked={{@playlist.interpolatedPlaylistEnabled}} /></label>
       <br />
       <label>
-        Every <Input @type="number" @name="interpolatedPlaylistTrackIntervalCount" @value={{@playlist.interpolatedPlaylistTrackIntervalCount}} @step="1" />
+        Every <Input @type="number"
+          class="form-input focus:outline-none focus:shadow-outline"
+          @name="interpolatedPlaylistTrackIntervalCount"
+          @value={{@playlist.interpolatedPlaylistTrackIntervalCount}}
+          @step="1" />
       </label>
       <label>
-        tracks, play <Input @type="number" @name="interpolatedPlaylistTrackPlayCount" @value={{@playlist.interpolatedPlaylistTrackPlayCount}} @step="1" />
+        tracks, play <Input
+          class="form-input focus:outline-none focus:shadow-outline"
+          @type="number"
+          @name="interpolatedPlaylistTrackPlayCount"
+          @value={{@playlist.interpolatedPlaylistTrackPlayCount}}
+          @step="1" />
       </label>
       <label>tracks from the
-        <select id="interpolated-playlist-select" onchange={{action "selectInterpolatedPlaylistId" value="target.value"}}>
-          <Await @promise={{this.fetchPlaylists}} as |await|>
-            <await.Pending>
-              Loading playlists...
-            </await.Pending>
+        <Await @promise={{this.fetchPlaylists}} as |await|>
+          <await.Pending>
+            Loading playlists...
+          </await.Pending>
 
-            <await.Fulfilled as |playlists|>
-              {{#each playlists as |interpolatedPlaylist|}}
-                {{#if (eq playlist.interpolatedPlaylistId interpolatedPlaylist.id)}}
-                  <option value={{interpolatedPlaylist.id}} selected="selected">{{interpolatedPlaylist.name}}</option>
-                {{else}}
-                  <option value={{interpolatedPlaylist.id}}>{{interpolatedPlaylist.name}}</option>
-                {{/if}}
-              {{/each}}
-            </await.Fulfilled>
+          <await.Fulfilled as |playlists|>
+            <PowerSelect
+              @searchEnabled={{true}}
+              @search={{action "searchPlaylists"}}
+              @renderInPlace={{true}}
+              @options={{playlists}}
+              @selected={{@playlist.interpolatedPlaylist}}
+              @onChange={{action "selectInterpolatedPlaylistId"}} as |interpolatedPlaylist|>
+              {{interpolatedPlaylist.name}}
+            </PowerSelect>
+          </await.Fulfilled>
 
-            <await.Rejected>
-              Something went wrong :(
-            </await.Rejected>
-          </Await>
-        </select>
+          <await.Rejected>
+            Something went wrong :(
+          </await.Rejected>
+        </Await>
       </label>
-      playlist.
+      <span class="strong">{{@playlist.interpolatedPlaylist.name}}</span> playlist.
       <br />
       <h4>Shuffle</h4>
       <label>On <Input @type="checkbox" @id="shuffle" @name="shuffle" @checked={{@playlist.shuffle}} /></label>
