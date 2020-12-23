@@ -23,17 +23,6 @@ export default class PlaylistTracksList extends Component {
   @tracked playlistsQuery;
 
   @action
-  deletePlaylist() {
-    if (confirm("Are you sure you want to delete this playlist?")) {
-      var playlist = this.playlist;
-      this.isEditingSettings = false;
-      playlist.destroyRecord().then(() => {
-        this.transitionAfterDelete();
-      });
-    }
-  }
-
-  @action
   reorderItems(itemModels, draggedModel) {
     this.setIsSyncingPlaylist(true);
 
@@ -90,25 +79,6 @@ export default class PlaylistTracksList extends Component {
     this.set("oldPlaylist", this.playlist);
     this.set("playlist", playlist);
     this.set("isEditing", true);
-  }
-
-  @action
-  selectInterpolatedPlaylistId(playlistId) {
-    var playlist = this.playlist;
-    playlist.set("interpolatedPlaylistId", playlistId);
-  }
-
-  @action
-  saveSettings() {
-    var playlist = this.playlist;
-    var onSuccess = () => {
-      this.set("isEditingSettings", false);
-    };
-    var onFail = () => {
-      console.log("playlist settings save failed");
-      this.flashMessages.danger("Something went wrong!");
-    };
-    playlist.save().then(onSuccess, onFail);
   }
 
   @action
