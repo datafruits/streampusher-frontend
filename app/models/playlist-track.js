@@ -1,12 +1,12 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  podcastPublishedDate: DS.attr(),
-  displayName: DS.attr(),
-  title: DS.attr(),
-  position: DS.attr(),
-  playlist: DS.belongsTo('playlist'),
-  track: DS.belongsTo('track', { async: false }),
-  updatedAt: DS.attr('date'),
-  formattedDuration: DS.attr(),
+export default Model.extend({
+  podcastPublishedDate: attr(),
+  displayName: attr(),
+  title: attr(),
+  position: attr(),
+  playlist: belongsTo('playlist'),
+  track: belongsTo('track', { async: false }),
+  updatedAt: attr('date'),
+  formattedDuration: attr(),
 });

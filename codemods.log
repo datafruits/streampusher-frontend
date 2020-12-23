@@ -1,0 +1,104 @@
+2020-04-12T20:49:28.446Z [info] [app/routes/authenticated/dashboard/index.js]: SUCCESS
+2020-04-12T20:49:28.485Z [info] [app/routes/login.js]: SUCCESS
+2020-04-12T20:49:28.613Z [info] [app/adapters/application.js]: SUCCESS
+2020-04-12T20:49:28.661Z [info] [app/components/playlist-track-li.js]: SUCCESS
+2020-04-12T20:49:28.697Z [info] [app/routes/setup.js]: SUCCESS
+2020-04-12T20:49:28.755Z [info] [app/serializers/user.js]: SUCCESS
+2020-04-12T20:49:28.830Z [info] [app/services/current-radio.js]: SUCCESS
+2020-04-12T20:49:28.880Z [info] [app/services/current-user.js]: SUCCESS
+2020-04-12T20:49:28.921Z [info] [app/services/dropped-file.js]: SUCCESS
+2020-04-12T20:49:28.952Z [warn] [app/tailwind/config.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2020-04-12T20:49:28.991Z [warn] [app/validations/blog-post-body.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2020-04-12T20:49:29.014Z [warn] [app/validations/scheduled-show.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2020-04-12T20:49:29.054Z [info] [app/models/recording.js]: SUCCESS
+2020-04-12T20:49:28.540Z [info] [app/routes/authenticated/djs.js]: SUCCESS
+2020-04-12T20:49:28.599Z [info] [app/routes/authenticated/index.js]: SUCCESS
+2020-04-12T20:49:28.643Z [info] [app/routes/authenticated.js]: SUCCESS
+2020-04-12T20:49:28.664Z [info] [app/routes/authenticated/playlists.js]: SUCCESS
+2020-04-12T20:49:28.795Z [info] [app/routes/authenticated/playlists/show.js]: SUCCESS
+2020-04-12T20:49:28.830Z [info] [app/routes/authenticated/podcasts.js]: SUCCESS
+2020-04-12T20:49:28.852Z [info] [app/routes/authenticated/recordings.js]: SUCCESS
+2020-04-12T20:49:28.880Z [info] [app/routes/authenticated/schedule.js]: SUCCESS
+2020-04-12T20:49:28.909Z [info] [app/routes/authenticated/show.js]: SUCCESS
+2020-04-12T20:49:29.082Z [info] [app/routes/authenticated/tracks/show.js]: SUCCESS
+2020-04-12T20:49:29.251Z [warn] [app/controllers/setup.js]: FAILURE 
+Validation errors: 
+	[submit]: Transform not supported - action name matches one of the lifecycle hooks. Rename and try again. See https://github.com/scalvert/ember-native-class-codemod/issues/34 for more details
+2020-04-12T20:49:28.694Z [info] [app/adapters/user.js]: SUCCESS
+2020-04-12T20:49:28.739Z [info] [app/app.js]: SUCCESS
+2020-04-12T20:49:28.778Z [info] [app/authenticators/devise.js]: SUCCESS
+2020-04-12T20:49:28.825Z [info] [app/components/artwork-file-upload.js]: SUCCESS
+2020-04-12T20:49:29.130Z [info] [app/components/blog-post/form.js]: SUCCESS
+2020-04-12T20:49:29.343Z [info] [app/components/djs/form.js]: SUCCESS
+2020-04-12T20:49:29.377Z [info] [app/components/donation-link-form.js]: SUCCESS
+2020-04-12T20:49:29.526Z [info] [app/components/file-uploader.js]: SUCCESS
+2020-04-12T20:49:29.578Z [info] [app/components/metadata-update-form.js]: SUCCESS
+2020-04-12T20:49:29.599Z [info] [app/components/playlist-li.js]: SUCCESS
+2020-04-12T20:49:29.651Z [info] [app/components/tracks-list.js]: SUCCESS
+2020-04-12T20:49:29.281Z [warn] [app/helpers/start-case.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2020-04-12T20:49:29.295Z [warn] [app/mixins/authenticated-route-mixin.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2020-04-12T20:49:29.386Z [warn] [app/models/blog-post-body.js]: FAILURE 
+Validation errors: 
+	[blogPost]: Transform not supported - value has modifiers like 'property' or 'meta'
+2020-04-12T20:49:29.516Z [warn] [app/models/blog-post-image.js]: FAILURE 
+Validation errors: 
+	[blogPostBody]: Transform not supported - value has modifiers like 'property' or 'meta'
+2020-04-12T20:49:29.624Z [warn] [app/models/blog-post.js]: FAILURE 
+Validation errors: 
+	[blogPostBodies]: Transform not supported - value has modifiers like 'property' or 'meta'
+2020-04-12T20:49:29.799Z [warn] [app/models/podcast.js]: FAILURE 
+Validation errors: 
+	[playlist]: Transform not supported - value has modifiers like 'property' or 'meta'
+2020-04-12T20:49:29.849Z [info] [app/models/radio.js]: SUCCESS
+2020-04-12T20:49:29.528Z [info] [app/models/user.js]: SUCCESS
+2020-04-12T20:49:29.641Z [info] [app/router.js]: SUCCESS
+2020-04-12T20:49:29.746Z [info] [app/routes/application.js]: SUCCESS
+2020-04-12T20:49:29.827Z [info] [app/routes/authenticated/blog-posts.js]: SUCCESS
+2020-04-12T20:49:29.868Z [info] [app/routes/authenticated/blog-posts/new.js]: SUCCESS
+2020-04-12T20:49:29.894Z [info] [app/routes/authenticated/blog-posts/show.js]: SUCCESS
+2020-04-12T20:49:29.078Z [info] [app/components/playlist-tracks-list.js]: SUCCESS
+2020-04-12T20:49:29.152Z [info] [app/components/podcasts/form.js]: SUCCESS
+2020-04-12T20:49:29.167Z [info] [app/components/scheduled-show/form.js]: SUCCESS
+2020-04-12T20:49:29.187Z [info] [app/components/side-navbar.js]: SUCCESS
+2020-04-12T20:49:29.326Z [info] [app/components/timetable-calendar.js]: SUCCESS
+2020-04-12T20:49:29.540Z [info] [app/components/timetable-loader.js]: SUCCESS
+2020-04-12T20:49:29.623Z [info] [app/components/top-navbar.js]: SUCCESS
+2020-04-12T20:49:29.739Z [info] [app/components/track-labels-select.js]: SUCCESS
+2020-04-12T20:49:29.977Z [warn] [app/components/track-li.js]: FAILURE 
+Validation errors: 
+	[destroy]: Transform not supported - action name matches one of the lifecycle hooks. Rename and try again. See https://github.com/scalvert/ember-native-class-codemod/issues/34 for more details
+2020-04-12T20:49:30.130Z [info] [app/components/track-replacer.js]: SUCCESS
+2020-04-12T20:49:30.050Z [info] [app/components/track-uploader.js]: SUCCESS
+2020-04-12T20:49:30.148Z [info] [app/components/user-menu.js]: SUCCESS
+2020-04-12T20:49:30.207Z [info] [app/components/validated-field.js]: SUCCESS
+2020-04-12T20:49:30.301Z [info] [app/controllers/application.js]: SUCCESS
+2020-04-12T20:49:30.323Z [info] [app/controllers/authenticated/blog-posts/new.js]: SUCCESS
+2020-04-12T20:49:30.355Z [info] [app/controllers/authenticated/playlists/show.js]: SUCCESS
+2020-04-12T20:49:30.409Z [info] [app/controllers/authenticated/schedule.js]: SUCCESS
+2020-04-12T20:49:30.446Z [info] [app/controllers/authenticated/show.js]: SUCCESS
+2020-04-12T20:49:30.554Z [warn] [app/controllers/authenticated/tracks/show.js]: FAILURE 
+Validation errors: 
+	[destroy]: Transform not supported - action name matches one of the lifecycle hooks. Rename and try again. See https://github.com/scalvert/ember-native-class-codemod/issues/34 for more details
+2020-04-12T20:49:30.592Z [info] [app/controllers/login.js]: SUCCESS
+2020-12-23T02:08:39.938Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T02:08:39.941Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T02:08:39.943Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T02:08:40.374Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/tracks/track.hbs
+2020-12-23T02:08:40.404Z [warn] WARNING: {{changeset}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/schedule/new.hbs
+2020-12-23T02:08:40.419Z [warn] WARNING: {{start-case}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/validated-field.hbs
+2020-12-23T02:08:40.758Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/scheduled-show/form.hbs
+2020-12-23T02:08:40.761Z [warn] WARNING: {{fn}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/scheduled-show/form.hbs
+2020-12-23T02:08:40.542Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/tracks/show.hbs
+2020-12-23T02:08:40.594Z [warn] WARNING: {{changeset}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/schedule/show.hbs
+2020-12-23T02:08:40.656Z [warn] WARNING: {{eq}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/blog-post/form.hbs
+2020-12-23T11:20:12.959Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/tracks/track.hbs
+2020-12-23T11:20:16.775Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T11:20:16.779Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T11:20:16.779Z [warn] WARNING: {{pagination-query}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/pagination.hbs
+2020-12-23T11:20:16.861Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/scheduled-show/form.hbs
+2020-12-23T11:20:16.864Z [warn] WARNING: {{fn}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/scheduled-show/form.hbs
+2020-12-23T11:20:16.906Z [warn] WARNING: {{changeset}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/schedule/new.hbs
+2020-12-23T11:20:16.916Z [warn] WARNING: {{changeset}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/schedule/show.hbs
+2020-12-23T11:20:17.070Z [warn] WARNING: {{file-url}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/authenticated/tracks/show.hbs
+2020-12-23T11:20:17.160Z [warn] WARNING: {{eq}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/blog-post/form.hbs
+2020-12-23T11:20:17.367Z [warn] WARNING: {{start-case}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/components/validated-field.hbs

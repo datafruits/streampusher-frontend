@@ -60,7 +60,7 @@
     <SortableGroup @tagName="tbody" @model={{playlist.sortedPlaylistTracks}} @onChange={{action "reorderItems"}} as |group|>
       <div class="h-64 overflow-y-scroll w-full">
         {{#each group.model as |playlistTrack|}}
-          {{#group.item tagName="tr" model=playlistTrack as |groupItem|}}
+          <group.item @tagName="tr" @model={{playlistTrack}} as |groupItem|>
             <Playlists::Track @playlistTrack={{playlistTrack}}
               class="border-2 border-gray-300 px-2 py-2" />
             {{#groupItem.handle data-test-vertical-demo-handle class="handle"}}
@@ -68,7 +68,7 @@
                 <span>&vArr;</span>
               </span>
             {{/groupItem.handle}}
-          {{/group.item}}
+          </group.item>
         {{/each}}
       </div>
     </SortableGroup>
