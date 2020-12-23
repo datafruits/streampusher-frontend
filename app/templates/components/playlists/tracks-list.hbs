@@ -3,38 +3,35 @@
 </div>
 <div class="flex">
   <div class="">
-    {{#if isEditing}}
+    {{#if this.isEditing}}
       <span class="">
-        <Input @value={{playlist.name}} @enter={{action "save"}} />
+        <Input @value={{@playlist.name}} @enter={{action "save"}} />
       </span>
       <button
-        disabled={{v-get playlist 'isInvalid'}}
+        disabled={{v-get @playlist 'isInvalid'}}
         data-test-save-playlist-button
         class="btn btn-primary"
         {{action 'save'}}>
         Save
       </button>
       <button class="btn" {{action 'cancelEditing'}}>Cancel</button>
-      {{#if (v-get playlist 'name' 'isInvalid')}}
+      {{#if (v-get @playlist 'name' 'isInvalid')}}
         <div class="error">
-          {{v-get playlist 'name' 'message'}}
+          {{v-get @playlist 'name' 'message'}}
         </div>
       {{/if}}
     {{else}}
-      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{playlist.name}}</span>
+      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{@playlist.name}}</span>
     {{/if}}
-    {{#if (not isEditing)}}
-      <span id="playlist-selector" {{on "click" this.selectPlaylist}}>
+    {{#if (not this.isEditing)}}
+      <span id="playlist-selector"
+            class="cursor-pointer"
+        {{on "click" this.selectPlaylist}}>
         <FaIcon @icon="chevron-down" />
       </span>
       <div class="">
-        {{#if isSelectingPlaylist}}
-          <div class="" {{on "click" this.selectPlaylist}}>
-            {{#each playlists as |selectablePlaylist|}}
-              <span class="playlist-title"><LinkTo @route="authenticated.playlists.show" @model={{selectablePlaylist.id}}>{{selectablePlaylist.name}}</LinkTo></span>
-              <br/>
-            {{/each}}
-          </div>
+        {{#if this.isSelectingPlaylist}}
+          <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} />
         {{/if}}
       </div>
     {{/if}}

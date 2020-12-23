@@ -29,6 +29,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.5.3",
+    "ember-await": "^2.0.0",
     "ember-changeset": "^3.7.0",
     "ember-changeset-validations": "^3.7.0",
     "ember-classic-decorator": "^1.0.8",

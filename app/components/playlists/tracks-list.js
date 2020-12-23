@@ -1,9 +1,8 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
 
-@classic
 export default class PlaylistTracksList extends Component {
   @service
   store;
@@ -12,15 +11,21 @@ export default class PlaylistTracksList extends Component {
   flashMessages;
 
   isEditingSettings = false;
+  @tracked
   isEditing = false;
+
+  @tracked
   isSelectingPlaylist = false;
+
   isSyncingPlaylist = false;
+
+  @tracked playlistsQuery;
 
   @action
   deletePlaylist() {
-    if(confirm("Are you sure you want to delete this playlist?")){
+    if (confirm("Are you sure you want to delete this playlist?")) {
       var playlist = this.playlist;
-      this.set('isEditingSettings', false);
+      this.set("isEditingSettings", false);
       playlist.destroyRecord().then(() => {
         this.transitionAfterDelete();
       });
@@ -31,69 +36,76 @@ export default class PlaylistTracksList extends Component {
   reorderItems(itemModels, draggedModel) {
     this.setIsSyncingPlaylist(true);
 
-    this.get('playlist.playlistTracks').map(function(playlistTrack){
-      let newPosition = itemModels.findIndex(function(item){ return item.id == playlistTrack.id });
-      playlistTrack.set('position', newPosition);
+    this.get("playlist.playlistTracks").map(function (playlistTrack) {
+      let newPosition = itemModels.findIndex(function (item) {
+        return item.id == playlistTrack.id;
+      });
+      playlistTrack.set("position", newPosition);
     });
-    draggedModel.save().then(() => {
-      this.set('playlist.playlistTracks', itemModels);
-      console.log("reorderItems success");
-      this.setIsSyncingPlaylist(false);
-    }).catch((error) => {
-      console.log("error");
-      console.log(error);
-      this.flashMessages.danger("Sorry, something went wrong!");
-      this.setIsSyncingPlaylist(false);
-    });
+    draggedModel
+      .save()
+      .then(() => {
+        this.set("playlist.playlistTracks", itemModels);
+        console.log("reorderItems success");
+        this.setIsSyncingPlaylist(false);
+      })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+        this.flashMessages.danger("Sorry, something went wrong!");
+        this.setIsSyncingPlaylist(false);
+      });
   }
 
   @action
   selectPlaylist() {
-    this.toggleProperty('isSelectingPlaylist');
+    console.log("setting isSelectingPlaylist");
+    this.isSelectingPlaylist = !this.isSelectingPlaylist;
+    console.log(this.isSelectingPlaylist);
   }
 
   @action
   editPlaylist() {
-    this.toggleProperty('isEditing');
+    this.isEditing = !this.isEditing;
   }
 
   @action
   cancelEditing() {
-    this.toggleProperty('isEditing');
-    if(this.playlist.get('isNew')){
-      this.set('playlist', this.oldPlaylist);
+    this.toggleProperty("isEditing");
+    if (this.playlist.get("isNew")) {
+      this.set("playlist", this.oldPlaylist);
     }
   }
 
   @action
   editPlaylistSettings() {
-    this.toggleProperty('isEditingSettings');
+    this.toggleProperty("isEditingSettings");
   }
 
   @action
   newPlaylist() {
     var store = this.store;
-    var playlist = store.createRecord('playlist');
-    this.set('oldPlaylist', this.playlist);
-    this.set('playlist', playlist);
-    this.set('isEditing', true);
+    var playlist = store.createRecord("playlist");
+    this.set("oldPlaylist", this.playlist);
+    this.set("playlist", playlist);
+    this.set("isEditing", true);
   }
 
   @action
   selectInterpolatedPlaylistId(playlistId) {
     var playlist = this.playlist;
-    playlist.set('interpolatedPlaylistId', playlistId);
+    playlist.set("interpolatedPlaylistId", playlistId);
   }
 
   @action
   saveSettings() {
     var playlist = this.playlist;
-    var onSuccess = () =>{
-      this.set('isEditingSettings', false);
+    var onSuccess = () => {
+      this.set("isEditingSettings", false);
     };
-    var onFail = () =>{
+    var onFail = () => {
       console.log("playlist settings save failed");
-      this.flashMessages.danger('Something went wrong!');
+      this.flashMessages.danger("Something went wrong!");
     };
     playlist.save().then(onSuccess, onFail);
   }
@@ -101,12 +113,12 @@ export default class PlaylistTracksList extends Component {
   @action
   save() {
     let playlist = this.playlist;
-    let onSuccess = () =>{
-      this.set('isEditing', false);
+    let onSuccess = () => {
+      this.set("isEditing", false);
     };
-    let onFail = () =>{
+    let onFail = () => {
       console.log("playlist save failed");
-      this.flashMessages.danger('Something went wrong!');
+      this.flashMessages.danger("Something went wrong!");
     };
     playlist.save().then(onSuccess, onFail);
   }
