@@ -4,7 +4,7 @@
       <div class="flex items-center">
         <MobileMenuButton class="sm:hidden"
           @toggleMobileMenu={{action "toggleMobileMenu"}}
-          @isShowingMobileMenu={{isShowingMobileMenu}} />
+          @isShowingMobileMenu={{this.isShowingMobileMenu}} />
         <a class="brand" href="/">
           <img class="h-10" src="/assets/images/logo.png" alt="Streampusher">
         </a>
@@ -21,7 +21,7 @@
 <section class="h-screen flex justify-start items-stretch">
   {{#if session.isAuthenticated}}
     <SideNavbar
-      @isShowingMobileMenu={{isShowingMobileMenu}}
+      @isShowingMobileMenu={{this.isShowingMobileMenu}}
       class="sm:flex absolute left-0 sm:static bg-black text-white h-screen z-40" />
   {{/if}}
   <section class="m-4 flex justify-around w-full">
