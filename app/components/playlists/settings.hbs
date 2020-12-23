@@ -1,6 +1,6 @@
-  <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="editPlaylistSettings">
+<ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close={{@closeSettings}}>
     <div class="modal-header">
-      <button {{action "editPlaylistSettings"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <button {{on "click" @closeSettings}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h4 class="modal-title" id="myModalLabel">Playlist Settings</h4>
     </div>
     <div class="modal-body">
