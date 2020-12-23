@@ -1,5 +1,5 @@
-import Model, { attr } from '@ember-data/model';
-import { tracked } from '@glimmer/tracking';
+import Model, { attr } from "@ember-data/model";
+import { tracked } from "@glimmer/tracking";
 
 export default class User extends Model {
   @attr username;
@@ -10,8 +10,11 @@ export default class User extends Model {
   @attr bio;
   @attr profilePublish;
 
+  @attr("file") image;
+  @attr imageFilename;
+
   @attr role;
   get isAdmin() {
-    return this.role.includes('admin');
+    return this.role.includes("admin");
   }
 }

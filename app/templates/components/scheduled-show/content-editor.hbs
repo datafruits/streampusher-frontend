@@ -1,0 +1,19 @@
+{{#modal-dialog
+  translucentOverlay=true
+}}
+  <div class="flex">
+    <div class="">
+      <Tracks::List
+        @updateSearch={{action "updateSearch"}}
+        @playlist={{@playlist}}
+        @labels={{@labels}}
+        @searchParams={{this.tracksSearchParams}}
+        />
+      <img class="uploader-icon hidden absolute top-0 left-0" alt="Upload files" src="/assets/images/uploadericon.png">
+    </div>
+    <div class="">
+      <ScheduledShow::Playlist
+        />
+    </div>
+  </div>
+{{/modal-dialog}}
