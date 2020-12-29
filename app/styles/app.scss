@@ -18,6 +18,10 @@
   &.danger {
     @apply bg-red-600;
   }
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 .btn:hover {
@@ -65,6 +69,14 @@ button.loading {
   &:before {
   }
   &:after {
+  }
+}
+
+a {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+    @apply text-purple-800;
   }
 }
 
