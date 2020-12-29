@@ -1,14 +1,21 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
-import { inject as service } from '@ember/service';
+import { tracked } from "@glimmer/tracking";
+import { inject as service } from "@ember/service";
+import { isEmpty } from "@ember/utils";
 import ENV from "streampusher-frontend/config/environment";
 import fetch from "fetch";
 
 export default class PasswordResetController extends Controller {
-  flashMessages: service(),
+  @service flashMessages;
   passwordResetUrl = `${ENV.API_HOST}/users/password`;
 
+  @tracked
   login = "";
+
+  get cantSubmit() {
+    return isEmpty(this.login);
+  }
 
   @action
   submit() {
@@ -28,10 +35,13 @@ export default class PasswordResetController extends Controller {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        this.flashMessages.success("Password reset link sent!");
+        if (data.status == 201) {
+          this.flashMessages.success("Password reset link sent!");
+        } else {
+          this.flashMessages.danger("Something went wrong!");
+        }
       })
       .catch((error) => {
         console.log(error);
