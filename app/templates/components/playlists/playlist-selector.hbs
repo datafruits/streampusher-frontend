@@ -1,12 +1,19 @@
 <Await @promise={{this.fetchPlaylists}} as |await|>
+  <Playlists::Search @filterText={{this.filterText}} @search={{await.reload}} />
   <await.Pending>
     Loading playlists...
   </await.Pending>
 
   <await.Fulfilled as |playlists|>
     {{#each playlists as |selectablePlaylist|}}
-      <div class="playlist-title">
-        <LinkTo @route="authenticated.playlists.show" @model={{selectablePlaylist.id}}>{{selectablePlaylist.name}}</LinkTo>
+      <div
+        class="playlist-title">
+        <LinkTo
+          class="underline"
+          @route="authenticated.playlists.show"
+          @model={{selectablePlaylist.id}}>
+          {{selectablePlaylist.name}}
+        </LinkTo>
       </div>
     {{/each}}
   </await.Fulfilled>

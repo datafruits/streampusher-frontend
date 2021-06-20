@@ -15,6 +15,8 @@ export default class PlaylistTracksList extends Component {
   @tracked
   isEditing = false;
 
+  @tracked oldPlaylist;
+
   @tracked
   isSelectingPlaylist = false;
 
@@ -49,9 +51,7 @@ export default class PlaylistTracksList extends Component {
 
   @action
   selectPlaylist() {
-    console.log("setting isSelectingPlaylist");
     this.isSelectingPlaylist = !this.isSelectingPlaylist;
-    console.log(this.isSelectingPlaylist);
   }
 
   @action
@@ -62,8 +62,8 @@ export default class PlaylistTracksList extends Component {
   @action
   cancelEditing() {
     this.isEditing = !this.isEditing;
-    if (this.playlist.get("isNew")) {
-      this.set("playlist", this.oldPlaylist);
+    if (this.playlist.isNew) {
+      this.playlist = this.oldPlaylist;
     }
   }
 
@@ -74,18 +74,18 @@ export default class PlaylistTracksList extends Component {
 
   @action
   newPlaylist() {
-    var store = this.store;
-    var playlist = store.createRecord("playlist");
-    this.set("oldPlaylist", this.playlist);
-    this.set("playlist", playlist);
-    this.set("isEditing", true);
+    let playlist = this.store.createRecord("playlist");
+    this.oldPlaylist = this.playlist;
+    this.playlist = playlist;
+    this.isEditing = true;
+    console.log('set new playlist');
   }
 
   @action
   save() {
     let playlist = this.playlist;
     let onSuccess = () => {
-      this.set("isEditing", false);
+      this.isEditing = false;
     };
     let onFail = () => {
       console.log("playlist save failed");

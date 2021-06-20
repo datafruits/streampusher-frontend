@@ -2,7 +2,7 @@
   <h1 class="text-xl">Playlists</h1>
 </div>
 <div class="flex">
-  <div class="">
+  <div class="relative">
     {{#if this.isEditing}}
       <span class="">
         <Input @value={{@playlist.name}} @enter={{action "save"}} />
@@ -29,16 +29,16 @@
         {{on "click" this.selectPlaylist}}>
         <FaIcon @icon="chevron-down" />
       </span>
-      <div class="">
         {{#if this.isSelectingPlaylist}}
-          <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} />
+          <div class="absolute bg-white border-2 border-black p-4 rounded-lg h-64 overflow-y-scroll w-64">
+            <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} @closePlaylistSelector={{this.selectPlaylist}} />
+          </div>
         {{/if}}
-      </div>
     {{/if}}
   </div>
 </div>
-<div class="flex">
-  <div class="">
+<div class="flex space-x-2">
+  <div class="mr-2">
     <button {{action 'editPlaylistSettings'}} class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded">
       Playlist Settings
     </button>
