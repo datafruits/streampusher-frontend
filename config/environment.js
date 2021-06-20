@@ -35,6 +35,11 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
+
+    ENV.paperclip = {
+      path: ":base/:attachment/:style/:basename?:updated_at",
+      base: "https://s3.amazonaws.com/streampusherdev"
+    };
   }
 
   if (environment === 'test') {
@@ -51,10 +56,18 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
+    ENV.paperclip = {
+      path: ":base/:attachment/:style/:basename?:updated_at",
+      base: "https://s3.amazonaws.com/streampushertest"
+    };
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.paperclip = {
+      path: ":base/:attachment/:style/:basename?:updated_at",
+      base: "https://s3.amazonaws.com/streampusher"
+    };
   }
 
   return ENV;

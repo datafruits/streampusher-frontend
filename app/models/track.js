@@ -1,29 +1,29 @@
+import Model, { hasMany, belongsTo, attr } from '@ember-data/model';
 import { htmlSafe } from '@ember/template';
 import { equal, or } from '@ember/object/computed';
 import { computed } from '@ember/object';
-import DS from 'ember-data';
 
-export default DS.Model.extend({
-  labels: DS.hasMany('labels'),
-  scheduledShow: DS.belongsTo('scheduled-show'),
-  uploadedBy: DS.attr(),
-  labelIds: DS.attr(),
-  createdAt: DS.attr(),
-  updatedAt: DS.attr(),
-  audioFileName: DS.attr(),
-  filesize: DS.attr(),
-  displayName: DS.attr(),
-  artist: DS.attr(),
-  title: DS.attr(),
-  album: DS.attr(),
-  artwork: DS.attr('file'),
-  artworkFilename: DS.attr(),
-  mixcloudUploadStatus: DS.attr(),
-  mixcloudKey: DS.attr(),
-  soundcloudUploadStatus: DS.attr(),
-  soundcloudKey: DS.attr(),
-  embedLink: DS.attr(),
-  formattedDuration: DS.attr(),
+export default Model.extend({
+  labels: hasMany('labels'),
+  scheduledShow: belongsTo('scheduled-show'),
+  uploadedBy: attr(),
+  labelIds: attr(),
+  createdAt: attr(),
+  updatedAt: attr(),
+  audioFileName: attr(),
+  filesize: attr(),
+  displayName: attr(),
+  artist: attr(),
+  title: attr(),
+  album: attr(),
+  artwork: attr('file'),
+  artworkFilename: attr(),
+  mixcloudUploadStatus: attr(),
+  mixcloudKey: attr(),
+  soundcloudUploadStatus: attr(),
+  soundcloudKey: attr(),
+  embedLink: attr(),
+  formattedDuration: attr(),
   isUploading: false,
   uploadProgress: 0,
 

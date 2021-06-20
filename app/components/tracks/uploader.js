@@ -31,6 +31,7 @@ export default class TrackUploader extends Component {
       return dialogText;
     };
     let track = this.store.createRecord('track', { isUploading: true, audioFileName: file.name, filesize: file.size });
+    this.pushTrack(track);
     let mimeType;
     if(file.type == "audio/mp3"){
       mimeType = "audio/mpeg";

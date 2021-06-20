@@ -3,9 +3,121 @@
     <div class="mb-4">
       <ValidatedField
         @type="text"
-        @changeset={{changeset}}
+        @changeset={{@changeset}}
         @property="title"
       />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="artwork">
+        Artwork
+      </label>
+      {{#if @changeset.image}}
+        <img alt="artwork" width="300" height="300"
+          src={{file-url @changeset.image "thumb"}}>
+      {{/if}}
+      <ArtworkFileUpload
+        @file={{@changeset.image}}
+        @filename={{@changeset.imageFilename}} />
+    </div>
+
+    <div class="mb-4">
+      <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
+      <PowerSelect
+        @renderInPlace={{true}}
+        @options={{@djs}}
+        @selected={{@changeset.host}}
+        @onChange={{fn (mut @changeset.host)}} as |dj|>
+        {{dj.username}}
+      </PowerSelect>
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{@changeset}}
+        @property="start"
+      />
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{@changeset}}
+        @property="end"
+      />
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @type="textarea"
+        @changeset={{@changeset}}
+        @property="description"
+      />
+    </div>
+
+    <div class="mb-4">
+      <Tracks::LabelsSelect @labels={{@labels}} @track={{@changeset}} />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
+      <select id="repeat" {{on "change" (fn this.setRecurringInterval)}}>
+        {{#each this.recurringIntervals as |interval|}}
+          <option value={{interval.value}} >{{interval.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <Input
+        @type="button"
+        class="btn"
+        value="Add prerecorded content"
+        {{on "click" this.toggleShowingContentEditor}}
+        />
+      {{#if this.showingContentEditor}}
+        <ScheduledShow::ContentEditor show={{@changeset}} />
+      {{/if}}
+    </div>
+
+    <div class="mb-4">
+      <label for="promote-show">Promote this show</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.promoteShow}}
+        name="promote-show"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="archive-show">Archive this show</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.archiveShow}}
+        name="archive-show"
+      />
+    </div>
+
+    <div class="flex items-center justify-between">
+      {{#if @changeset.isValid}}
+        {{#if this.isSaving}}
+          <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
+        {{else}}
+          <Input
+            @type="submit"
+            class="btn cursor-pointer"
+            @value="Save"
+          />
+        {{/if}}
+      {{else}}
+        <Input
+          @type="submit"
+          class="btn opacity-50 cursor-not-allowed"
+          disabled
+          @value="Save"
+        />
+      {{/if}}
     </div>
   </form>
 </div>

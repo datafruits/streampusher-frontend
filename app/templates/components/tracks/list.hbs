@@ -1,3 +1,5 @@
+<span {{did-insert this.performTask @searchParams}}></span>
+<span {{did-update this.performTask @searchParams}}></span>
 <div class="">
   <h1 class="text-xl">Media Library</h1>
 </div>
@@ -22,34 +24,30 @@
     </PowerSelectMultiple>
   </div>
 </div>
-<Tracks::Uploader>
+<Tracks::Uploader @pushTrack={{this.pushTrack}}>
   <div class="">
-    <table class="w-full">
-      <tbody class="">
-        <Tracks::Loader @query={{@searchParams}} @tracks={{@tracks}} as |loader|>
-          {{#if loader.isRunning}}
-            <div class="h-64 overflow-y-scroll">
-              <p>
-                Loading...
-              </p>
-            </div>
+    <div class="w-full">
+      {{#if this.fetchData.isRunning}}
+        <div class="h-64 overflow-y-scroll w-full">
+          <p>
+            Loading...
+          </p>
+        </div>
+      {{else}}
+        <div class="h-64 overflow-y-scroll w-full">
+          {{#each this.sortedTracks as |track|}}
+            <Tracks::Track
+              @track={{track}}
+              @playlist={{@playlist}}
+              @labels={{@labels}}
+              @setIsSyncingPlaylist={{@setIsSyncingPlaylist}}
+            />
           {{else}}
-            <div class="h-64 overflow-y-scroll">
-              {{#each loader.data as |track|}}
-                <Tracks::Track
-                  @track={{track}}
-                  @playlist={{@playlist}}
-                  @labels={{@labels}}
-                  @setIsSyncingPlaylist={{@setIsSyncingPlaylist}}
-                />
-              {{else}}
-                No result.
-              {{/each}}
-            </div>
-            <Pagination @meta={{loader.data.meta}} @route="authenticated.playlists.show" @paramName="tracksPage" />
-          {{/if}}
-        </Tracks::Loader>
-      </tbody>
-    </table>
+            No result.
+          {{/each}}
+        </div>
+      {{/if}}
+      <Pagination @meta={{this.tracksQuery.meta}} @route="authenticated.playlists.show" @paramName="tracksPage" />
+    </div>
   </div>
 </Tracks::Uploader>

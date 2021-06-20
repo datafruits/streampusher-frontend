@@ -2,33 +2,15 @@ import { action } from '@ember/object';
 import { sort } from '@ember/object/computed';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
+import { task, timeout } from 'ember-concurrency';
 
 export default class TracksList extends Component {
-  @tracked filterText = '';
+  @service
+  store;
 
-  @tracked selectedLabels = [];
-
-  get isSearching() {
-    return this.filterText !== "" || this.selectedLabels.length !== 0;
-  }
-
-  get filteredResults() {
-    let filter = this.filterText;
-    let labelIds = this.selectedLabels.map(function(label){
-      return parseInt(label.get('id'));
-    });
-    return this.tracks.filter(function(item) {
-      if(item.get('isUploading')){
-        return false;
-      }
-      if(labelIds.length != 0){
-        if(_.intersection(item.get('labelIds'), labelIds).length !== labelIds.length){
-          return false
-        }
-      }
-      return item.get('displayName').toLowerCase().indexOf(filter) !== -1;
-    });
-  }
+  @tracked tracks = [];
+  @tracked tracksQuery;
 
   @sort('tracks', function(a, b){
     if(a.isUploading || b.isUploading){
@@ -50,8 +32,30 @@ export default class TracksList extends Component {
   })
   sortedTracks;
 
+
   @action
-  clearSearch() {
-    this.filterText = '';
+  pushTrack(track){
+    this.tracks.pushObject(track);
   }
+
+  @action
+  performTask(){
+    console.log('in performTask');
+    let query = this.args.searchParams;
+    this.fetchData.perform(query);
+  }
+
+  @(task(function*(query) {
+    yield timeout(1000);
+    let tracks = this.store.query('track', {
+        page: query.page,
+        search: {
+          keyword: query.query
+        }
+      });
+    let resolvedTracks = yield tracks;
+    this.tracksQuery = resolvedTracks;
+    return this.tracks = resolvedTracks.toArray();
+  }).restartable())
+  fetchData;
 }

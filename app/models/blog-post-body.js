@@ -1,11 +1,10 @@
-import DS from 'ember-data';
-const { Model } = DS;
+import Model, { belongsTo, attr } from '@ember-data/model';
 
 export default Model.extend({
-  blogPost: DS.belongsTo('blog-post'),
-  title: DS.attr(),
-  body: DS.attr(),
-  language: DS.attr(),
-  published: DS.attr(),
-  publishedAt: DS.attr()
+  blogPost: belongsTo('blog-post'),
+  title: attr(),
+  body: attr(),
+  language: attr(),
+  published: attr(),
+  publishedAt: attr()
 });
