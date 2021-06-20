@@ -6,12 +6,14 @@
     @labels={{model.labels}}
     @searchParams={{this.tracksSearchParams}}
     />
-  <img class="uploader-icon hidden absolute top-0 left-0" alt="Upload files" src="/assets/images/uploadericon.png">
+  <img
+    class="uploader-icon hidden absolute top-0 left-0"
+    alt="Upload files"
+    src="/assets/images/uploadericon.png" />
 </div>
 <div class="w-1/2 mx-2">
   <Playlists::TracksList
     @playlist={{model.playlist}}
-    @playlists={{model.playlists}}
     @isSyncingPlaylist={{isSyncingPlaylist}}
     @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
     @transitionAfterDelete={{route-action "transitionAfterDelete"}}
