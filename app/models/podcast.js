@@ -1,7 +1,6 @@
-import DS from 'ember-data';
-const { Model } = DS;
+import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default Model.extend({
-  name: DS.attr(),
-  playlist: DS.belongsTo('playlist'),
+  name: attr(),
+  playlist: belongsTo('playlist'),
 });

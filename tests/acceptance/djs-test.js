@@ -1,5 +1,11 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, fillIn, click, triggerKeyEvent } from '@ember/test-helpers';
+import {
+  visit,
+  currentURL,
+  fillIn,
+  click,
+  triggerKeyEvent
+} from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import { setupMirage } from 'ember-cli-mirage/test-support';

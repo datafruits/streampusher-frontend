@@ -42,12 +42,12 @@ export default Controller.extend({
       //let currentPlaylist = this.get('currentPlaylist.playlist');
       const onSuccess = () => {
         this.set("isSaving", false);
-        this.get("flashMessages").success("Saved!");
+        this.flashMessages.success("Saved!");
         //this.transitionToRoute('playlists.show', currentPlaylist.id);
       };
       const onFail = () => {
         console.log("track save failed");
-        this.get("flashMessages").danger("Something went wrong!");
+        this.flashMessages.danger("Something went wrong!");
         this.set("isSaving", false);
       };
       track.save().then(onSuccess, onFail);

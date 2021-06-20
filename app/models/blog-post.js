@@ -1,9 +1,8 @@
-import DS from 'ember-data';
+import Model, { hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
-const { Model } = DS;
 
 export default Model.extend({
-  blogPostBodies: DS.hasMany('blog-post-body'),
+  blogPostBodies: hasMany('blog-post-body'),
   title: computed('blogPostBodies.[]', function(){
     if(this.blogPostBodies.length){
       return this.blogPostBodies.firstObject.title;

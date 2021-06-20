@@ -25,7 +25,7 @@ module('Acceptance | setup radio', function(hooks) {
     await fillIn("input#radio-name", "datafruits");
     await fillIn("input#password", "password");
     await click("[data-test-submit-button]");
-    assert.equal(document.querySelector(".flash-message.alert-success").textContent, "Signing you in");
+    assert.dom(document.querySelector(".flash-message.alert-success")).hasText('Signing you in');
     assert.equal(currentURL(), '/dashboard');
   });
 

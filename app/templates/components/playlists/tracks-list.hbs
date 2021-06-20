@@ -2,46 +2,43 @@
   <h1 class="text-xl">Playlists</h1>
 </div>
 <div class="flex">
-  <div class="">
-    {{#if isEditing}}
+  <div class="relative">
+    {{#if this.isEditing}}
       <span class="">
-        <Input @value={{playlist.name}} @enter={{action "save"}} />
+        <Input @value={{@playlist.name}} @enter={{action "save"}} />
       </span>
       <button
-        disabled={{v-get playlist 'isInvalid'}}
+        disabled={{v-get @playlist 'isInvalid'}}
         data-test-save-playlist-button
         class="btn btn-primary"
         {{action 'save'}}>
         Save
       </button>
       <button class="btn" {{action 'cancelEditing'}}>Cancel</button>
-      {{#if (v-get playlist 'name' 'isInvalid')}}
+      {{#if (v-get @playlist 'name' 'isInvalid')}}
         <div class="error">
-          {{v-get playlist 'name' 'message'}}
+          {{v-get @playlist 'name' 'message'}}
         </div>
       {{/if}}
     {{else}}
-      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{playlist.name}}</span>
+      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{@playlist.name}}</span>
     {{/if}}
-    {{#if (not isEditing)}}
-      <span id="playlist-selector" {{on "click" this.selectPlaylist}}>
+    {{#if (not this.isEditing)}}
+      <span id="playlist-selector"
+            class="cursor-pointer"
+        {{on "click" this.selectPlaylist}}>
         <FaIcon @icon="chevron-down" />
       </span>
-      <div class="">
-        {{#if isSelectingPlaylist}}
-          <div class="" {{on "click" this.selectPlaylist}}>
-            {{#each playlists as |selectablePlaylist|}}
-              <span class="playlist-title"><LinkTo @route="authenticated.playlists.show" @model={{selectablePlaylist.id}}>{{selectablePlaylist.name}}</LinkTo></span>
-              <br/>
-            {{/each}}
+        {{#if this.isSelectingPlaylist}}
+          <div class="absolute bg-white border-2 border-black p-4 rounded-lg h-64 overflow-y-scroll w-64">
+            <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} @closePlaylistSelector={{this.selectPlaylist}} />
           </div>
         {{/if}}
-      </div>
     {{/if}}
   </div>
 </div>
-<div class="flex">
-  <div class="">
+<div class="flex space-x-2">
+  <div class="mr-2">
     <button {{action 'editPlaylistSettings'}} class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded">
       Playlist Settings
     </button>
@@ -57,10 +54,10 @@
 </div>
 <div class="mr-8 mt-5 flex">
   <div class="w-full">
-    <SortableGroup @tagName="tbody" @model={{playlist.sortedPlaylistTracks}} @onChange={{action "reorderItems"}} as |group|>
+    <SortableGroup @tagName="tbody" @model={{@playlist.sortedPlaylistTracks}} @onChange={{action "reorderItems"}} as |group|>
       <div class="h-64 overflow-y-scroll w-full">
         {{#each group.model as |playlistTrack|}}
-          {{#group.item tagName="tr" model=playlistTrack as |groupItem|}}
+          <group.item @tagName="tr" @model={{playlistTrack}} as |groupItem|>
             <Playlists::Track @playlistTrack={{playlistTrack}}
               class="border-2 border-gray-300 px-2 py-2" />
             {{#groupItem.handle data-test-vertical-demo-handle class="handle"}}
@@ -68,52 +65,16 @@
                 <span>&vArr;</span>
               </span>
             {{/groupItem.handle}}
-          {{/group.item}}
+          </group.item>
         {{/each}}
       </div>
     </SortableGroup>
   </div>
 </div>
-{{#if isEditingSettings}}
-  <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="editPlaylistSettings">
-    <div class="modal-header">
-      <button {{action "editPlaylistSettings"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Playlist Settings</h4>
-    </div>
-    <div class="modal-body">
-      <h2>{{playlist.name}}</h2>
-      <span>Created by: </span><b>{{playlist.createdBy}}</b>
-      <br />
-      <h4>Interpolate another playlist with this one (e.g. for jingles)</h4>
-      <label>Enabled <Input @type="checkbox" @id="interpolated-playlist-enabled" @name="interpolatedPlaylistEnabled" @checked={{playlist.interpolatedPlaylistEnabled}} /></label>
-      <br />
-      <label>
-        Every <Input @type="number" @name="interpolatedPlaylistTrackIntervalCount" @value={{playlist.interpolatedPlaylistTrackIntervalCount}} @step="1" />
-      </label>
-      <label>
-        tracks, play <Input @type="number" @name="interpolatedPlaylistTrackPlayCount" @value={{playlist.interpolatedPlaylistTrackPlayCount}} @step="1" />
-      </label>
-      <label>tracks from the
-        <select id="interpolated-playlist-select" onchange={{action "selectInterpolatedPlaylistId" value="target.value"}}>
-          {{#each playlists as |interpolatedPlaylist|}}
-            {{#if (eq-to-string playlist.interpolatedPlaylistId interpolatedPlaylist.id)}}
-              <option value={{interpolatedPlaylist.id}} selected="selected">{{interpolatedPlaylist.name}}</option>
-            {{else}}
-              <option value={{interpolatedPlaylist.id}}>{{interpolatedPlaylist.name}}</option>
-            {{/if}}
-          {{/each}}
-        </select>
-      </label>
-      playlist.
-      <br />
-      <h4>Shuffle</h4>
-      <label>On <Input @type="checkbox" @id="shuffle" @name="shuffle" @checked={{playlist.shuffle}} /></label>
-      <h4>Don't cut off tracks early for next show</h4>
-      <label>Enabled <Input @type="checkbox" @id="no-cue-out" @name="noCueOut" @checked={{playlist.noCueOut}} /></label>
-    </div>
-    <div class="modal-footer">
-      <button {{action "deletePlaylist"}} class="btn btn-danger">Delete playlist</button>
-      <button {{action "saveSettings"}} class="btn btn-primary">Save changes</button>
-    </div>
-  </ModalDialog>
+{{#if this.isEditingSettings}}
+  <Playlists::Settings
+    @transitionAfterDelete={{@transitionAfterDelete}}
+    @closeSettings={{action 'editPlaylistSettings'}}
+    @playlist={{@playlist}}
+  />
 {{/if}}

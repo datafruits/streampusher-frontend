@@ -64,27 +64,27 @@
   <button {{action "soundcloud"}} disabled={{isSaving}} class="btn btn-default"><FaIcon @icon="soundcloud" /></button>
 
   {{#if mixcloudDialog}}
-    {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="mixcloud"}}
+    <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="mixcloud">
       <div class="modal-header">
         <button {{action "mixcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Upload to Mixcloud - {{model.track.title}}</h4>
       </div>
       <div class="modal-body">
-        {{mixcloud-uploader track=model.track}}
+        <MixcloudUploader @track={{model.track}} />
       </div>
-    {{/modal-dialog}}
+    </ModalDialog>
   {{else if soundcloudDialog}}
-    {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true close="soundcloud"}}
+    <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="soundcloud">
       <div class="modal-header">
         <button {{action "soundcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Upload to Soundcloud - {{model.track.title}}</h4>
       </div>
       <div class="modal-body">
-        {{soundcloud-uploader track=model.track}}
+        <SoundcloudUploader @track={{model.track}} />
       </div>
-    {{/modal-dialog}}
+    </ModalDialog>
   {{else if embedDialog}}
-    {{#modal-dialog targetAttachment="center" translucentOverlay=true clickOutsideToClose=true onClose="embed"}}
+    <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="embed">
       <div class="modal-header">
         <button {{action "embed"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Embed - {{model.track.title}}</h4>
@@ -96,6 +96,6 @@
         </div>
         {{{model.track.embedCode}}}
       </div>
-    {{/modal-dialog}}
+    </ModalDialog>
   {{/if}}
 </div>
