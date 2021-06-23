@@ -11,6 +11,7 @@ export default class ScheduledShow extends Model {
   @attr title;
   @attr("file") image;
   @attr imageFilename;
+  @attr thumbImageUrl;
   @attr tweetContent;
   @attr description;
   @attr timezone;
