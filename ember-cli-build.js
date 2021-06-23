@@ -1,36 +1,14 @@
-'use strict';
+"use strict";
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    'ember-font-awesome': {
-     useScss: true, // for ember-cli-sass
-    },
-
     postcssOptions: {
       compile: {
-        extension: 'scss',
-        enabled: true,
-        parser: require('postcss-scss'),
-        plugins: [
-          {
-            module: require('@csstools/postcss-sass'),
-            options: {
-              includePaths: [
-                'node_modules/ember-power-select',
-                'node_modules/ember-calendar',
-                'node_modules/font-awesome/scss',
-              ],
-            },
-
-          },
-          require('tailwindcss')('./app/tailwind/config.js')
-        ]
-      }
-    }
-
-
+        plugins: [require("tailwindcss")("./app/tailwind/config.js")],
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -45,8 +23,8 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  app.import('vendor/netlify.toml', {
-    destDir: '/',
+  app.import("vendor/netlify.toml", {
+    destDir: "/",
   });
 
   return app.toTree();
