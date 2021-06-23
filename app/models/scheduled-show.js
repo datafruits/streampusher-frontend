@@ -1,8 +1,6 @@
 import Model, { attr, hasMany, belongsTo } from "@ember-data/model";
 import moment from "moment";
-import { computed } from "@ember/object";
 import { alias } from "@ember/object/computed";
-import { tracked } from "@glimmer/tracking";
 
 export default class ScheduledShow extends Model {
   @hasMany("track") tracks;
@@ -27,6 +25,38 @@ export default class ScheduledShow extends Model {
 
   get displayTitle() {
     return `${this.title} - ${this.formattedDate}`;
+  }
+
+  get startFormatted() {
+    return moment(this.start).format("HH:mm");
+  }
+
+  get recurringFormatted() {
+    if(this.recurringInterval === "week"){
+      return "weekly";
+    } else if(this.recurringInterval === "month") {
+      return "monthly";
+    } else if(this.recurringInterval === "biweek") {
+      return "biweekly";
+    } else {
+      return null;
+    }
+  }
+
+  get recurringBgColor() {
+    if(this.recurringInterval === "week"){
+      return "bg-purple-400";
+    } else if(this.recurringInterval === "month") {
+      return "bg-blue-400";
+    } else if(this.recurringInterval === "biweek") {
+      return "bg-green-400";
+    } else {
+      return null;
+    }
+  }
+
+  get endFormatted() {
+    return moment(this.end).format("HH:mm");
   }
 
   @alias("start") startsAt;

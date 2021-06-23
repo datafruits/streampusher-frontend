@@ -99,7 +99,7 @@
       />
     </div>
 
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-4">
       {{#if @changeset.isValid}}
         {{#if this.isSaving}}
           <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
@@ -118,6 +118,14 @@
           @value="Save"
         />
       {{/if}}
+    </div>
+
+    <div class="flex items-center justify-between">
+      <Input
+        @type="submit"
+        class="btn bg-red-500 cursor-pointer"
+        @value="Delete"
+      />
     </div>
   </form>
 </div>
