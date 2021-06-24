@@ -6,7 +6,16 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     postcssOptions: {
       compile: {
-        plugins: [require("tailwindcss")("./app/tailwind/config.js")],
+        plugins: [
+          {
+            module: require("postcss-import"),
+            options: {
+              path: ["node_modules"],
+            },
+          },
+
+          require("tailwindcss")("./app/tailwind/config.js"),
+        ],
       },
     },
   });
