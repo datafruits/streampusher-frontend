@@ -5,7 +5,10 @@
   <p>loading</p>
   <ShrimpCalendar />
 {{else}}
-  <ShrimpCalendar @events={{this.shows}} as |model|>
+  <ShrimpCalendar
+    @onDayclick={{this.newShow}}
+    @events={{this.shows}}
+      as |model|>
     {{!-- template-lint-disable no-inline-styles --}}
     <div class="bg-red-400 text-white mb-1">
       <div class="bg-red-600 flex justify-between items-center p-1">

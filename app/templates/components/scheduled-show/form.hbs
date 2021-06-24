@@ -81,24 +81,6 @@
       {{/if}}
     </div>
 
-    <div class="mb-4">
-      <label for="promote-show">Promote this show</label>
-      <Input
-        @type="checkbox"
-        @checked={{@changeset.promoteShow}}
-        name="promote-show"
-      />
-    </div>
-
-    <div class="mb-4">
-      <label for="archive-show">Archive this show</label>
-      <Input
-        @type="checkbox"
-        @checked={{@changeset.archiveShow}}
-        name="archive-show"
-      />
-    </div>
-
     <div class="flex items-center justify-between mb-4">
       {{#if @changeset.isValid}}
         {{#if this.isSaving}}
