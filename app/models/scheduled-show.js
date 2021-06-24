@@ -17,6 +17,10 @@ export default class ScheduledShow extends Model {
   @attr timezone;
   @attr recurringInterval;
 
+  @attr isLive;
+  @attr isGuest;
+  @attr guest;
+
   get formattedDate() {
     return moment(this.start).format();
   }

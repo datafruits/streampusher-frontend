@@ -33,6 +33,32 @@
     </div>
 
     <div class="mb-4">
+      <label for="promote-show">Live Broadcast</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.isLive}}
+        name="is-live"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="promote-show">Guest Host</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.isGuest}}
+        name="is-live"
+      />
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{@changeset}}
+        @property="guest"
+      />
+    </div>
+
+    <div class="mb-4">
       <ValidatedField
         @type="text"
         @changeset={{@changeset}}
