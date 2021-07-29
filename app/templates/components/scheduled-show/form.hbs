@@ -25,6 +25,8 @@
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
       <PowerSelect
         @renderInPlace={{true}}
+        @searchEnabled={{true}}
+        @search={{this.searchDjs}}
         @options={{@djs}}
         @selected={{@changeset.host}}
         @onChange={{fn (mut @changeset.host)}} as |dj|>

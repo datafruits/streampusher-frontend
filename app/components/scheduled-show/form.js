@@ -2,12 +2,16 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import { debounce } from "@ember/runloop";
+import RSVP from "rsvp";
 
 export default class ScheduledShowForm extends Component {
   @tracked isSaving = false;
   @tracked showingContentEditor = false;
   @service
   flashMessages;
+  @service
+  store;
   recurringIntervals = [
     {
       value: "not_recurring",
@@ -57,5 +61,21 @@ export default class ScheduledShowForm extends Component {
       this.isSaving = false;
     };
     show.save().then(onSuccess, onFail);
+  }
+
+  @action
+  searchDjs(term){
+    return new RSVP.Promise((resolve, reject) => {
+      debounce(this, this._performDjsSearch, term, resolve, reject, 600);
+    });
+  }
+  _performDjsSearch(term, resolve, reject) {
+    this.store.query("user", {
+      search: {
+        keyword: term
+      }
+    }).then((users) => {
+      return resolve(users);
+    }, reject);
   }
 }
