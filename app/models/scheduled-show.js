@@ -5,7 +5,8 @@ import { alias } from "@ember/object/computed";
 export default class ScheduledShow extends Model {
   @hasMany("track") tracks;
   @belongsTo("playlist") playlist;
-  @belongsTo("user") host;
+  //@belongsTo("user") host;
+  @hasMany("user") djs;
   @attr("date") start;
   @attr("date") end;
   @attr title;

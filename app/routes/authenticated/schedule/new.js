@@ -5,10 +5,10 @@ import { inject as service } from '@ember/service';
 export default class ScheduleNewRoute extends Route {
   @service currentUser;
   model() {
+    let newShow = this.store.createRecord("scheduled-show");
+    newShow.djs.pushObject(this.currentUser.user);
     return hash({
-      scheduledShow: this.store.createRecord("scheduled-show", {
-        host: this.currentUser.user
-      }),
+      scheduledShow: newShow,
       labels: this.store.loadRecords("label"),
       djs: this.store.loadRecords("user"),
     });

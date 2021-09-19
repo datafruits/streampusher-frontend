@@ -46,6 +46,22 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
+  setStart(time){
+    this.args.changeset.set("start", time);
+  }
+
+  @action
+  setEnd(time){
+    this.args.changeset.set("end", time);
+  }
+
+  @action
+  setHosts(djs){
+    console.log(djs);
+    this.args.changeset.set('djs', djs);
+  }
+
+  @action
   save() {
     this.isSaving = true;
     let show = this.args.changeset;

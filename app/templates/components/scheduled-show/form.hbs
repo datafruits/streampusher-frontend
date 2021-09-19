@@ -23,15 +23,15 @@
 
     <div class="mb-4">
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
-      <PowerSelect
+      <PowerSelectMultiple
         @renderInPlace={{true}}
         @searchEnabled={{true}}
         @search={{this.searchDjs}}
         @options={{@djs}}
-        @selected={{@changeset.host}}
-        @onChange={{fn (mut @changeset.host)}} as |dj|>
+        @selected={{@changeset.djs}}
+        @onChange={{fn (mut @changeset.djs)}} as |dj|>
         {{dj.username}}
-      </PowerSelect>
+      </PowerSelectMultiple>
     </div>
 
     <div class="mb-4">
@@ -61,19 +61,19 @@
     </div>
 
     <div class="mb-4">
-      <ValidatedField
-        @type="text"
-        @changeset={{@changeset}}
-        @property="start"
-      />
+      <TimePicker
+        @label="Start"
+        @selected={{@changeset.start}}
+        @onChange={{this.setStart}}
+        />
     </div>
 
     <div class="mb-4">
-      <ValidatedField
-        @type="text"
-        @changeset={{@changeset}}
-        @property="end"
-      />
+      <TimePicker
+        @label="End"
+        @selected={{@changeset.start}}
+        @onChange={{this.setEnd}}
+        />
     </div>
 
     <div class="mb-4">
