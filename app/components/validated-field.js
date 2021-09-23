@@ -7,4 +7,9 @@ export default class ValidatedField extends Component {
     console.log('validating property');
     return changeset.validate(property);
   }
+
+  @action
+  setProperty(event) {
+    return this.args.changeset.set(this.args.property, event.target.value);
+  }
 }

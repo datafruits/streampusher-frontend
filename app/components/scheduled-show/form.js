@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { debounce } from "@ember/runloop";
 import RSVP from "rsvp";
+import moment from 'moment';
 
 export default class ScheduledShowForm extends Component {
   @tracked isSaving = false;
@@ -35,6 +36,10 @@ export default class ScheduledShowForm extends Component {
     },
   ];
 
+  get formattedDay() {
+    return moment(this.args.changeset.start).format('dddd MMMM Do YYYY');
+  }
+
   @action
   toggleShowingContentEditor() {
     this.showingContentEditor = !this.showingContentEditor;
@@ -47,17 +52,24 @@ export default class ScheduledShowForm extends Component {
 
   @action
   setStart(time){
-    this.args.changeset.set("start", time);
+    let hours = time.split(':')[0];
+    let minutes = time.split(':')[1];
+    const oldDate = this.args.changeset.start;
+    let newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate(), hours, minutes);
+    this.args.changeset.set("start", newDate);
   }
 
   @action
   setEnd(time){
-    this.args.changeset.set("end", time);
+    let hours = time.split(':')[0];
+    let minutes = time.split(':')[1];
+    const oldDate = this.args.changeset.end;
+    let newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate(), hours, minutes);
+    this.args.changeset.set("end", newDate);
   }
 
   @action
   setHosts(djs){
-    console.log(djs);
     this.args.changeset.set('djs', djs);
   }
 

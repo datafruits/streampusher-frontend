@@ -21,8 +21,9 @@
     @autofocus={{true}}
     @id={{concat @type "-" @property}}
     @value={{get @changeset @property}}
-    oninput={{action (mut (get @changeset @property)) value="target.value"}}
-    onblur={{action "validateProperty" @changeset @property}} />
+    {{on "input" this.setProperty}}
+    {{on "blur" (fn this.validateProperty @changeset @property)}}
+    />
 {{/if}}
 
 {{#if (get @changeset.error @property)}}
