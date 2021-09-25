@@ -41,12 +41,12 @@
 
 .flash-message {
   @apply p-2 fixed top-0 left-0 z-50 w-full;
-  &.alert-danger {
-    @apply bg-red-600 text-white;
-  }
-  &.alert-success {
-    @apply bg-green-600 text-white;
-  }
+}
+.flash-message.alert-danger {
+  @apply bg-red-600 text-white;
+}
+.flash-message.alert-success {
+  @apply bg-green-600 text-white;
 }
 
 @keyframes spin {

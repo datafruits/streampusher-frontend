@@ -3,37 +3,16 @@
 </div>
 <div class="flex">
   <div class="relative">
-    {{#if this.isEditing}}
-      <span class="">
-        <Input @value={{@playlist.name}} @enter={{action "save"}} />
-      </span>
-      <button
-        disabled={{v-get @playlist 'isInvalid'}}
-        data-test-save-playlist-button
-        class="btn btn-primary"
-        {{action 'save'}}>
-        Save
-      </button>
-      <button class="btn" {{action 'cancelEditing'}}>Cancel</button>
-      {{#if (v-get @playlist 'name' 'isInvalid')}}
-        <div class="error">
-          {{v-get @playlist 'name' 'message'}}
-        </div>
-      {{/if}}
-    {{else}}
-      <span class="playlist-title" {{on "click" this.editPlaylist}}>{{@playlist.name}}</span>
-    {{/if}}
-    {{#if (not this.isEditing)}}
-      <span id="playlist-selector"
-            class="cursor-pointer"
-        {{on "click" this.selectPlaylist}}>
-        <FaIcon @icon="chevron-down" />
-      </span>
-        {{#if this.isSelectingPlaylist}}
-          <div class="absolute bg-white border-2 border-black p-4 rounded-lg h-64 overflow-y-scroll w-64">
-            <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} @closePlaylistSelector={{this.selectPlaylist}} />
-          </div>
-        {{/if}}
+    <span class="playlist-title">{{@playlist.name}}</span>
+    <span id="playlist-selector"
+          class="cursor-pointer"
+      {{on "click" this.selectPlaylist}}>
+      <FaIcon @icon="chevron-down" />
+    </span>
+    {{#if this.isSelectingPlaylist}}
+      <div class="absolute bg-white border-2 border-black p-4 rounded-lg h-64 overflow-y-scroll w-64">
+        <Playlists::PlaylistSelector @selectedPlaylist={{@playlist}} @closePlaylistSelector={{this.selectPlaylist}} />
+      </div>
     {{/if}}
   </div>
 </div>
@@ -44,7 +23,7 @@
     </button>
   </div>
   <div class="">
-    <button {{action 'newPlaylist'}}
+    <button {{on 'click' this.newPlaylist}}
       class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded"
       data-test-new-playlist-button
       >

@@ -8,6 +8,8 @@ export default class ApplicationController extends Controller {
   @service
   session;
 
+  @service flashMessages;
+
   isShowingMobileMenu = false;
 
   @action

@@ -1,0 +1,29 @@
+<div class="">
+  <h1 class="text-xl">Playlists</h1>
+</div>
+<div class="flex">
+  <div class="relative">
+    <span id="playlist-selector"
+          class="cursor-pointer"
+      {{on "click" this.selectPlaylist}}>
+      <FaIcon @icon="chevron-down" />
+    </span>
+    {{#if this.isSelectingPlaylist}}
+      <div class="absolute bg-white border-2 border-black p-4 rounded-lg h-64 overflow-y-scroll w-64">
+        <Playlists::PlaylistSelector @closePlaylistSelector={{this.selectPlaylist}} />
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div class="flex space-x-2">
+  <div class="">
+    <button {{on 'click' this.newPlaylist}}
+      class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded"
+      data-test-new-playlist-button
+      >
+      <FaIcon @icon="plus" />New Playlist
+    </button>
+  </div>
+</div>
+<div class="mr-8 mt-5 flex">
+</div>

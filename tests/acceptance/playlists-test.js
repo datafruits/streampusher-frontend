@@ -22,20 +22,15 @@ module("Acceptance | playlists", function (hooks) {
   });
   test("create a new playlist", async function (assert) {
     await authenticateSession();
-    await visit("/playlists");
+    await visit("/playlists/");
 
-    assert.equal(currentURL(), "/playlists");
-
-    await pauseTest();
     await click("[data-test-new-playlist-button]");
-    await fillIn("input#playlist-name", "my new playlist");
+    assert.equal(currentURL(), "/playlists/new?tracksPage=1");
+
+    await fillIn("input#name", "my new playlist");
     await click("[data-test-save-playlist-button]");
-    assert.equal(
-      document
-        .querySelector("[data-current-playlist]")
-        .textContent.includes("my new playlist"),
-      true
-    );
+    console.log(document.querySelector('.flash-message'));
+    assert.dom('.flash-message.alert-success').hasText('Created playlist!');
   });
 
   test("uploading a new track", async function (assert) {});

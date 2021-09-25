@@ -9,6 +9,9 @@ export default class TracksList extends Component {
   @service
   store;
 
+  @service
+  router;
+
   @tracked tracks = [];
   @tracked tracksQuery;
 
