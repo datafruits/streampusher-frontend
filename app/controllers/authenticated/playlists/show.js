@@ -20,4 +20,25 @@ export default class PlaylistsShowController extends Controller {
     };
     playlist.save().then(onSuccess, onFail);
   }
+
+  @action
+  reorderItems(itemModels, draggedModel) {
+    this.model.playlist.playlistTracks.map(function (playlistTrack) {
+      let newPosition = itemModels.findIndex(function (item) {
+        return item.id == playlistTrack.id;
+      });
+      playlistTrack.position = newPosition;
+    });
+    draggedModel
+      .save()
+      .then(() => {
+        this.model.playlist.playlistTracks = itemModels;
+        console.log("reorderItems success");
+      })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+        this.flashMessages.danger("Sorry, something went wrong!");
+      });
+  }
 }

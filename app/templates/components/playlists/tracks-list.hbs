@@ -33,7 +33,7 @@
 </div>
 <div class="mr-8 mt-5 flex">
   <div class="w-full">
-    <SortableGroup @tagName="tbody" @model={{@playlist.sortedPlaylistTracks}} @onChange={{action "reorderItems"}} as |group|>
+    <SortableGroup @tagName="tbody" @model={{@playlist.sortedPlaylistTracks}} @onChange={{@reorderItems}} as |group|>
       <div class="h-64 overflow-y-scroll w-full">
         {{#each group.model as |playlistTrack|}}
           <group.item @tagName="tr" @model={{playlistTrack}} as |groupItem|>
