@@ -29,11 +29,14 @@ module("Acceptance | playlists", function (hooks) {
 
     await fillIn("input#name", "my new playlist");
     await click("[data-test-save-playlist-button]");
-    console.log(document.querySelector('.flash-message'));
     assert.dom('.flash-message.alert-success').hasText('Created playlist!');
   });
 
-  test("uploading a new track", async function (assert) {});
+  test("uploading a new track", async function (assert) {
+    // await authenticateSession();
+    // await visit("/playlists/");
+
+  });
 
   test("add track to playlist", async function (assert) {});
 
@@ -43,6 +46,9 @@ module("Acceptance | playlists", function (hooks) {
   });
 
   test("edit playlist settings", async function (assert) {});
-  test("edit playlist name", async function (assert) {});
   test("navigate to a different playlist", async function (assert) {});
+
+  test("reordering tracks", async function(assert) {});
+
+  //delete playlist
 });

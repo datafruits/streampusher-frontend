@@ -99,16 +99,18 @@ export default function () {
     return  {
       playlist: {
         id: playlist.attrs.id,
+        name: playlist.attrs.name
       }
     }
   });
 
-  this.get('/playlists/:id.json', (schema, request) => {
-    let playlist = schema.playlists.find(request.params.id);
+  this.get('/playlists/:id', (schema, request) => {
+    let playlist = schema.playlists.find(request.params.id.split(".")[0]); // id is "1.json"
 
     return  {
       playlist: {
         id: playlist.attrs.id,
+        name: playlist.attrs.name
       }
     }
   });
