@@ -3,8 +3,20 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import RSVP from "rsvp";
 import { debounce } from "@ember/runloop";
+import PlaylistValidations from "../../validations/playlist";
+import lookupValidator from "ember-changeset-validations";
+import Changeset from "ember-changeset";
 
 export default class PlaylistsSettingsComponent extends Component {
+  constructor() {
+    super(...arguments);
+    this.changeset = new Changeset(
+      this.args.playlist,
+      lookupValidator(PlaylistValidations),
+      PlaylistValidations
+    );
+  }
+
   @service store;
   @action
   fetchPlaylists() {
@@ -24,14 +36,13 @@ export default class PlaylistsSettingsComponent extends Component {
   }
 
   @action
-  selectInterpolatedPlaylistId(playlistId) {
-    let playlist = this.args.playlist;
-    playlist.interpolatedPlaylistId = playlistId;
+  selectInterpolatedPlaylistId(playlist) {
+    this.changeset.set('interpolatedPlaylist', playlist);
   }
 
   @action
-  saveSettings() {
-    var playlist = this.args.playlist;
+  saveSettings(e) {
+    e.preventDefault();
     var onSuccess = () => {
       this.args.closeSettings();
     };
@@ -39,13 +50,21 @@ export default class PlaylistsSettingsComponent extends Component {
       console.log("playlist settings save failed");
       this.flashMessages.danger("Something went wrong!");
     };
-    playlist.save().then(onSuccess, onFail);
+    // var playlist = this.args.playlist;
+    // playlist.save().then(onSuccess, onFail);
+    this.changeset.validate().then(() => {
+      if (this.changeset.isValid) {
+        this.changeset.save().then(onSuccess, onFail);
+      } else {
+        this.flashMessages.danger("Fix errors before saving");
+      }
+    });
   }
 
   @action
   deletePlaylist() {
     if (confirm("Are you sure you want to delete this playlist?")) {
-      var playlist = this.args.playlist;
+      var playlist = this.changeset;
       playlist.destroyRecord().then(() => {
         this.args.closeSettings();
         //TODO use router service??

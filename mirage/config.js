@@ -1,4 +1,5 @@
 import ENV from "streampusher-frontend/config/environment";
+import { Response } from 'ember-cli-mirage';
 
 export default function () {
   // These comments are here to help you get started. Feel free to delete them.
@@ -214,6 +215,16 @@ export default function () {
         { id: 12, name: "techno" },
         { id: 13, name: "acid" },
       ],
+    };
+  });
+
+  this.put("/fake_uploads", () => {
+    return new Response(204, {}, {});
+  });
+
+  this.get("/uploader_signature", () => {
+    return {
+      endpoint: "/fake_uploads"
     };
   });
 

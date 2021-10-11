@@ -61,7 +61,7 @@
     "ember-decorators": "^6.1.1",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^7.0.0",
-    "ember-file-upload": "^2.7.1",
+    "ember-file-upload": "4.0.3",
     "ember-load-initializers": "^2.1.1",
     "ember-lodash": "^4.19.5",
     "ember-maybe-import-regenerator": "^0.1.6",
@@ -96,7 +96,6 @@
     "@glimmer/component": "^1.0.0",
     "@lhci/cli": "^0.4.1",
     "cross-env": "^7.0.2",
-    "ember-calendar": "https://github.com/mcfiredrill/ember-calendar#develop",
     "jstimezonedetect": "^1.0.7"
   }
 }
