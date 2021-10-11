@@ -1,22 +1,7 @@
-<div class="w-1/2 mx-2">
-  <Tracks::List
-    @updateSearch={{action "updateSearch"}}
-    @playlist={{model.playlist}}
-    @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
-    @labels={{model.labels}}
-    @searchParams={{this.tracksSearchParams}}
-    />
-  <img
-    class="uploader-icon hidden absolute top-0 left-0"
-    alt="Upload files"
-    src="/assets/images/uploadericon.png" />
-</div>
-<div class="w-1/2 mx-2">
-  <Playlists::TracksList
-    @playlist={{model.playlist}}
-    @isSyncingPlaylist={{isSyncingPlaylist}}
-    @setIsSyncingPlaylist={{action "setIsSyncingPlaylist"}}
-    @transitionAfterDelete={{route-action "transitionAfterDelete"}}
-    @searchParams={{this.playlistsSearchParams}}
-    />
-</div>
+<Playlists::TracksList
+  @playlist={{model.playlist}}
+  @save={{this.savePlaylist}}
+  @transitionAfterDelete={{route-action "transitionAfterDelete"}}
+  @searchParams={{this.playlistsSearchParams}}
+  @reorderItems={{this.reorderItems}}
+  />

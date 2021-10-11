@@ -1,12 +1,7 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 import { sort } from '@ember/object/computed';
-import { validator, buildValidations } from 'ember-cp-validations';
-const Validations = buildValidations({
-  name: validator('presence', { presence: true, message: "cannot be blank"}),
-});
 
-
-export default Model.extend(Validations, {
+export default Model.extend({
   name: attr(),
   createdBy: attr(),
   playlistTracks: hasMany('playlist-track'),
