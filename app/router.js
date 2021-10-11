@@ -13,13 +13,14 @@ Router.map(function () {
   this.route("authenticated", { path: "" }, function () {
     this.route("dashboard");
     this.route("playlists", function () {
+      this.route("new");
       this.route("show", { path: "/:id" });
     });
     this.route("tracks", function () {
       this.route("show", { path: "/:id" });
     });
     this.route("schedule", function () {
-      this.route("new", { path: "/new" });
+      this.route("new");
       this.route("show", { path: "/shows/:id" });
     });
     this.route("djs");

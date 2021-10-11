@@ -38,16 +38,14 @@
           {{#each this.sortedTracks as |track|}}
             <Tracks::Track
               @track={{track}}
-              @playlist={{@playlist}}
               @labels={{@labels}}
-              @setIsSyncingPlaylist={{@setIsSyncingPlaylist}}
             />
           {{else}}
             No result.
           {{/each}}
         </div>
       {{/if}}
-      <Pagination @meta={{this.tracksQuery.meta}} @route="authenticated.playlists.show" @paramName="tracksPage" />
+      <Pagination @meta={{this.tracksQuery.meta}} @route={{this.router.currentRouteName}} @paramName="tracksPage" />
     </div>
   </div>
 </Tracks::Uploader>

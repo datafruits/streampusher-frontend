@@ -23,20 +23,32 @@
 
     <div class="mb-4">
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
-      <PowerSelect
+      <PowerSelectMultiple
         @renderInPlace={{true}}
+        @searchEnabled={{true}}
+        @search={{this.searchDjs}}
         @options={{@djs}}
-        @selected={{@changeset.host}}
-        @onChange={{fn (mut @changeset.host)}} as |dj|>
+        @selected={{@changeset.djs}}
+        @onChange={{fn (mut @changeset.djs)}} as |dj|>
         {{dj.username}}
-      </PowerSelect>
+      </PowerSelectMultiple>
     </div>
 
     <div class="mb-4">
-      <ValidatedField
-        @type="text"
-        @changeset={{@changeset}}
-        @property="start"
+      <label for="promote-show">Live Broadcast</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.isLive}}
+        name="is-live"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="promote-show">Guest Host</label>
+      <Input
+        @type="checkbox"
+        @checked={{@changeset.isGuest}}
+        name="is-live"
       />
     </div>
 
@@ -44,8 +56,28 @@
       <ValidatedField
         @type="text"
         @changeset={{@changeset}}
-        @property="end"
+        @property="guest"
       />
+    </div>
+
+    <div class="mb-4">
+      {{this.formattedDay}}
+    </div>
+
+    <div class="mb-4">
+      <TimePicker
+        @label="Start"
+        @selected={{@changeset.start}}
+        @onChange={{this.setStart}}
+        />
+    </div>
+
+    <div class="mb-4">
+      <TimePicker
+        @label="End"
+        @selected={{@changeset.start}}
+        @onChange={{this.setEnd}}
+        />
     </div>
 
     <div class="mb-4">
@@ -81,25 +113,7 @@
       {{/if}}
     </div>
 
-    <div class="mb-4">
-      <label for="promote-show">Promote this show</label>
-      <Input
-        @type="checkbox"
-        @checked={{@changeset.promoteShow}}
-        name="promote-show"
-      />
-    </div>
-
-    <div class="mb-4">
-      <label for="archive-show">Archive this show</label>
-      <Input
-        @type="checkbox"
-        @checked={{@changeset.archiveShow}}
-        name="archive-show"
-      />
-    </div>
-
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-4">
       {{#if @changeset.isValid}}
         {{#if this.isSaving}}
           <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
@@ -118,6 +132,14 @@
           @value="Save"
         />
       {{/if}}
+    </div>
+
+    <div class="flex items-center justify-between">
+      <Input
+        @type="submit"
+        class="btn bg-red-500 cursor-pointer"
+        @value="Delete"
+      />
     </div>
   </form>
 </div>

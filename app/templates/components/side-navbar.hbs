@@ -3,7 +3,7 @@
     <li class="hover:bg-gray-800 rounded px-2 py-1">
       <LinkTo @route="authenticated.dashboard">Dashboard</LinkTo>
     </li>
-    {{#if this.currentUser.isAdmin}}
+    {{#if this.currentUser.user.isAdmin}}
       <li class="hover:bg-gray-800 rounded px-2 py-1">
         <LinkTo @route="authenticated.djs">Users</LinkTo>
       </li>

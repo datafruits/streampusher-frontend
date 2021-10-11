@@ -1,0 +1,27 @@
+<form {{on "submit" this.save}}>
+  <ul>
+    {{#each this.changeset.errors as |error|}}
+      <li>{{error.validation}}</li>
+    {{/each}}
+  </ul>
+
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+      Name
+    </label>
+    <Input
+      type="text"
+      name="name"
+      id="name"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      @value={{this.changeset.name}}
+    />
+  </div>
+
+  <Input
+    data-test-save-playlist-button
+    @type="submit"
+    class="btn btn-primary"
+    @value="save"
+    />
+</form>

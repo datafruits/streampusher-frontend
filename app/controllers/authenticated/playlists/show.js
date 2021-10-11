@@ -1,47 +1,44 @@
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
-import QueryParams from 'ember-parachute';
+import { inject as service } from '@ember/service';
 
-export const PlaylistQueryParams = new QueryParams({
-  tracksPage: {
-    defaultValue: 1,
-    refresh: true
-  },
-  playlistsPage: {
-    defaultValue: 1,
-    refresh: true
-  },
-  query: {
-    defaultValue: "",
-    refresh: true
-  }
-});
+export default class PlaylistsShowController extends Controller {
+  @service router;
 
-
-export default class ShowController extends Controller.extend(PlaylistQueryParams.Mixin) {
-  @tracked query;
-  @tracked tracksPage = 1;
-  @tracked playlistsPage = 1;
-  get tracksSearchParams() {
-    return { query: this.query, page: this.tracksPage };
-  }
-
-  get playlistsSearchParams() {
-    return { query: this.query, playlistsPage: this.playlistsPage };
-  }
-
-  @tracked isSyncingPlaylist = false;
   @action
-  setIsSyncingPlaylist(val) {
-    this.isSyncingPlaylist = val;
+  savePlaylist(playlist) {
+    console.log('in savePlaylist');
+    let onSuccess = () => {
+      //this.isEditing = false;
+      //transition to playlist show
+      this.router.transitionTo('playlist.show', playlist);
+    };
+    let onFail = () => {
+      console.log("playlist save failed");
+      this.flashMessages.danger("Something went wrong!");
+      return;
+    };
+    playlist.save().then(onSuccess, onFail);
   }
 
   @action
-  updateSearch(query) {
-    console.log(`in updateSearch in controller: ${query}`);
-    this.query = query;
-    this.tracksPage = 1;
-    this.playlistsPage = 1;
+  reorderItems(itemModels, draggedModel) {
+    this.model.playlist.playlistTracks.map(function (playlistTrack) {
+      let newPosition = itemModels.findIndex(function (item) {
+        return item.id == playlistTrack.id;
+      });
+      playlistTrack.position = newPosition;
+    });
+    draggedModel
+      .save()
+      .then(() => {
+        this.model.playlist.playlistTracks = itemModels;
+        console.log("reorderItems success");
+      })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+        this.flashMessages.danger("Sorry, something went wrong!");
+      });
   }
 }
