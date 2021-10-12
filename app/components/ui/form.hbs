@@ -1,3 +1,9 @@
 <form {{on "submit" @onSubmit}}>
+  <ul>
+    {{#each @changeset.errors as |error|}}
+      <li>{{error.validation}}</li>
+    {{/each}}
+  </ul>
+
   {{yield}}
 </form>

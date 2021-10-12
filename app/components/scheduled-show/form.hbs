@@ -1,5 +1,5 @@
 <div>
-  <form {{action "save" on="submit"}}>
+  <Ui::Form @onSubmit={{this.save}} >
     <div class="mb-4">
       <ValidatedField
         @type="text"
@@ -8,10 +8,7 @@
       />
     </div>
 
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="artwork">
-        Artwork
-      </label>
+    <Ui::Field @label="Artwork">
       {{#if @changeset.image}}
         <img alt="artwork" width="300" height="300"
           src={{file-url @changeset.image "thumb"}}>
@@ -19,7 +16,7 @@
       <ArtworkFileUpload
         @file={{@changeset.image}}
         @filename={{@changeset.imageFilename}} />
-    </div>
+    </Ui::Field>
 
     <div class="mb-4">
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
@@ -141,5 +138,5 @@
         @value="Delete"
       />
     </div>
-  </form>
+  </Ui::Form>
 </div>
