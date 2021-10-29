@@ -12,20 +12,22 @@
 .btn {
   cursor: pointer;
   @apply shadow bg-purple-600 text-white font-bold py-2 px-2 rounded;
-  &.danger {
-    @apply bg-red-600;
-  }
-  &[disabled] {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
+}
+
+.btn.danger {
+  @apply bg-red-600;
+}
+.btn[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .btn:hover {
   @apply bg-purple-500;
-  &.danger {
-    @apply bg-red-500;
-  }
+}
+
+.btn.danger {
+  @apply bg-red-500;
 }
 
 .btn:focus {
@@ -34,9 +36,10 @@
 
 .btn:active {
   @apply bg-purple-800;
-  &.danger {
-    @apply bg-red-800;
-  }
+}
+
+.btn.danger {
+  @apply bg-red-800;
 }
 
 .flash-message {
@@ -62,19 +65,13 @@
   animation: spin 1.5s infinite linear;
 }
 
-button.loading {
-  &:before {
-  }
-  &:after {
-  }
-}
-
 a {
   text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-    @apply text-purple-800;
-  }
+}
+
+a:hover {
+  text-decoration: none;
+  @apply text-purple-800;
 }
 
 @tailwind utilities;
