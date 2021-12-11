@@ -43,7 +43,6 @@ export default class TracksList extends Component {
 
   @action
   performTask(){
-    console.log('in performTask');
     let query = this.args.searchParams;
     this.fetchData.perform(query);
   }
@@ -53,7 +52,7 @@ export default class TracksList extends Component {
     let tracks = this.store.query('track', {
         page: query.page,
         search: {
-          keyword: query.query
+          keyword: query.tracksQuery
         }
       });
     let resolvedTracks = yield tracks;
