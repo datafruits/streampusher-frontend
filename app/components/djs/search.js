@@ -1,16 +1,15 @@
-import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import Component from "@glimmer/component";
+import { action } from "@ember/object";
 
-export default class DjsSearchComponent extends Component{
+export default class DjsSearchComponent extends Component {
   @action
-  updateSearch(event){
+  updateSearch(event) {
     const query = event.target.value;
     this.args.search(query);
   }
 
   @action
-  clearSearch(){
-    this.set('filterText', '');
+  clearSearch() {
+    this.set("filterText", "");
   }
-
-};
+}

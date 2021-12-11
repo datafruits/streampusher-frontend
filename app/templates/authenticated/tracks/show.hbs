@@ -2,23 +2,23 @@
   <h1 class="text-2xl">Edit Track</h1>
   <div class="mb-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">URL</label>
-    <span>{{model.track.audioFileName}}</span>
+    <span>{{this.model.track.audioFileName}}</span>
   </div>
   <div class="mb-4 mt-4">
-    <Tracks::Replacer @track={{model.track}} />
+    <Tracks::Replacer @track={{this.model.track}} />
   </div>
-  {{#if model.track.isUploading}}
+  {{#if this.model.track.isUploading}}
     uploading {{track.audioFileName}}...
     <div class="meter">
-      <span style="{{uploadProgressStyle}}"></span>
+      <span style="{{this.uploadProgressStyle}}"></span>
     </div>
   {{/if}}
-  <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded by: </span><b>{{model.track.uploadedBy}}</b>
+  <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded by: </span><b>{{this.model.track.uploadedBy}}</b>
   <form class="">
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Title</label>
       <Input
-        @value={{model.track.title}}
+        @value={{this.model.track.title}}
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
     </div>
@@ -26,20 +26,20 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="artwork">
         Artwork
       </label>
-      {{#if model.track.artwork}}
-        <img alt="artwork" width="300" height="300" src={{file-url model.track.artwork 'thumb'}}>
+      {{#if this.model.track.artwork}}
+        <img alt="artwork" width="300" height="300" src={{file-url this.model.track.artwork 'thumb'}}>
       {{/if}}
-      <ArtworkFileUpload @file={{model.track.artwork}} @filename={{model.track.artworkFilename}} />
+      <ArtworkFileUpload @file={{this.model.track.artwork}} @filename={{this.model.track.artworkFilename}} />
     </div>
     <br>
     <div class="mb-4">
-      Uploaded at: {{model.track.createdAt}}
+      Uploaded at: {{this.model.track.createdAt}}
       <br>
-      Last updated at: {{model.track.updatedAt}}
+      Last updated at: {{this.model.track.updatedAt}}
     </div>
   </form>
   <div class="mb-4">
-    <Tracks::LabelsSelect @labels={{model.labels}} @track={{model.track}} />
+    <Tracks::LabelsSelect @labels={{this.model.labels}} @track={{this.model.track}} />
   </div>
   <div class="mb-4">
     <h4 class="block text-gray-700 text-sm font-bold mb-2">Link to Scheduled Show</h4>
@@ -47,8 +47,8 @@
       @searchEnabled={{true}}
       @search={{action "searchShows"}}
       @renderInPlace={{true}}
-      @options={{model.scheduledShows}}
-      @selected={{model.track.scheduledShow}}
+      @options={{this.model.scheduledShows}}
+      @selected={{this.model.track.scheduledShow}}
       @onChange={{action "selectScheduledShow"}} as |scheduledShow|>
       {{scheduledShow.displayTitle}}
     </PowerSelect>
@@ -67,34 +67,34 @@
     <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="mixcloud">
       <div class="modal-header">
         <button {{action "mixcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Upload to Mixcloud - {{model.track.title}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Upload to Mixcloud - {{this.model.track.title}}</h4>
       </div>
       <div class="modal-body">
-        <MixcloudUploader @track={{model.track}} />
+        <MixcloudUploader @track={{this.model.track}} />
       </div>
     </ModalDialog>
   {{else if soundcloudDialog}}
     <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="soundcloud">
       <div class="modal-header">
         <button {{action "soundcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Upload to Soundcloud - {{model.track.title}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Upload to Soundcloud - {{this.model.track.title}}</h4>
       </div>
       <div class="modal-body">
-        <SoundcloudUploader @track={{model.track}} />
+        <SoundcloudUploader @track={{this.model.track}} />
       </div>
     </ModalDialog>
   {{else if embedDialog}}
     <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="embed">
       <div class="modal-header">
         <button {{action "embed"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Embed - {{model.track.title}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Embed - {{this.model.track.title}}</h4>
       </div>
       <div class="modal-body">
         Embed code and preview:
         <div>
-          <Input @focus-in="focusEmbedCode" @id="embed-player-html" @type="text" @readonly="readonly" @value={{model.track.embedCode}} />
+          <Input @focus-in="focusEmbedCode" @id="embed-player-html" @type="text" @readonly="readonly" @value={{this.model.track.embedCode}} />
         </div>
-        {{{model.track.embedCode}}}
+        {{{this.model.track.embedCode}}}
       </div>
     </ModalDialog>
   {{/if}}

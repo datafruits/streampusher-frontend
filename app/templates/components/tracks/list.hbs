@@ -3,26 +3,21 @@
 <div class="">
   <h1 class="text-xl">Media Library</h1>
 </div>
-<div class="">
-  <div class="">
-    <div class="">
-      <Tracks::Search
-        @search={{@updateSearch}}
-        @filterText={{@searchParams.query}} />
-    </div>
-  </div>
+<div class="mb-2">
+  <Tracks::Search
+    class="mb-2"
+    @search={{@updateSearch}}
+    @filterText={{@searchParams.query}} />
 </div>
-<div class="">
-  <div class="">
-    <PowerSelectMultiple
-      @placeholder="Search by tag..."
-      @options={{@labels}}
-      @selected={{this.selectedLabels}}
-      @renderInPlace={{true}}
-      @onChange={{action (mut this.selectedLabels)}} as |label|>
-      {{label.name}}
-    </PowerSelectMultiple>
-  </div>
+<div class="mb-2">
+  <PowerSelectMultiple
+    @placeholder="Search by tag..."
+    @options={{@labels}}
+    @selected={{this.selectedLabels}}
+    @renderInPlace={{true}}
+    @onChange={{action (mut this.selectedLabels)}} as |label|>
+    {{label.name}}
+  </PowerSelectMultiple>
 </div>
 <Tracks::Uploader @pushTrack={{this.pushTrack}}>
   <div class="">
