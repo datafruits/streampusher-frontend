@@ -6,6 +6,9 @@ export default class Form extends Component {
   store;
 
   @service
+  currentUser;
+
+  @service
   flashMessages;
 
 }

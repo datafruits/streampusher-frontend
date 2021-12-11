@@ -42,10 +42,17 @@
   </div>
 
   <div class="flex items-center justify-between">
-    <Input
-      @type="submit"
-      class="btn cursor-pointer"
-      data-test-submit-button
-      @value="Save" />
   </div>
+
+  {{#if currentUser.isAdmin}}
+    <div class="mb-4">
+      <form {{on "submit" this.disableUser}}>
+        <Input
+          @type="submit"
+          class="btn cursor-pointer"
+          @value="Disable Account" />
+      </form>
+    </div>
+  {{/if}}
+
 </form>
