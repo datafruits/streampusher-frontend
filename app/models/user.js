@@ -8,6 +8,7 @@ export default class User extends Model {
   @attr timeZone;
   @attr bio;
   @attr profilePublish;
+  @attr enabled;
 
   @attr("file") image;
   @attr imageFilename;
