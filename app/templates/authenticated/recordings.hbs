@@ -1,38 +1,6 @@
 <section>
   <h1>Recordings</h1>
-  {{!-- >:3 --}}
-  <table class="">
-    <thead>
-      <th>path</th>
-    </thead>
-    <tbody>
-      {{#each model as |recording|}}
-      <tr>
-        <td>{{recording.path}}</td>
-        <td>
-          {{#if recording.unprocessed}}
-            <button
-              class="btn"
-              {{on "click" (fn this.process recording)}}
-              >
-              Process
-            </button>
-          {{else if recording.processing}}
-            <span>Processing...</span>
-          {{else if recording.processed}}
-            <span>Processed</span>
-          {{else if recording.processingFailed}}
-            <span>Processing failed... :( Try again?</span>
-            <button
-              class="btn"
-              {{on "click" (fn this.process recording)}}
-              >
-              Process
-            </button>
-          {{/if}}
-        </td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  <Recordings::Table
+    @recordings={{this.model}}
+  />
 </section>

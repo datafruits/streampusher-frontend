@@ -1,0 +1,37 @@
+  <table class="">
+    <thead>
+      <th>Path</th>
+      <th>Filesize</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      {{#each @recordings as |recording|}}
+      <tr>
+        <td>{{recording.path}}</td>
+        <td>
+          {{#if recording.unprocessed}}
+            <button
+              class="btn"
+              {{on "click" (fn this.process recording)}}
+              >
+              Process
+            </button>
+          {{else if recording.processing}}
+            <span>Processing...</span>
+          {{else if recording.processed}}
+            <span>Processed</span>
+          {{else if recording.processingFailed}}
+            <span>Processing failed... :( Try again?</span>
+            <button
+              class="btn"
+              {{on "click" (fn this.process recording)}}
+              >
+              Process
+            </button>
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
