@@ -9,8 +9,8 @@
   </span>
 {{/if}}
 {{#each (range 1 (inc @meta.total_pages)) as |number|}}
-  {{#if (eq number @meta.page)}}
-    <span class="px-2">
+  {{#if (eq-number number @meta.page)}}
+    <span class="px-2 bg-black text-white">
       {{number}}
     </span>
   {{else}}
