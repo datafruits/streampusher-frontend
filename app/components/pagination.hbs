@@ -1,15 +1,15 @@
-{{#if (gt @meta.page 1)}}
+{{#if (gt @page 1)}}
   <span class="pagination">
     <LinkTo
       @route={{@route}}
-      @query={{pagination-query @paramName (dec @meta.page)}}
+      @query={{pagination-query @paramName (dec @page)}}
     >
       Previous
     </LinkTo>
   </span>
 {{/if}}
-{{#each (range 1 (inc @meta.total_pages)) as |number|}}
-  {{#if (eq-number number @meta.page)}}
+{{#each (range 1 (inc @totalPages)) as |number|}}
+  {{#if (eq-number number @page)}}
     <span class="px-2 bg-black text-white">
       {{number}}
     </span>
@@ -21,11 +21,11 @@
     </span>
   {{/if}}
 {{/each}}
-{{#if (lt @meta.page @meta.total_pages)}}
+{{#if (lt @page @totalPages)}}
   <span class="pagination">
     <LinkTo
       @route={{@route}}
-      @query={{pagination-query @paramName (inc @meta.page)}}
+      @query={{pagination-query @paramName (inc @page)}}
     >
       Next
     </LinkTo>
