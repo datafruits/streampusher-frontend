@@ -10,9 +10,11 @@
 {{/if}}
 {{#each (range 1 (inc @meta.total_pages)) as |number|}}
   {{#if (eq number @meta.page)}}
-    {{number}}
+    <span class="px-2">
+      {{number}}
+    </span>
   {{else}}
-    <span class="pagination">
+    <span class="px-2">
       <LinkTo @route={{@route}} @query={{pagination-query @paramName number}}>
         {{number}}
       </LinkTo>
