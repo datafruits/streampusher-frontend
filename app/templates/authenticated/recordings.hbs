@@ -1,7 +1,7 @@
 <section>
   <h1>Recordings</h1>
   <Recordings::Table
-    @query={{this.router.currentRoute.queryParams}}
+    @query={{this.router.currentRoute.queryParams.query}}
     @page={{this.router.currentRoute.queryParams.page}}
   />
 </section>

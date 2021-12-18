@@ -12,7 +12,7 @@ export default class RecordingsTableComponent extends Component {
 
   @action
   fetchRecordings() {
-    const query = this.args.query;
+    const query = {page: this.args.page};
     console.log(query);
     let recordingsPromise = this.store.query('recording', query);
     return recordingsPromise;
