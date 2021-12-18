@@ -6,6 +6,18 @@ import { inject as service } from "@ember/service";
 export default class RecordingsTableComponent extends Component {
   @service flashMessages;
 
+  @service router;
+
+  @service store;
+
+  @action
+  fetchRecordings() {
+    const query = this.args.query;
+    console.log(query);
+    let recordingsPromise = this.store.query('recording', query);
+    return recordingsPromise;
+  }
+
   @action
   process(recording) {
     fetch(`${ENV.API_HOST}/recordings/${recording.id}/process_recordings`, {
