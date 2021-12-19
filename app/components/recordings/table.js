@@ -13,7 +13,6 @@ export default class RecordingsTableComponent extends Component {
   @action
   fetchRecordings() {
     const query = {page: this.args.page};
-    console.log(query);
     let recordingsPromise = this.store.query('recording', query);
     return recordingsPromise;
   }
@@ -28,6 +27,7 @@ export default class RecordingsTableComponent extends Component {
     }).then((response) => {
       if(response.status === 200) {
         this.flashMessages.success('Processing...');
+        this.store.pushPayload(response.body);
       } else {
         this.flashMessages.danger('Something went wrong!');
       }
