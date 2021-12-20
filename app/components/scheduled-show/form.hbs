@@ -19,6 +19,13 @@
     </Ui::Field>
 
     <div class="mb-4">
+      <Playlists::Select
+        @selected={{@changeset.playlist}}
+        @onChange={{this.setPlaylist}}
+      />
+    </div>
+
+    <div class="mb-4">
       <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
       <PowerSelectMultiple
         @renderInPlace={{true}}

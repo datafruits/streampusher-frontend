@@ -1,0 +1,23 @@
+<label for="playlist">Playlist</label>
+<Await @promise={{this.fetchPlaylists}} as |await|>
+  <await.Pending>
+    Loading playlists...
+  </await.Pending>
+
+  <await.Fulfilled as |playlists|>
+    <PowerSelect
+      id="playlist"
+      @searchEnabled={{true}}
+      @search={{this.searchPlaylists}}
+      @renderInPlace={{true}}
+      @options={{playlists}}
+      @selected={{@selected}}
+      @onChange={{@onChange}} as |playlist|>
+      {{playlist.name}}
+    </PowerSelect>
+  </await.Fulfilled>
+
+  <await.Rejected>
+    Something went wrong :(
+  </await.Rejected>
+</Await>

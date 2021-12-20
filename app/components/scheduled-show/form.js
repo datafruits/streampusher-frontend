@@ -51,6 +51,11 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
+  setPlaylist(playlist) {
+    this.args.changeset.set("playlist", playlist);
+  }
+
+  @action
   setStart(time){
     let hours = time.split(':')[0];
     let minutes = time.split(':')[1];
