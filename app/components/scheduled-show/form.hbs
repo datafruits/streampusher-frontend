@@ -1,26 +1,26 @@
 <div>
-  <Ui::Form @onSubmit={{this.save}} >
+  <Ui::Form @onSubmit={{this.save}} @changeset={{this.changeset}} >
     <div class="mb-4">
       <ValidatedField
         @type="text"
-        @changeset={{@changeset}}
+        @changeset={{this.changeset}}
         @property="title"
       />
     </div>
 
     <Ui::Field @label="Artwork">
-      {{#if @changeset.image}}
+      {{#if this.changeset.image}}
         <img alt="artwork" width="300" height="300"
-          src={{file-url @changeset.image "thumb"}}>
+          src={{file-url this.changeset.image "thumb"}}>
       {{/if}}
       <ArtworkFileUpload
-        @file={{@changeset.image}}
-        @filename={{@changeset.imageFilename}} />
+        @file={{this.changeset.image}}
+        @filename={{this.changeset.imageFilename}} />
     </Ui::Field>
 
     <div class="mb-4">
       <Playlists::Select
-        @selected={{@changeset.playlist}}
+        @selected={{this.changeset.playlist}}
         @onChange={{this.setPlaylist}}
       />
     </div>
@@ -32,8 +32,8 @@
         @searchEnabled={{true}}
         @search={{this.searchDjs}}
         @options={{@djs}}
-        @selected={{@changeset.djs}}
-        @onChange={{fn (mut @changeset.djs)}} as |dj|>
+        @selected={{this.changeset.djs}}
+        @onChange={{fn (mut this.changeset.djs)}} as |dj|>
         {{dj.username}}
       </PowerSelectMultiple>
     </div>
@@ -42,7 +42,7 @@
       <label for="promote-show">Live Broadcast</label>
       <Input
         @type="checkbox"
-        @checked={{@changeset.isLive}}
+        @checked={{this.changeset.isLive}}
         name="is-live"
       />
     </div>
@@ -51,7 +51,7 @@
       <label for="promote-show">Guest Host</label>
       <Input
         @type="checkbox"
-        @checked={{@changeset.isGuest}}
+        @checked={{this.changeset.isGuest}}
         name="is-live"
       />
     </div>
@@ -59,7 +59,7 @@
     <div class="mb-4">
       <ValidatedField
         @type="text"
-        @changeset={{@changeset}}
+        @changeset={{this.changeset}}
         @property="guest"
       />
     </div>
@@ -71,7 +71,7 @@
     <div class="mb-4">
       <TimePicker
         @label="Start"
-        @selected={{@changeset.start}}
+        @selected={{this.changeset.start}}
         @onChange={{this.setStart}}
         />
     </div>
@@ -79,7 +79,7 @@
     <div class="mb-4">
       <TimePicker
         @label="End"
-        @selected={{@changeset.start}}
+        @selected={{this.changeset.start}}
         @onChange={{this.setEnd}}
         />
     </div>
@@ -87,13 +87,13 @@
     <div class="mb-4">
       <ValidatedField
         @type="textarea"
-        @changeset={{@changeset}}
+        @changeset={{this.changeset}}
         @property="description"
       />
     </div>
 
     <div class="mb-4">
-      <Tracks::LabelsSelect @labels={{@labels}} @track={{@changeset}} />
+      <Tracks::LabelsSelect @labels={{@labels}} @track={{this.changeset}} />
     </div>
 
     <div class="mb-4">
@@ -113,12 +113,12 @@
         {{on "click" this.toggleShowingContentEditor}}
         />
       {{#if this.showingContentEditor}}
-        <ScheduledShow::ContentEditor show={{@changeset}} />
+        <ScheduledShow::ContentEditor @show={{this.changeset}} />
       {{/if}}
     </div>
 
     <div class="flex items-center justify-between mb-4">
-      {{#if @changeset.isValid}}
+      {{#if this.changeset.isValid}}
         {{#if this.isSaving}}
           <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
         {{else}}
