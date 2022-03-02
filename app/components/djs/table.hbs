@@ -9,14 +9,17 @@
     <th>role</th>
     <th></th>
   </thead>
-  <tbody>
-    <Djs::Loader @query={{@searchParams}} as |loader|>
-      {{#if loader.isRunning}}
+  <Await @promise={{this.fetchDjs}} as |await|>
+    <tbody
+      {{did-update await.reload @searchParams.page}}
+      >
+      <await.Pending>
         <p>
           Loading...
         </p>
-      {{else}}
-        {{#each loader.data as |dj|}}
+      </await.Pending>
+      <await.Fulfilled as |result|>
+        {{#each result as |dj|}}
           <tr>
             <td>{{ dj.username }}</td>
             <td>{{ dj.email  }}</td>
@@ -37,8 +40,18 @@
         {{else}}
           No result.
         {{/each}}
-        <Pagination @meta={{loader.data.meta}} @route="authenticated.djs" @paramName="page"/>
-      {{/if}}
-    </Djs::Loader>
-  </tbody>
+        {{log @searchParams.page}}
+        {{log result.meta}}
+        {{log result.meta.total_pages}}
+        <FruitsUi::Pagination
+          @page={{@searchParams.page}}
+          @totalPages={{result.meta.total_pages}}
+          @route="authenticated.djs" />
+      </await.Fulfilled>
+
+      <await.Rejected>
+        error ... :(
+      </await.Rejected>
+    </tbody>
+  </Await>
 </table>
