@@ -33,6 +33,7 @@
               </td>
             {{/if}}
             {{#if currentUser.user.isAdmin}}
+              <!-- TODO let admin sign in as user -->
               <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
                 <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->
             {{/if}}
@@ -40,9 +41,6 @@
         {{else}}
           No result.
         {{/each}}
-        {{log @searchParams.page}}
-        {{log result.meta}}
-        {{log result.meta.total_pages}}
         <FruitsUi::Pagination
           @page={{@searchParams.page}}
           @totalPages={{result.meta.total_pages}}
