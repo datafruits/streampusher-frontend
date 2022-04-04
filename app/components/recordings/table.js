@@ -6,8 +6,6 @@ import { inject as service } from "@ember/service";
 export default class RecordingsTableComponent extends Component {
   @service flashMessages;
 
-  @service router;
-
   @service store;
 
   @action

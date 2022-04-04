@@ -42,11 +42,11 @@
             </td>
           </tr>
         {{/each}}
-        <Pagination
+        <FruitsUi::Pagination
           @page={{@page}}
           @totalPages={{result.meta.total_pages}}
           @route="authenticated.recordings"
-          @paramName="page" />
+          />
       </await.Fulfilled>
 
       <await.Rejected>
