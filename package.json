@@ -83,7 +83,7 @@
     "fruits-ui": "https://github.com/datafruits/fruits-ui",
     "loader.js": "^4.7.0",
     "postcss-import": "^14.0.2",
-    "qunit-dom": "^1.0.0",
+    "qunit-dom": "^2.0.0",
     "shrimp-calendar": "https://github.com/mcfiredrill/shrimp-calendar.git",
     "tailwindcss": "2.2.2"
   },
