@@ -25,14 +25,14 @@
             <td>{{ dj.email  }}</td>
             <td>{{ dj.timeZone }}</td>
             <td>{{ dj.role }}</td>
-            {{#if currentUser.user.isAdmin}}
+            {{#if this.currentUser.user.isAdmin}}
               <td>
                 <LinkTo @route="authenticated.djs.show" @model={{dj}} data-test-edit-link>
                   Edit
                 </LinkTo>
               </td>
             {{/if}}
-            {{#if currentUser.user.isAdmin}}
+            {{#if this.currentUser.user.isAdmin}}
               <!-- TODO let admin sign in as user -->
               <td><!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} --> </td>
                 <!-- LinkTo 'sign in as', admin_sign_in_as_path(dj.id) }} -->

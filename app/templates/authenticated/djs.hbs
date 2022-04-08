@@ -1,7 +1,7 @@
 <div>
-  <Djs::Form @dj={{model.dj}} @save={{route-action "save"}} />
+  <Djs::Form @dj={{this.model.dj}} @save={{route-action "save"}} />
   <Djs::Table
     @updateSearch={{action "updateSearch"}}
     @searchParams={{this.searchParams}}
-    @djs={{model.djs}} />
+    @djs={{this.model.djs}} />
 </div>
