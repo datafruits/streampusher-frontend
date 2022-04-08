@@ -6,9 +6,9 @@ module('Acceptance | schedule', function(hooks) {
   setupApplicationTest(hooks);
 
   test('scheduling a new show', async function(assert) {
-    await visit('/schedule');
+    await visit('/schedule/new');
 
-    assert.equal(currentURL(), '/schedule');
+    assert.equal(currentURL(), '/schedule/new');
   });
   test('editing scheduled show', async function(assert) {
   });

@@ -68,6 +68,13 @@
       {{this.formattedDay}}
     </div>
 
+    {{#if (get @changeset.error "start")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "start") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
     <div class="mb-4">
       <TimePicker
         @label="Start"
@@ -76,10 +83,17 @@
         />
     </div>
 
+    {{#if (get @changeset.error "end")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "end") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
     <div class="mb-4">
       <TimePicker
         @label="End"
-        @selected={{this.changeset.start}}
+        @selected={{this.changeset.end}}
         @onChange={{this.setEnd}}
         />
     </div>

@@ -27,4 +27,8 @@ export default class TimePickerComponent extends Component {
     '22:00',
     '23:00',
   ];
+
+  get selected() {
+    return `${this.args.selected.getHours()}:00`;
+  }
 }

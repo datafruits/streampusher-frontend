@@ -101,9 +101,10 @@ export default class ScheduledShowForm extends Component {
       this.flashMessages.success("Saved!");
       //this.transitionToRoute('playlists.show', currentPlaylist.id);
     };
-    const onFail = () => {
+    const onFail = (response) => {
       console.log("show save failed");
-      this.flashMessages.danger("Something went wrong!");
+      console.log(response);
+      this.flashMessages.danger("Couldn't save show!");
       this.isSaving = false;
     };
     show.save().then(onSuccess, onFail);
