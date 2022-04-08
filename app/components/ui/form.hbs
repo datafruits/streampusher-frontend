@@ -1,7 +1,7 @@
 <form {{on "submit" @onSubmit}}>
   <ul>
     {{#each @changeset.errors as |error|}}
-      <li>{{error.validation}}</li>
+        <li class="bg-red-700 text-white p-2 mb-2">{{error.validation}}</li>
     {{/each}}
   </ul>
 
