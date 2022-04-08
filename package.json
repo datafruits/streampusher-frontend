@@ -37,7 +37,7 @@
     "babel-plugin-istanbul": "^6.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",
-    "ember-auto-import": "^1.12.0",
+    "ember-auto-import": "2.4.1",
     "ember-await": "^2.0.0",
     "ember-changeset": "^3.7.0",
     "ember-changeset-validations": "^3.7.0",
@@ -48,7 +48,7 @@
     "ember-cli-code-coverage": "^0.4.2",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-dotenv": "^2.2.3",
-    "ember-cli-flash": "1.8.1",
+    "ember-cli-flash": "3.0.0",
     "ember-cli-htmlbars": "^5.7.2",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-mirage": "^1.1.6",
@@ -73,7 +73,7 @@
     "ember-page-title": "^6.2.2",
     "ember-parachute": "^1.0.2",
     "ember-pikaday": "^2.4.1",
-    "ember-power-select-with-create": "^0.7.0",
+    "ember-power-select-with-create": "0.9.1",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-route-action-helper": "^2.0.7",
@@ -97,7 +97,8 @@
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
     "shrimp-calendar": "https://github.com/mcfiredrill/shrimp-calendar.git",
-    "tailwindcss": "2.2.2"
+    "tailwindcss": "2.2.2",
+    "webpack": "5"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
