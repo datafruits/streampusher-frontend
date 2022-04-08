@@ -17,6 +17,7 @@
 {{else}}
   <Input
     class="form-input focus:outline-none focus:shadow-outline"
+    disabled={{@disabled}}
     @type={{@type}}
     @autofocus={{true}}
     @id={{concat @type "-" @property}}

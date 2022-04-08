@@ -18,6 +18,13 @@
         @filename={{this.changeset.imageFilename}} />
     </Ui::Field>
 
+    {{#if (get @changeset.error "playlist")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "playlist") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
     <div class="mb-4">
       <Playlists::Select
         @selected={{this.changeset.playlist}}
@@ -58,6 +65,7 @@
 
     <div class="mb-4">
       <ValidatedField
+        @disabled={{not this.changeset.isGuest}}
         @type="text"
         @changeset={{this.changeset}}
         @property="guest"
