@@ -35,6 +35,7 @@ Router.map(function () {
     this.route("profile");
     this.route("settings");
     this.route("radio-settings");
+    this.route("chat-moderation");
     this.route("admin");
 
     this.route("blog-posts");
