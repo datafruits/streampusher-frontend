@@ -1,42 +1,46 @@
-<h1>currently connected IPs</h1>
-<table>
-  <tbody>
-    {{#each this.connections as |connection|}}
-      <tr>
-        <td>
-          {{ connection }}
-        </td>
-        <td>
-          <form {{on "submit" (fn this.ban connection)}}>
-            <Input
-              @type="submit"
-              class="btn cursor-pointer"
-              data-test-submit-button
-              @value="Ban" />
-          </form>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-<h1>banned users</h1>
-<table>
-  <tbody>
-    {{#each this.bans as |ban|}}
-      <tr>
-        <td>
-          {{ban}}
-        </td>
-        <td>
-          <form {{on "submit" (fn this.unban ban)}}>
-            <Input
-              @type="submit"
-              class="btn cursor-pointer"
-              data-test-submit-button
-              @value="Unban" />
-          </form>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+<div class="w-1/2 mx-2">
+  <h1>currently connected IPs</h1>
+  <table>
+    <tbody>
+      {{#each this.connections as |connection|}}
+        <tr>
+          <td>
+            {{ connection }}
+          </td>
+          <td>
+            <form {{on "submit" (fn this.ban connection)}}>
+              <Input
+                @type="submit"
+                class="btn cursor-pointer"
+                data-test-submit-button
+                @value="Ban" />
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div class="w-1/2 mx-2">
+  <h1>banned users</h1>
+  <table>
+    <tbody>
+      {{#each this.bans as |ban|}}
+        <tr>
+          <td>
+            {{ban}}
+          </td>
+          <td>
+            <form {{on "submit" (fn this.unban ban)}}>
+              <Input
+                @type="submit"
+                class="btn cursor-pointer"
+                data-test-submit-button
+                @value="Unban" />
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
