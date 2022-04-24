@@ -22,7 +22,7 @@
   {{#if session.isAuthenticated}}
     <SideNavbar
       @isShowingMobileMenu={{this.isShowingMobileMenu}}
-      class="sm:flex absolute left-0 sm:static bg-black text-white h-screen z-40" />
+      class="sm:flex absolute left-0 sm:static bg-black text-white h-screen" />
   {{/if}}
   <section class="m-4 flex justify-around w-full">
     {{outlet}}
