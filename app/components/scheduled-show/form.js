@@ -12,10 +12,16 @@ import ScheduledShowValidations from "../../validations/scheduled-show";
 export default class ScheduledShowForm extends Component {
   @tracked isSaving = false;
   @tracked showingContentEditor = false;
+
   @service
   flashMessages;
+
   @service
   store;
+
+  @service
+  router;
+
   recurringIntervals = [
     {
       value: "not_recurring",
@@ -99,7 +105,7 @@ export default class ScheduledShowForm extends Component {
     const onSuccess = () => {
       this.isSaving = false;
       this.flashMessages.success("Saved!");
-      //this.transitionToRoute('playlists.show', currentPlaylist.id);
+      this.router.transitionTo('authenticated.schedule');
     };
     const onFail = (response) => {
       console.log("show save failed");
