@@ -159,11 +159,13 @@
     {{/if}}
   </div>
 
-  <div class="flex items-center justify-between">
-    <Input
-      @type="submit"
-      class="btn bg-red-500 cursor-pointer"
-      @value="Delete"
-    />
-  </div>
+  {{#unless this.args.model.isNew}}
+    <div class="flex items-center justify-between">
+      <Input
+        @type="submit"
+        class="btn bg-red-500 cursor-pointer"
+        @value="Delete"
+      />
+    </div>
+  {{/unless}}
 </Ui::Form>
