@@ -74,6 +74,12 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
+  setDefaultPlaylist() {
+    let playlist = this.store.peekRecord("playlist", 3);
+    this.changeset.set("playlist", playlist);
+  }
+
+  @action
   setStart(time){
     let hours = time.split(':')[0];
     let minutes = time.split(':')[1];
@@ -101,7 +107,6 @@ export default class ScheduledShowForm extends Component {
     event.preventDefault();
     this.isSaving = true;
     let show = this.changeset;
-    //let currentPlaylist = this.get('currentPlaylist.playlist');
     const onSuccess = () => {
       this.isSaving = false;
       this.flashMessages.success("Saved!");

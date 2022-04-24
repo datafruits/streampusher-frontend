@@ -9,7 +9,9 @@ export default class PlaylistsSelectComponent extends Component {
 
   @action
   fetchPlaylists() {
-    return this.store.loadRecords("playlist");
+    return this.store.loadRecords("playlist").then(() => {
+      this.args.onLoad();
+    });
   }
 
   @action searchPlaylists(term) {
@@ -17,4 +19,11 @@ export default class PlaylistsSelectComponent extends Component {
       debounce(this, this._performSearch, term, resolve, reject, 600);
     });
   }
+
+  _performSearch(term, resolve, reject) {
+    this.store.query("playlist", { term: term }).then((playlists) => {
+      return resolve(playlists);
+    }, reject);
+  }
+
 }
