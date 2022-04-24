@@ -1,8 +1,9 @@
 <h3>Donation Link</h3>
-<form>
+<form {{on "submit" this.updateMetadata}}>
   <Input
-    class="form-input focus:outline-none focus:shadow-outline"
-    @type="text" @value={{url}} />
+    class="form-input focus:outline-none focus:shadow-outline mb-2"
+    @type="text"
+    @value={{this.url}} />
   <Input
     class="btn cursor-pointer"
     @type="submit" @value="Update" />
