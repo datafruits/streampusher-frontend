@@ -1,171 +1,180 @@
-<Ui::Form @onSubmit={{this.save}} @changeset={{this.changeset}} >
-  <div class="mb-4">
-    <ValidatedField
-      @type="text"
-      @changeset={{this.changeset}}
-      @property="title"
-    />
-  </div>
+<ModalDialog
+  @targetAttachment="none"
+  @translucentOverlay={{true}}
+  @onClose={{this.backToSchedule}}
+  @containerClass='centered-scrolling-container'
+  @overlayClass='centered-scrolling-overlay'
+  @wrapperClass='centered-scrolling-wrapper'
+  >
+  <Ui::Form @onSubmit={{this.save}} @changeset={{this.changeset}} >
+    <div class="mb-4">
+      <ValidatedField
+        @type="text"
+        @changeset={{this.changeset}}
+        @property="title"
+      />
+    </div>
 
-  <Ui::Field @label="Artwork">
-    {{#if this.changeset.image}}
-      <img alt="artwork" width="300" height="300"
-        src={{file-url this.changeset.image "thumb"}}>
+    <Ui::Field @label="Artwork">
+      {{#if this.changeset.image}}
+        <img alt="artwork" width="300" height="300"
+          src={{file-url this.changeset.image "thumb"}}>
+      {{/if}}
+      <ArtworkFileUpload
+        @file={{this.changeset.image}}
+        @filename={{this.changeset.imageFilename}} />
+    </Ui::Field>
+
+    {{#if (get @changeset.error "playlist")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "playlist") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
     {{/if}}
-    <ArtworkFileUpload
-      @file={{this.changeset.image}}
-      @filename={{this.changeset.imageFilename}} />
-  </Ui::Field>
-
-  {{#if (get @changeset.error "playlist")}}
-    <div class="text-red-700">
-      {{#each (get (get @changeset.error "playlist") "validation") as |message|}}
-        <div class="error item">{{message}}</div>
-      {{/each}}
-    </div>
-  {{/if}}
-  <div class="mb-4">
-    <Playlists::Select
-      @selected={{this.changeset.playlist}}
-      @onChange={{this.setPlaylist}}
-    />
-  </div>
-
-  <div class="mb-4">
-    <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
-    <PowerSelectMultiple
-      @renderInPlace={{true}}
-      @searchEnabled={{true}}
-      @search={{this.searchDjs}}
-      @options={{@djs}}
-      @selected={{this.changeset.djs}}
-      @onChange={{fn (mut this.changeset.djs)}} as |dj|>
-      {{dj.username}}
-    </PowerSelectMultiple>
-  </div>
-
-  <div class="mb-4">
-    <label for="promote-show">Live Broadcast</label>
-    <Input
-      @type="checkbox"
-      @checked={{this.changeset.isLive}}
-      name="is-live"
-    />
-  </div>
-
-  <div class="mb-4">
-    <label for="promote-show">Guest Host</label>
-    <Input
-      @type="checkbox"
-      @checked={{this.changeset.isGuest}}
-      name="is-live"
-    />
-  </div>
-
-  <div class="mb-4">
-    <ValidatedField
-      @disabled={{not this.changeset.isGuest}}
-      @type="text"
-      @changeset={{this.changeset}}
-      @property="guest"
-    />
-  </div>
-
-  <div class="mb-4">
-    {{this.formattedDay}}
-  </div>
-
-  {{#if (get @changeset.error "start")}}
-    <div class="text-red-700">
-      {{#each (get (get @changeset.error "start") "validation") as |message|}}
-        <div class="error item">{{message}}</div>
-      {{/each}}
-    </div>
-  {{/if}}
-  <div class="mb-4">
-    <TimePicker
-      @label="Start"
-      @selected={{this.changeset.start}}
-      @onChange={{this.setStart}}
+    <div class="mb-4">
+      <Playlists::Select
+        @selected={{this.changeset.playlist}}
+        @onChange={{this.setPlaylist}}
       />
-  </div>
-
-  {{#if (get @changeset.error "end")}}
-    <div class="text-red-700">
-      {{#each (get (get @changeset.error "end") "validation") as |message|}}
-        <div class="error item">{{message}}</div>
-      {{/each}}
     </div>
-  {{/if}}
-  <div class="mb-4">
-    <TimePicker
-      @label="End"
-      @selected={{this.changeset.end}}
-      @onChange={{this.setEnd}}
+
+    <div class="mb-4">
+      <h4 class="block text-gray-700 text-sm font-bold mb-2">Host</h4>
+      <PowerSelectMultiple
+        @renderInPlace={{true}}
+        @searchEnabled={{true}}
+        @search={{this.searchDjs}}
+        @options={{@djs}}
+        @selected={{this.changeset.djs}}
+        @onChange={{fn (mut this.changeset.djs)}} as |dj|>
+        {{dj.username}}
+      </PowerSelectMultiple>
+    </div>
+
+    <div class="mb-4">
+      <label for="promote-show">Live Broadcast</label>
+      <Input
+        @type="checkbox"
+        @checked={{this.changeset.isLive}}
+        name="is-live"
       />
-  </div>
+    </div>
 
-  <div class="mb-4">
-    <ValidatedField
-      @type="textarea"
-      @changeset={{this.changeset}}
-      @property="description"
-    />
-  </div>
-
-  <div class="mb-4">
-    <Tracks::LabelsSelect @labels={{@labels}} @track={{this.changeset}} />
-  </div>
-
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
-    <select id="repeat" {{on "change" (fn this.setRecurringInterval)}}>
-      {{#each this.recurringIntervals as |interval|}}
-        <option value={{interval.value}} >{{interval.name}}</option>
-      {{/each}}
-    </select>
-  </div>
-
-  <div class="mb-4">
-    <Input
-      @type="button"
-      class="btn"
-      value="Add prerecorded content"
-      {{on "click" this.toggleShowingContentEditor}}
+    <div class="mb-4">
+      <label for="promote-show">Guest Host</label>
+      <Input
+        @type="checkbox"
+        @checked={{this.changeset.isGuest}}
+        name="is-live"
       />
-    {{#if this.showingContentEditor}}
-      <ScheduledShow::ContentEditor @show={{this.changeset}} />
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @disabled={{not this.changeset.isGuest}}
+        @type="text"
+        @changeset={{this.changeset}}
+        @property="guest"
+      />
+    </div>
+
+    <div class="mb-4">
+      {{this.formattedDay}}
+    </div>
+
+    {{#if (get @changeset.error "start")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "start") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
     {{/if}}
-  </div>
+    <div class="mb-4">
+      <TimePicker
+        @label="Start"
+        @selected={{this.changeset.start}}
+        @onChange={{this.setStart}}
+        />
+    </div>
 
-  <div class="flex items-center justify-between mb-4">
-    {{#if this.changeset.isValid}}
-      {{#if this.isSaving}}
-        <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
+    {{#if (get @changeset.error "end")}}
+      <div class="text-red-700">
+        {{#each (get (get @changeset.error "end") "validation") as |message|}}
+          <div class="error item">{{message}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
+    <div class="mb-4">
+      <TimePicker
+        @label="End"
+        @selected={{this.changeset.end}}
+        @onChange={{this.setEnd}}
+        />
+    </div>
+
+    <div class="mb-4">
+      <ValidatedField
+        @type="textarea"
+        @changeset={{this.changeset}}
+        @property="description"
+      />
+    </div>
+
+    <div class="mb-4">
+      <Tracks::LabelsSelect @labels={{@labels}} @track={{this.changeset}} />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
+      <select id="repeat" {{on "change" (fn this.setRecurringInterval)}}>
+        {{#each this.recurringIntervals as |interval|}}
+          <option value={{interval.value}} >{{interval.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <Input
+        @type="button"
+        class="btn"
+        value="Add prerecorded content"
+        {{on "click" this.toggleShowingContentEditor}}
+        />
+      {{#if this.showingContentEditor}}
+        <ScheduledShow::ContentEditor @show={{this.changeset}} />
+      {{/if}}
+    </div>
+
+    <div class="flex items-center justify-between mb-4">
+      {{#if this.changeset.isValid}}
+        {{#if this.isSaving}}
+          <button disabled class="btn cursor-pointer opacity-50 cursor-not-allowed"></button>
+        {{else}}
+          <Input
+            @type="submit"
+            class="btn cursor-pointer"
+            @value="Save"
+          />
+        {{/if}}
       {{else}}
         <Input
           @type="submit"
-          class="btn cursor-pointer"
+          class="btn opacity-50 cursor-not-allowed"
+          disabled
           @value="Save"
         />
       {{/if}}
-    {{else}}
-      <Input
-        @type="submit"
-        class="btn opacity-50 cursor-not-allowed"
-        disabled
-        @value="Save"
-      />
-    {{/if}}
-  </div>
-
-  {{#unless this.args.model.isNew}}
-    <div class="flex items-center justify-between">
-      <Input
-        @type="submit"
-        class="btn bg-red-500 cursor-pointer"
-        @value="Delete"
-      />
     </div>
-  {{/unless}}
-</Ui::Form>
+
+    {{#unless this.args.model.isNew}}
+      <div class="flex items-center justify-between">
+        <Input
+          @type="submit"
+          class="btn bg-red-500 cursor-pointer"
+          @value="Delete"
+        />
+      </div>
+    {{/unless}}
+  </Ui::Form>
+</ModalDialog>

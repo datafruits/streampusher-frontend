@@ -1,13 +1,5 @@
-<ModalDialog
-  @targetAttachment="none"
-  @translucentOverlay={{true}}
-  @containerClass='centered-scrolling-container'
-  @overlayClass='centered-scrolling-overlay'
-  @wrapperClass='centered-scrolling-wrapper'
-  >
-  <ScheduledShow::Form
-    @model={{this.model.scheduledShow}}
-    @labels={{this.model.labels}}
-    @djs={{this.model.djs}}
-    />
-</ModalDialog>
+<ScheduledShow::Form
+  @model={{this.model.scheduledShow}}
+  @labels={{this.model.labels}}
+  @djs={{this.model.djs}}
+  />

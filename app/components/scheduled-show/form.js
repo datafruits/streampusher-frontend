@@ -132,4 +132,9 @@ export default class ScheduledShowForm extends Component {
       return resolve(users);
     }, reject);
   }
+
+  @action
+  backToSchedule(){
+    this.router.transitionTo('authenticated.schedule');
+  }
 }
