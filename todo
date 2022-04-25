@@ -1,0 +1,25 @@
+streampusher beta TODO
+------------------------
+- [x] chat moderation (ban IP) settings
+- [x] recordings page
+- [ ] deploy api staging server
+- [ ] settings (change pw/timezone/etc)
+- [ ] global radio settings
+
+- [ ] dashboard
+  - [x] update metadata / donation link
+  - [ ] skip button
+  - [ ] queue playlist button for when its not working
+  - [ ] show liquidsoap internal requests
+  - [ ] show current chat user count???
+- [ ] disable user accounts UI
+- [ ] schedule
+  - [x] modal for new/edit
+  - [ ] make sure delete works
+  - [ ] uploading artwork
+- [ ] write acceptance test suite
+
+v2
+---
+- [ ] i18n
+- [ ] chat moderation connected directly to chat socket
