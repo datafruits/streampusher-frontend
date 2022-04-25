@@ -81,6 +81,7 @@
     "eslint-plugin-node": "^11.0.0",
     "fruits-ui": "https://github.com/datafruits/fruits-ui",
     "loader.js": "^4.7.0",
+    "phoenix": "^1.6.7",
     "postcss-import": "^14.0.2",
     "qunit-dom": "^1.0.0",
     "shrimp-calendar": "https://github.com/mcfiredrill/shrimp-calendar.git",

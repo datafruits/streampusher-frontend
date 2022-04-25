@@ -22,8 +22,8 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    API_HOST: process.env.API_HOST
-
+    API_HOST: process.env.API_HOST,
+    CHAT_SOCKET_URL: process.env.CHAT_SOCKET_URL
   };
 
   if (environment === 'development') {

@@ -2,11 +2,26 @@ import Component from '@ember/component';
 import { action } from '@ember/object';
 import fetch from 'fetch';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import ENV from "streampusher-frontend/config/environment";
 
 export default class DonationLinkForm extends Component {
   @service flashMessages;
   @service session;
+
+  @service eventBus;
+  @service metadata;
+
+  @tracked donationLink;
+
+  constructor() {
+    super(...arguments);
+    this.eventBus.subscribe('donationLinkUpdate', this, 'setDonationLink');
+  }
+
+  setDonationLink() {
+    this.donationLink = this.metadata.donationLink;
+  }
 
   @action
   updateMetadata(event) {
