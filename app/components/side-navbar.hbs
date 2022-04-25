@@ -8,6 +8,11 @@
         <LinkTo @route="authenticated.djs">Users</LinkTo>
       </li>
     {{/if}}
+    {{#if this.currentUser.user.isAdmin}}
+      <li class="hover:bg-gray-800 rounded px-2 py-1">
+        <LinkTo @route="authenticated.chat-moderation">Chat Moderation</LinkTo>
+      </li>
+    {{/if}}
     <li class="hover:bg-gray-800 rounded px-2 py-1">
       <LinkTo @route="authenticated.schedule">Schedule</LinkTo>
     </li>

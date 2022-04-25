@@ -1,40 +1,4 @@
-<div class="main-dashboard">
-  <div class="row">
-    {{#if radio.tracks.empty?}}
-      <p class="bg-warning">
-        You haven't added any tracks yet! You won't hear anything on your radio without any tracks. Add some tracks <LinkTo @route="authenticated.playlists.index">here.</LinkTo>
-      </p>
-    {{/if}}
-    <div class="col-md-6">
-      <h3>Next</h3>
-      <MetadataUpdateForm />
-      <DonationLinkForm />
-    </div>
-    <div class="col-md-6">
-      <h3>Upcoming Show</h3>
-      {{#if nextShow}}
-        {{nextShow.title}}
-        <br/>
-        {{nextShow.start}} - {{nextShow.end}}
-        <p>{{nextShow.description}}</p>
-      {{/if}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Current Listeners</h3>
-      <span id='odometer'>{{listenerCount}}</span>
-      <br/>
-      <span>Peak:</span>
-      <span id='peak-odometer'>{{peakCount}}</span>
-    </div>
-    <div class="col-md-8">
-      {{#if listens.count}}
-        <p>We haven't collected any listener data for your radio yet. Please wait until we collect some data to see the listener graph.</p>
-      {{/if}}
-      <div id="chart">
-        <canvas id="listensChart" width="600" height="400"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="w-full m-2">
+  <MetadataUpdateForm />
+  <DonationLinkForm />
+</section>

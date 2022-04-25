@@ -1,4 +1,11 @@
-<div>
+<ModalDialog
+  @targetAttachment="none"
+  @translucentOverlay={{true}}
+  @onClose={{this.backToSchedule}}
+  @containerClass='centered-scrolling-container'
+  @overlayClass='centered-scrolling-overlay'
+  @wrapperClass='centered-scrolling-wrapper'
+  >
   <Ui::Form @onSubmit={{this.save}} @changeset={{this.changeset}} >
     <div class="mb-4">
       <ValidatedField
@@ -29,6 +36,7 @@
       <Playlists::Select
         @selected={{this.changeset.playlist}}
         @onChange={{this.setPlaylist}}
+        @onLoad={{this.setDefaultPlaylist}}
       />
     </div>
 
@@ -160,12 +168,14 @@
       {{/if}}
     </div>
 
-    <div class="flex items-center justify-between">
-      <Input
-        @type="submit"
-        class="btn bg-red-500 cursor-pointer"
-        @value="Delete"
-      />
-    </div>
+    {{#unless this.args.model.isNew}}
+      <div class="flex items-center justify-between">
+        <Input
+          @type="submit"
+          class="btn bg-red-500 cursor-pointer"
+          @value="Delete"
+        />
+      </div>
+    {{/unless}}
   </Ui::Form>
-</div>
+</ModalDialog>

@@ -12,10 +12,16 @@ import ScheduledShowValidations from "../../validations/scheduled-show";
 export default class ScheduledShowForm extends Component {
   @tracked isSaving = false;
   @tracked showingContentEditor = false;
+
   @service
   flashMessages;
+
   @service
   store;
+
+  @service
+  router;
+
   recurringIntervals = [
     {
       value: "not_recurring",
@@ -68,6 +74,12 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
+  setDefaultPlaylist() {
+    let playlist = this.store.peekRecord("playlist", 3);
+    this.changeset.set("playlist", playlist);
+  }
+
+  @action
   setStart(time){
     let hours = time.split(':')[0];
     let minutes = time.split(':')[1];
@@ -95,11 +107,10 @@ export default class ScheduledShowForm extends Component {
     event.preventDefault();
     this.isSaving = true;
     let show = this.changeset;
-    //let currentPlaylist = this.get('currentPlaylist.playlist');
     const onSuccess = () => {
       this.isSaving = false;
       this.flashMessages.success("Saved!");
-      //this.transitionToRoute('playlists.show', currentPlaylist.id);
+      this.router.transitionTo('authenticated.schedule');
     };
     const onFail = (response) => {
       console.log("show save failed");
@@ -125,5 +136,10 @@ export default class ScheduledShowForm extends Component {
     }).then((users) => {
       return resolve(users);
     }, reject);
+  }
+
+  @action
+  backToSchedule(){
+    this.router.transitionTo('authenticated.schedule');
   }
 }
