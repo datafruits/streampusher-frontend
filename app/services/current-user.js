@@ -1,6 +1,5 @@
 import classic from 'ember-classic-decorator';
-import Service from '@ember/service';
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { resolve } from 'rsvp';
 
 @classic

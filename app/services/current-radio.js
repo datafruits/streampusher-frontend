@@ -1,5 +1,4 @@
-import Service from '@ember/service';
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { resolve } from 'rsvp';
 import { tracked } from '@glimmer/tracking';
 

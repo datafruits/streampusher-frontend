@@ -12,6 +12,6 @@ module('Integration | Helper | eq-number', function(hooks) {
 
     await render(hbs`{{eq-number inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.dom(this.element).hasText('1234');
   });
 });
