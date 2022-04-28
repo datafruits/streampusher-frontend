@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class PlaylistsTrack extends Component {
   isEditing = false;
 
@@ -20,9 +18,8 @@ export default class PlaylistsTrack extends Component {
   @action
   save() {
     let playlistTrack = this.playlistTrack;
-    let onSuccess = () =>{
-    };
-    let onFail = () =>{
+    let onSuccess = () => {};
+    let onFail = () => {
       this.flashMessages.danger('Something went wrong!');
     };
     playlistTrack.save().then(onSuccess, onFail);

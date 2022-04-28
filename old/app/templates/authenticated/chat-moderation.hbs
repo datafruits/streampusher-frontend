@@ -1,0 +1,56 @@
+<Await @promise={{this.fetchChatBans}} as |await|>
+  <await.Pending>
+    Loading ...
+  </await.Pending>
+  <await.Fulfilled as |result|>
+    <div class="w-1/2 mx-2">
+    <h1>currently connected IPs</h1>
+    <table>
+      <tbody>
+        {{#each result.connections as |connection|}}
+          <tr>
+            <td>
+              {{ connection }}
+            </td>
+            <td>
+              <form {{on "submit" (fn this.ban connection)}}>
+                <Input
+                  @type="submit"
+                  class="btn cursor-pointer"
+                  data-test-submit-button
+                  @value="Ban" />
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    </div>
+    <div class="w-1/2 mx-2">
+      <h1>banned users</h1>
+      <table>
+        <tbody>
+          {{#each result.bans as |ban|}}
+            <tr>
+              <td>
+                {{ban}}
+              </td>
+              <td>
+                <form {{on "submit" (fn this.unban ban)}}>
+                  <Input
+                    @type="submit"
+                    class="btn cursor-pointer"
+                    data-test-submit-button
+                    @value="Unban" />
+                </form>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </await.Fulfilled>
+  <await.Rejected>
+    Something went wrong :(
+  </await.Rejected>
+</Await>

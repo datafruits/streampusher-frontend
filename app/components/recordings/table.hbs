@@ -6,7 +6,10 @@
     <th></th>
   </thead>
   <Await
-    @promise={{this.fetchRecordings}} as |await|>
+    @promise={{this.fetchRecordings}}
+    @onResolve={{this.resolvedRecordings}}
+    as |await|>
+    <span>{{this.thingy}}</span>
     <tbody
       {{did-update await.reload @page}}
       >
@@ -21,8 +24,7 @@
             <td>
               {{#if recording.unprocessed}}
                 <button
-                  class="btn"
-                  {{on "click" (fn this.process recording)}}
+                  class="btn" type="button" {{on "click" (fn this.process recording)}}
                   >
                   Process
                 </button>
@@ -33,8 +35,7 @@
               {{else if recording.processingFailed}}
                 <span>Processing failed... :( Try again?</span>
                 <button
-                  class="btn"
-                  {{on "click" (fn this.process recording)}}
+                  class="btn" type="button" {{on "click" (fn this.process recording)}}
                   >
                   Process
                 </button>

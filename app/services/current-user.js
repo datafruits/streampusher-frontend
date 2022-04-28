@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import Service, { inject as service } from '@ember/service';
 import { resolve } from 'rsvp';
 
-@classic
 export default class CurrentUserService extends Service {
   @service
   session;

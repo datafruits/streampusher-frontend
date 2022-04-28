@@ -1,0 +1,24 @@
+<section>
+  <h1 class="text-xl">Blog Posts</h1>
+  <div class="mt-5">
+    <LinkTo @route="authenticated.blog-posts.new"
+            class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded"
+    >
+      New
+    </LinkTo>
+  </div>
+  <table class="">
+    <thead>
+      <th>Title</th>
+      <th></th>
+    </thead>
+    <tbody>
+      {{#each model as |blogPost|}}
+        <tr>
+          <td>{{blogPost.title}}</td>
+          <td><LinkTo @route="authenticated.blog-posts.show" @model={{blogPost}}>Edit</LinkTo></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

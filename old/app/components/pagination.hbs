@@ -1,0 +1,33 @@
+{{#if (gt @page 1)}}
+  <span class="pagination">
+    <LinkTo
+      @route={{@route}}
+      @query={{pagination-query @paramName (dec @page)}}
+    >
+      Previous
+    </LinkTo>
+  </span>
+{{/if}}
+{{#each (range 1 (inc @totalPages)) as |number|}}
+  {{#if (eq-number number @page)}}
+    <span class="px-2 bg-black text-white">
+      {{number}}
+    </span>
+  {{else}}
+    <span class="px-2">
+      <LinkTo @route={{@route}} @query={{pagination-query @paramName number}}>
+        {{number}}
+      </LinkTo>
+    </span>
+  {{/if}}
+{{/each}}
+{{#if (lt @page @totalPages)}}
+  <span class="pagination">
+    <LinkTo
+      @route={{@route}}
+      @query={{pagination-query @paramName (inc @page)}}
+    >
+      Next
+    </LinkTo>
+  </span>
+{{/if}}

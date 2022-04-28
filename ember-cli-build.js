@@ -1,20 +1,21 @@
-"use strict";
+'use strict';
 
-const EmberApp = require("ember-cli/lib/broccoli/ember-app");
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    // Add options here
     postcssOptions: {
       compile: {
         plugins: [
           {
-            module: require("postcss-import"),
+            module: require('postcss-import'),
             options: {
-              path: ["node_modules"],
+              path: ['node_modules'],
             },
           },
 
-          require("tailwindcss")("./app/tailwind/config.js"),
+          require('tailwindcss')('./app/tailwind/config.js'),
         ],
       },
     },
@@ -32,9 +33,6 @@ module.exports = function (defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  app.import("vendor/netlify.toml", {
-    destDir: "/",
-  });
 
   return app.toTree();
 };
