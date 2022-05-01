@@ -57,6 +57,7 @@
     "ember-modal-dialog": "^4.0.1",
     "ember-page-title": "^6.2.2",
     "ember-parachute": "^1.0.2",
+    "ember-power-select-with-create": "https://github.com/jonathannewman/ember-power-select-with-create#main/master/ember-power-select-5.x",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-simple-auth": "^4.2.2",
