@@ -1,6 +1,8 @@
 import ApplicationAdapter from './application';
+import classic from 'ember-classic-decorator';
 
-export default class User extends ApplicationAdapter {
+@classic
+export default class UserAdapter extends ApplicationAdapter {
   urlForFindAll() {
     return `${this.urlPrefix()}/djs`;
   }

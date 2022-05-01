@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
 import { ActiveModelSerializer } from 'active-model-adapter';
 
-export default class User extends ActiveModelSerializer {
+@classic
+export default class UserSerializer extends ActiveModelSerializer {
   modelNameFromPayloadKey(payloadKey) {
     console.log(payloadKey);
     if (payloadKey === 'djs' || payloadKey === 'dj') {
