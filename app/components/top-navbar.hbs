@@ -1,5 +1,5 @@
 <ul class="px-4 pt-2 pb-4 font-semibold">
-  {{#if session.isAuthenticated}}
+  {{#if this.session.isAuthenticated}}
     <li class="current-time-navbar">
       <span class="current-time"><Clock @timeZone={{this.currentUser.user.timeZone}} /></span>
       <span class="current-timezone">{{this.currentUser.user.timeZone}}</span>

@@ -5,9 +5,10 @@
         <MobileMenuButton class="sm:hidden"
           @toggleMobileMenu={{action "toggleMobileMenu"}}
           @isShowingMobileMenu={{this.isShowingMobileMenu}} />
-        <a class="brand" href="/">
-          <img class="h-10" src="/assets/images/logo.png" alt="Streampusher">
+        <a class="brand" href="/" aria-label="Streampusher">
+          <img class="h-10" src="/assets/images/logo.png" aria-hidden="true">
         </a>
+        <img src="/assets/images/under-construction90s-90s.gif" alt="under construction 90s!"/>
       </div>
       <TopNavbar
         @toggleUserMenu={{action "toggleUserMenu"}} />
