@@ -76,6 +76,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-qunit": "^6.2.0",
     "fruits-ui": "https://github.com/datafruits/fruits-ui",
+    "jstimezonedetect": "^1.0.7",
     "loader.js": "^4.7.0",
     "moment": "^2.29.3",
     "npm-run-all": "^4.1.5",
@@ -84,6 +85,7 @@
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
+    "shrimp-calendar": "https://github.com/mcfiredrill/shrimp-calendar.git",
     "tailwindcss": "^3.0.24",
     "webpack": "^5.72.0"
   },
