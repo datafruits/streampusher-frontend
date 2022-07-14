@@ -36,8 +36,7 @@
       <div class="h-64 overflow-y-scroll w-full">
         {{#each group.model as |playlistTrack|}}
           <group.item @tagName="tr" @model={{playlistTrack}} as |groupItem|>
-            <Playlists::Track @playlistTrack={{playlistTrack}}
-              class="border-2 border-gray-300 px-2 py-2" />
+            <Playlists::Track @playlistTrack={{playlistTrack}} />
             <groupItem.handle @data-test-vertical-demo-handle={{true}} @class="handle">
               <span data-item={{playlistTrack}}>
                 <span>&vArr;</span>
