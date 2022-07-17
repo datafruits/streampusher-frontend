@@ -13,14 +13,7 @@ export default class PlaylistsFormComponent extends Component {
 
   @service router;
 
-  constructor() {
-    super(...arguments);
-    this.changeset = new Changeset(
-      this.args.model,
-      lookupValidator(PlaylistValidations),
-      PlaylistValidations
-    );
-  }
+  validations = PlaylistValidations;
 
   @action
   save(event) {
