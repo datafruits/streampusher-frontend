@@ -1,9 +1,11 @@
-@import "ember-modal-dialog/ember-modal-structure.css";
-@import "ember-modal-dialog/ember-modal-appearance.css";
+@import 'ember-modal-dialog/ember-modal-structure.css';
+@import 'ember-modal-dialog/ember-modal-appearance.css';
 
 @tailwind base;
 
 @tailwind components;
+
+@tailwind utilities;
 
 .form-input {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
@@ -96,5 +98,3 @@ a:hover {
 .centered-scrolling-container {
   position: relative;
 }
-
-@tailwind utilities;
