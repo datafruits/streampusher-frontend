@@ -5,11 +5,12 @@ import { inject as service } from '@ember/service';
 import { debounce } from '@ember/runloop';
 import RSVP from 'rsvp';
 import moment from 'moment';
-import Changeset from 'ember-changeset';
-import lookupValidator from 'ember-changeset-validations';
+//import Changeset from 'ember-changeset';
+//import lookupValidator from 'ember-changeset-validations';
 import ScheduledShowValidations from '../../validations/scheduled-show';
 
 export default class ScheduledShowForm extends Component {
+  ScheduledShowValidations = ScheduledShowValidations;
   @tracked isSaving = false;
   @tracked showingContentEditor = false;
 
@@ -47,11 +48,11 @@ export default class ScheduledShowForm extends Component {
 
   constructor() {
     super(...arguments);
-    this.changeset = new Changeset(
-      this.args.model,
-      lookupValidator(ScheduledShowValidations),
-      ScheduledShowValidations
-    );
+    // this.changeset = new Changeset(
+    //   this.args.model,
+    //   lookupValidator(ScheduledShowValidations),
+    //   ScheduledShowValidations
+    // );
   }
 
   get formattedDay() {
@@ -71,42 +72,6 @@ export default class ScheduledShowForm extends Component {
   @action
   setPlaylist(playlist) {
     this.changeset.set('playlist', playlist);
-  }
-
-  @action
-  setDefaultPlaylist() {
-    let playlist = this.store.peekRecord('playlist', 3);
-    this.changeset.set('playlist', playlist);
-  }
-
-  @action
-  setStart(time) {
-    let hours = time.split(':')[0];
-    let minutes = time.split(':')[1];
-    const oldDate = this.changeset.start;
-    let newDate = new Date(
-      oldDate.getFullYear(),
-      oldDate.getMonth(),
-      oldDate.getDate(),
-      hours,
-      minutes
-    );
-    this.changeset.set('start', newDate);
-  }
-
-  @action
-  setEnd(time) {
-    let hours = time.split(':')[0];
-    let minutes = time.split(':')[1];
-    const oldDate = this.changeset.end;
-    let newDate = new Date(
-      oldDate.getFullYear(),
-      oldDate.getMonth(),
-      oldDate.getDate(),
-      hours,
-      minutes
-    );
-    this.changeset.set('end', newDate);
   }
 
   @action

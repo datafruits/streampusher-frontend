@@ -2,7 +2,7 @@
 <PowerSelect
   @searchEnabled={{true}}
   @selected={{this.selected}}
-  @onChange={{@onChange}}
+  @onChange={{this.setTime}}
   @options={{this.times}} as |time|
 >
   {{time}}

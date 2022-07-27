@@ -962,5 +962,9 @@ module.exports = {
     'active',
     'disabled',
   ],
-  plugins: [],
+  plugins: [
+    // require('@frontile/core/tailwind'),
+    // require('@frontile/buttons/tailwind'),
+    // require('@frontile/forms/tailwind'),
+  ],
 };
