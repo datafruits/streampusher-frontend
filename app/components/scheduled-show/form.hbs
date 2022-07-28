@@ -41,8 +41,8 @@
             @searchEnabled={{true}}
             @search={{this.searchDjs}}
             @options={{@djs}}
-            @selected={{this.changeset.djs}}
-            @onChange={{fn (mut this.changeset.djs)}} as |dj|>
+            @selected={{changeset.djs}}
+            @onChange={{fn (mut changeset.djs)}} as |dj|>
             {{dj.username}}
           </PowerSelectMultiple>
         </div>
