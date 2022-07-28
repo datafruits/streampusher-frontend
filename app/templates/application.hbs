@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between px-4 py-3 w-screen">
       <div class="flex items-center">
         <MobileMenuButton class="sm:hidden"
-          @toggleMobileMenu={{action "toggleMobileMenu"}}
+          @toggleMobileMenu={{this.toggleMobileMenu}}
           @isShowingMobileMenu={{this.isShowingMobileMenu}} />
         <a class="brand" href="/" aria-label="Streampusher">
           <img class="h-10" src="/assets/images/logo.png" aria-hidden="true">
@@ -11,16 +11,16 @@
         <img src="/assets/images/under-construction90s-90s.gif" alt="under construction 90s!"/>
       </div>
       <TopNavbar
-        @toggleUserMenu={{action "toggleUserMenu"}} />
+        @toggleUserMenu={{this.toggleUserMenu}} />
     </div>
   </nav>
 </header>
-<UserMenu @showing={{isShowingUserMenu}} class="bg-black text-white font-semibold absolute right-0" />
+<UserMenu @showing={{this.isShowingUserMenu}} />
 {{#each this.flashMessages.queue as |flash|}}
   <FlashMessage @flash={{flash}} />
 {{/each}}
 <section class="h-screen flex justify-start items-stretch">
-  {{#if session.isAuthenticated}}
+  {{#if this.session.isAuthenticated}}
     <SideNavbar
       @isShowingMobileMenu={{this.isShowingMobileMenu}}
       class="sm:flex absolute left-0 sm:static bg-black text-white h-screen" />

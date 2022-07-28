@@ -5,7 +5,7 @@
       <span class="current-timezone">{{this.currentUser.user.timeZone}}</span>
     </li>
     <li class="dropdown">
-      <a href="#" class="" role="button" {{action @toggleUserMenu}}>
+      <a href="#" class="" role="button" {{on "click" @toggleUserMenu}}>
         {{this.currentUser.user.username}}
       </a>
     </li>
