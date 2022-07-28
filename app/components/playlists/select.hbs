@@ -10,8 +10,8 @@
       @searchEnabled={{true}}
       @search={{this.searchPlaylists}}
       @renderInPlace={{true}}
-      @options={{playlists}}
-      @selected={{@selected}}
+      @options={{this.playlists}}
+      @selected={{this.selectedPlaylist}}
       @onChange={{@onChange}} as |playlist|>
       {{playlist.name}}
     </PowerSelect>

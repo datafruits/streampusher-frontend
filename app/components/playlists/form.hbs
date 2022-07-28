@@ -1,21 +1,25 @@
-<Ui::Form @onSubmit={{this.save}} @changeset={{this.changeset}} >
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-      Name
-    </label>
-    <Input
-      type="text"
-      name="name"
-      id="name"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @value={{this.changeset.name}}
-    />
-  </div>
+{{#let (changeset @model this.validations) as |changeset|}}
+  <ChangesetForm @changeset={{changeset}} as |Form|>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <Form.Input
+        type="text"
+        name="name"
+        id="name"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        @fieldName='name'
+      />
+    </div>
 
-  <Input
-    data-test-save-playlist-button
-    @type="submit"
-    class="btn btn-primary"
-    @value="save"
-    />
-</Ui::Form>
+    <Button
+      data-test-save-playlist-button
+      @type="submit"
+      class="btn btn-primary"
+      disabled={{changeset.isInvalid}}
+      >
+        Save
+    </Button>
+  </ChangesetForm>
+{{/let}}

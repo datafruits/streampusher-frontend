@@ -1,0 +1,57 @@
+<div class="">
+  <h1 class="text-xl">Media Library</h1>
+</div>
+<div class="mb-2">
+  <Tracks::Search
+    class="mb-2"
+    @search={{@updateSearch}}
+    @filterText={{@searchParams.tracksQuery}} />
+</div>
+<div class="mb-2">
+  <PowerSelectMultiple
+    @placeholder="Search by tag..."
+    @options={{@labels}}
+    @selected={{this.selectedLabels}}
+    @renderInPlace={{true}}
+    @onChange={{action (mut this.selectedLabels)}} as |label|>
+    {{label.name}}
+  </PowerSelectMultiple>
+</div>
+<Tracks::Uploader @pushTrack={{this.pushTrack}}>
+  <Await @promise={{this.fetchTracks}} as |await|>
+    <div
+      {{did-update await.reload @searchParams.page}}
+      class="">
+      <div class="w-full">
+        <await.Pending>
+          <div class="h-64 overflow-y-scroll w-full">
+            <p>
+              Loading...
+            </p>
+          </div>
+        </await.Pending>
+        <await.Fulfilled as |result|>
+          <div class="h-64 overflow-y-scroll w-full">
+            {{#each result as |track|}}
+              <Tracks::Track
+                @track={{track}}
+                @labels={{@labels}}
+              />
+            {{else}}
+              No result.
+            {{/each}}
+          </div>
+          <FruitsUi::Pagination
+            @page={{@searchParams.page}}
+            @totalPages={{result.meta.total_pages}}
+            @route={{this.router.currentRouteName}}
+            @paramName="tracksPage" />
+        </await.Fulfilled>
+
+        <await.Rejected>
+          error ... :(
+        </await.Rejected>
+      </div>
+    </div>
+  </Await>
+</Tracks::Uploader>

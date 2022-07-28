@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'streampusher-frontend',
     environment,
@@ -13,17 +13,17 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      //
+      API_HOST: process.env.API_HOST,
+      CHAT_SOCKET_URL: process.env.CHAT_SOCKET_URL,
     },
-
-    API_HOST: process.env.API_HOST,
-    CHAT_SOCKET_URL: process.env.CHAT_SOCKET_URL
   };
 
   if (environment === 'development') {
@@ -32,14 +32,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-cli-mirage'] = {
-      enabled: false
-    };
-
-    ENV.paperclip = {
-      path: ":base/:attachment/:style/:basename?:updated_at",
-      base: "https://s3.amazonaws.com/streampusherdev"
-    };
   }
 
   if (environment === 'test') {
@@ -49,25 +41,13 @@ module.exports = function(environment) {
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    ENV.APP.LOG_TRANSITIONS = true;
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-    ENV.paperclip = {
-      path: ":base/:attachment/:style/:basename?:updated_at",
-      base: "https://s3.amazonaws.com/streampushertest"
-    };
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.paperclip = {
-      path: ":base/:attachment/:style/:basename?:updated_at",
-      base: "https://s3.amazonaws.com/streampusher"
-    };
   }
 
   return ENV;

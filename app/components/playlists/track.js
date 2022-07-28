@@ -1,10 +1,8 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
 export default class PlaylistsTrack extends Component {
-  isEditing = false;
+  //isEditing = false;
 
   @action
   deleteFromPlaylist() {
@@ -12,25 +10,24 @@ export default class PlaylistsTrack extends Component {
     playlistTrack.destroyRecord();
   }
 
-  @action
-  editPlaylistTrack() {
-    this.set('isEditing', true);
-  }
+  // @action
+  // editPlaylistTrack() {
+  //   this.set('isEditing', true);
+  // }
 
   @action
   save() {
     let playlistTrack = this.playlistTrack;
-    let onSuccess = () =>{
-    };
-    let onFail = () =>{
+    let onSuccess = () => {};
+    let onFail = () => {
       this.flashMessages.danger('Something went wrong!');
     };
     playlistTrack.save().then(onSuccess, onFail);
-    this.set('isEditing', false);
+    //this.set('isEditing', false);
   }
 
   @action
   cancel() {
-    this.set('isEditing', false);
+    //this.set('isEditing', false);
   }
 }

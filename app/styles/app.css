@@ -1,11 +1,22 @@
-@import "ember-modal-dialog/ember-modal-structure.css";
-@import "ember-modal-dialog/ember-modal-appearance.css";
+@import 'ember-modal-dialog/ember-modal-structure.css';
+@import 'ember-modal-dialog/ember-modal-appearance.css';
 
 @tailwind base;
 
 @tailwind components;
 
-.form-input {
+@tailwind utilities;
+
+.input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+/* for ember frontile */
+.form-field-input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.form-field-textarea {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
@@ -97,4 +108,10 @@ a:hover {
   position: relative;
 }
 
-@tailwind utilities;
+.ember-power-select-trigger {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.ember-power-select-option {
+  cursor: pointer;
+}

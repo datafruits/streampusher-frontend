@@ -1,9 +1,9 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import fetch from 'fetch';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import ENV from "streampusher-frontend/config/environment";
+import ENV from 'streampusher-frontend/config/environment';
 
 export default class DonationLinkForm extends Component {
   @service flashMessages;
@@ -12,7 +12,7 @@ export default class DonationLinkForm extends Component {
   @service eventBus;
   @service metadata;
 
-  @tracked donationLink;
+  @tracked url
 
   constructor() {
     super(...arguments);
@@ -20,7 +20,7 @@ export default class DonationLinkForm extends Component {
   }
 
   setDonationLink() {
-    this.donationLink = this.metadata.donationLink;
+    this.url = this.metadata.donationLink;
   }
 
   @action
@@ -31,15 +31,17 @@ export default class DonationLinkForm extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.session.data.authenticated.token}`
+        Authorization: `Bearer ${this.session.data.authenticated.token}`,
       },
-      body: JSON.stringify(data)
-    }).then(() => {
-      this.flashMessages.success('Updated donation link!');
-    }).catch((error) => {
-      this.flashMessages.error('error updating donation link');
-      console.log('error updating metadata');
-      console.log(error);
-    });
+      body: JSON.stringify(data),
+    })
+      .then(() => {
+        this.flashMessages.success('Updated donation link!');
+      })
+      .catch((error) => {
+        this.flashMessages.error('error updating donation link');
+        console.log('error updating metadata');
+        console.log(error);
+      });
   }
 }

@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
-@classic
 export default class ApplicationController extends Controller {
   @service
   session;
@@ -14,12 +12,12 @@ export default class ApplicationController extends Controller {
 
   @action
   toggleMobileMenu() {
-    this.toggleProperty('isShowingMobileMenu');
+    this.isShowingMobileMenu = !this.isShowingMobileMenu;
   }
 
   @action
   toggleUserMenu() {
-    this.toggleProperty('isShowingUserMenu');
+    this.isShowingUserMenu = !this.isShowingUserMenu;
   }
 
   @action

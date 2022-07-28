@@ -17,6 +17,7 @@ streampusher beta TODO
   - [x] modal for new/edit
   - [ ] make sure delete works
   - [ ] uploading artwork
+  - [ ] say add content button is 'coming soon'
 - [ ] write acceptance test suite
 
 v2

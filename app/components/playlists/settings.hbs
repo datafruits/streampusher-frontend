@@ -9,22 +9,22 @@
         <span>Created by: </span><b>{{this.changeset.createdBy}}</b>
         <br />
         <h4>Interpolate another playlist with this one (e.g. for jingles)</h4>
-        <label>Enabled <Input @type="checkbox" @id="interpolated-playlist-enabled" @name="interpolatedPlaylistEnabled" @checked={{this.changeset.interpolatedPlaylistEnabled}} /></label>
+        <label>Enabled <Input @type="checkbox" id="interpolated-playlist-enabled" name="interpolatedPlaylistEnabled" @checked={{this.changeset.interpolatedPlaylistEnabled}} /></label>
         <br />
         <label>
           Every <Input @type="number"
-            class="form-input focus:outline-none focus:shadow-outline"
-            @name="interpolatedPlaylistTrackIntervalCount"
+            class="input focus:outline-none focus:shadow-outline"
+            name="interpolatedPlaylistTrackIntervalCount"
             @value={{@playlist.interpolatedPlaylistTrackIntervalCount}}
-            @step="1" />
+            step="1" />
         </label>
         <label>
           tracks, play <Input
-            class="form-input focus:outline-none focus:shadow-outline"
+            class="input focus:outline-none focus:shadow-outline"
             @type="number"
-            @name="interpolatedPlaylistTrackPlayCount"
+            name="interpolatedPlaylistTrackPlayCount"
             @value={{this.changeset.interpolatedPlaylistTrackPlayCount}}
-            @step="1" />
+            step="1" />
         </label>
         <label>tracks from the
           <Await @promise={{this.fetchPlaylists}} as |await|>
@@ -52,12 +52,12 @@
         <span class="strong">{{@playlist.interpolatedPlaylist.name}}</span> playlist.
         <br />
         <h4>Shuffle</h4>
-        <label>On <Input @type="checkbox" @id="shuffle" @name="shuffle" @checked={{@playlist.shuffle}} /></label>
+        <label>On <Input @type="checkbox" id="shuffle" name="shuffle" @checked={{@playlist.shuffle}} /></label>
         <h4>Don't cut off tracks early for next show</h4>
-        <label>Enabled <Input @type="checkbox" @id="no-cue-out" @name="noCueOut" @checked={{@playlist.noCueOut}} /></label>
+        <label>Enabled <Input @type="checkbox" id="no-cue-out" name="noCueOut" @checked={{@playlist.noCueOut}} /></label>
       </div>
       <div class="modal-footer">
-        <button {{action "deletePlaylist"}} class="btn btn-danger">Delete playlist</button>
+        <button class="btn btn-danger" type="button" {{action "deletePlaylist"}}>Delete playlist</button>
         <input type="submit" class="btn btn-primary" value="Save changes">
       </div>
     </Ui::Form>

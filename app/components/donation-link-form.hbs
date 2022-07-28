@@ -1,8 +1,8 @@
 <h3>Donation Link</h3>
-<span>{{this.donationLink}}</span>
+<span>{{this.metadata.donationLink}}</span>
 <form {{on "submit" this.updateMetadata}}>
   <Input
-    class="form-input focus:outline-none focus:shadow-outline mb-2"
+    class="input focus:outline-none focus:shadow-outline mb-2"
     @type="text"
     @value={{this.url}} />
   <Input

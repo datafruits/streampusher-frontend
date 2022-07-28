@@ -1,39 +1,37 @@
-import classic from "ember-classic-decorator";
-import { action, computed } from "@ember/object";
-import Controller from "@ember/controller";
-import QueryParams from "ember-parachute";
-import moment from "moment";
+import { action, computed } from '@ember/object';
+import Controller from '@ember/controller';
+import QueryParams from 'ember-parachute';
+import moment from 'moment';
 
 export const TimetableQueryParams = new QueryParams({
   start: {
-    defaultValue: moment().format("YYYY-MM-DD"),
+    defaultValue: moment().format('YYYY-MM-DD'),
     refresh: true,
   },
   view: {
-    defaultValue: "week",
+    defaultValue: 'week',
     refresh: true,
   },
 });
 
-@classic
 export default class ScheduleController extends Controller.extend(
   TimetableQueryParams.Mixin
 ) {
-  @computed("start", "view")
+  @computed('start', 'view')
   get query() {
     return { start: this.start, view: this.view };
   }
 
   @action
   reloadCalendar(params) {
-    console.log("reload calendar");
+    console.log('reload calendar');
     console.log(params);
-    this.set("start", params.start);
-    this.set("view", params.view);
+    this.set('start', params.start);
+    this.set('view', params.view);
   }
 
   @action
   calendarTypeChange(type) {
-    this.set("view", type);
+    this.set('view', type);
   }
 }

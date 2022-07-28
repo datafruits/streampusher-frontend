@@ -18,14 +18,13 @@
 </div>
 <div class="flex space-x-2">
   <div class="mr-2">
-    <button {{action 'editPlaylistSettings'}} class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded">
+    <button class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded" type="button" {{action 'editPlaylistSettings'}}>
       Playlist Settings
     </button>
   </div>
   <div class="">
-    <button {{on 'click' this.newPlaylist}}
-      class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded"
-      data-test-new-playlist-button
+    <button class="bg-green-500 hover:bg-green-700 text-white px-2 py-2 rounded"
+      data-test-new-playlist-button type="button" {{on 'click' this.newPlaylist}}
       >
       <FaIcon @icon="plus" />New Playlist
     </button>
@@ -37,13 +36,12 @@
       <div class="h-64 overflow-y-scroll w-full">
         {{#each group.model as |playlistTrack|}}
           <group.item @tagName="tr" @model={{playlistTrack}} as |groupItem|>
-            <Playlists::Track @playlistTrack={{playlistTrack}}
-              class="border-2 border-gray-300 px-2 py-2" />
-            {{#groupItem.handle data-test-vertical-demo-handle class="handle"}}
+            <Playlists::Track @playlistTrack={{playlistTrack}} />
+            <groupItem.handle @data-test-vertical-demo-handle={{true}} @class="handle">
               <span data-item={{playlistTrack}}>
                 <span>&vArr;</span>
               </span>
-            {{/groupItem.handle}}
+            </groupItem.handle>
           </group.item>
         {{/each}}
       </div>

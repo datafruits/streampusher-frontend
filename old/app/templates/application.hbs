@@ -1,0 +1,30 @@
+<header class="bg-black text-white">
+  <nav class="sm:flex sm:justify-between sm:items-center">
+    <div class="flex items-center justify-between px-4 py-3 w-screen">
+      <div class="flex items-center">
+        <MobileMenuButton class="sm:hidden"
+          @toggleMobileMenu={{action "toggleMobileMenu"}}
+          @isShowingMobileMenu={{this.isShowingMobileMenu}} />
+        <a class="brand" href="/">
+          <img class="h-10" src="/assets/images/logo.png" alt="Streampusher">
+        </a>
+      </div>
+      <TopNavbar
+        @toggleUserMenu={{action "toggleUserMenu"}} />
+    </div>
+  </nav>
+</header>
+<UserMenu @showing={{isShowingUserMenu}} class="bg-black text-white font-semibold absolute right-0" />
+{{#each this.flashMessages.queue as |flash|}}
+  <FlashMessage @flash={{flash}} />
+{{/each}}
+<section class="h-screen flex justify-start items-stretch">
+  {{#if session.isAuthenticated}}
+    <SideNavbar
+      @isShowingMobileMenu={{this.isShowingMobileMenu}}
+      class="sm:flex absolute left-0 sm:static bg-black text-white h-screen" />
+  {{/if}}
+  <section class="m-4 flex justify-around w-full">
+    {{outlet}}
+  </section>
+</section>

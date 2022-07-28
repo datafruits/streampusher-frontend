@@ -1,0 +1,9 @@
+<label>{{@label}}</label>
+<PowerSelect
+  @searchEnabled={{true}}
+  @selected={{this.selected}}
+  @onChange={{@onChange}}
+  @options={{this.times}} as |time|
+>
+  {{time}}
+</PowerSelect>

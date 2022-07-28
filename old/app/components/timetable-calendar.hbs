@@ -1,0 +1,32 @@
+<h1>{{this.shows.length}}</h1>
+<span {{did-insert this.performTask @query}}></span>
+<span {{did-update this.performTask @query}}></span>
+{{#if this.fetchData.isRunning}}
+  <p>loading</p>
+  <ShrimpCalendar />
+{{else}}
+  <ShrimpCalendar
+    @onDayclick={{this.newShow}}
+    @events={{this.shows}}
+      as |model|>
+    {{!-- template-lint-disable no-inline-styles --}}
+    <div class="bg-red-400 text-white mb-1">
+      <div class="bg-red-600 flex justify-between items-center p-1">
+        <span class="font-extrabold text-xs">{{model.startFormatted}} - {{model.endFormatted}}</span>
+        {{#if (not (eq model.recurringInterval "not_recurring"))}}
+          <span
+            class="text-xs rounded-lg p-1 border-2 border-white
+              {{model.recurringBgColor}}
+            ">
+            {{model.recurringFormatted}}
+          </span>
+        {{/if}}
+      </div>
+      <h1 class="p-1" style={{titleStyle}}>
+        <LinkTo @route="authenticated.schedule.show" @model={{model.id}} title={{model.title}}>
+          {{model.title}}
+        </LinkTo>
+      </h1>
+    </div>
+  </ShrimpCalendar>
+{{/if}}

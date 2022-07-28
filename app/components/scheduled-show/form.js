@@ -1,15 +1,16 @@
-import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
-import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
-import { debounce } from "@ember/runloop";
-import RSVP from "rsvp";
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { debounce } from '@ember/runloop';
+import RSVP from 'rsvp';
 import moment from 'moment';
-import Changeset from "ember-changeset";
-import lookupValidator from "ember-changeset-validations";
-import ScheduledShowValidations from "../../validations/scheduled-show";
+//import Changeset from 'ember-changeset';
+//import lookupValidator from 'ember-changeset-validations';
+import ScheduledShowValidations from '../../validations/scheduled-show';
 
 export default class ScheduledShowForm extends Component {
+  ScheduledShowValidations = ScheduledShowValidations;
   @tracked isSaving = false;
   @tracked showingContentEditor = false;
 
@@ -24,34 +25,34 @@ export default class ScheduledShowForm extends Component {
 
   recurringIntervals = [
     {
-      value: "not_recurring",
-      name: "None",
+      value: 'not_recurring',
+      name: 'None',
     },
     {
-      value: "day",
-      name: "Day",
+      value: 'day',
+      name: 'Day',
     },
     {
-      value: "week",
-      name: "Week",
+      value: 'week',
+      name: 'Week',
     },
     {
-      value: "month",
-      name: "Month",
+      value: 'month',
+      name: 'Month',
     },
     {
-      value: "biweek",
-      name: "Bi-weekly",
+      value: 'biweek',
+      name: 'Bi-weekly',
     },
   ];
 
   constructor() {
     super(...arguments);
-    this.changeset = new Changeset(
-      this.args.model,
-      lookupValidator(ScheduledShowValidations),
-      ScheduledShowValidations
-    );
+    // this.changeset = new Changeset(
+    //   this.args.model,
+    //   lookupValidator(ScheduledShowValidations),
+    //   ScheduledShowValidations
+    // );
   }
 
   get formattedDay() {
@@ -65,40 +66,16 @@ export default class ScheduledShowForm extends Component {
 
   @action
   setRecurringInterval(interval) {
-    this.changeset.set("recurringInterval", interval);
+    this.changeset.set('recurringInterval', interval);
   }
 
   @action
   setPlaylist(playlist) {
-    this.changeset.set("playlist", playlist);
+    this.changeset.set('playlist', playlist);
   }
 
   @action
-  setDefaultPlaylist() {
-    let playlist = this.store.peekRecord("playlist", 3);
-    this.changeset.set("playlist", playlist);
-  }
-
-  @action
-  setStart(time){
-    let hours = time.split(':')[0];
-    let minutes = time.split(':')[1];
-    const oldDate = this.changeset.start;
-    let newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate(), hours, minutes);
-    this.changeset.set("start", newDate);
-  }
-
-  @action
-  setEnd(time){
-    let hours = time.split(':')[0];
-    let minutes = time.split(':')[1];
-    const oldDate = this.changeset.end;
-    let newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate(), hours, minutes);
-    this.changeset.set("end", newDate);
-  }
-
-  @action
-  setHosts(djs){
+  setHosts(djs) {
     this.changeset.set('djs', djs);
   }
 
@@ -109,11 +86,11 @@ export default class ScheduledShowForm extends Component {
     let show = this.changeset;
     const onSuccess = () => {
       this.isSaving = false;
-      this.flashMessages.success("Saved!");
+      this.flashMessages.success('Saved!');
       this.router.transitionTo('authenticated.schedule');
     };
     const onFail = (response) => {
-      console.log("show save failed");
+      console.log('show save failed');
       console.log(response);
       this.flashMessages.danger("Couldn't save show!");
       this.isSaving = false;
@@ -122,24 +99,26 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
-  searchDjs(term){
+  searchDjs(term) {
     return new RSVP.Promise((resolve, reject) => {
       debounce(this, this._performDjsSearch, term, resolve, reject, 600);
     });
   }
 
   _performDjsSearch(term, resolve, reject) {
-    this.store.query("user", {
-      search: {
-        keyword: term
-      }
-    }).then((users) => {
-      return resolve(users);
-    }, reject);
+    this.store
+      .query('user', {
+        search: {
+          keyword: term,
+        },
+      })
+      .then((users) => {
+        return resolve(users);
+      }, reject);
   }
 
   @action
-  backToSchedule(){
+  backToSchedule() {
     this.router.transitionTo('authenticated.schedule');
   }
 }
