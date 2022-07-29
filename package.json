@@ -23,6 +23,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.9",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.6.0",
@@ -34,7 +35,6 @@
     "@frontile/forms": "^0.14.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "active-model-adapter": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "2.4.1",
@@ -64,7 +64,7 @@
     "ember-modal-dialog": "^4.0.1",
     "ember-page-title": "^6.2.2",
     "ember-parachute": "^1.0.2",
-    "ember-power-select-with-create": "https://github.com/jonathannewman/ember-power-select-with-create#main/master/ember-power-select-5.x",
+    "ember-power-select-with-create": "github:mcfiredrill/ember-power-select-with-create",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-route-action-helper": "^2.0.8",
@@ -86,10 +86,12 @@
     "moment": "^2.29.3",
     "npm-run-all": "^4.1.5",
     "phoenix": "^1.6.7",
+    "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
+    "rollup": "^2.77.2",
     "shrimp-calendar": "https://github.com/mcfiredrill/shrimp-calendar.git",
     "tailwindcss": "3.1.6",
     "webpack": "^5.72.0"
