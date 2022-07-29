@@ -46,18 +46,6 @@ export default class ScheduledShow extends Model {
     }
   }
 
-  get recurringBgColor() {
-    if (this.recurringInterval === 'week') {
-      return 'bg-purple-400';
-    } else if (this.recurringInterval === 'month') {
-      return 'bg-blue-400';
-    } else if (this.recurringInterval === 'biweek') {
-      return 'bg-green-400';
-    } else {
-      return null;
-    }
-  }
-
   get endFormatted() {
     return moment(this.end).format('HH:mm');
   }

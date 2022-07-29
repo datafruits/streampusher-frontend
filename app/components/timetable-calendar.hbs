@@ -15,13 +15,13 @@
         {{#if (not (eq model.recurringInterval "not_recurring"))}}
           <span
             class="text-xs rounded-lg p-1 border-2 border-white
-              {{model.recurringBgColor}}
+              {{model.recurringInterval}}
             ">
             {{model.recurringFormatted}}
           </span>
         {{/if}}
       </div>
-      <h1 class="p-1" style={{this.titleStyle}}>
+      <h1 class="p-1">
         <LinkTo @route="authenticated.schedule.show" @model={{model.id}} title={{model.title}}>
           {{model.title}}
         </LinkTo>

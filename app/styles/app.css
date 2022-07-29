@@ -115,3 +115,15 @@ a:hover {
 .ember-power-select-option {
   cursor: pointer;
 }
+
+.week {
+  @apply bg-violet-400;
+}
+
+.month {
+  @apply bg-blue-400;
+}
+
+.biweek {
+  @apply bg-green-400;
+}
