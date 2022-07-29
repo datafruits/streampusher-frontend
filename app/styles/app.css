@@ -37,7 +37,7 @@
   @apply bg-purple-500;
 }
 
-.btn.danger {
+.btn.danger:hover {
   @apply bg-red-500;
 }
 
@@ -49,7 +49,7 @@
   @apply bg-purple-800;
 }
 
-.btn.danger {
+.btn.danger:active {
   @apply bg-red-800;
 }
 
