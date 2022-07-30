@@ -80,6 +80,12 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
+  onSubmit(data, event) {
+    // redirect to /schedule
+    this.router.transitionTo('authenticated.schedule');
+  }
+
+  @action
   save(event) {
     event.preventDefault();
     this.isSaving = true;
