@@ -1,12 +1,23 @@
-import Model, { belongsTo, attr } from '@ember-data/model';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Model, { belongsTo, attr } from '@ember-data/model';
 
-export default Model.extend({
-  blogPostBody: belongsTo('blog-post-body'),
-  imageFileName: attr(),
-  cdnUrl: attr(),
-  s3Url: attr(),
-  fileBasename: computed('imageFileName', function () {
+@classic
+export default class BlogPostImage extends Model {
+  @belongsTo('blog-post-body')
+  blogPostBody;
+
+  @attr()
+  imageFileName;
+
+  @attr()
+  cdnUrl;
+
+  @attr()
+  s3Url;
+
+  @computed('imageFileName')
+  get fileBasename() {
     return this.imageFileName.split('.')[0];
-  }),
-});
+  }
+}

@@ -1,10 +1,23 @@
+import classic from 'ember-classic-decorator';
 import Model, { belongsTo, attr } from '@ember-data/model';
 
-export default Model.extend({
-  blogPost: belongsTo('blog-post'),
-  title: attr(),
-  body: attr(),
-  language: attr(),
-  published: attr(),
-  publishedAt: attr(),
-});
+@classic
+export default class BlogPostBody extends Model {
+  @belongsTo('blog-post')
+  blogPost;
+
+  @attr()
+  title;
+
+  @attr()
+  body;
+
+  @attr()
+  language;
+
+  @attr()
+  published;
+
+  @attr()
+  publishedAt;
+}
