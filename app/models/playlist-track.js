@@ -1,12 +1,29 @@
+import classic from 'ember-classic-decorator';
 import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default Model.extend({
-  podcastPublishedDate: attr(),
-  displayName: attr(),
-  title: attr(),
-  position: attr(),
-  playlist: belongsTo('playlist'),
-  track: belongsTo('track', { async: false }),
-  updatedAt: attr('date'),
-  formattedDuration: attr(),
-});
+@classic
+export default class PlaylistTrack extends Model {
+  @attr()
+  podcastPublishedDate;
+
+  @attr()
+  displayName;
+
+  @attr()
+  title;
+
+  @attr()
+  position;
+
+  @belongsTo('playlist')
+  playlist;
+
+  @belongsTo('track', { async: false })
+  track;
+
+  @attr('date')
+  updatedAt;
+
+  @attr()
+  formattedDuration;
+}
