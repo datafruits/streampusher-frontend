@@ -6,6 +6,9 @@ import { tracked } from '@glimmer/tracking';
 import ENV from 'streampusher-frontend/config/environment';
 
 export default class SkipButtonFormComponent extends Component {
+  @service session;
+  @service flashMessages;
+
   @action
   skipTrack() {
     event.preventDefault();
