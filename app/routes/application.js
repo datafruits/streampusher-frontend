@@ -19,12 +19,12 @@ export default class ApplicationRoute extends Route.extend(
     return this._loadCurrentUser();
   }
 
-  async sessionAuthenticated() {
-    let _super = super.sessionAuthenticated;
-    await this._loadCurrentUser();
-    await this._loadCurrentRadio();
-    _super.call(this, ...arguments);
-  }
+  // async sessionAuthenticated() {
+  //   let _super = super.sessionAuthenticated;
+  //   await this._loadCurrentUser();
+  //   await this._loadCurrentRadio();
+  //   _super.call(this, ...arguments);
+  // }
 
   _loadCurrentUser() {
     return this.currentUser.load().catch(() => this.session.invalidate());

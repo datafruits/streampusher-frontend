@@ -3,6 +3,8 @@ import ENV from 'streampusher-frontend/config/environment';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import classic from 'ember-classic-decorator';
+import { underscore } from '@ember/string';
+import { pluralize } from 'ember-inflector';
 
 @classic
 export default class Application extends JSONAPIAdapter {
@@ -29,7 +31,12 @@ export default class Application extends JSONAPIAdapter {
   // },
   buildURL() {
     var base;
-    base = super.apply(this, arguments);
+    base = super.buildURL.apply(this, arguments);
     return '' + base + '.json';
+  }
+
+  pathForType(type) {
+    var underscored = underscore(type);
+    return pluralize(underscored);
   }
 }
