@@ -43,7 +43,7 @@
           </div>
           <FruitsUi::Pagination
             @page={{@searchParams.page}}
-            @totalPages={{result.meta.total_pages}}
+            @totalPages={{result.meta.total-pages}}
             @route={{this.router.currentRouteName}}
             @paramName="tracksPage" />
         </await.Fulfilled>
