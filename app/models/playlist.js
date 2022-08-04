@@ -10,7 +10,7 @@ export default class Playlist extends Model {
   @attr()
   createdBy;
 
-  @hasMany('playlist-track')
+  @hasMany('playlist-track', { async: false })
   playlistTracks;
 
   @attr()
