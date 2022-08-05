@@ -72,26 +72,8 @@ export default class ScheduledShowForm extends Component {
   @action
   onSubmit(data, event) {
     // redirect to /schedule
+    this.flashMessages.success('Saved!');
     this.router.transitionTo('authenticated.schedule');
-  }
-
-  @action
-  save(event) {
-    event.preventDefault();
-    this.isSaving = true;
-    let show = this.changeset;
-    const onSuccess = () => {
-      this.isSaving = false;
-      this.flashMessages.success('Saved!');
-      this.router.transitionTo('authenticated.schedule');
-    };
-    const onFail = (response) => {
-      console.log('show save failed');
-      console.log(response);
-      this.flashMessages.danger("Couldn't save show!");
-      this.isSaving = false;
-    };
-    show.save().then(onSuccess, onFail);
   }
 
   @action

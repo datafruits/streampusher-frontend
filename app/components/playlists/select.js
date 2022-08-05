@@ -12,7 +12,7 @@ export default class PlaylistsSelectComponent extends Component {
   @tracked playlists;
 
   @action
-  async handleChange(selection, event) {
+  handleChange(selection, event) {
     this.args.changeset.set(this.args.fieldName, selection);
     this.args.changeset.validate(this.args.fieldName);
   }
@@ -28,6 +28,7 @@ export default class PlaylistsSelectComponent extends Component {
   setDefaultPlaylist() {
     let playlist = this.store.peekRecord('playlist', 3);
     this.defaultPlaylist = playlist;
+    this.args.changeset.set(this.args.fieldName, this.defaultPlaylist);
   }
 
   get selectedPlaylist() {
