@@ -1,51 +1,47 @@
-<form {{action @save dj on="submit"}}>
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-      Username
-    </label>
-    <Input id="username"
-      placeholder="username"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @value={{dj.username}}
-      @type="text"
-      autofocus={{true}}
+{{#let (changeset @dj this.DjValidations) as |changeset|}}
+  <ChangesetForm
+    @onSubmit={{this.submit}}
+    @changeset={{changeset}}
+      as |Form|>
+    <div class="mb-4">
+      <Form.Input
+        @label='Username'
+        @fieldName='username'
+        placeholder='dj cheesehead'
       />
-  </div>
+    </div>
 
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-      Email
-    </label>
-    <Input id="email"
-      placeholder="email"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      @value={{dj.email}}
-      @type="text"
-      autofocus={{true}}
+    <div class="mb-4">
+      <Form.Input
+        @label='Email Address'
+        @fieldName='email'
+        type='email'
+        placeholder='cheesehead@hotmail.com'
       />
-  </div>
+    </div>
 
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="bio">
-      Bio
-    </label>
-    <Textarea @value={{dj.bio}}
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      cols="80" rows="6" />
-  </div>
+    <div class="mb-4">
+      <Form.Textarea
+        @label='Bio'
+        @fieldName='bio'
+      />
+    </div>
 
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="bio">
-      Publish Profile
-    </label>
-    <Input @type="checkbox" @checked={{dj.profilePublish}} />
-  </div>
+    <div class="mb-4">
+      <Form.Checkbox
+        @label='Publish Profile'
+        @fieldName='profilePublish'
+        />
+    </div>
 
-  <div class="flex items-center justify-between">
-    <Input
-      @type="submit"
-      class="btn cursor-pointer"
-      data-test-submit-button
-      @value="Save" />
-  </div>
-</form>
+    <div class="flex items-center justify-between">
+      <Button
+        @type='submit'
+        @intent='primary'
+        disabled={{changeset.isInvalid}}
+        >
+        Save
+      </Button>
+    </div>
+  </ChangesetForm>
+{{/let}}
