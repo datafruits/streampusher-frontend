@@ -31,7 +31,7 @@ export default class TrackUploader extends Component {
       audioFileName: file.name,
       filesize: file.size,
     });
-    this.pushTrack(track);
+    this.args.pushTrack(track);
     let mimeType;
     if (file.type == 'audio/mp3') {
       mimeType = 'audio/mpeg';
