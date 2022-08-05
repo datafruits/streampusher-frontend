@@ -12,7 +12,7 @@
       @renderInPlace={{true}}
       @options={{this.playlists}}
       @selected={{this.selectedPlaylist}}
-      @onChange={{@onChange}} as |playlist|>
+      @onChange={{this.handleChange}} as |playlist|>
       {{playlist.name}}
     </PowerSelect>
   </await.Fulfilled>

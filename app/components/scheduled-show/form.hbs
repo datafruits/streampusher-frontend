@@ -21,9 +21,9 @@
         </div>
 
         <Ui::Field @label="Artwork">
-          {{#if this.changeset.image}}
+          {{#if changeset.image}}
             <img alt="artwork" width="300" height="300"
-              src={{file-url this.changeset.image "thumb"}}>
+              src={{file-url changeset.image "thumb"}}>
           {{/if}}
           <ArtworkFileUpload
             @file={{changeset.image}}
@@ -33,7 +33,8 @@
         <div class="mb-4">
           <Playlists::Select
             @selected={{changeset.playlist}}
-            @onChange={{this.setPlaylist}}
+            @fieldName="playlist"
+            @changeset={{changeset}}
           />
         </div>
 

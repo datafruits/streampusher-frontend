@@ -70,16 +70,6 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
-  setPlaylist(playlist) {
-    this.changeset.set('playlist', playlist);
-  }
-
-  @action
-  setHosts(djs) {
-    this.changeset.set('djs', djs);
-  }
-
-  @action
   onSubmit(data, event) {
     // redirect to /schedule
     this.router.transitionTo('authenticated.schedule');

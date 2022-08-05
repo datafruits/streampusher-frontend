@@ -11,6 +11,7 @@ export default class ScheduleNewRoute extends Route {
     let newShow = this.store.createRecord('scheduled-show', {
       start: dayjs(date).add(1, 'hours').toDate(),
       end: dayjs(date).add(2, 'hours').toDate(),
+      isGuest: false,
     });
     newShow.djs.pushObject(this.currentUser.user);
     return hash({
