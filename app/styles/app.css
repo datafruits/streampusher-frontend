@@ -28,9 +28,14 @@
 .btn.danger {
   @apply bg-red-600;
 }
+
 .btn[disabled] {
   cursor: not-allowed;
-  pointer-events: none;
+  @apply bg-purple-200;
+}
+
+.btn:hover[disabled] {
+  @apply bg-purple-100;
 }
 
 .btn:hover {
