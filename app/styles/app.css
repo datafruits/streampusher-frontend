@@ -20,6 +20,10 @@
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
+.form-field-feedback--error {
+  @apply text-red-600;
+}
+
 .btn {
   cursor: pointer;
   @apply shadow bg-purple-600 text-white font-bold py-2 px-2 rounded;
@@ -113,12 +117,29 @@ a:hover {
   position: relative;
 }
 
+/* power select junk */
 .ember-power-select-trigger {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
 .ember-power-select-option {
   cursor: pointer;
+}
+
+.ember-power-select-search-input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.ember-power-select-trigger-multiple-input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.ember-power-select-dropdown {
+  @apply mt-1 bg-gray-200 rounded-xl p-3;
+}
+
+.ember-power-select-option:hover {
+  @apply bg-black text-purple-300;
 }
 
 .week {
