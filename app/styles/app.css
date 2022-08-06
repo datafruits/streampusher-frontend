@@ -153,3 +153,27 @@ a:hover {
 .biweek {
   @apply bg-green-400;
 }
+
+.pagination {
+  @apply p-1 mx-2;
+}
+
+.pagination.number:hover {
+  @apply bg-black text-purple-300 rounded;
+}
+
+.pagination.prev-link:hover {
+  @apply bg-black text-purple-300 rounded;
+}
+
+.pagination.next-link:hover {
+  @apply bg-black text-purple-300 rounded;
+}
+
+.track-metadata {
+  width: 75%;
+}
+
+.track-actions {
+  width: 15%;
+}
