@@ -26,7 +26,6 @@ specifiers:
   ember-cli-flash: ^3.0.0
   ember-cli-htmlbars: ^5.7.2
   ember-cli-inject-live-reload: ^2.1.0
-  ember-cli-mirage: ^2.4.0
   ember-cli-netlify: ^0.4.1
   ember-cli-postcss: ^8.0.0
   ember-cli-sri: ^2.1.1
@@ -101,7 +100,6 @@ devDependencies:
   ember-cli-flash: 3.0.0_tahco2e6unvcjsyevjwnunqvty
   ember-cli-htmlbars: 5.7.2
   ember-cli-inject-live-reload: 2.1.0
-  ember-cli-mirage: 2.4.0_eiojomogevuwcil7767ovu4sbe
   ember-cli-netlify: 0.4.1
   ember-cli-postcss: 8.0.0
   ember-cli-sri: 2.1.1
@@ -112,7 +110,7 @@ devDependencies:
   ember-data-storefront: 0.18.1
   ember-export-application-global: 2.0.1
   ember-fetch: 8.1.1
-  ember-file-upload: 5.1.0_r4xzdysmloy4nn5gf6zpdmnmf4
+  ember-file-upload: 5.1.0_y3lv6tn6yokher4u7xj4j22px4
   ember-load-initializers: 2.1.2_@babel+core@7.18.9
   ember-maybe-import-regenerator: 0.1.6_@babel+core@7.18.9
   ember-modal-dialog: 4.0.1_ember-source@3.28.9
@@ -134,7 +132,7 @@ devDependencies:
   eslint-plugin-node: 11.1.0_eslint@7.32.0
   eslint-plugin-prettier: 3.4.1_7gsvg5lgwpfdww3i7smtqxamuy
   eslint-plugin-qunit: 6.2.0_eslint@7.32.0
-  fruits-ui: github.com/datafruits/fruits-ui/21a49edb5e6b34fd0935f54698ee7fd92fa9db89
+  fruits-ui: github.com/datafruits/fruits-ui/a37bae2b1ad1fba7a81f130497d288696d0274ce
   jstimezonedetect: 1.0.7
   loader.js: 4.7.0
   moment: 2.29.4
@@ -1696,20 +1694,6 @@ packages:
       - supports-color
     dev: true
 
-  /@embroider/macros/0.41.0:
-    resolution: {integrity: sha512-QISzwEEfLsskZeL0jyZDs1RoQSotwBWj+4upTogNHuxQP5j/9H3IMG/3QB1gh8GEpbudATb/cS4NDYK3UBxufw==}
-    engines: {node: 10.* || 12.* || >= 14}
-    dependencies:
-      '@embroider/shared-internals': 0.41.0
-      assert-never: 1.2.1
-      ember-cli-babel: 7.26.11
-      lodash: 4.17.21
-      resolve: 1.22.1
-      semver: 7.3.7
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@embroider/macros/1.8.3:
     resolution: {integrity: sha512-gnIOfTL/pUkoD6oI7JyWOqXlVIUgZM+CnbH10/YNtZr2K0hij9eZQMdgjOZZVgN0rKOFw9dIREqc1ygrJHRYQA==}
     engines: {node: 12.* || 14.* || >= 16}
@@ -1724,19 +1708,6 @@ packages:
       semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@embroider/shared-internals/0.41.0:
-    resolution: {integrity: sha512-fiqUVB6cfh2UBEFE4yhT5EzagkZ1Q26+OhBV0nJszFEJZx4DqVIb3pxSSZ8P+HhpxuJsQ2XpMA/j02ZPFZfbdQ==}
-    engines: {node: 10.* || 12.* || >= 14}
-    dependencies:
-      ember-rfc176-data: 0.3.17
-      fs-extra: 7.0.1
-      lodash: 4.17.21
-      pkg-up: 3.1.0
-      resolve-package-path: 1.2.7
-      semver: 7.3.7
-      typescript-memoize: 1.1.0
     dev: true
 
   /@embroider/shared-internals/1.8.3:
@@ -2119,10 +2090,6 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
-    dev: true
-
-  /@miragejs/pretender-node-polyfill/0.1.2:
-    resolution: {integrity: sha512-M/BexG/p05C5lFfMunxo/QcgIJnMT2vDVCd00wNqK2ImZONIlEETZwWJu1QtLxtmYlSHlCFl3JNzp0tLe7OJ5g==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -4042,13 +4009,6 @@ packages:
       tree-sync: 1.4.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /broccoli-file-creator/1.2.0:
-    resolution: {integrity: sha512-l9zthHg6bAtnOfRr/ieZ1srRQEsufMZID7xGYRW3aBDv3u/3Eux+Iawl10tAGYE5pL9YB4n5X4vxkp6iNOoZ9g==}
-    dependencies:
-      broccoli-plugin: 1.3.1
-      mkdirp: 0.5.6
     dev: true
 
   /broccoli-file-creator/2.1.1:
@@ -6230,42 +6190,6 @@ packages:
     engines: {node: ^4.5 || 6.* || >= 7.*}
     dev: true
 
-  /ember-cli-mirage/2.4.0_eiojomogevuwcil7767ovu4sbe:
-    resolution: {integrity: sha512-cy8B+IZV07V6xgnFzktKUsntTQvIqPSS3u4+XaLdNW91yOowLsN2BsuQldN3eCnwswgE3a9eGNGS4I0BD4llNA==}
-    engines: {node: '>= 10.*'}
-    peerDependencies:
-      '@ember/test-helpers': '*'
-      ember-data: '*'
-      ember-qunit: '*'
-    peerDependenciesMeta:
-      '@ember/test-helpers':
-        optional: true
-      ember-data:
-        optional: true
-      ember-qunit:
-        optional: true
-    dependencies:
-      '@ember/test-helpers': 2.8.1_bzcg3cyuivsmdwt3tyk2iz64ja
-      '@embroider/macros': 0.41.0
-      broccoli-file-creator: 2.1.1
-      broccoli-funnel: 3.0.8
-      broccoli-merge-trees: 4.2.0
-      ember-auto-import: 1.12.2
-      ember-cli-babel: 7.26.11
-      ember-data: 3.28.10_@babel+core@7.18.9
-      ember-destroyable-polyfill: 2.0.3_@babel+core@7.18.9
-      ember-get-config: 0.5.0
-      ember-inflector: 4.0.2
-      ember-qunit: 5.1.5_m2vpijm5kklvqmlfibufmotnbi
-      lodash-es: 4.17.21
-      miragejs: 0.1.45
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-      - webpack-cli
-      - webpack-command
-    dev: true
-
   /ember-cli-netlify/0.4.1:
     resolution: {integrity: sha512-EDxrjRl1WoytehV7c/7hdFDyubSi++Yxcr3DbZ4wZKVKB2bdfP+A+PEcFIF+s7JG96vPnBIeOGkDNTye9K231A==}
     engines: {node: 10.* || >= 12}
@@ -6831,7 +6755,7 @@ packages:
       - supports-color
     dev: true
 
-  /ember-file-upload/5.1.0_r4xzdysmloy4nn5gf6zpdmnmf4:
+  /ember-file-upload/5.1.0_y3lv6tn6yokher4u7xj4j22px4:
     resolution: {integrity: sha512-TJ14tePrV+tXxqll+Vqrxt5MbSdQjqe43Ej1PNa123R36pEFNJjtLu3xpHX0vVBKZ8M+rFMpcB9a/+LSd9hXJw==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
@@ -6851,7 +6775,6 @@ packages:
       ember-auto-import: 2.4.1_webpack@5.74.0
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.1.0
-      ember-cli-mirage: 2.4.0_eiojomogevuwcil7767ovu4sbe
       ember-cli-typescript: 5.1.0
       ember-modifier: 3.2.7_@babel+core@7.18.9
       tracked-built-ins: 2.0.1
@@ -6859,17 +6782,6 @@ packages:
       - '@babel/core'
       - supports-color
       - webpack
-    dev: true
-
-  /ember-get-config/0.5.0:
-    resolution: {integrity: sha512-y1osD6g8wV/BlDjuaN6OG5MT0iHY2X/yE38gUj/05uUIMIRfpcwOdWnFQHBiXIhDojvAJQTEF1VOYFIETQMkeQ==}
-    engines: {node: 12.* || 14.* || >= 16}
-    dependencies:
-      broccoli-file-creator: 1.2.0
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 5.7.2
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /ember-get-config/1.0.4:
@@ -7944,10 +7856,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /fake-xml-http-request/2.1.2:
-    resolution: {integrity: sha512-HaFMBi7r+oEC9iJNpc3bvcW7Z7iLmM26hPDmlb0mFwyANSsOQAtJxbdWsXITKOzZUyMYK0zYCv3h5yDj9TsiXg==}
-    dev: true
-
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
@@ -9004,10 +8912,6 @@ packages:
     resolution: {integrity: sha512-IClj+Xz94+d7irH5qRyfJonOdfTzuDaifE6ZPWfx0N0+/ATZCbuTPq2prFl526urkQd90WyUKIh1DfBQ2hMz9A==}
     dev: true
 
-  /inflected/2.1.0:
-    resolution: {integrity: sha512-hAEKNxvHf2Iq3H60oMBHkB4wl5jn3TPF3+fXek/sRwAB5gP9xWs4r7aweSF95f99HFoz69pnZTcu8f0SIHV18w==}
-    dev: true
-
   /inflection/1.13.2:
     resolution: {integrity: sha512-cmZlljCRTBFouT8UzMzrGcVEvkv6D/wBdcdKG7J1QH5cXjtU75Dm+P27v9EKu/Y43UYyCJd1WC4zLebRrC8NBw==}
     engines: {'0': node >= 0.4.0}
@@ -9720,10 +9624,6 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: true
-
   /lodash._baseassign/3.2.0:
     resolution: {integrity: sha512-t3N26QR2IdSN+gqSy9Ds9pBu/J1EAFEshKlUHpJG3rvyJOYgcELIxcIeKKfZk7sjOz11cFfzJRsyFry/JyabJQ==}
     dependencies:
@@ -9774,16 +9674,8 @@ packages:
       lodash.keys: 3.1.2
     dev: true
 
-  /lodash.assign/4.2.0:
-    resolution: {integrity: sha512-hFuH8TY+Yji7Eja3mGiuAxBqLagejScbG8GbG0j6o9vzn0YL14My+ktnqtZgFTosKymC9/44wP6s7xyuLfnClw==}
-    dev: true
-
   /lodash.assignin/4.2.0:
     resolution: {integrity: sha512-yX/rx6d/UTVh7sSVWVSIMjfnz95evAgDFdb1ZozC35I9mSFCkmzptOzevxjgbQUsc78NR44LVHWjsoMQXy9FDg==}
-    dev: true
-
-  /lodash.camelcase/4.3.0:
-    resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: true
 
   /lodash.castarray/4.4.0:
@@ -9792,10 +9684,6 @@ packages:
 
   /lodash.clonedeep/4.5.0:
     resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
-    dev: true
-
-  /lodash.compact/3.0.1:
-    resolution: {integrity: sha512-2ozeiPi+5eBXW1CLtzjk8XQFhQOEMwwfxblqeq6EGyTxZJ1bPATqilY0e6g2SLQpP4KuMeuioBhEnWz5Pr7ICQ==}
     dev: true
 
   /lodash.debounce/3.1.1:
@@ -9823,28 +9711,8 @@ packages:
       lodash._isiterateecall: 3.0.9
     dev: true
 
-  /lodash.flatten/4.4.0:
-    resolution: {integrity: sha512-C5N2Z3DgnnKr0LOpv/hKCgKdb7ZZwafIrsesve6lmzvZIRZRGaZ/l6Q8+2W7NaT+ZwO3fFlSCzCzrDCFdJfZ4g==}
-    dev: true
-
   /lodash.foreach/4.5.0:
     resolution: {integrity: sha512-aEXTF4d+m05rVOAUG3z4vZZ4xVexLKZGF0lIxuHZ1Hplpk/3B6Z1+/ICICYRLm7c41Z2xiejbkCkJoTlypoXhQ==}
-    dev: true
-
-  /lodash.forin/4.4.0:
-    resolution: {integrity: sha512-APldePP4yvGhMcplVxv9L+exdLHMRHRhH1Q9O70zRJMm9HbTm6zxaihXtNl+ICOBApeFWoH7jNmFr/L4XfWeiQ==}
-    dev: true
-
-  /lodash.get/4.4.2:
-    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
-    dev: true
-
-  /lodash.has/4.5.2:
-    resolution: {integrity: sha512-rnYUdIo6xRCJnQmbVFEwcxF144erlD+M3YcJUVesflU9paQaE8p+fJDcIQrlMYbxoANFL+AB9hZrzSBBk5PL+g==}
-    dev: true
-
-  /lodash.invokemap/4.6.0:
-    resolution: {integrity: sha512-CfkycNtMqgUlfjfdh2BhKO/ZXrP8ePOX5lEU/g0R3ItJcnuxWDwokMGKx1hWcfOikmyOVx6X9IwWnDGlgKl61w==}
     dev: true
 
   /lodash.isarguments/3.1.0:
@@ -9853,26 +9721,6 @@ packages:
 
   /lodash.isarray/3.0.4:
     resolution: {integrity: sha512-JwObCrNJuT0Nnbuecmqr5DgtuBppuCvGD9lxjFpAzwnVtdGoDQ1zig+5W8k5/6Gcn0gZ3936HDAlGd28i7sOGQ==}
-    dev: true
-
-  /lodash.isempty/4.4.0:
-    resolution: {integrity: sha512-oKMuF3xEeqDltrGMfDxAPGIVMSSRv8tbRSODbrs4KGsRRLEhrW8N8Rd4DRgB2+621hY8A8XwwrTVhXWpxFvMzg==}
-    dev: true
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: true
-
-  /lodash.isfunction/3.0.9:
-    resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
-    dev: true
-
-  /lodash.isinteger/4.0.4:
-    resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
-    dev: true
-
-  /lodash.isplainobject/4.0.6:
-    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
     dev: true
 
   /lodash.kebabcase/4.1.1:
@@ -9887,18 +9735,6 @@ packages:
       lodash.isarray: 3.0.4
     dev: true
 
-  /lodash.lowerfirst/4.3.1:
-    resolution: {integrity: sha512-UUKX7VhP1/JL54NXg2aq/E1Sfnjjes8fNYTNkPU8ZmsaVeBvPHKdbNaN79Re5XRL01u6wbq3j0cbYZj71Fcu5w==}
-    dev: true
-
-  /lodash.map/4.6.0:
-    resolution: {integrity: sha512-worNHGKLDetmcEYDvh2stPCrrQRkP20E4l0iIS7F8EvzMqBBi7ltvFN5m1HvTf1P7Jk1txKhvFcmYsCr8O2F1Q==}
-    dev: true
-
-  /lodash.mapvalues/4.6.0:
-    resolution: {integrity: sha512-JPFqXFeZQ7BfS00H58kClY7SPVeHertPE0lNuCyZ26/XlN8TvakYD7b9bGyNmXbT/D3BbtPAAmq90gPWqLkxlQ==}
-    dev: true
-
   /lodash.memoize/4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
     dev: true
@@ -9911,16 +9747,8 @@ packages:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
     dev: true
 
-  /lodash.pick/4.4.0:
-    resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
-    dev: true
-
   /lodash.restparam/3.6.1:
     resolution: {integrity: sha512-L4/arjjuq4noiUJpt3yS6KIKDtJwNe2fIYgMqyYYKoeIfV1iEqvPwhCx23o+R9dzouGihDAPN1dTIRWa7zk8tw==}
-    dev: true
-
-  /lodash.snakecase/4.1.1:
-    resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
     dev: true
 
   /lodash.template/4.5.0:
@@ -9946,10 +9774,6 @@ packages:
 
   /lodash.uniqby/4.7.0:
     resolution: {integrity: sha512-e/zcLx6CSbmaEgFHCA7BnoQKyCtKMxnuWrJygbwPs/AIn+IMKl66L8/s+wBUn5LRw2pZx3bUHibiV1b6aTWIww==}
-    dev: true
-
-  /lodash.values/4.3.0:
-    resolution: {integrity: sha512-r0RwvdCv8id9TUblb/O7rYPwVy6lerCbcawrfdo9iC/1t1wsNMJknO79WNBgwkH0hIeJ08jmvvESbFpNb4jH0Q==}
     dev: true
 
   /lodash/4.17.21:
@@ -10299,38 +10123,6 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
       yallist: 3.1.1
-    dev: true
-
-  /miragejs/0.1.45:
-    resolution: {integrity: sha512-NFdpFVXmBuQfErQh70yL44h4NhSZYHZVbg0qzrIxB5gRZYNZGH1sriduejbxpmKVdqCbmjPypaXvEgBgohqydQ==}
-    engines: {node: 6.* || 8.* || >= 10.*}
-    dependencies:
-      '@miragejs/pretender-node-polyfill': 0.1.2
-      inflected: 2.1.0
-      lodash.assign: 4.2.0
-      lodash.camelcase: 4.3.0
-      lodash.clonedeep: 4.5.0
-      lodash.compact: 3.0.1
-      lodash.find: 4.6.0
-      lodash.flatten: 4.4.0
-      lodash.forin: 4.4.0
-      lodash.get: 4.4.2
-      lodash.has: 4.5.2
-      lodash.invokemap: 4.6.0
-      lodash.isempty: 4.4.0
-      lodash.isequal: 4.5.0
-      lodash.isfunction: 3.0.9
-      lodash.isinteger: 4.0.4
-      lodash.isplainobject: 4.0.6
-      lodash.lowerfirst: 4.3.1
-      lodash.map: 4.6.0
-      lodash.mapvalues: 4.6.0
-      lodash.pick: 4.4.0
-      lodash.snakecase: 4.1.1
-      lodash.uniq: 4.5.0
-      lodash.uniqby: 4.7.0
-      lodash.values: 4.3.0
-      pretender: 3.4.7
     dev: true
 
   /mississippi/3.0.0:
@@ -11310,13 +11102,6 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /pretender/3.4.7:
-    resolution: {integrity: sha512-jkPAvt1BfRi0RKamweJdEcnjkeu7Es8yix3bJ+KgBC5VpG/Ln4JE3hYN6vJym4qprm8Xo5adhWpm3HCoft1dOw==}
-    dependencies:
-      fake-xml-http-request: 2.1.2
-      route-recognizer: 0.3.4
-    dev: true
-
   /prettier-linter-helpers/1.0.0:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
@@ -11970,10 +11755,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  /route-recognizer/0.3.4:
-    resolution: {integrity: sha512-2+MhsfPhvauN1O8KaXpXAOfR/fwe8dnUXVM+xw7yt40lJRfPVQxV6yryZm0cgRvAj5fMF/mdRZbL2ptwbs5i2g==}
     dev: true
 
   /rsvp/3.2.1:
@@ -13865,8 +13646,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/datafruits/fruits-ui/21a49edb5e6b34fd0935f54698ee7fd92fa9db89:
-    resolution: {tarball: https://codeload.github.com/datafruits/fruits-ui/tar.gz/21a49edb5e6b34fd0935f54698ee7fd92fa9db89}
+  github.com/datafruits/fruits-ui/a37bae2b1ad1fba7a81f130497d288696d0274ce:
+    resolution: {tarball: https://codeload.github.com/datafruits/fruits-ui/tar.gz/a37bae2b1ad1fba7a81f130497d288696d0274ce}
     name: fruits-ui
     version: 0.0.0
     engines: {node: 10.* || >= 12}
