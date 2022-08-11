@@ -16,8 +16,8 @@ export default class Form extends Component {
   submit(result, event) {
     event.preventDefault();
     //if(result.id) {
-      this.flashMessages.success('Saved user!');
-      this.router.transitionTo('authenticated.djs');
+    this.flashMessages.success('Saved user!');
+    this.router.transitionTo('authenticated.djs');
     // } else {
     //   this.flashMessages.danger("Couldn't save user!");
     //   console.log(result.errors);
