@@ -22,13 +22,21 @@
         </div>
 
         <Ui::Field @label="Artwork">
+        {{#if @model.isNew}}
           {{#if changeset.image}}
             <img alt="artwork" width="300" height="300"
-              src={{file-url changeset.image "thumb"}}>
+              src={{changeset.image}}>
           {{/if}}
+        {{else}}
+          {{#if changeset.thumbImageUrl}}
+            <img alt="artwork" width="300" height="300"
+              src={{changeset.thumbImageUrl}}>
+          {{/if}}
+        {{/if}}
           <ArtworkFileUpload
-            @file={{changeset.image}}
-            @filename={{changeset.imageFilename}} />
+            @changeset={{changeset}}
+            @file={{'image'}}
+            @filename={{'imageFilename'}} />
         </Ui::Field>
 
         <div class="mb-4">
@@ -144,7 +152,7 @@
           </Button>
         </div>
 
-        {{#unless this.args.model.isNew}}
+        {{#unless @model.isNew}}
           <div class="flex items-center justify-between">
             <Input
               @type="submit"

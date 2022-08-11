@@ -70,8 +70,7 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
-  onSubmit(result, event) {
-    // redirect to /schedule
+  onSubmit(/*result, event*/) {
     this.flashMessages.success('Saved!');
     this.router.transitionTo('authenticated.schedule');
   }
