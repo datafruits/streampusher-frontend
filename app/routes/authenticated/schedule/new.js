@@ -5,8 +5,15 @@ import dayjs from 'dayjs';
 
 export default class ScheduleNewRoute extends Route {
   @service currentUser;
-  model() {
-    let date = new Date();
+  model(params) {
+    console.log(params);
+    let date;
+    if (params.date) {
+      let [year, month, day] = params.date.split('-');
+      date = new Date(year, month - 1, day);
+    } else {
+      date = new Date();
+    }
     date.setMinutes(0, 0, 0);
     let newShow = this.store.createRecord('scheduled-show', {
       start: dayjs(date).add(1, 'hours').toDate(),

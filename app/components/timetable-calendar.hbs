@@ -7,6 +7,7 @@
   <ShrimpCalendar
     @onDayclick={{this.newShow}}
     @events={{this.shows}}
+    @onCalendarNavigate={{this.calendarNavigate}}
       as |model|>
     {{!-- template-lint-disable no-inline-styles --}}
     <div class="bg-red-400 text-white mb-1">
