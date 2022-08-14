@@ -146,7 +146,7 @@
           <Button
             @type='submit'
             @intent='primary'
-            disabled={{changeset.isInvalid}}
+            disabled={{(or Form.state.hasSubmitted changeset.isInvalid)}}
             >
             Save
           </Button>

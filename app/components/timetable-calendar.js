@@ -45,7 +45,7 @@ export default class TimetableCalendar extends Component {
   @action
   calendarNavigate(event) {
     console.log(`on navigate: ${event.start}, ${event.end}`); // eslint-disable-line no-console
-    let start = event.start.format('YYYY-MM-DD');
+    let start = moment(event.start).format('YYYY-MM-DD');
     this.args.reloadCalendar({ start: start, view: event.view });
   }
 
@@ -60,7 +60,8 @@ export default class TimetableCalendar extends Component {
     yield timeout(1000);
     query.timezone = jstz.determine().name();
     const start = query.start;
-    if (query.view === 'month') {
+    const view = query.view || 'month';
+    if (view === 'month') {
       query.start = moment(start)
         .startOf('month')
         .subtract(1, 'month')
@@ -79,6 +80,8 @@ export default class TimetableCalendar extends Component {
         .add(1, 'week')
         .format('YYYY-MM-DD');
     }
+    console.log(`querying shows..`);
+    console.log(query);
     let shows = this.store.query('scheduled-show', query).then((shows) => {
       return shows;
     });
