@@ -23,38 +23,6 @@ export default class ScheduledShowForm extends Component {
   @service
   router;
 
-  recurringIntervals = [
-    {
-      value: 'not_recurring',
-      name: 'None',
-    },
-    {
-      value: 'day',
-      name: 'Day',
-    },
-    {
-      value: 'week',
-      name: 'Week',
-    },
-    {
-      value: 'month',
-      name: 'Month',
-    },
-    {
-      value: 'biweek',
-      name: 'Bi-weekly',
-    },
-  ];
-
-  constructor() {
-    super(...arguments);
-    // this.changeset = new Changeset(
-    //   this.args.model,
-    //   lookupValidator(ScheduledShowValidations),
-    //   ScheduledShowValidations
-    // );
-  }
-
   get formattedDay() {
     return moment(this.changeset.start).format('dddd MMMM Do YYYY');
   }
@@ -65,43 +33,14 @@ export default class ScheduledShowForm extends Component {
   }
 
   @action
-  setRecurringInterval(interval) {
-    this.changeset.set('recurringInterval', interval);
-  }
-
-  @action
-  setPlaylist(playlist) {
-    this.changeset.set('playlist', playlist);
-  }
-
-  @action
-  setHosts(djs) {
-    this.changeset.set('djs', djs);
-  }
-
-  @action
-  onSubmit(data, event) {
-    // redirect to /schedule
+  onSubmit(/*result, event*/) {
+    this.flashMessages.success('Saved!');
     this.router.transitionTo('authenticated.schedule');
   }
 
   @action
-  save(event) {
-    event.preventDefault();
-    this.isSaving = true;
-    let show = this.changeset;
-    const onSuccess = () => {
-      this.isSaving = false;
-      this.flashMessages.success('Saved!');
-      this.router.transitionTo('authenticated.schedule');
-    };
-    const onFail = (response) => {
-      console.log('show save failed');
-      console.log(response);
-      this.flashMessages.danger("Couldn't save show!");
-      this.isSaving = false;
-    };
-    show.save().then(onSuccess, onFail);
+  onError() {
+    this.flashMessages.danger("Couldn't save show...check the form for errors");
   }
 
   @action

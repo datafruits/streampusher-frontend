@@ -1,13 +1,26 @@
-import TextField from '@ember/component/text-field';
-import classic from 'ember-classic-decorator';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
-@classic
-export default class ArtworkFileUpload extends TextField {
-  type = 'file';
-  file = null;
+export default class ArtworkFileUpload extends Component {
+  @tracked file = null;
 
+  @action
   change(e) {
-    this.file.update(e.target.files[0]);
-    this.set('filename', e.target.files[0].name);
+    const file = this.args.file;
+    const filename = this.args.filename;
+    this.file = e.target.files[0];
+    this.args.changeset.set(filename, e.target.files[0].name);
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+      this.args.changeset.set(file, e.target.result);
+    };
+    reader.onerror = (e) => {
+      console.log('error reading file');
+      console.log(e);
+    };
+
+    reader.readAsDataURL(this.file);
   }
 }

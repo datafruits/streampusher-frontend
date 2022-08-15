@@ -1,9 +1,9 @@
-<div class="">
+<div class="w-full">
   <TimetableCalendar
     @onTypeChange={{this.calendarTypeChange}}
     @reloadCalendar={{this.reloadCalendar}}
     @query={{this.query}}
-    @startingDate={{this.start}}
+    @startDate={{this.query.start}}
     @view={{this.view}}
   />
 </div>

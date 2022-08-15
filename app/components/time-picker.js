@@ -54,4 +54,21 @@ export default class TimePickerComponent extends Component {
     this.args.changeset.set(property, newDate);
     this.args.changeset.validate(property);
   }
+
+  get errors() {
+    const property = this.args.property;
+    const errors = this.args.changeset.get('errors');
+    return errors.filter((error) => {
+      return error.key === property;
+    });
+  }
+
+  get hasErrors() {
+    const property = this.args.property;
+    let errors = this.args.changeset.get('errors');
+    errors = errors.filter((error) => {
+      return error.key === property;
+    });
+    return errors.length;
+  }
 }

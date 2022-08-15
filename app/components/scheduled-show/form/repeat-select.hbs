@@ -1,0 +1,8 @@
+<label for="repeat">Repeat</label>
+<PowerSelect
+  @options={{this.recurringIntervals}}
+  @selected={{this.selectedRecurringInterval}}
+  @onChange={{this.handleChange}}
+  as |recurring|>
+  {{recurring.name}}
+</PowerSelect>

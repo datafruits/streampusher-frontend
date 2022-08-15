@@ -29,34 +29,12 @@ export default class TimetableCalendar extends Component {
   calendarUpdateOccurrence() {}
 
   @action
-  async calendarAddOccurrence(event) {
-    console.log('hey calendarAddOccurrence');
-    // const defaultPlaylist = await this.store.findRecord(
-    //   "playlist",
-    //   this.currentRadio.radio.defaultPlaylistId
-    // );
-    // create record in schedule/new route instead....
-    // save startAt/endAt in cookie/localstorage?
-    // let scheduledShow = this.store.createRecord("scheduled-show", {
-    //   title: event.title,
-    //   start: event.startsAt,
-    //   end: event.endsAt,
-    //   playlist: defaultPlaylist,
-    // });
-    // this.shows.pushObject(scheduledShow);
-    this.router.transitionTo('authenticated.schedule.new');
-    // scheduledShow.save().then((show) => {
-    //   console.log('saved show!');
-    //   //this.addOccurrence(show);
-    // }).catch((error) => {
-    //   console.log(`error saving show: ${error}`);
-    // });
-  }
-
-  @action
   newShow(event) {
+    console.log(event.date);
     console.log('newShow action in timetable-calendar component');
-    this.router.transitionTo('authenticated.schedule.new');
+    this.router.transitionTo('authenticated.schedule.new', {
+      queryParams: { date: event.date },
+    });
   }
 
   @action
@@ -67,7 +45,7 @@ export default class TimetableCalendar extends Component {
   @action
   calendarNavigate(event) {
     console.log(`on navigate: ${event.start}, ${event.end}`); // eslint-disable-line no-console
-    let start = event.start.format('YYYY-MM-DD');
+    let start = moment(event.start).format('YYYY-MM-DD');
     this.args.reloadCalendar({ start: start, view: event.view });
   }
 
@@ -82,7 +60,8 @@ export default class TimetableCalendar extends Component {
     yield timeout(1000);
     query.timezone = jstz.determine().name();
     const start = query.start;
-    if (query.view === 'month') {
+    const view = query.view || 'month';
+    if (view === 'month') {
       query.start = moment(start)
         .startOf('month')
         .subtract(1, 'month')
@@ -101,6 +80,8 @@ export default class TimetableCalendar extends Component {
         .add(1, 'week')
         .format('YYYY-MM-DD');
     }
+    console.log(`querying shows..`);
+    console.log(query);
     let shows = this.store.query('scheduled-show', query).then((shows) => {
       return shows;
     });

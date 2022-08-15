@@ -4,7 +4,7 @@
 
 const path = require('path');
 
-module.exports = function(/* env */) {
+module.exports = function (/* env */) {
   return {
     clientAllowedKeys: ['API_HOST', 'CHAT_SOCKET_URL'],
     fastbootAllowedKeys: [],

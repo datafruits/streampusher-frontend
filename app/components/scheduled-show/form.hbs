@@ -8,9 +8,10 @@
   >
   <div class="p-2">
     {{#let (changeset @model this.ScheduledShowValidations) as |changeset|}}
-      <ChangesetForm
+      <Ui::ChangesetForm
         @changeset={{changeset}}
         @onSubmit={{this.onSubmit}}
+        @onError={{this.onError}}
         as |Form|>
         <div class="mb-4">
           <Form.Input
@@ -21,19 +22,28 @@
         </div>
 
         <Ui::Field @label="Artwork">
-          {{#if this.changeset.image}}
+        {{#if @model.isNew}}
+          {{#if changeset.image}}
             <img alt="artwork" width="300" height="300"
-              src={{file-url this.changeset.image "thumb"}}>
+              src={{changeset.image}}>
           {{/if}}
+        {{else}}
+          {{#if changeset.thumbImageUrl}}
+            <img alt="artwork" width="300" height="300"
+              src={{changeset.thumbImageUrl}}>
+          {{/if}}
+        {{/if}}
           <ArtworkFileUpload
-            @file={{changeset.image}}
-            @filename={{changeset.imageFilename}} />
+            @changeset={{changeset}}
+            @file={{'image'}}
+            @filename={{'imageFilename'}} />
         </Ui::Field>
 
         <div class="mb-4">
           <Playlists::Select
             @selected={{changeset.playlist}}
-            @onChange={{this.setPlaylist}}
+            @fieldName="playlist"
+            @changeset={{changeset}}
           />
         </div>
 
@@ -86,7 +96,6 @@
             @label="Start"
             @property='start'
             @changeset={{changeset}}
-            @onChange={{this.setStart}}
             />
         </div>
 
@@ -95,7 +104,6 @@
             @label="End"
             @property='end'
             @changeset={{changeset}}
-            @onChange={{this.setStart}}
             />
         </div>
 
@@ -113,12 +121,10 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
-          <select id="repeat" {{on "change" this.setRecurringInterval}}>
-            {{#each this.recurringIntervals as |interval|}}
-              <option value={{interval.value}} >{{interval.name}}</option>
-            {{/each}}
-          </select>
+          <ScheduledShow::Form::RepeatSelect
+            @changeset={{changeset}}
+            @fieldName='recurringInterval'
+          />
         </div>
 
         <div class="mb-4">
@@ -138,13 +144,17 @@
           <Button
             @type='submit'
             @intent='primary'
-            disabled={{changeset.isInvalid}}
+            disabled={{(or Form.state.hasSubmitted changeset.isInvalid)}}
             >
             Save
           </Button>
         </div>
 
-        {{#unless this.args.model.isNew}}
+        {{#if Form.state.hasSubmitted}}
+          <marquee>SAVING....SAVING.....WAIT.....WAIT FOR IT....</marquee>
+        {{/if}}
+
+        {{#unless @model.isNew}}
           <div class="flex items-center justify-between">
             <Input
               @type="submit"
@@ -153,7 +163,7 @@
             />
           </div>
         {{/unless}}
-      </ChangesetForm>
+      </Ui::ChangesetForm>
     {{/let}}
   </div>
 </ModalDialog>

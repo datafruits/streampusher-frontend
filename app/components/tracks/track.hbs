@@ -8,16 +8,16 @@
 
     {{else}}
       <div class="flex justify-between">
-        <div class="flex">
+        <div class="flex w-4/5 track-metadata">
           {{#if @track.artwork}}
             <img width="50" height="50" class="inline m-1" src={{file-url @track.artwork 'thumb'}} />
           {{/if}}
-          <div class="m-1">
-            <span class="left uploaded-track-name truncate inline-block">{{@track.displayName}}</span>
+          <div class="m-1 w-full">
+            <span class="left uploaded-track-name truncate inline-block w-full">{{@track.displayName}}</span>
             <div class="">{{@track.formattedDuration}}</div>
           </div>
         </div>
-        <div class="flex justify-between w-1/6 h-10">
+        <div class="flex justify-between w-1/5 h-10 track-actions">
           <a class="bg-gray-300 hover:bg-gray-500 px-2 py-2 rounded"
             href="{{@track.audioFileName}}">
             <FaIcon @icon="download" />

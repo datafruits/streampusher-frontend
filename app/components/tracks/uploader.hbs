@@ -11,12 +11,19 @@
     {{#if dropzone.supported}}
       Drag and drop tracks onto this area to upload them or
     {{/if}}
-    <FileUpload @name="tracks"
-                accept="audio/*"
-                multiple="true"
-                @onfileadd={{action "uploadTrack"}}>
-      <a class=""><FaIcon @icon="plus" />Add</a>
-    </FileUpload>
+    {{#let (file-queue name="tracks" onFileAdded=this.uploadTrack) as |queue|}}
+      <label for="upload-track">
+        <span role="button" tabindex="0" aria-controls="upload-track" class=""><FaIcon @icon="plus" />Add</span>
+      </label>
+      <input
+        type="file"
+        id="upload-track"
+        accept="audio/*"
+        multiple
+        hidden
+        {{queue.selectFile}}
+      >
+    {{/let}}
   {{/if}}
 
   {{yield}}

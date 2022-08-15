@@ -1,35 +1,42 @@
-import ActiveModelAdapter from 'active-model-adapter';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import ENV from 'streampusher-frontend/config/environment';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import classic from 'ember-classic-decorator';
+import { underscore } from '@ember/string';
+import { pluralize } from 'ember-inflector';
 
-export default ActiveModelAdapter.extend(DataAdapterMixin, {
-  session: service(),
-  host: ENV.API_HOST,
-  headers: computed(
-    'session.data.authenticated.token',
-    'session.isAuthenticated',
-    function () {
-      const headers = {};
-      if (this.session.isAuthenticated) {
-        headers[
-          'Authorization'
-        ] = `Bearer ${this.session.data.authenticated.token}`;
-      }
+@classic
+export default class Application extends JSONAPIAdapter {
+  @service session;
 
-      return headers;
+  host = ENV.API_HOST;
+
+  @computed('session.{data.authenticated.token,isAuthenticated}')
+  get headers() {
+    const headers = {};
+    if (this.session.isAuthenticated) {
+      headers[
+        'Authorization'
+      ] = `Bearer ${this.session.data.authenticated.token}`;
     }
-  ),
+
+    return headers;
+  }
   // authorize(xhr) {
   //   let { email, token } = this.get('session.data.authenticated');
   //   let authData = `Token token="${token}", email="${email}"`;
   //   console.log(authData);
   //   xhr.setRequestHeader('Authorization', authData);
   // },
-  buildURL: function () {
+  buildURL() {
     var base;
-    base = this._super.apply(this, arguments);
+    base = super.buildURL.apply(this, arguments);
     return '' + base + '.json';
-  },
-});
+  }
+
+  pathForType(type) {
+    var underscored = underscore(type);
+    return pluralize(underscored);
+  }
+}

@@ -12,7 +12,7 @@ export default class DonationLinkForm extends Component {
   @service eventBus;
   @service metadata;
 
-  @tracked url
+  @tracked url;
 
   constructor() {
     super(...arguments);

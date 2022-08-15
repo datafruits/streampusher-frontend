@@ -10,7 +10,8 @@ export default class ScheduledShow extends Model {
   @attr('date') start;
   @attr('date') end;
   @attr title;
-  @attr('file') image;
+  //@attr('file') image;
+  @attr image;
   @attr imageFilename;
   @attr thumbImageUrl;
   @attr tweetContent;
