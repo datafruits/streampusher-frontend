@@ -1,7 +1,8 @@
 {{#let (changeset @dj this.DjValidations) as |changeset|}}
-  <ChangesetForm
+  <Ui::ChangesetForm
     @onSubmit={{this.submit}}
     @changeset={{changeset}}
+    @onError={{this.onError}}
       as |Form|>
     <div class="mb-4">
       <Form.Input
@@ -43,5 +44,5 @@
         Save
       </Button>
     </div>
-  </ChangesetForm>
+  </Ui::ChangesetForm>
 {{/let}}

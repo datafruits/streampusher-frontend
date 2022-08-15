@@ -15,12 +15,12 @@ export default class Form extends Component {
   @action
   submit(result, event) {
     event.preventDefault();
-    //if(result.id) {
     this.flashMessages.success('Saved user!');
     this.router.transitionTo('authenticated.djs');
-    // } else {
-    //   this.flashMessages.danger("Couldn't save user!");
-    //   console.log(result.errors);
-    // }
+  }
+
+  @action
+  onError() {
+    this.flashMessages.danger("Couldn't save user :( check the form for errors");
   }
 }
