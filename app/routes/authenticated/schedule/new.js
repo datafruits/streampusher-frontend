@@ -19,6 +19,7 @@ export default class ScheduleNewRoute extends Route {
       start: dayjs(date).add(1, 'hours').toDate(),
       end: dayjs(date).add(2, 'hours').toDate(),
       isGuest: false,
+      recurringInterval: "not_recurring"
     });
     newShow.djs.pushObject(this.currentUser.user);
     return hash({

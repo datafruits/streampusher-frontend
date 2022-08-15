@@ -121,12 +121,10 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat">Repeat</label>
-          <select id="repeat" {{on "change" this.setRecurringInterval}}>
-            {{#each this.recurringIntervals as |interval|}}
-              <option value={{interval.value}} >{{interval.name}}</option>
-            {{/each}}
-          </select>
+          <ScheduledShow::Form::RepeatSelect
+            @changeset={{changeset}}
+            @fieldName='recurringInterval'
+          />
         </div>
 
         <div class="mb-4">
@@ -151,6 +149,10 @@
             Save
           </Button>
         </div>
+
+        {{#if Form.state.hasSubmitted}}
+          <marquee>SAVING....SAVING.....WAIT.....WAIT FOR IT....</marquee>
+        {{/if}}
 
         {{#unless @model.isNew}}
           <div class="flex items-center justify-between">

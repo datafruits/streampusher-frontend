@@ -23,38 +23,6 @@ export default class ScheduledShowForm extends Component {
   @service
   router;
 
-  recurringIntervals = [
-    {
-      value: 'not_recurring',
-      name: 'None',
-    },
-    {
-      value: 'day',
-      name: 'Day',
-    },
-    {
-      value: 'week',
-      name: 'Week',
-    },
-    {
-      value: 'month',
-      name: 'Month',
-    },
-    {
-      value: 'biweek',
-      name: 'Bi-weekly',
-    },
-  ];
-
-  constructor() {
-    super(...arguments);
-    // this.changeset = new Changeset(
-    //   this.args.model,
-    //   lookupValidator(ScheduledShowValidations),
-    //   ScheduledShowValidations
-    // );
-  }
-
   get formattedDay() {
     return moment(this.changeset.start).format('dddd MMMM Do YYYY');
   }
@@ -62,11 +30,6 @@ export default class ScheduledShowForm extends Component {
   @action
   toggleShowingContentEditor() {
     this.showingContentEditor = !this.showingContentEditor;
-  }
-
-  @action
-  setRecurringInterval(interval) {
-    this.changeset.set('recurringInterval', interval);
   }
 
   @action
