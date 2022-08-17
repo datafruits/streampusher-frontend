@@ -42,7 +42,12 @@ export default class PlaylistsSelectComponent extends Component {
   }
 
   _performSearch(term, resolve, reject) {
-    this.store.query('playlist', { term: term }).then((playlists) => {
+    const query = {
+      search: {
+        keyword: term
+      }
+    };
+    this.store.query('playlist', query).then((playlists) => {
       return resolve(playlists);
     }, reject);
   }
