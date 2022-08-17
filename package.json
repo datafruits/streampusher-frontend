@@ -28,6 +28,7 @@
     "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.6.0",
     "@fortawesome/ember-fontawesome": "^0.3.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@frontile/buttons": "^0.14.0",
     "@frontile/changeset-form": "^0.14.0",
