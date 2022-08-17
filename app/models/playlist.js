@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import { sort } from '@ember/object/computed';
-import Model, { attr, hasMany } from '@ember-data/model';
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 
 @classic
 export default class Playlist extends Model {
@@ -24,6 +24,8 @@ export default class Playlist extends Model {
 
   @attr()
   interpolatedPlaylistEnabled;
+
+  @belongsTo('playlist') interpolatedPlaylist;
 
   @attr()
   noCueOut;

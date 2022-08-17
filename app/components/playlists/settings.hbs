@@ -27,27 +27,11 @@
             step="1" />
         </label>
         <label>tracks from the
-          <Await @promise={{this.fetchPlaylists}} as |await|>
-            <await.Pending>
-              Loading playlists...
-            </await.Pending>
-
-            <await.Fulfilled as |playlists|>
-              <PowerSelect
-                @searchEnabled={{true}}
-                @search={{this.searchPlaylists}}
-                @renderInPlace={{true}}
-                @options={{playlists}}
-                @selected={{this.changeset.interpolatedPlaylist}}
-                @onChange={{this.selectInterpolatedPlaylistId}} as |interpolatedPlaylist|>
-                {{interpolatedPlaylist.name}}
-              </PowerSelect>
-            </await.Fulfilled>
-
-            <await.Rejected>
-              Something went wrong :(
-            </await.Rejected>
-          </Await>
+          <Playlists::Select
+            @selected={{this.changeset.interpolatedPlaylist}}
+            @fieldName="interpolatedPlaylist"
+            @changeset={{this.changeset}}
+          />
         </label>
         <span class="strong">{{@playlist.interpolatedPlaylist.name}}</span> playlist.
         <br />
@@ -57,7 +41,7 @@
         <label>Enabled <Input @type="checkbox" id="no-cue-out" name="noCueOut" @checked={{@playlist.noCueOut}} /></label>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-danger" type="button" {{action "deletePlaylist"}}>Delete playlist</button>
+        <button class="btn btn-danger" type="button" {{on "click" this.deletePlaylist}}>Delete playlist</button>
         <input type="submit" class="btn btn-primary" value="Save changes">
       </div>
     </Ui::Form>
