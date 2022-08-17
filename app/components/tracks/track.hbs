@@ -10,7 +10,7 @@
       <div class="flex justify-between">
         <div class="flex w-4/5 track-metadata">
           {{#if @track.artwork}}
-            <img width="50" height="50" class="inline m-1" src={{file-url @track.artwork 'thumb'}} />
+            <img width="50" height="50" class="inline m-1" src={{@track.thumbArtworkUrl}} />
           {{/if}}
           <div class="m-1 w-full">
             <span class="left uploaded-track-name truncate inline-block w-full">{{@track.displayName}}</span>

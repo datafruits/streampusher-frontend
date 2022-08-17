@@ -49,6 +49,9 @@ export default class Track extends Model {
   @attr()
   artworkFilename;
 
+  @attr
+  thumbArtworkUrl;
+
   @attr()
   mixcloudUploadStatus;
 
