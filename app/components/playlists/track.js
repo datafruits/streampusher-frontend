@@ -6,7 +6,7 @@ export default class PlaylistsTrack extends Component {
 
   @action
   deleteFromPlaylist() {
-    let playlistTrack = this.playlistTrack;
+    let playlistTrack = this.args.playlistTrack;
     playlistTrack.destroyRecord();
   }
 
@@ -17,7 +17,7 @@ export default class PlaylistsTrack extends Component {
 
   @action
   save() {
-    let playlistTrack = this.playlistTrack;
+    let playlistTrack = this.args.playlistTrack;
     let onSuccess = () => {};
     let onFail = () => {
       this.flashMessages.danger('Something went wrong!');
