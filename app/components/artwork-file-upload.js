@@ -7,14 +7,14 @@ export default class ArtworkFileUpload extends Component {
 
   @action
   change(e) {
-    const file = this.args.file;
+    const fileField = this.args.fileField;
     const filename = this.args.filename;
     this.file = e.target.files[0];
     this.args.changeset.set(filename, e.target.files[0].name);
     let reader = new FileReader();
 
     reader.onload = (e) => {
-      this.args.changeset.set(file, e.target.result);
+      this.args.changeset.set(fileField, e.target.result);
     };
     reader.onerror = (e) => {
       console.log('error reading file');
