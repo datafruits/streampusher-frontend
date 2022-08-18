@@ -5,12 +5,14 @@ import { debounce } from '@ember/runloop';
 import RSVP from 'rsvp';
 import { inject as service } from '@ember/service';
 import Store from '@ember-data/store';
+import TrackValidations from '../../validations/track';
 
 interface TracksFormArgs {
   model: any;
 }
 
 export default class TracksForm extends Component<TracksFormArgs> {
+  TrackValidations: any = TrackValidations;
   @service declare store: Store;
 
   get uploadProgressStyle() {
