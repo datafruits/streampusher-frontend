@@ -13,7 +13,8 @@ export default class LoginController extends Controller {
   @tracked rememberMe = true;
 
   @action
-  signIn() {
+  signIn(e) {
+    e.preventDefault();
     let login = this.login;
     let password = this.password;
     this.session
