@@ -13,8 +13,12 @@ export default class PlaylistsSelectComponent extends Component {
 
   @action
   handleChange(selection, event) {
-    this.args.changeset.set(this.args.fieldName, selection);
-    this.args.changeset.validate(this.args.fieldName);
+    if(typeof(this.args.handleChange) === 'function') {
+      this.args.handleChange(selection);
+    } else {
+      this.args.changeset.set(this.args.fieldName, selection);
+      this.args.changeset.validate(this.args.fieldName);
+    }
   }
 
   @action
@@ -35,7 +39,8 @@ export default class PlaylistsSelectComponent extends Component {
     return this.args.selected ? this.args.selected : this.defaultPlaylist;
   }
 
-  @action searchPlaylists(term) {
+  @action
+  searchPlaylists(term) {
     return new RSVP.Promise((resolve, reject) => {
       debounce(this, this._performSearch, term, resolve, reject, 600);
     });

@@ -49,4 +49,11 @@ export default class PlaylistsSettingsComponent extends Component {
       });
     }
   }
+
+  @action
+  setInterpolatedPlaylist(selection) {
+    this.changeset.set('interpolatedPlaylistId', selection.id);
+    this.changeset.set('interpolatedPlaylist', selection);
+    this.changeset.validate('interpolatedPlaylistId');
+  }
 }

@@ -29,8 +29,9 @@
         <label>tracks from the
           <Playlists::Select
             @selected={{this.changeset.interpolatedPlaylist}}
-            @fieldName="interpolatedPlaylist"
+            @fieldName="interpolatedPlaylistId"
             @changeset={{this.changeset}}
+            @handleChange={{this.setInterpolatedPlaylist}}
           />
         </label>
         <span class="strong">{{@playlist.interpolatedPlaylist.name}}</span> playlist.
