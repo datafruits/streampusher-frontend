@@ -5,8 +5,6 @@ import { inject as service } from '@ember/service';
 import { debounce } from '@ember/runloop';
 import RSVP from 'rsvp';
 import moment from 'moment';
-//import Changeset from 'ember-changeset';
-//import lookupValidator from 'ember-changeset-validations';
 import ScheduledShowValidations from '../../validations/scheduled-show';
 
 export default class ScheduledShowForm extends Component {
