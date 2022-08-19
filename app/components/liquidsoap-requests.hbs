@@ -1,0 +1,21 @@
+<h2 style="text-xl">Liquidsoap Requests Queue</h2>
+<Await @promise={{this.fetchLiquidsoapRequests}} as |await|>
+  <await.Pending>
+    Loading...
+  </await.Pending>
+  <await.Fulfilled as |result|>
+    <div>
+      <span class="font-semibold">Current request on air:</span>
+      <span>{{result.on_air}}</span>
+    </div>
+    <div>
+      <span class="font-semibold">Current requests:</span>
+      {{#each result.request_metadatas as |metadata|}}
+        <div class="mb-2">{{metadata}}</div>
+      {{/each}}
+    </div>
+  </await.Fulfilled>
+  <await.Rejected>
+    Something went wrong :(
+  </await.Rejected>
+</Await>
