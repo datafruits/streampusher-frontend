@@ -6,7 +6,7 @@ import fetch from 'fetch';
 export default class LiquidsoapRequests extends Component {
   @action
   async fetchLiquidsoapRequests() {
-    let response = await fetch(`${ENV.APP['API_HOST']}/liquidsoap_requests`);
+    let response = await fetch(`${ENV.API_HOST}/liquidsoap_requests`);
     return response.json();
   }
 }
