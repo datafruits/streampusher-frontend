@@ -22,6 +22,12 @@
           </span>
         {{/if}}
       </div>
+      <div>
+        {{#if model.thumbImageUrl}}
+          <img alt="artwork" width="200" height="200"
+            src={{model.thumbImageUrl}}>
+        {{/if}}
+      </div>
       <h1 class="p-1">
         <LinkTo @route="authenticated.schedule.show" @model={{model.id}} title={{model.title}}>
           {{model.title}}
