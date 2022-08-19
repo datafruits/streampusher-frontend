@@ -16,26 +16,16 @@ export default class PlaylistsFormComponent extends Component {
   validations = PlaylistValidations;
 
   @action
-  save(event) {
-    event.preventDefault();
-    let onSuccess = () => {
-      this.flashMessages.success('Created playlist!');
-      this.router.transitionTo(
-        'authenticated.playlists.show',
-        this.args.model.id
-      );
-    };
-    let onFail = (error) => {
-      console.log('couldnt save playlist');
-      console.log(error);
-      this.flashMessages.danger('Something went wrong!');
-    };
-    this.changeset.validate().then(() => {
-      if (this.changeset.isValid) {
-        this.changeset.save().then(onSuccess, onFail);
-      } else {
-        this.flashMessages.danger('Fix errors before saving');
-      }
-    });
+  onSubmit(/*result, event*/) {
+    this.flashMessages.success('Created playlist!');
+    this.router.transitionTo(
+      'authenticated.playlists.show',
+      this.args.model.id
+    );
+  }
+
+  @action
+  onError() {
+    this.flashMessages.danger("Couldn't save playlist...check the form for errors");
   }
 }
