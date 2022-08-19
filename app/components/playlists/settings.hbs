@@ -41,8 +41,8 @@
         <label>Enabled <Input @type="checkbox" id="no-cue-out" name="noCueOut" @checked={{@playlist.noCueOut}} /></label>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-danger" type="button" {{on "click" this.deletePlaylist}}>Delete playlist</button>
         <input type="submit" class="btn btn-primary" value="Save changes">
+        <button class="btn danger" type="button" {{on "click" this.deletePlaylist}}>Delete playlist</button>
       </div>
     </Ui::Form>
   </ModalDialog>
