@@ -177,3 +177,7 @@ a:hover {
 .track-actions {
   width: 15%;
 }
+
+.show-block {
+  text-decoration: none;
+}

@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { debounce } from '@ember/runloop';
 import RSVP from 'rsvp';
 import { tracked } from '@glimmer/tracking';
+import { isEmpty } from '@ember/utils';
 
 export default class PlaylistsSelectComponent extends Component {
   @service store;
@@ -32,7 +33,11 @@ export default class PlaylistsSelectComponent extends Component {
   setDefaultPlaylist() {
     let playlist = this.store.peekRecord('playlist', 3);
     this.defaultPlaylist = playlist;
-    this.args.changeset.set(this.args.fieldName, this.defaultPlaylist);
+    if(this.args.changeset &&
+      this.args.fieldName &&
+      isEmpty(this.args.changeset.get(this.args.fieldName))) {
+      this.args.changeset.set(this.args.fieldName, this.defaultPlaylist);
+    }
   }
 
   get selectedPlaylist() {
