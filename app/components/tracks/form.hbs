@@ -18,10 +18,17 @@
       </div>
     {{/if}}
     <div class="mb-4">
-      <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded by: </span><b>{{changeset.uploadedBy}}</b>
-      Uploaded at: {{changeset.createdAt}}
-      <br>
-      Last updated at: {{changeset.updatedAt}}
+      <ul>
+        <li>
+          <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded by: </span><b>{{changeset.uploadedBy}}</b>
+        </li>
+        <li>
+          <span class="block text-gray-700 text-sm font-bold mb-2" >Uploaded at: </span> {{changeset.createdAt}}
+        </li>
+        <li>
+          <span class="block text-gray-700 text-sm font-bold mb-2" >Last updated at: </span> {{changeset.updatedAt}}
+        </li>
+      </ul>
     </div>
     <div class="mb-4">
       <Form.Input
