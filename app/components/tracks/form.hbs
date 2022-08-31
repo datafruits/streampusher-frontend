@@ -9,7 +9,7 @@
       <span>{{changeset.audioFileName}}</span>
     </div>
     <div class="mb-4 mt-4">
-      <Tracks::Replacer @track={{this.model.track}} />
+      <Tracks::Replacer @track={{changeset}} />
     </div>
     {{#if changeset.isUploading}}
       uploading {{changeset.audioFileName}}...
@@ -70,8 +70,6 @@
       Save
     </Button>
     <button disabled={{Form.state.hasSubmitted}} class="btn danger" type="button" {{on "click" this.delete}}><FaIcon @icon="trash" /></button>
-    <button disabled="disabled" class="btn" type="button"><FaIcon @icon="mixcloud" /></button>
-    <button disabled="disabled" class="btn btn-default" type="button"><FaIcon @icon="soundcloud" /></button>
 
     {{#if this.mixcloudDialog}}
       <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="mixcloud">
