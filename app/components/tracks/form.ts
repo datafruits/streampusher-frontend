@@ -14,6 +14,8 @@ interface TracksFormArgs {
 export default class TracksForm extends Component<TracksFormArgs> {
   TrackValidations: any = TrackValidations;
   @service declare store: Store;
+  @service declare flashMessages: any;
+  @service declare router: any;
 
   get uploadProgressStyle() {
     return htmlSafe(`width: ${this.args.model.roundedUploadProgress}%;`);
@@ -30,6 +32,17 @@ export default class TracksForm extends Component<TracksFormArgs> {
     this.store.query('scheduledShow', { term: term }).then((scheduledShows: any) => {
       return resolve(scheduledShows);
     }, reject);
+  }
+
+  @action
+  onSubmit() {
+    this.flashMessages.success('Saved track!');
+    this.router.transitionTo('authenticated.playlists');
+  }
+
+  @action
+  onError() {
+    this.flashMessages.danger("Couldn't save track...check the form for errors");
   }
 
   @action
