@@ -31,13 +31,15 @@ export default class TracksReplacer extends TracksUploaderComponent {
     })
       .then((response) => response.json())
       .then((data) => {
+        this.args.track.set('audioFileName', data.endpoint.split('?')[0]);
         return file.upload(data.endpoint, { method: 'PUT', headers: headers });
       })
       .then((response) => {
-        console.log(`uploaded: ${response}`);
+        console.log(`uploaded:`);
+        console.log(response);
         //track.set('audioFileName', this.finalFileName);
-        track.set('isUploading', false);
-        track
+        this.args.track.set('isUploading', false);
+        this.args.track
           .save()
           .then(() => {
             console.log('track saved!');

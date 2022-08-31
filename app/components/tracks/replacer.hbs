@@ -8,17 +8,22 @@
   {{else if queue.files.length}}
     Uploading {{queue.files.length}} files. ({{queue.progress}}%)
   {{else}}
-      <FileUpload @name="tracks"
-                  accept="audio/*"
-                  multiple="true"
-                  class="btn btn-default"
-                  @onfileadd={{action "uploadTrack"}}>
-        <FaIcon @icon="plus" />Replace track
-      </FileUpload>
-      <br/>
-      {{#if dropzone.supported}}
-        Drag and drop a file onto this area to upload
-      {{/if}}
+    {{#if dropzone.supported}}
+      Drag and drop a file onto this area to upload
+    {{/if}}
+    {{#let (file-queue name="tracks" onFileAdded=this.uploadTrack) as |queue|}}
+      <label for="upload-track">
+        <span role="button" tabindex="0" aria-controls="upload-track" class=""><FaIcon @icon="plus" />Replace track</span>
+      </label>
+      <input
+        type="file"
+        id="upload-track"
+        accept="audio/*"
+        multiple
+        hidden
+        {{queue.selectFile}}
+      >
+    {{/let}}
   {{/if}}
 
   {{yield}}
