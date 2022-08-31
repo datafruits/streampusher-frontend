@@ -18,40 +18,33 @@
   </PowerSelectMultiple>
 </div>
 <Tracks::Uploader @pushTrack={{this.pushTrack}}>
-  <Await @promise={{this.fetchTracks}} as |await|>
-    <div
-      {{did-update await.reload @searchParams.page}}
-      class="">
-      <div class="w-full">
-        <await.Pending>
-          <div class="h-64 overflow-y-scroll w-full">
-            <p>
-              Loading...
-            </p>
-          </div>
-        </await.Pending>
-        <await.Fulfilled as |result|>
-          <div class="h-64 overflow-y-scroll w-full">
-            {{#each result as |track|}}
-              <Tracks::Track
-                @track={{track}}
-                @labels={{@labels}}
-              />
-            {{else}}
-              No result.
-            {{/each}}
-          </div>
-          <FruitsUi::Pagination
-            @page={{@searchParams.page}}
-            @totalPages={{result.meta.total_pages}}
-            @route={{this.router.currentRouteName}}
-            @paramName="tracksPage" />
-        </await.Fulfilled>
-
-        <await.Rejected>
-          error ... :(
-        </await.Rejected>
-      </div>
+  <span {{did-insert this.performTask @searchParams.page}}></span>
+  <span {{did-update this.performTask @searchParams.page}}></span>
+  {{#if this.fetchData.isRunning}}
+    <div class="w-full">
+        <div class="h-64 overflow-y-scroll w-full">
+          <p>
+            Loading...
+          </p>
+        </div>
     </div>
-  </Await>
+  {{else}}
+    <div class="h-64 overflow-y-scroll w-full">
+      {{#each this.sortedTracks as |track|}}
+        <Tracks::Track
+          @track={{track}}
+          @labels={{@labels}}
+        />
+      {{else}}
+        No result.
+      {{/each}}
+    </div>
+    {{#if this.meta}}
+      <FruitsUi::Pagination
+        @page={{@searchParams.page}}
+        @totalPages={{this.meta.total_pages}}
+        @route={{this.router.currentRouteName}}
+        @paramName="tracksPage" />
+    {{/if}}
+  {{/if}}
 </Tracks::Uploader>
