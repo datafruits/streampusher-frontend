@@ -8,6 +8,9 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="title">URL</label>
       <span>{{changeset.audioFileName}}</span>
     </div>
+    <div class="mb-4">
+    <div class="block text-gray-700 text-sm font-bold mb-2">{{changeset.formattedDuration}}</div>
+    </div>
     <div class="mb-4 mt-4">
       <Tracks::Replacer @track={{changeset}} />
     </div>
