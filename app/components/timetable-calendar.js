@@ -17,7 +17,7 @@ export default class TimetableCalendar extends Component {
   router;
 
   @tracked shows = [];
-  @tracked showsQuery;
+  @tracked showsQuery; /// ????
 
   @action
   calendarRemoveOccurrence() {}
@@ -64,11 +64,11 @@ export default class TimetableCalendar extends Component {
     if (view === 'month') {
       query.start = moment(start)
         .startOf('month')
-        .subtract(1, 'month')
+      //.subtract(1, 'month')
         .format('YYYY-MM-DD');
       query.end = moment(start)
         .endOf('month')
-        .add(1, 'month')
+      //.add(1, 'month')
         .format('YYYY-MM-DD');
     } else {
       query.start = moment(start)
