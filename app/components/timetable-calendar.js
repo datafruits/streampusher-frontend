@@ -28,11 +28,15 @@ export default class TimetableCalendar extends Component {
 
   @action
   newShow(event) {
+    console.log(event);
     console.log(event.date);
+    console.log(this.router.currentRoute.name);
     console.log('newShow action in timetable-calendar component');
-    this.router.transitionTo('authenticated.schedule.new', {
-      queryParams: { date: event.date },
-    });
+    if(this.router.currentRoute.name === 'authenticated.schedule.index') { // HAX :(
+      this.router.transitionTo('authenticated.schedule.new', {
+        queryParams: { date: event.date },
+      });
+    }
   }
 
   @action
