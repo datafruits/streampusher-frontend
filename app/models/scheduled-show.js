@@ -7,6 +7,9 @@ export default class ScheduledShow extends Model {
   @belongsTo('playlist') playlist;
   //@belongsTo("user") host;
   @hasMany('user') djs;
+  @hasMany('labels')
+  labels;
+
   @attr('date') start;
   @attr('date') end;
   @attr title;
