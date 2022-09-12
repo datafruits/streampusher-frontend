@@ -11,6 +11,7 @@
         <LinkTo
           class="underline"
           @route="authenticated.playlists.show"
+          @invokeAction={{@closePlaylistSelector}}
           @model={{selectablePlaylist.id}}>
           {{selectablePlaylist.name}}
         </LinkTo>
