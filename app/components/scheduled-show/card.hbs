@@ -1,0 +1,26 @@
+<LinkTo
+  class="no-underline show-block"
+  @route="authenticated.schedule.show"
+  @model={{@show.id}}
+  title={{@show.title}}>
+  <div class="bg-red-400 text-white mb-1 hover:bg-red-500">
+    <div class="bg-red-600 flex justify-between items-center p-1 hover:bg-red-700">
+      <span class="font-extrabold text-xs">{{@show.startFormatted}} - {{@show.endFormatted}}</span>
+      {{#if (not (eq @show.recurringInterval "not_recurring"))}}
+        <span
+          class="text-xs rounded-lg p-1 border-2 border-white
+            {{@show.recurringInterval}}
+          ">
+          {{@show.recurringFormatted}}
+        </span>
+      {{/if}}
+    </div>
+    <div
+      class="h-20 bg-top bg-cover block overflow-hidden"
+      style="{{this.backgroundStyle}}" >
+    </div>
+    <h1 class="p-1">
+        {{@show.title}}
+    </h1>
+  </div>
+</LinkTo>

@@ -4,32 +4,5 @@
   @onCalendarNavigate={{this.calendarNavigate}}
     as |model|>
   {{!-- template-lint-disable no-inline-styles --}}
-  <LinkTo
-    class="no-underline show-block"
-    @route="authenticated.schedule.show"
-    @model={{model.id}}
-    title={{model.title}}>
-    <div class="bg-red-400 text-white mb-1 hover:bg-red-500">
-      <div class="bg-red-600 flex justify-between items-center p-1 hover:bg-red-700">
-        <span class="font-extrabold text-xs">{{model.startFormatted}} - {{model.endFormatted}}</span>
-        {{#if (not (eq model.recurringInterval "not_recurring"))}}
-          <span
-            class="text-xs rounded-lg p-1 border-2 border-white
-              {{model.recurringInterval}}
-            ">
-            {{model.recurringFormatted}}
-          </span>
-        {{/if}}
-      </div>
-      <div>
-        {{#if model.thumbImageUrl}}
-          <img alt="artwork" width="200" height="200"
-            src={{model.thumbImageUrl}}>
-        {{/if}}
-      </div>
-      <h1 class="p-1">
-          {{model.title}}
-      </h1>
-    </div>
-  </LinkTo>
+  <ScheduledShow::Card @show={{model}} />
 </ShrimpCalendar>
