@@ -2,14 +2,11 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import ENV from 'streampusher-frontend/config/environment';
 import { inject as service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 
 export default class RecordingsTableComponent extends Component {
   @service flashMessages;
 
   @service store;
-
-  @tracked thingy = 'wat';
 
   @action
   fetchRecordings() {
@@ -18,30 +15,26 @@ export default class RecordingsTableComponent extends Component {
   }
 
   @action
-  resolvedRecordings(data) {
-    console.log('resolved it');
-    this.thingy = 'thingy';
-    console.log(data);
-  }
-
-  @action
   process(recording) {
-    fetch(`${ENV.API_HOST}/recordings/${recording.id}/process_recordings`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
+    try {
+      fetch(`${ENV.API_HOST}/recordings/${recording.id}/process_recordings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
         if (response.status === 200) {
           this.flashMessages.success('Processing...');
-          this.store.pushPayload(response.body);
+          response.json().then((json) => {
+            this.store.pushPayload(json);
+          });
         } else {
           this.flashMessages.danger('Something went wrong!');
         }
-      })
-      .catch((/* error */) => {
-        this.flashMessages.danger('Something went wrong!');
       });
+    } catch(error)  {
+      this.flashMessages.danger('Something went wrong!');
+      console.log(error);
+    }
   }
 }
