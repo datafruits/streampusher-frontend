@@ -17,6 +17,8 @@ export default class TracksForm extends Component<TracksFormArgs> {
   @service declare flashMessages: any;
   @service declare router: any;
 
+  @service declare currentUser: any;
+
   get uploadProgressStyle() {
     return htmlSafe(`width: ${this.args.model.roundedUploadProgress}%;`);
   }
@@ -45,11 +47,18 @@ export default class TracksForm extends Component<TracksFormArgs> {
     this.flashMessages.danger("Couldn't save track...check the form for errors");
   }
 
+  get canDelete() {
+    return this.currentUser.user.isAdmin || this.args.model.uploadedBy == this.currentUser.user;
+  }
+
   @action
   delete() {
     if (confirm('Are you sure you want to delete this track?')) {
       let track = this.args.model;
-      track.destroyRecord();
+      track.destroyRecord().then(() => {
+        this.flashMessages.success('Deleted track!');
+        this.router.transitionTo('authenticated.playlists');
+      });
     }
   }
 }
