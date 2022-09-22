@@ -45,7 +45,7 @@
         Artwork
       </label>
       {{#if changeset.artwork}}
-        <img alt="artwork" width="300" height="300" src={{file-url this.model.track.artwork 'thumb'}}>
+        <img alt="artwork" width="300" height="300" src={{this.model.track.thumbArtworkUrl}}>
       {{/if}}
       <ArtworkFileUpload
         @changeset={{changeset}}

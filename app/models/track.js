@@ -42,8 +42,6 @@ export default class Track extends Model {
   @attr()
   album;
 
-  // @attr('file')
-  // artwork;
   @attr artwork;
 
   @attr()
