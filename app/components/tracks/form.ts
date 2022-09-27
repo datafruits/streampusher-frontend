@@ -25,7 +25,9 @@ export default class TracksForm extends Component<TracksFormArgs> {
   onSubmit() {
     this.flashMessages.success('Saved track!');
     const previousRoute = this.history.previousRoute;
-    this.router.transitionTo(previousRoute);
+    if(previousRoute) {
+      this.router.transitionTo(previousRoute);
+    }
   }
 
   @action
@@ -44,7 +46,9 @@ export default class TracksForm extends Component<TracksFormArgs> {
       track.destroyRecord().then(() => {
         this.flashMessages.success('Deleted track!');
         const previousRoute = this.history.previousRoute;
-        this.router.transitionTo(previousRoute);
+        if(previousRoute) {
+          this.router.transitionTo(previousRoute);
+        }
       });
     }
   }
