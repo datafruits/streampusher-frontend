@@ -72,6 +72,27 @@
       </PowerSelect>
     </div>
     <br>
+    <div class="mb-4">
+      <Form.Input
+        @type="text"
+        @label="Youtube Link"
+        @fieldName="youtubeLink"
+        />
+    </div>
+    <div class="mb-4">
+      <Form.Input
+        @type="text"
+        @label="Soundcloud Link"
+        @fieldName="soundcloudKey"
+        />
+    </div>
+    <div class="mb-4">
+      <Form.Input
+        @type="text"
+        @label="Mixcloud Link"
+        @fieldName="mixcloudKey"
+        />
+    </div>
     <Button
       @type='submit'
       @intent='primary'
@@ -79,42 +100,9 @@
       >
       Save
     </Button>
-    <button disabled={{Form.state.hasSubmitted}} class="btn danger" type="button" {{on "click" this.delete}}><FaIcon @icon="trash" /></button>
 
-    {{#if this.mixcloudDialog}}
-      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="mixcloud">
-        <div class="modal-header">
-          <button {{action "mixcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Upload to Mixcloud - {{this.model.track.title}}</h4>
-        </div>
-        <div class="modal-body">
-          <MixcloudUploader @track={{this.model.track}} />
-        </div>
-      </ModalDialog>
-    {{else if this.soundcloudDialog}}
-      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @close="soundcloud">
-        <div class="modal-header">
-          <button {{action "soundcloud"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Upload to Soundcloud - {{this.model.track.title}}</h4>
-        </div>
-        <div class="modal-body">
-          <SoundcloudUploader @track={{this.model.track}} />
-        </div>
-      </ModalDialog>
-    {{else if this.embedDialog}}
-      <ModalDialog @targetAttachment="center" @translucentOverlay={{true}} @clickOutsideToClose={{true}} @onClose="embed">
-        <div class="modal-header">
-          <button {{action "embed"}} type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Embed - {{this.model.track.title}}</h4>
-        </div>
-        <div class="modal-body">
-          Embed code and preview:
-          <div>
-            <Input @focus-in="focusEmbedCode" id="embed-player-html" @type="text" readonly="readonly" @value={{this.model.track.embedCode}} />
-          </div>
-          {{this.model.track.embedCode}}
-        </div>
-      </ModalDialog>
+    {{#if this.canDelete}}
+      <button disabled={{Form.state.hasSubmitted}} class="btn danger" type="button" {{on "click" this.delete}}><FaIcon @icon="trash" /></button>
     {{/if}}
   </Ui::ChangesetForm>
 {{/let}}
