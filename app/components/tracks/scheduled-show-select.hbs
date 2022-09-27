@@ -1,0 +1,13 @@
+<h4
+  class="block text-gray-700 text-sm font-bold mb-2">
+  Link to Scheduled Show
+</h4>
+<PowerSelect
+  @searchEnabled={{true}}
+  @search={{this.searchShows}}
+  @renderInPlace={{true}}
+  @options={{@scheduledShows}}
+  @selected={{@changeset.scheduledShow}}
+  @onChange={{this.setScheduledShow}} as |scheduledShow|>
+  {{scheduledShow.displayTitle}}
+</PowerSelect>

@@ -60,16 +60,10 @@
         @changeset={{changeset}} />
     </div>
     <div class="mb-4">
-      <h4 class="block text-gray-700 text-sm font-bold mb-2">Link to Scheduled Show</h4>
-      <PowerSelect
-        @searchEnabled={{true}}
-        @search={{this.searchShows}}
-        @renderInPlace={{true}}
-        @options={{@scheduledShows}}
-        @selected={{changeset.scheduledShow}}
-        @onChange={{fn (mut changeset.scheduledShow)}} as |scheduledShow|>
-        {{scheduledShow.displayTitle}}
-      </PowerSelect>
+      <Tracks::ScheduledShowSelect
+        @scheduledShows={{@scheduledShows}}
+        @changeset={{changeset}}
+        />
     </div>
     <br>
     <div class="mb-4">

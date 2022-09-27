@@ -19,6 +19,9 @@ export default class Track extends Model {
   labelIds;
 
   @attr()
+  scheduledShowId;
+
+  @attr()
   createdAt;
 
   @attr()
@@ -117,4 +120,7 @@ export default class Track extends Model {
       `<iframe width="100%" height="100%" frameborder="no" scrolling="no" src="${this.embedLink}"></iframe>`
     );
   }
+
+  @attr()
+  youtubeLink;
 }
