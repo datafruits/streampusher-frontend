@@ -25,8 +25,11 @@ export default class TracksForm extends Component<TracksFormArgs> {
   onSubmit() {
     this.flashMessages.success('Saved track!');
     const previousRoute = this.history.previousRoute;
-    if(previousRoute) {
-      this.router.transitionTo(previousRoute);
+    const previousParam = this.history.previousParam;
+    if(previousRoute && previousParam) {
+      this.router.transitionTo(previousRoute, previousParam);
+    } else {
+      this.router.transitionTo('authenticated.playlists');
     }
   }
 

@@ -21,9 +21,10 @@ export default class ShowRoute extends Route {
     });
   }
 
-  afterModel() {
+  afterModel(model) {
     console.log('setting history');
     console.log(this.fullRouteName);
+    this.history.previousParam = model.playlist.id;
     this.history.previousRoute = this.fullRouteName;
   }
 }
