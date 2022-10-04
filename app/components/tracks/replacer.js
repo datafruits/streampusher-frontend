@@ -10,6 +10,11 @@ export default class TracksReplacer extends TracksUploaderComponent {
       e.returnValue = dialogText;
       return dialogText;
     };
+
+    if(!this.validMimeTypes.includes(file.type)) {
+      alert('Only mp3 is supported! sorry...');
+      return;
+    }
     //let track = this.store.createRecord('track', { isUploading: true, audioFileName: file.name, filesize: file.size });
     let mimeType;
     if (file.type == 'audio/mp3') {

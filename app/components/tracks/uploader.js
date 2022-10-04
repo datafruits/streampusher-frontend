@@ -26,6 +26,12 @@ export default class TrackUploader extends Component {
       e.returnValue = dialogText;
       return dialogText;
     };
+
+    if(!this.validMimeTypes.includes(file.type)) {
+      alert('Only mp3 is supported! sorry...');
+      return;
+    }
+
     let track = this.store.createRecord('track', {
       isUploading: true,
       audioFileName: file.name,
