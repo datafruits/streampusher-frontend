@@ -2,6 +2,7 @@
   @onDayclick={{this.newShow}}
   @events={{@shows}}
   @onCalendarNavigate={{this.calendarNavigate}}
+  @startDate={{@startDate}}
     as |model|>
   {{!-- template-lint-disable no-inline-styles --}}
   <ScheduledShow::Card @show={{model}} />
