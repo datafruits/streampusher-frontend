@@ -64,4 +64,14 @@ export default class ScheduledShowForm extends Component {
   backToSchedule() {
     this.router.transitionTo('authenticated.schedule');
   }
+
+  @action
+  deleteShow() {
+    if (confirm('Are you sure you want to delete this show?')) {
+      this.args.model.destroyRecord().then(() => {
+        this.flashMessages.success('Deleted show!');
+        this.router.transitionTo('authenticated.schedule');
+      });
+    }
+  }
 }

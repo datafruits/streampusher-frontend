@@ -87,6 +87,10 @@
           />
         </div>
 
+        <ScheduledShow::CalendarSelect
+          @changeset={{changeset}}
+        />
+
         <div class="mb-4">
           {{formatted-day changeset.start}}
         </div>
@@ -142,6 +146,11 @@
           {{/if}}
         </div>
 
+        <div class="mb-4">
+          <h3>Archives</h3>
+          <span>Select an archive recording</span>
+        </div>
+
         <div class="flex items-center justify-between mb-4">
           <Button
             @type='submit'
@@ -158,11 +167,13 @@
 
         {{#unless @model.isNew}}
           <div class="flex items-center justify-between">
-            <Input
-              @type="submit"
+            <Button
+              @type="button"
               class="btn danger cursor-pointer"
-              @value="Delete"
-            />
+              {{on "click" this.deleteShow}}
+            >
+            Delete
+            </Button>
           </div>
         {{/unless}}
       </Ui::ChangesetForm>
