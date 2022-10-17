@@ -65,7 +65,7 @@
     "@types/rsvp": "^4.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "2.4.1",
+    "ember-auto-import": "2.4.3",
     "ember-await": "^2.0.0",
     "ember-classic-decorator": "^3.0.0",
     "ember-cli": "~3.28.5",
