@@ -26,10 +26,10 @@
         </td>
         {{#if hostApplication.approved}}
           <td>Approved</td>
-        {{else if this.currentUser.isAdmin}}
+        {{else if this.currentUser.user.isAdmin}}
           <td>
             <button
-              class="btn" type="button" {{on "click" this.approve}}
+              class="btn" type="button" {{on "click" (fn this.approve hostApplication)}}
              >
               Approve
             </button>
