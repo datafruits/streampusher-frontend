@@ -20,11 +20,11 @@ export default class ScheduleRoute extends Route {
     const start = query.start;
     query.start = moment(start)
       .startOf('month')
-    //.subtract(1, 'month')
+      .subtract(1, 'week')
       .format('YYYY-MM-DD');
     query.end = moment(start)
       .endOf('month')
-    //.add(1, 'month')
+      .add(1, 'week')
       .format('YYYY-MM-DD');
     console.log(`querying shows in route..`);
     console.log(query);
