@@ -6,21 +6,53 @@ streampusher beta TODO
 - [ ] settings (change pw/timezone/etc)
 - [ ] global radio settings
 
-- [ ] dashboard
+- [x] dashboard
   - [x] update metadata / donation link
-  - [ ] skip button
+  - [x] skip button
   - [ ] queue playlist button for when its not working
-  - [ ] show liquidsoap internal requests
+  - [x] show liquidsoap internal requests
+      - refresh every 1 min ?
   - [ ] show current chat user count???
 - [ ] disable user accounts UI
-- [ ] schedule
+- [x] schedule
   - [x] modal for new/edit
   - [ ] make sure delete works
-  - [ ] uploading artwork
-  - [ ] say add content button is 'coming soon'
+  - [x] uploading artwork
+  - [x] say add content button is 'coming soon'
 - [ ] write acceptance test suite
 
 v2
 ---
 - [ ] i18n
 - [ ] chat moderation connected directly to chat socket
+- [ ] scheduled show content editor
+- [ ] allow reusing artwork for shows
+
+
+boogs
+------
+- [x] PODCAST FEED BUSTED
+
+- [x] scheduled show tags
+- [x] scheduled show artwork
+  - [x] edit doesnt work unless you pick a new show???
+- [x] shouldn't validate time is not in past when editing show that already happened/???
+- [x] loading schedule still too slow
+- [ ] navigating to next month is wonky/borken
+  - [ ] setting current month???
+
+- [ ] playlists dont show sometimes
+- [ ] replace track not working
+
+- [ ] https://streampusher.com/dashboard no longer shows listener count, does show: "Current request on air: 2
+Current requests:
+rid="2" liq_fade_in="0" on_air="2022/08/24 19:29:50" status="playing" liq_fade_out="0" initial_uri="annotate:liq_fade_in=0,liq_fade_out=0,liq_cue_in=0:https://dongles.streampusher-relay.club/datafruits/datafruits-fengir-03-25-2017.mp3?1490667364" source="backup_playlist" temporary="true" filename="/tmp/liq-processd79e71.mp3" liq_cue_in="0" title="fengir's key - 03-25-2017" decoder="MAD" kind="{audio=1+;video=0;midi=0}" END"
+Streampusher 2
+
+- [ ] drag and drop media upload is not consistently working for me, but the +add upload works fine. I can edit the uploaded file once (change title, change associated image, etc)
+- [x] after the first edit, if I try and edit again, it doesn't show the image or other fields to change, does still show the title text field, but after "artwork" there's nothing. and no buttons under that, so no chance to submit changes.
+- [ ] on the media list, the images / media avatars have always been a bit unreliable, but now they dont' seem to update at all
+- [x] still on the media page, the "playlists" pulldown doesn't automatically retract when the playlist is selected, but can be manually retracted with the up arrow (maybe by design? different mechanism from old version though)
+- [ ] the scaling of the field that shows playlist entries seems to be inconsistent, sometimes that column was invisible but would appear when more items added to the playlist. seems to disappear sometimes on playlist selection, even if the playlist is populated
+
+- [ ] for housekeeping, would it be possible for you to give me permission to delete my old broadcasts from the media server? it gets a bit cluttered, esp since the broadcast images don't always show which is which...
