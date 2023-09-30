@@ -41,7 +41,7 @@ export default class SessionService extends SimpleAuthSessionService {
 
   async _loadCurrentRadio() {
     try {
-      const radio = await this.currentRadio.load();
+      await this.currentRadio.load();
       console.log('loaded currentRadio');
     } catch (err) {
       console.log("couldn't load currentRadio");

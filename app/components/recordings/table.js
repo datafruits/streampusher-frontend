@@ -21,6 +21,7 @@ export default class RecordingsTableComponent extends Component {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.session.data.authenticated.token}`,
         },
       }).then((response) => {
         if (response.status === 200) {
