@@ -8,6 +8,8 @@ export default class RecordingsTableComponent extends Component {
 
   @service store;
 
+  @service session;
+
   @action
   fetchRecordings() {
     const query = { page: this.args.page };
