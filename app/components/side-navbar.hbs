@@ -15,10 +15,10 @@
       <li class="hover:bg-gray-800 rounded px-2 py-1">
         <LinkTo @route="authenticated.schedule">Schedule</LinkTo>
       </li>
+      <li class="mt-1 hover:bg-gray-800 rounded px-2 py-1">
+        <LinkTo @route="authenticated.playlists.show" @model={{this.currentRadio.radio.defaultPlaylistId}}>Media</LinkTo>
+      </li>
     {{/if}}
-    <li class="mt-1 hover:bg-gray-800 rounded px-2 py-1">
-      <LinkTo @route="authenticated.playlists.show" @model={{this.currentRadio.radio.defaultPlaylistId}}>Media</LinkTo>
-    </li>
     <li class="hover:bg-gray-800 rounded px-2 py-1">
       <LinkTo @route="authenticated.host-applications">Dj Applications</LinkTo>
     </li>
