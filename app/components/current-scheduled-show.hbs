@@ -1,0 +1,24 @@
+<h2 style="text-sl">Current Scheduled Show</h2>
+<Await @promise={{this.fetchCurrentScheduledShow}} as |await|>
+  <await.Pending>
+    Loading...
+  </await.Pending>
+  <await.Fulfilled as |result|>
+    <div>
+      <span class="font-semibold">Current show:</span>
+      <span>{{result.current_show}}</span>
+    </div>
+    <div>
+      <span>The current show's playlist should be queued automatically, but if it's not working try this button.</span>
+      <button
+        {{on "click" this.queueCurrentShowPlaylist}}
+        class="btn"
+        type="button">
+        Queue Current Show's Playlist
+      </button>
+    </div>
+  </await.Fulfilled>
+  <await.Rejected>
+    Something went wrong :(
+  </await.Rejected>
+</Await>
